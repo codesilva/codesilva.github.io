@@ -14,6 +14,22 @@ Bom e foi por isso que criamos o **Magnet Extractor** que é um utilitário que 
 Veja em funcionamento no link: [Magnet Extractor](https://codesilva.github.io/magnet-extractor)
 
 
+# Code snippet
+
+```js
+const name = 'Edigleysson Silva';
+```
+
+# image 
+
+![My Awesome image](assets/images/hero-bg.jpg "My Awesome image")
+![My Awesome image](assets/images/profile.jpg "My Awesome image")
+
+![My Awesome image](assets/images/error.png "My Awesome image")
+
+> Ninguém: a<br/>
+> Eu: Criar um blog com angular
+
 # Sobre o BeautifulSoup
 O Beautifulsoup é uma lib python que nos auxilia no desenvolvimento de aplicações de **Web Scraping**. 
 
@@ -37,20 +53,3 @@ Após ao desenvolvimento da aplicação, bastou hospedar nosso código Python no
 Bom pessoal é isso, não me aprofundei muito sobre o tema, porque pretendo posteriormente escrever sobre como fazer coisas básicas com o Beautifulsoup. Mas aqui é possível entender a premissa básica e se você já tem conhecimento básico sobre Web Scraping vai fazer um extrator de links fácil, fácil.
 
 Bom é isso, vejo vocês na próxima. Abraços.
-
-
-<!-- Olá, este é o primeiro post desse blog. Sim é bem simples, mas é porque isto é apenas um teste. No entanto você pode ficar tranquilo(a), em breve teremos posts muito legais aqui.
-
-![Uma imagem](https://raw.githubusercontent.com/showdownjs/logo/master/dist/logo.readme.png)
-
-Testando mais um
-
-![Outra imagem](../images/hero-bg.jpg 'TESTE'
-
-```javascript
-alert('Hello World')
-```
-
-------
-
-# Testando -->

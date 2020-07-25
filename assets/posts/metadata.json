@@ -1,0 +1,15 @@
+{
+    "posts": [
+        {
+            "title": "My First post"
+        },
+
+        {
+            "title": "My Second post"
+        },
+
+        {
+            "title": "My Thirs post"
+        }
+    ]
+}
