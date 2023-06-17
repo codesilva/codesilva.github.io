@@ -35,6 +35,8 @@ plugins:
 header_pages:
   - about.md
 
+excerpt_separator: <!--more-->
+
 minima:
   skin: dark
 
