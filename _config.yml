@@ -33,9 +33,7 @@ plugins:
   - jekyll-feed
 
 header_pages:
-  - about.markdown
-  - index.markdown
-  - playground.md
+  - about.md
 
 minima:
   skin: dark

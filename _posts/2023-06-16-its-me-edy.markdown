@@ -1,7 +1,0 @@
----
-layout: post
-title: "it's me Edy!"
-date: 2023-06-16
----
-
-it's me edy!
