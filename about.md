@@ -1,15 +1,21 @@
 ---
 layout: page
-title: About
+title: Sobre mim
 permalink: /about/
 ---
 
-Hi, I'm Edy Silva and I live in a small town of Ceará with my beautiful wife and my kid. This blog is meant to document
-my thoughts. Since I think a lot about `programming`, `learning` and `reading` there will be recurring subjects here.
+Olá, eu me chamo Edy Silva e vivo em uma pequena cidade no estado do Ceará com minha esposa e filha linda. Usarei este
+blog com o simples objetivo de documentar meus pensamentos.
 
-This blog isn't be the most beautiful you've ever seen, but hopefully it has some useful content.
+Como eu penso e leio bastante sobre assuntos ligados a `programação`, `aprendizado` e `leitura` estes assuntos serão
+recorrentes aqui.
 
-A curious fact about this blog is that it's highly inspired by Jeremy Foster's blog. He used to work at Microsoft and
-owns the [codefoster.com](http://codefoster.com/) blog.
+Talvez esse blog não seja o mais bonito que você já viu, mas espro que o conteúdo encontrado aqui seja útil.
 
-I heard about this guy in an HTML & CSS course I attended on Microsoft Virtual Academy. I tried to find a link for the course but I couldn't. It might be outdated today so who cares?
+Um fato curioso sobre este bloga é que ele é inspirado no blog do Jeremy Foster. Não se o que ele tem feito, mas ele
+costumava trabalhar na Microsoft e ser dono do [codefoster.com](http://codefoster.com).
+
+O conheci de um curso que fiz na Microsoft Virtual Academy onde ele o Martin Palermo falavam sobre HTML & CSS - um dos
+poucos cursos que fiz e um dos melhores também.
+
+Eu até tentei encontrar o link do curso pra colocar aqui mas não encontrei. A essa altura do campeonato o curso já deve até estar datado então quem liga?
