@@ -1,0 +1,38 @@
+<footer class="site-footer h-card" style="padding-bottom: 10px;">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <h2 class="footer-heading">{{ site.title }}</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-3">
+        <ul class="social-media-list">
+          {%- for entry in site.minima.social_links -%}
+          <li>
+            <a href="{{ entry.user_url }}" target="_blank">
+              <svg class="svg-icon">
+                <use xlink:href="/assets/minima-social-icons.svg#{{ entry.platform }}"></use>
+              </svg> <span class="username">{{ entry.username }}</span>
+            </a>
+          </li>
+          {%- endfor -%}
+
+          <li><a href="https://github.com/geeksilva97">
+              <svg class="svg-icon">
+                <use xlink:href="/assets/minima-social-icons.svg#github"></use>
+              </svg> <span class="username">geeksilva97</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>{{ site.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    &copy; {{ site.title }} - {{ site.time | date: '%Y' }}
+  </div>
+</footer>
