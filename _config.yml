@@ -18,11 +18,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-lang: en
+lang: pt-BR
 title: CodeSilva
 email: projetoscodesilva@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Welcome to my personal blog, CodeSilva! As an aspiring Software Engineer, I'm here to share my experiences, insights, and occasional coding misadventures.
+  Bem-vindo ao meu blog pessoal, CodeSilva! Como um aspirante a Engenheiro de Software, estou aqui para compartilhar minhas experiências, percepções e ocasionais desventuras de programação.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://codesilva.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: edigleyssonsilva
@@ -37,13 +37,12 @@ header_pages:
   - about.md
   - books.md
 
-excerpt_separator: <!--more-->
 show_excerpts: true
 
 minima:
   social_links:
     - { platform: youtube, username: 'Assista no YouTube', user_url: "https://youtube.com/edigleyssonsilva" }
-    - { platform: medium, username: 'Leia mais post no Medium', user_url: "https://edigleyssonsilva.medium.com" }
+    # - { platform: medium, username: 'Mais posts no Medium (en-US)', user_url: "https://edigleyssonsilva.medium.com" }
 
 # Exclude from processing.
 # The following items will not be processed, by default.
