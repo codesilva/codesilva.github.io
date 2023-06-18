@@ -3,6 +3,8 @@ layout: post
 title: FAQ Google Maps
 date: 2023-06-19
 lang: pt-BR
+category: ["google maps"]
+tags: ["google maps", "javascript"]
 ---
 
 De todos os vídeos que já publiquei no [meu canal no YouTube](https://youtube.com/edigleyssonsilva) os da série sobre Google Maps são os que mais ganharam
