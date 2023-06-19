@@ -17,6 +17,7 @@ receber atuliazações conforme eu vá recebendo perguntas.
 Sem mais delongas vamos a elas.
 
 # 1. É pago?
+
 Sim, a SDK JavaScript faz parte da Maps Platform e é categorizada como mapa dinâmico. Esses mapas dinâmicos têm um custo
 por carregamento.
 
