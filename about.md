@@ -10,7 +10,7 @@ blog com o simples objetivo de documentar meus pensamentos.
 Como eu penso e leio bastante sobre assuntos ligados a `programação`, `aprendizado` e `leitura`, estes assuntos serão
 recorrentes aqui.
 
-Talvez esse blog não seja o mais bonito que você já viu, mas esprto que o conteúdo encontrado aqui seja útil.
+Talvez esse blog não seja o mais bonito que você já viu, mas espero que o conteúdo encontrado aqui seja útil.
 
 Um fato curioso sobre este blog é que ele é inspirado no blog do Jeremy Foster. Não sei o que ele tem feito, mas ele
 costumava trabalhar na Microsoft e ser dono do [codefoster.com](http://codefoster.com).
