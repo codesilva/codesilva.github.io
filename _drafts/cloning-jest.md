@@ -62,3 +62,34 @@ spyWithMockImpl.restore();
 
 console.log(`\nmyMethod has been caled ${myMethodSpyWithNoMockImplementation.numCalls()} times!!\n\n`);
 ```
+
+Jest uses the following babel package https://babeljs.io/docs/babel-plugin-transform-modules-commonjs. So it turns ES
+modules into CommonJS. Having commonjs modules we can take advantage of require.cache.
+
+[EN] "Simplicity is the ultimate sophistication..." said Da Vinci. We can't disagree with him, huh?
+
+
+
+I continued the experiments with the test runner (using jest as the reference). Well, the part that intrigues me most is the jest.mock. It kind of intercepts the real module and provides the given implementation.
+
+
+
+Doing some research I figured out that, in commonjs, we can use the cache. Every time you load a commonjs module it adds a new entry to require.cache (). We can use it (see the image below).
+
+
+
+That's it. Whenever our mock function is called it writes to cache, so when it imports an already mocked file it will indeed receive the mock implementation.
+
+
+
+The downside is that we would need to mock a module even before importing it. Otherwise, it will always get the real implementation. If you know Jest you know that's not how it works.
+
+
+
+References
+
+
+
+- https://nodejs.org/api/modules.html#requirecache
+
+- 
