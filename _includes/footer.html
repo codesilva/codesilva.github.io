@@ -1,3 +1,22 @@
+<script type="module">
+  // Adding this script to the footer is a workaround since addin to the _includes/google-analytics.html didn't work
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAq3HFy_UFk9su9VQkcqMP8a67T6vldqa4",
+    authDomain: "codesilva-github-io.firebaseapp.com",
+    projectId: "codesilva-github-io",
+    storageBucket: "codesilva-github-io.appspot.com",
+    messagingSenderId: "500276742248",
+    appId: "1:500276742248:web:5fdf5b68f5b22dffd1d3dd",
+    measurementId: "G-S9806QBHHJ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
 <footer class="site-footer h-card" style="padding-bottom: 10px;">
   <data class="u-url" href="/"></data>
 
