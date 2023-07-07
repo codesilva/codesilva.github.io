@@ -1,6 +1,6 @@
 ---
 layout: post
-title: O Curso de Programação Perfeito - Mas que você não vai querer
+title: Qualidades que os cursos deveriam ter - mas não vão
 date: 2023-06-27
 lang: pt-BR
 tags: ["roadmap", "programação"]
@@ -55,37 +55,66 @@ contradado e em outras duas como consultor e em todas haviam softwares legados e
 funcionando quanto adicionar coisa nova. E nesses três anos, o único projeto realmente novo que trabalhei foi há alguns
 meses, e advinha? Sim, mais uma reescrita.
 
-Tem colegas de trabalho meu que até semana passada ainda estavam trabalhando com JQuery. Em 2023! Nada contra JQuery
+Tenho colegas de trabalho que até semana passada ainda estavam trabalhando com JQuery. Em 2023! Nada contra JQuery
 claro, muito boa ferramenta.
 
 ## Habilidades que são tool-free
 
-### Investigação/Pesquisa
+Existe um conjunto de habilidades que são independentes de ferramenta e que são extremamentes importantes no dia de um programador. Abaixo listo dois conjuntos de habilidades que acredito estarem nessa categoria.
 
-- investigação para resolver bugs
-- investigação para entender aspectos internos das ferramentas utilizadas
-- investigação para contornar documentações ruins.
+### Investigação/Pequisa
 
-### Refatoração e Aplicação de Patterns
+Essa é pra mim a mais importante. Porque nem sempre você vai saber muito sobre uma ferramenta, ou mesmo sobre o projeto
+em que você está trabalhando atualmente, com código criado por outras pessoas.
 
-- Patterns são coisas que também são ensinadas só como greenfield. Mas são ainda mais úteis em ambientes onde precisa-se
-    melhorar o código. Mas claro, pra olhar um código e identificar como um pattern pode melhora-lo, você tem que
-    conhecer os patterns e conseguir vê-los emergindo do código.
+Atualmente estou em um projeto que requer muito isso. Ele consiste de muito repositórios que se conectam para performar
+as mais diversas tarefas. As vezes me pego perdido e tenho de conectar os pontos, sair procurando no código e entender
+como as coisas se conectam.
 
-## Coisas que curso NENHUM vai conseguir ajudar
+Essa habilidade também é útil para auditar as ferramentas que utilizamos no dia-a-dia. As vezes a ferramenta faz algo
+que não está em sintonia com o que esperamos e com habilidade de invetgação podemos idenficar isso e tomar uma medida.
 
-Aistoteles não estudava porque TINHA que estudar. Estudava porque tinha PRAZER em faze-lo.
+Naturalmente, investigar bem vai te ajudar também na resulção de bugs e contorno de documentações ruins.
+
+### Aplicação de Patterns
+
+Desing Patterns é algo que aprendemos, ou pelo menos devíamos, quando vemos alguma disciplina ou curso de Orientação
+a Objetos. Eles são no mínimo mencionados.
+
+Patterns são interessantes e desempenham um papel importante no design de aplicações. Acredito, no entanto, que
+poderíamos nos debruçar mais sobre aplicações de tais patterns em código que já existe, em código legado.
+
+Criar o seu `AbstractSingletonProxyFactoryBean` na saída é até tranquilo. Difícil mesmo é aplicar em código existente de modo que peguemos um código legado e o transformemos em algo melhor. E quanto mais você fizer isso mais vai conseguir ver os patterns emergindo dos códigos que vê.
 
 ## Conclusão
 
-Bom, você não vai encontrar um curso tal qual eu falei. Pra ser sincero, nem sei se dá pra fazer. Porquer para atingir
-um nível satisfatório de conteúdo é preciso ter BONS exemplos. Eles precisam ser o mais parecido com a realidade
-possível e isso pode ser difícil de se fazer.
+Se você encontrar um curso com essas qualidades ele é muito provávelmente um curso que vale a pena. Claro, isso não
+significa que um curso que explica uma ferramenta é ruim ou que não tem seu valor. As vezes buscamos algo mais focado
+é rápido e cursos assim vêm a calhar. Mas se você ainda está se desevolvendo como programador isso pode não ser o suficiente.
 
-Mas isso não significa que você vai esperar pra sempre. Faça você mesmo. Deixo aqui uma lista de livros que vai te
-ensinar isso tudo:
+Por outro lado, preparar um curso só disso pode não ser muito atrativo, além de difícil. O que resta pra quem produz
+treinamentos, cursos, bootcamps, etc é tentar imbutir junto com o ensino da ferramenta.
 
-- O Programador Pragmático
-- O Mĩtico Homem-Mes
-- Refatoração
-- Trabalhando Efetivamente com Código Legado
+Tentei fazer isso no curso em que produzi sobre **Firebase Security Rules**. Todo o curso é envolto em aplicar conceitos
+em uma aplicação criada. Ela começa 100% insegura e vamos melhorando ao longo das aulas. Ainda, além de só já passar
+a forma que escrevo as regras eu produrei mostrar como podemos encontrar as coisas na documentação do Firebase.
+
+Ainda assim, mesmo que eu tenha tentado eu posso ter falhado e esse é um curso mais nichado, que vai atingir somente que
+conhece e se interssa por Firebase e Firestore. Pode não ser o seu caso.
+
+Por isso que a mwlhor forma de adquitrit tais habilidades não necessariamente é com cursos. Deixo aqui uma lista de
+livros que abordam habilidades essenciais que vão além de criar e manter código. Pra isso já temos os **9 MIL CURSOS**
+Udemy.
+
+Os livros são:
+
+- O Programador Pragmático, Dave Thomas e Andrew Hunt
+- O Mítico Homem-Mês, Fred Brooks
+- Refatoração, Kent Beck
+- Trabalhando Efetivamente com Código Legado, Michael C Feathers
+
+É importante notar que algo que nenhum curso vai te ensinar, pelo menos nenhum
+sobre programação, é a ter interesse em estudar. Isso tem de vir de você. A vontade de melhorar, a vontade de desbravar
+o novo.
+
+Por hoje é só. Aproveite sua nova lista de leitura e até mais.
