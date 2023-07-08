@@ -1,0 +1,3 @@
+- https://nodejs.org/en/docs/guides/simple-profiling
+- https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/
+- https://medium.com/@vcarl/performance-profiling-a-redux-app-c85e67bf84ae
