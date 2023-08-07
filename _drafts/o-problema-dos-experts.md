@@ -30,8 +30,25 @@ se colocar na posição que esiveram quando estavam dando seus primeiros passos.
 - neuroniso e tipo de memoria de um expert
 
 ## Por que isso é um problema?
-- pode ser difícil ajudar pessoas iniciantes porque as coisas parecem obvias
-- voce pode parecer arrogante. as pessoas não gostam disso
+Bom, podemos dividir em categorias.
+
+O ponto principal é que pode ser complicado trabalhar com pessoas menos experientes. Devido ao cérebro do expert estar
+habituado a obter as informações sobre aquele assunto, ele pula várias etapas. Tal qual você anda de bicicleta, você nem
+lembra que anda, você só sobe e sai pedalando.
+
+Embora, no começo você teve dificuldades, você caiu. No entanto, pode ser difícil pensar em cair ao subir na bike, você
+não imagina esse cenário.
+
+Daí vem. Se o expert não consegue imaginar os primeiros passos, ele não consegue claramente entender a dor de alguém que
+está iniciando. Isso faz com que a comunicação não seja boa.
+
+Na minha área, já vi gente muito _senior_ conversando com gente bem _junior_ de tal modo que o menos experiente não
+conseguia entender, parecisa que o mais experiente falava em códigos. Eu já fui o tradutor em casos como esses.
+
+### Achar tudo óbvio
+Você é expert e sempre que alguém aprende algo novo ao invés de você dar apoio você fala que aquilo é obvio. Não seja
+essa pessoa. Os outros não vão gostar de você, elas não vão nem te aturar a menos que você seja o chefe delas.
+
 
 ## Resumo
 
