@@ -78,6 +78,9 @@ comumente utilizadas, pelo menos sob a perspectiva dos projetos em que trabalho 
 documento HTML, são: `div`, `section`, `h1` (e até `h6`),
 `span`, `p`, `main`, `footer`, `header`.
 
+> Fiz um pequeno experimento em um dos projetos em que trabalho na GoDaddy. Processei todos os arquivos tsx em busca das
+> tags. É um projeto relativamente e só usa 39 tags. Em torno de 30% das tags
+
 Claro, posso ter esquecido uma tag ou outra que é bem comum, mas eu acho que você já pegou a ideia. É possível fazer
 bastante coisa com uma pequena fração do todo.
 
