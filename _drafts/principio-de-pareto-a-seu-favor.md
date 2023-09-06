@@ -109,3 +109,9 @@ O ponto interessante é perceber que com o tempo suas especialidades podem mudar
 mais coisas você se torna um especialista em aprender e aí tudo fica mais fácil. Por exemplo, eu não conhecia o tal do
 **React Portals** citado no começo do post, mas eu conhecia esse conceito do **VueJS** de quando fazia contribuições
 mais assíduas ao projeto open-source _Buefy_ - conceitos acima de ferramentas.
+
+> 
+Resultado: processados aruivos do mercury e obtido a quantidade de tags utilizadas
+Found 39 of 128 tags
+Percent: 30.46875%
+Percent: 27.857142857142858%
