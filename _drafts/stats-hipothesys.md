@@ -26,3 +26,17 @@ A hipótese é que aplicando concorrência possamos:
 
 ### Bonus: Implementação do stats usando elixir
 Por que não? Se pá podemos implementar tudo em elixir e parar de sofrer com as coisas.
+
+
+## Como o stats funciona hoje?
+
+Ele basicamente consome tópicos. Múltiplos tópicos são lidos por partes diferentes da aplicação.
+
+### Descrição do funcionamento
+
+- tudo começa em `app.js` que inicia `tasks/index.js` ou `tasks-diplomacy/index.js` e também inicia as rotas.
+    - `tasks/index.js` entre outras chama `tasks/task-stats.js`.
+
+Usa firehose.js do node-utils
+    - lib/transactions.js por exepmlo define o consumer passando um emitter. EXPORTS então encapsula EMITTERS que é quem
+        realmente é chamado pelo Kafka.
