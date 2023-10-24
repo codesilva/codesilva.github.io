@@ -39,6 +39,77 @@ Generalizando o que precisamos fazer para mover `n discos` na torre de hanoi é:
 
 Assim chegamos em: T(n) = T(n-1) + 1 + T(n-2) => `T(n) = 2T(n-1) + 1`.
 
+### Exemplo 2 - Invertendo uma Lista ligada
+
+Para inverter uma lista ligada podemos seguir o mesmo modelo da torre de hanoi. Começamos com o mais trivial. Os casos
+mais triviais/simples na inversão de uma lista ligada são:
+
+- uma lista vazia - uma lista ligada vazia tem sua cabeça como `null`, podemos simplesmente retornar `null`;
+- uma lista de 1 item - uma lista de um item invertida, é a própria lista, então basta retornar a cabeça;
+- uma lista de 2 itens - uma lista de dois itens, podemos então pegar dois a dois fazendo `previous` e `current` ser
+    o primeiro e o segundo item.
+
+    Seja a lista `A -> B` teremos a função `reverseTwoNodes(previous, current)`
+
+    Primeira iteracao `reverseTwoNodes(null, A)`. Queremos `newCurrent = A.next` e `A.next = null` então chama
+    a proxima iteração passando como primeiro parametro o atual `current` - que na proxima iteração será o `previous`
+    e o `newCurrent` que na proxima iteração será o `current`.
+
+    Segunda iteracao `reverseTwoNodes(A, B)` -> `newCurrent = B.next` e `B.next = A`.
+
+    Terceira iteração `reverseTwoNodes(B, null)` -> Encerra, poir current é null
+
+    ```js
+    // inicia com reverseTwoNodes(null, head)
+    function reverseTwoNodes(previous, current) {
+        if (current == null) {
+            return previous;
+        }
+
+        const newNext = current.next;
+        current.next = previous;
+
+        return reverseTwoNodes(current, newNext);
+    }
+    ```
+
+
+### Exepmlo 3 - Invertendo uma Árvore binária
+
+
+`reverseBinaryTree(root)`
+
+Casos triviais:
+
+- Árvore vazia --> `null`
+- Árvore de um nó sem filhos --> `retorna o proprio nó (root)`
+- Árvore de um nó com filhos --> `inverte os filhos do root e retorna o root`
+
+O código a seguir só inverte os filhos do nó root
+
+```js
+function reverseBinaryTree(root) {
+  if (root === null) return null;
+
+  const rightSubtree = root.right;
+
+  root.right = root.left;
+  root.left = rightSubtree;
+
+  return root;
+}
+```
+
+Pra funcionar por completo, precisamos atacar as subárvores
+
+```js
+// codigo omitido
+const rightSubtree = root.right;
+
+root.right = reveserBinaryTree(root.left);
+root.left = reverseBinaryTree(rightSubtree);
+```
+
 # Programação Dinâmica - Introdução
 
 ## Sequências
@@ -47,6 +118,10 @@ Assim chegamos em: T(n) = T(n-1) + 1 + T(n-2) => `T(n) = 2T(n-1) + 1`.
 - sufixos
 - substring
 
+
+## Referencias
+- https://github.com/victorhmp/OBI-Prep/blob/master/Programa%C3%A7%C3%A3o-Din%C3%A2mica/Exerc%C3%ADcios.md
+- Livro: Dynamic Programming, a computational tool - Art Lew
 
 ## Problemas interessantes
 
