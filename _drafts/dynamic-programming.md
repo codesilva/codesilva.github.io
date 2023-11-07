@@ -250,3 +250,43 @@ Bom, podemos tentar aplicar o SORTBT aqui definindo os **S**ubproblemas primeiro
     OriginalProblem(Street, R) = min { S(i, R) | 0 <= i < n }
 
     Street é a sequencia de blocos
+
+
+Buy and sell
+
+```javascript
+function maxProfit(prices, maxTransactions = 1) {
+  const BUY = 0;
+  const SELL = 1;
+  const c = maxTransactions;
+  const n = prices.length;
+  const dp = new Array(n + 1).fill(null).map(() =>
+    new Array(2).fill(0)
+    // new Array(2).fill(null).map(() =>
+    //   new Array(maxTransactions + 1).fill(0)
+    // )
+  );
+
+  dp[n][BUY] = 0;
+  dp[n][SELL] = 0;
+
+  for (let i = n - 1; i >= 0; i--) {
+    dp[i][BUY] = Math.max(dp[i + 1][SELL] - prices[i], dp[i + 1][BUY]);
+    dp[i][SELL] = Math.max(prices[i], dp[i + 1][SELL]);
+
+    console.log(`What if I buy in day ${i}? -- max{ ${dp[i+1][SELL] - prices[i]}, ${dp[i+1][SELL]} }`)
+    console.log(`What if I sell in day ${i}? -- max{ ${ prices[i] }, ${dp[i+1][SELL]} }`)
+
+    // for (let k = 1; k <= maxTransactions; k++) {
+    //   dp[i][BUY][k] = Math.max(dp[i+1][SELL][k] - prices[i], dp[i+1][BUY][k])
+    //   dp[i][SELL][k] = Math.max(prices[i] + dp[i+1][BUY][k-1], dp[i+1][SELL][k])
+    // }
+  }
+
+  return dp[0][BUY];
+}
+
+const result = maxProfit([3, 3, 5, 0, 0, 3, 1, 4]);
+
+console.log({ result })
+```
