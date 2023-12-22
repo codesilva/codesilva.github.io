@@ -7,9 +7,6 @@ Ver um truque de mágica acontecendo é intrigrante. Ser você o mágico é aind
 que fala sobre a revelação de truques de mágica em uma bela analogia com a nossa área onde os truques de mágica são as
 ferramentas ou mesmo jargoes existentes.
 
-~~Hoje vamos revelar o truque por trás de Complemento de dois e criaremos um
-circuito que soma números binários, revelenaod assim mais um tru~~
-
 Revelaremos hoje dois truques muito bons que vão te dar um conhecimento mais aprofundado sobre como um computador
 funciona. O primero truqe é diretamente ligado à eletrônica. Descobriremos como em nome de Deus uma operação matemática
 pode ser feita com circuitos, com eletricidade. Para tal usaremos o mecanismo do Complemento de dois.
@@ -18,7 +15,7 @@ Para completarmos o serviço vamos ver também como o complemento de dois é pos
 
 # Afinal como uma soma pode ser feita usando sinais elétricos?
 
-O ano era XXXX e `Fulano de tal`, na mesa da sua cozinha, usando circuitos simples criou um circuito que somava números
+O ano era 1937 e `George Stibitz`, na mesa da sua cozinha, usando circuitos simples criou um circuito que somava números
 de um bit. Recebia os inputs, sejam `n1` e `n2`, e gerava duas saídas, `carry` e `out`. Isso, mais tarde ficou conhecido como um
 circuito _Half-adder_.
 
@@ -185,8 +182,113 @@ o carry é da segunda -- para os outros casos carry out é zero
 
 Agora pra fazermos nossa soma multibit basta encadearmos uma sequencia de full-adders
 
+O primeiro full adder não tem carry in, é zero. Para os próximos o carry in é o resultado do carry out do
+anterior.
+
+Assim, pra fazermos a soma de números multibit resolvemos casa a casa, posição a posição.
+
+# Conclusão
+
+# Referencias
+
+- [https://logic.ly/demo/](https://logic.ly/demo/)
+- [https://academo.org/demos/logic-gate-simulator/](https://academo.org/demos/logic-gate-simulator/)
+
 # Two's complment for handling subtractions
 
+Os circuitos que montamos anteriormente são interessantes, mas não funcionam para subtração pois diferente da soma na
+subtração temos o empréstimo ao invés do carregamento.
+
+Bom, o funcionamento do complemento de dois já foi explicado em um momento anterior. Portanto, não vamos nos estender
+nesse tema aqui. Vamos seguir para a explicação de o que está por trás da mágica.
+
 # Two's complement magic trick revealed
+
+## Aritmetica modular
+
+A essencia da coisa é a aritmetica modular (ou de relogio). Que basicamente uma aritmetica de numeros inteiros onde os
+números "reiniciam".
+
+O exemplo mais comum que temos é o módulo 12, pois é o que temos em nossos relógios (formato 12h). Dígamos que sejam
+11:00 am. Se adicionamos mais 2h, o resultado esperado é que sejam 1:00 pm. Do mesmo modo, digamos que são 3:00pm, se
+subtraímos 5h chegaremos em 10:00am. E assim vai, ẽ cíclico.
+
+Faz sentido pois 3 - 5 (mod 12) -> -2 (mod 12) = -2 + 12 = 10
+
+
+### Congruência
+
+Dizemos que a e b são congruentes se a = b (mod n). mod n aplicando-se à toda equação. Por exepmlo, 7 é congruente a 2 em módulo 5. Ambos os valores resultam em 2.
+
+## Pontos importantes
+
+O ponto mais interessante que podemos obervar aqui é que as coisas,por serem cíclicas, elas se complementam.
+
+Independentemente do caminho sigamos vamos chegar no mesmo valor. Se estou em 1 e pretendo chegar em 11, em aritmetica
+modular de modulo 12, posso:
+
+- adicionar 10;
+- ou subtrair 2.
+
+Pra chegar em 10, posso adicionar 9 ou subtrair 3. Veja que isso vai se complementando. É fácil vera relação que é:
+
+> Subtrair "k" de um número em *módulo n* é o mesmo que adicionar n - k
+
+Em nossa máquina temos 4 bits. Pensando em números sem sinal podemos representar de 0 a 15. Nem mais, nem menos. Logo,
+se um número extrapola temos overflow e os números "reiniciam".
+
+1111 é o 15. 1000 seria o 16, mas só temos espaço para quatro bits, deixando então o valor 0000. 
+
+É tranquilo de ver que temos um `mod 16` aqui.
+
+Assim, para subtrairmos um número `k` de outro qualquer nessa máquina basta adicionarmos `16 - k`. Digamos que queremos
+subtrair o número 3 de qualquer outro. Faremos então a adição de `16 - 3`.
+
+Se colocarmos em binário para uma perspectiva vamos tirar alguns insights legais.
+
+16 - 3 em decimal é equivalente a 10000 - 0011 em binário. Vamos rearranjar um pouco
+
+```
+10000 - 0011 => (1 + 1111) - 0011
+```
+
+Rearranjando um pouco mais vemos que 16 - 3 é:
+
+```
+(1111 - 0011) + 1
+```
+
+Parece que nada mudou. Mas vamos examinar cada parte dessa equação. Primeiro fazemos `1111 - 0011` que resulta em
+`1100`. Se notarmos bem o que houve foi a inversão dos bits do número `0011`. E é isso que acontece sempre que
+subtraímos de um número binário em que todos os bits são 1. Sempre que ver algo como `1111 - b` onde b é um número
+binário, o resultado é `!b`.
+
+Perceba que essa é a primeira parte do procedimento do complemento de dois: Inverter os bits.
+
+A segunda parte da equação é somar `1`. Que é justamente a segunda parte do procedimento do complemento de dois.
+Continuando então:
+
+```
+(1111 - 0011) + 1 -> 1100 + 1 -> 1101
+```
+
+Assim, subtrair 3 é na verdade somar `1101` em binário e complemento de dois.
+
+Esse é o truque. Só um pouquinho de matemática.
+
+Vamos a um exemplo então. Vamos fazer a operação `7 - 3`. Como já vimos, subtrair 3 é a mesma coisa de se somar `1101`.
+
+Assim temos:
+
+```
+7 - 3
+0111 + 1101 = 10100 -> 0100 = 4(10)
+```
+
+Nada de novo. Já havíamos visto em posts anteriores que a coisa toda funciona.
+
+# Conclusão
+É isso. Com complemento de dois tornamos adequadas as operações em nossos circuitos pois a subtração é na verdade uma
+soma.
 
 # References
