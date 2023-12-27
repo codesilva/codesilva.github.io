@@ -166,7 +166,7 @@ much simpler to do. Indeed, it just flips out the subtrahend bits: 111 - 010 = 1
 
 Now we can balance our expression by adding 1 to the difference: 101 + 1 which is equal to 110.
 
-### We did it (haven't you seen?)!
+### We did it - haven't you seen?
 
 We just did Two's complement. Since we need to add 1000 - 010, it is the same as (1000 - 1) - 010 + 1. Simplifying we
 have: 111 - 010 + 1.
