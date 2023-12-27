@@ -137,27 +137,61 @@ or more, if we get an overflow like 1000<sub>2</sub> it actually gets "reset" to
 Our machine is, indeed, modulus 8. So, subtracting a number `a` from any number `b` in our machine is the same as adding
 `8 - a`.
 
-Let's say we want to subtract two from any any number. Remember, we are operating in modulus eight. Thus, in our
-relation we just need to add (8 - 2).
+To subtract 2 from any any number we just need to sum (8-2). Remember, we are operating in modulus eight. In binary,
+it's basically adding 1000 - 010.
 
-1000<sub>2</sub> - 010<sub>2</sub> <=> (1<sub>2</sub> + 111<sub>2</sub>) - 010<sub>2</sub>
+As an example, let's say we want subtract 2 from 3. We would do: 011 + (1000 - 010). Performinf the operation 1000 - 010
+will result into 110, that's -2 in twos complement. So the operation becomes 011 + 110 hence the result of the whole
+operation is 001.
 
-It does not look that much. Let's rearrange it into two parts as shown below.
+#### A closer look
 
-1. 111<sub>2</sub> - 010<sub>2</sub>.
-2. sum the result from last step to one.
+Why does 1000 - 010 work turning 2 into -2?
 
-If you take a closer look you will find out that the first step (`111 - 010`) just flips the bits resulting into `101` - the first part
-of Two's complement procedure.
+Well, to perform this subtraction we would need to do something like:
 
-The second step adds `1` to the result. In this example, 101<sub>2</sub> + 1<sub>2</sub> resulting into 110<sub>2</sub> - the second part of Two's complement procedure.
+![binary operation of 1000 minus 010 using borrow](../assets/binary-subtraction-borrow.png)
 
-#### Performing operation from scratch
+It is very similar to what we do in decimal. We keep borrowing from next column. Even though it is similar, it might be
+a little confusing looking this way since we're not accostumed with binary system.
+
+To simplify things we can do some mathematical trick. Instead of just get straight and do the subtraction as we did in
+the last step we will sum zero to this expression, but in a clever way. We will subtract 1 from the minuend then add
+1 to the difference.
+
+Then, instead of 1000 - 010 we will have (1000 - 1) - 010 that is equivalent to 111 - 010 [eq 1]. This subtraction is
+much simpler to do. Indeed, it just flips out the subtrahend bits: 111 - 010 = 101 [3].
+
+![binary subtracting operation of 1000 - 001 - 010](../assets/twos-complement-step1.png)
+
+Now we can balance our expression by adding 1 to the difference: 101 + 1 which is equal to 110.
+
+### We did it (haven't you seen?)!
+
+We just did Two's complement. Since we need to add 1000 - 010, it is the same as (1000 - 1) - 010 + 1. Simplifying we
+have: 111 - 010 + 1.
+
+The 111 - 010 flips out the bits. In fact, every subtraction where the minuend has all the bits set to 1 will flips out
+the minuend bits.
+
+```
+a - b = !b
+
+a, has all bits set to 1
+```
+
+After this operation we just add one to the `difference` that is the second step in the Two's complement algorithm.
+
+#### Performing an operation from scratch
 
 Let's perform the operation 3 - 2.
 
-011<sub>2</sub> + (111<sub>2</sub> - 010<sub>2</sub> + 1<sub>2</sub>)
-=> 011<sub>2</sub> + (101<sub>2</sub> + 1<sub>2</sub>)
-=> 011<sub>2</sub> + 110<sub>2</sub> = 1001<sub>2</sub> => 001<sub>2</sub>
+011 - 010
+=> 011 + (1000 - 1 - 010 + 1)
+=> 011 + (111 - 010 + 1)
+=> 011 + (101 + 1)
+=> 011 + 110 = 1001
+
+you know, we throw the MSB (carry out) away our final result is 001 (exactly 1<sub>10</sub>).
 
 # Summary
