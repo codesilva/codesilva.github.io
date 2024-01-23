@@ -49,9 +49,9 @@ acontecendo. Você vai tentando coisas, até que funciona.
 
 Isso é fácil de fazer, basta copiar partes de código existentes que você precisa. Esse vai ser o default da maioria das
 pessoas que chega numa base de código pela primeira vez. O segredo aqui é continuar fazendo isso. Nunca improvisar.
-Mesmo que você conheça a base de códig, haja como se nunca tivesse visto.
+Mesmo que você conheça a base de código, haja como se nunca tivesse visto.
 
-Não tenha a preocupação de isso vai ser pego por algum revisor mais atento. Temo um método para lidar com isso e será
+Não tenha a preocupação de isso ser pego por algum revisor mais atento. Temos um método para lidar com isso e será
 visto na próxima seção.
 
 ### Code Review e Pair Programming
