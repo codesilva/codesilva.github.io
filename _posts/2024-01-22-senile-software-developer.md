@@ -5,6 +5,7 @@ date: 2024-01-22
 lang: pt-BR
 tags: ["programação", "engenharia de software"]
 category: ["carreira"]
+excerpt: Um bom salário, um bom status e uma boa projeção apenas emulando a capacidade de um desenvolvedor Senior. Sim, com o guia para ser um desenvolvedor Senil você obtém tudo que um senior médio tem mas com menos da metade do esforço.
 ---
 
 > O meu trabalho é muito bom eu tenho que confessar...
