@@ -15,10 +15,10 @@ Bootloader é quem carrega o kernel
 6. O bootloader carrega o kernel e a partir daí é só SO
 
 
-
 Referencias
 
 - https://www.viralpatel.net/taj/tutorial/booting.php
 - https://www.viralpatel.net/taj/tutorial/hello_world_bootloader.php
 - https://wiki.osdev.org/Bootloader
 - https://wiki.osdev.org/Rolling_Your_Own_Bootloader
+- https://www.cs.cmu.edu/~410-s07/p4/p4-boot.pdf
