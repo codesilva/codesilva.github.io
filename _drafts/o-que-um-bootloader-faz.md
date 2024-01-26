@@ -22,3 +22,4 @@ Referencias
 - https://wiki.osdev.org/Bootloader
 - https://wiki.osdev.org/Rolling_Your_Own_Bootloader
 - https://www.cs.cmu.edu/~410-s07/p4/p4-boot.pdf
+- [Informando para o qemu a bios](https://unix.stackexchange.com/questions/52996/how-to-boot-efi-kernel-using-qemu-kvm)
