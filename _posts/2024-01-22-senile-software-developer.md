@@ -27,8 +27,7 @@ organizações complexas. Em startups mais enxutas é bem difícil encontrar o d
 
 ## A metodologia do desenvolvedor senil
 
-Esse artigo é um guia de como ser o desenvolvedor senil - aquele que como um a cobra coral falsa faz-se passar por uma
-verdadeira, faz-se passar por um desenvolvedor senior.
+Esse artigo é um guia de como ser o desenvolvedor senil - aquele que faz-se passar por um desenvolvedor senior.
 
 NOTA: Para seguir o guia com eficiência é preciso ser desapegado de querer fazer um bom trabalho. Além disso, tem que
 ter pelo menos um outro dev que seja o total oposto, com o tal do brio para fazer as coisas, e mais, de forma decente.
