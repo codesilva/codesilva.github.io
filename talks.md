@@ -4,8 +4,6 @@ title: Talks
 permalink: /talks/
 ---
 
-Dentre outros conteúdos que produzo estão ebooks. Confira abaixo.
-
 {% for talk in site.data.talks %}
 <h2>
 {{ talk.title }}
