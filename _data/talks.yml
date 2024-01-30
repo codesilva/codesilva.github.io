@@ -1,0 +1,12 @@
+- title: 'Do zero ao app com Firebase'
+  length_in_minutes: 60
+  talk_url: 'https://www.youtube.com/embed/_Rlm8gU-748?si=oq3IdHDke-YIsjfK&amp;controls=0'
+  talk_url_iframe: true
+  slides_url: ''
+  description: 'Exploramos o vasto ecossistema do Firebase. Abordamos o desenvolvimento completo de aplicações, começando pela autenticação de usuários, passando pelo banco de dados Firestore para gerenciar dados de forma eficiente, até o armazenamento seguro no Firebase Storage. Concluímos com uma visão abrangente sobre como realizar implantações eficazes utilizando o Firebase Hosting.<br/><br />Descubra como aproveitar ao máximo as ferramentas de desenvolvimento do Firebase para criar aplicativos robustos e escaláveis.'
+
+# - title: 'Tudo é incrível com Flutter'
+#   length_in_minutes: 45
+#   talk_url: ''
+#   slides_url: ''
+#   description: ''

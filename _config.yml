@@ -36,6 +36,7 @@ plugins:
 header_pages:
   - about.md
   - books.md
+  - talks.md
 
 show_excerpts: true
 
