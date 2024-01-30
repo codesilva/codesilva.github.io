@@ -5,11 +5,11 @@
   slides_url: ''
   description: 'Exploramos o vasto ecossistema do Firebase. Abordamos o desenvolvimento completo de aplicações, começando pela autenticação de usuários, passando pelo banco de dados Firestore para gerenciar dados de forma eficiente, até o armazenamento seguro no Firebase Storage. Concluímos com uma visão abrangente sobre como realizar implantações eficazes utilizando o Firebase Hosting.<br/><br />Descubra como aproveitar ao máximo as ferramentas de desenvolvimento do Firebase para criar aplicativos robustos e escaláveis.'
 
-# - title: 'Paradigmas de Programação'
-#   length_in_minutes: 45
-#   talk_url: ''
-#   slides_url: ''
-#   description: ''
+- title: 'Paradigmas de Programação'
+  length_in_minutes: 60
+  talk_url: ''
+  slides_url: 'https://docs.google.com/presentation/d/13yKEtE6scy50vl-DXEJVcXWFg715yy_xKEtq8Oq8B3g/edit?usp=sharing'
+  description: 'Nessa talk falamos sobre os paradigmas de programação existentes e como eles podem ser úteis para ver os problemas diários sob perspectivas diferentes. Além de notarmos o overlapping existente hoje em linguagems multiparadigmas como Ruby e JavaScript'
 
 # - title: 'Tudo é incrível com Flutter'
 #   length_in_minutes: 45
