@@ -12,7 +12,11 @@ However, when was the last time you created a concurrent program? You were able 
 
 Actually, there is a free lunch for you but through some tools like Active Record async queries which make your life easier. I mean, you might not have considered perform a query in another thread, but once it is available to you in a method, it is pretty easy to use. So, PUMa is one of these tools that pay the lunch for you.
 
-So in today's talk we will go like Richard Feynman once wrote. He wrote in his blackboard: "know how to solve every problem that has been solved". So, in today's talk we will go olver how PUMA solves the problem os handling many HTTP calls using a pre-forking approach. We will see the concurrency patterns emerge and discuss all of them.
+So in today's talk we will go like Richard Feynman once wrote. He wrote in his blackboard: "know how to solve every problem that has been solved". So, we will create a humble rack-based server in order to understand how tools like PUMA empowers our applications.
+
+```
+So, in today's talk we will go olver how PUMA solves the problem os handling many HTTP calls using a pre-forking approach. We will see the concurrency patterns emerge and discuss all of them.
+```
 
 I like those phrases extracted from Richard Feynman blackboard:
 
