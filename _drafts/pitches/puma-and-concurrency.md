@@ -1,4 +1,6 @@
-# Concurrency in Ruby - The already solved problems
+# Concurrent application servers in Ruby
+
+What I cannot build, I do not understand
 
 ## Abstract
 
@@ -19,28 +21,34 @@ I like those phrases extracted from Richard Feynman blackboard:
 
 ## takeaways
 
+- Fundamentals of Client/Server architecture
+- Fundamentals of Sockets
 - Overview of Rack and Rack-based application servers
 - Ruby concurrency building blocks
 - Why concurrency matters and how PUMA applies it
 
 ## topics
 
+- Client/Server architecture and strategies
 - Processes, Threads, Fibers and Reactors
-- Common concurrency patterns
-- Rack server
-- PUMA architecture
+- Strategies trade-offs
+- Building our Rack-based server
+  - The simplest HTTP parser
+  - Handling multiple client efficiently
+- PUMA comparison
   
 ## Outline
 
-- A day in the life of a HTTP Request to your Rails app
-    - Client/Server design alternatives
-    - What is this Rack thing?
+- A day in the life of a HTTP Request to your Rails (Rack-based) web app
+  - What is a socket?
+  - Client/Server design alternatives
+  - What is this Rack thing?
+- Building a Rack-based server
+  - Handling a single client
+  - Concurrency on the rescue
 - Puma architecture
-    - 
-    - Cluster mode
-        - Where the concurrency thrives
+  - How puma works?
+  - PUMA vs our server
 - Why that matters?
-    - You might want to do that in your application
-    - You might wanna boots your production PUMA server.
 
 [how puma works talk](https://www.youtube.com/watch?v=SquGNt4FhY0)
