@@ -35,7 +35,7 @@ I like those phrases extracted from Richard Feynman blackboard:
 - Building our Rack-based server
   - The simplest HTTP parser
   - Handling multiple client efficiently
-- PUMA comparison
+- PUMA architechture
   
 ## Outline
 
