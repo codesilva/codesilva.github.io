@@ -3,9 +3,8 @@ Applying architecture to an application that handles async jobs
 
 ## Abstract
 
-A bug comes in at a very critical part of our services and team takes a long time to understand what is going on
-- unders customer's and stakeholders pressure.
-Even though the application is not that complex, we have not meaningful logs, no decent observability, a small team, and
+A bug comes in at a very critical part of our services and team takes a long time to understand what is going on - unders customer's and stakeholders pressure.
+Even though the application is not that complex, we have not meaningful logs, no obersvability nor alerts, a small team, and
 worse, something that we can really call a LEGACY CODE.
 
 Looking for more scalability, not only for the application, but for the team, the stakeholders decide to create a new
@@ -30,6 +29,12 @@ Hopefully, we will be able to go trough this implementation and see the architec
 analogies to these conventional web applications that apply architecture.
 ```
 
+## Main Topics
+
+- Architectural paradigms
+- Design Patterns
+- How to apply patterns to any application
+  
 ## Takeaways
 
 - Get to know some architectural paradigms
