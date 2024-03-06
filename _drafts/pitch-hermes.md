@@ -45,13 +45,25 @@ through a real use case where I could apply and learn about software design.
 
 ![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/eecbfe3b-170f-4cd9-ad2c-5b01972df74a)
 
+- That's too much
+- let me translate it into what we really do in our application, using our favorite tools
+
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/2f525b27-b7eb-4a53-bc86-48b0ee7344ed)
 
 
-- repository
-- domain
-- application layer with use cases
-- infrastructure
-[
+
+### Layers
+
+- That's a high-level representation so let me give you more details about each layer
+  - interface handles incoming interactions, which in a web api are http requests. it takes a request, validates it and delegate the rest to application layer, throuh a use case
+  - application contains the core of your business
+    - domain with business logic
+    - use cases, unit of work
+    - service contracts, used by use cases
+  - infrastructure
+    - implements contracts defined in application layer
+    - talks to the real world. let's say we have a repository contract in applicatio nlayer, here is where we will do the real implementation e.g. mysqlrespository
+
 ## Task runner: how is it different?
 
 we have no controllers neither http requests, just workers and a bunch of jobs coming in - sometimes self-enqued.
