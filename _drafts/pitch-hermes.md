@@ -123,28 +123,37 @@ analogies to these conventional web applications that apply architecture.
 
 ## Main Topics
 
-- Architectural paradigms
+- Architectural Patterns
 - Design Patterns
-- How to apply patterns to any application
-  
+- How to use analogy to get leverage of existing examples/implementations
+
 ## Takeaways
 
-- Get to know some architectural paradigms
-- Go beyond with architecture
-- Understand that architectures serve you not the contrary, so you are allowed to flex it to your purposes
-- Apply architectural patterns to any project
+- Get to know architectural patterns
+- Understand how you can architecture any project learning from basics
+- A thinking process that will help you where tu put a new component
+- Customize the architectural pattern to your necessity
 
 ## Outline
 
-- Architectural paradigms (around 5 minutes)
-    - Talking about the existing paradigms
-    - Drawing a parallel with Desing Patterns and showing how such paradigms come from the same principle
+- State of software design
+    - Talking about how many examples of software architecture are, indeed, REST API boilerplates
+    - Establishing the project that is said to be unconventional and how the existing references might not be applied to
+        that
+    - Telling how our journey starts - from a chaotic situation where it was hard to change software and find simple
+        bugs
+    - Establishing what is the "task runner"
 
-- Architecture in the conventional web apps (around 10 minutes)
-    - Showing how a four-layer ach can be implemented in a regular backend application
-    - Benefits of a well-defined architecture
+- Conventional web application architecture
+    - Explaining how having a well-defined architecture is good for a project
+    - Walking through the components of a web application 
+    - Defining layers/boundaries of a good enough architecture for such a conventional project
 
-- The architecture the task runner (15 min)
-    - Establishing what a "task runner" is
-    - Comparing a task runner application with a regular application
-    - Identify each architectural component and how it can be applied in such a different kind of app
+- Task runner: how is it different?
+    - Explaining the difference between the task runner - which deals with background jobs, queues, and workers - and the
+        conventional web application
+    - Showing how an analogy can help us to identify architectural layers and components even from what is conventional
+    - Demonstrating the architecture of the task runner and how me and my team dealt with specific cases like self-enqueued jobs
+
+- Architecting any project
+    - Reviewing the talk and defining architectural principles from what we just saw
