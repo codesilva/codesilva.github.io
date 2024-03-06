@@ -60,9 +60,6 @@ through a real use case where I could apply and learn about software design.
 - No big deal, jobs will be enqueued - in a queue - and the workers will process them.
 - Even worse, some jobs are enqueued by the task runner itself - like cron jobs, so there is no external call at all to trigger it
 - How to apply architecture in such a case?
-
-## Reviewing principles and analogy
-
 - To handle this the best way is knowing what we are doing.
 - I didn't know at that moment.
 - But with some help I could apply some analogy and that helped me to really understand the principles.
