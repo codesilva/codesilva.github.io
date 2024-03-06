@@ -32,12 +32,20 @@ through a real use case where I could apply and learn about software design.
   ![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/5c26daee-e388-41d9-a195-fb7505b5e8fb)  
 
 - These boundaries are quite clear.
+
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/9765d5a0-00e9-4f3b-9e12-612c56bbf703)
+
+### Expanding a little bit
+
 - Now let's wonder what is in the middle. What's the application core?
 - it's where the things that really matter lie: your domain, use cases, and service (that support use cases)
   - domain is your business logic, what goes beyond this automation. logic that would still exist if there were no code at all. e.g. Order
   - use case is a unit of work. it the feature itself. it takes entities from your domain to perform the desired operation e.g. CreateOrder
 
-### Expanding a little bit
+
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/eecbfe3b-170f-4cd9-ad2c-5b01972df74a)
+
+
 
 - repository
 - domain
