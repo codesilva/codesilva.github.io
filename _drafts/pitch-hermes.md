@@ -7,7 +7,7 @@ through a real use case where I could apply and learn about software design.
 
 - I've searched for 'clean architecture' on GitHub. I found a bunch of nice implementations in multiple programming languages. Despite this variety of technologies, the majority of examples are REST API boilerplates.
 - Not all applications are web-like applications though, and I believe that due to all these examples we aren't, in fact, learning how to architect software. we are learning how to architect web apis.
-- I realized I didn't know architecture when I needed to implement it in a new project, a project that's not a REST API.
+- I realized I didn't know architecture when I needed to implement it in a new project, a project that was not a REST API.
 
 ## Hermes, the task runner
 
@@ -19,7 +19,7 @@ through a real use case where I could apply and learn about software design.
 - some of my main concerns were to build something that tells what it is about, that scales itself but also scales the team
 - so I got my knowledge on architecture pushed to its limits, and they weren't that expanded
 
-## Conventional web application architecture - you believe you know
+## Conventional web application architecture
 
 - Architectural patterns tell you about the organization and boundaries of your application.
 - A thing I like in software arcthitecture is that it is like a map. It guides you how you can walk in the application, how you can change it. It scales your team
@@ -52,7 +52,19 @@ through a real use case where I could apply and learn about software design.
 
 
 
-### Layers
+## Task runner: how is it different?
+
+- I was very familiarized with this kinda of architecture
+- I had a controller, some services and persistence on a database using some ORM tool
+- - I got in trouble in this case, cause I didn't know what to do. We had an exmample of task runner in the team but I could not understand it and one of its authors recommended me not to follow it.
+- The task runner deals with Jobs - that are just data -, queues, and workers.
+- No big deal, jobs will be enqueued - in a queue - and the workers will process them.
+- Even worse, some jobs are enqueues by the task runner itself - like cron jobs, so there is no external call at all to trigger it
+- How to apply architecture in such a case?
+
+## Reviewing principles and analogy
+
+- To handle 
 
 - That's a high-level representation so let me give you more details about each layer
   - interface handles incoming interactions, which in a web api are http requests. it takes a request, validates it and delegate the rest to application layer, throuh a use case
@@ -63,14 +75,6 @@ through a real use case where I could apply and learn about software design.
   - infrastructure
     - implements contracts defined in application layer
     - talks to the real world. let's say we have a repository contract in applicatio nlayer, here is where we will do the real implementation e.g. mysqlrespository
-
-## Task runner: how is it different?
-
-we have no controllers neither http requests, just workers and a bunch of jobs coming in - sometimes self-enqued.
-
-## The building blocks
-
-- what drives:w
 
 ---
 ## Abstract
