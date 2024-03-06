@@ -33,7 +33,12 @@ continua funcionando.
 
 ### As linguagens de programacao
 
-### As ferramentas
+Desde esse post seminal, surgiram algumas linguagens com um suporte a concorrencia:
+
+- Go;
+- Elixir;
+- Kotlin;
+- Clojure.
 
 ## Pra você o almoço é quase grátis
 
@@ -43,9 +48,21 @@ tá realmente em todo o lugar, só não é você que faz.
 Pelo menos não você que, assim como eu, é um ordinário desenvolvedor de aplicações web. O auge da sua aplicação de
 programação concorrente é subir um server nodejs em modo cluster.
 
+Muitas outras ferramentas tambem possuem essa capacidade de nos dar o almoço. eu mesmo trabalhei em uma aplicacao
+recenetemente que usava bullmq, que internamente faz uso de concorrencua, usando a linguagem Lua, em certas operações.
+
 ## Concorrência que fazem por você no desenvolvimento web
 
-### Threads para I/O no browser e no NodeJS
+### Event Loop no JS
+
+JavaScript é single thread, você já ouviu falar disso. E está correto, executar coisas em uma thread é mais simples.
+Esse tipo de abordagem ẽ comum em outras aplicações. E corrobora com o que o Robert Pike jã falou: paralelismo é sobre
+lidar com mais de uma coisa ao mesmo tempo, concorrencia é sobre lidar com multiplas coisas.
+
+Event Loop nada mais ẽ que um pattern de concorrencia que consiste em um loop que fica checando coisas. No Js ele checa
+stack, micro e macro queues e por aĩ vai.
+
+A mágica aqui fica por conta de I/O assíncrono
 
 ### Web Servers
 
