@@ -1,6 +1,23 @@
-# Pitch: Applying architecture to a non-conventional web application
-Applying architecture to an application that handles async jobs
+# Pitch: Architecting the Unconventional: A Case Study in Software Design
 
+Hi there. Welcome to this talk, today we're going to talk about software architecture, software design. We will walk
+through a real use case where I could apply and learn about software design.
+
+## State of software design
+
+- I've searched for 'clean architecture' on GitHub. I found a bunch of nice implementations in multiple programming languages. Despite this variety of technologies, the majority of examples are REST API boilerplates.
+
+## Conventional web application architecture
+
+## Task runner: how is it different?
+
+we have no controllers neither http requests, just workers and a bunch of jobs coming in - sometimes self-enqued.
+
+## The building blocks
+
+- what drives:w
+
+---
 ## Abstract
 
 A bug comes in at a very critical part of our services and team takes a long time to understand what is going on - unders customer's and stakeholders pressure.
