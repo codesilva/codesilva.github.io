@@ -48,8 +48,7 @@ through a real use case where I could apply and learn about software design.
 - That's too much
 - let me translate it into what we really do in our application, using our favorite tools
 
-![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/2f525b27-b7eb-4a53-bc86-48b0ee7344ed)
-
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/16546d23-a3f5-4438-a391-4d2a095b9c33)
 
 
 ## Task runner: how is it different?
@@ -59,12 +58,32 @@ through a real use case where I could apply and learn about software design.
 - - I got in trouble in this case, cause I didn't know what to do. We had an exmample of task runner in the team but I could not understand it and one of its authors recommended me not to follow it.
 - The task runner deals with Jobs - that are just data -, queues, and workers.
 - No big deal, jobs will be enqueued - in a queue - and the workers will process them.
-- Even worse, some jobs are enqueues by the task runner itself - like cron jobs, so there is no external call at all to trigger it
+- Even worse, some jobs are enqueued by the task runner itself - like cron jobs, so there is no external call at all to trigger it
 - How to apply architecture in such a case?
 
 ## Reviewing principles and analogy
 
-- To handle 
+- To handle this the best way is knowing what we are doing.
+- I didn't know at that moment.
+- But with some help I could apply some analogy and that helped me to really understand the principles.
+- Let's think about it
+- In the REST boilerplate, we have anincoming http request. this request contains data that we process and perform some work with it.
+- Our data in this case, lies in job data. So let's take job as if it was an http request
+- The controller is the component that process this data, the http request. So, as I mentioned, the component that process job is a worker in background kobs
+- Hence, workers will act as our controllers.
+- Here is our updated high-level diagram
+
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/9e4dd051-a8b5-4e6b-991a-915d92d9ebc1)
+
+## How to architect any project?
+
+1. Mastering the principles
+2. If you don't master, you can use analogy.
+  - Think of what your application is driven by. Some component will have to handle that incoming interaction. Such an interaction intent might carry data or not. You can call it, `interface layer`.
+  - You have business logic, isolate them and call it `domain layer`.
+  - Your application has features, units of work. You can call it `application layer`.
+  - Think of the outcomes of your app. be a external provider calling or database transactions, so it has to have real implementations. You can call it `infrastructure layer`. All the details go here.
+
 
 - That's a high-level representation so let me give you more details about each layer
   - interface handles incoming interactions, which in a web api are http requests. it takes a request, validates it and delegate the rest to application layer, throuh a use case
