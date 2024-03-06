@@ -6,8 +6,25 @@ through a real use case where I could apply and learn about software design.
 ## State of software design
 
 - I've searched for 'clean architecture' on GitHub. I found a bunch of nice implementations in multiple programming languages. Despite this variety of technologies, the majority of examples are REST API boilerplates.
+- Not all applications are web-like applications though, and I believe that due to all these examples we aren't, in fact, learning how to architect software. we are learning how to architect web apis.
+- I realized I didn't know architecture when I needed to implement it in a new project, a project that's not a REST API.
 
-## Conventional web application architecture
+## Hermes, the task runner
+
+- I was recently moved to a new team. I saw members of that team struggling to identify a bug that appeared in an application. It was a bug that sould be simple to identify, as well as to fix, but it wasn't due to some reasons which I can tell two: no tests and no clear baoundaries.
+- After struggling with stuff like that, our boss decided we had to migrate that. Move that core concern to an isolated application.
+- Here's what our journey starts. I had the opportunity to come up with a solution for that. A whole new project.
+- it is important to tell you, what I call a task runner is an application that deals with background jobs, that's the terminology we use in the team
+- so we started working on a definition. we defintely wanted to have a piece of softwara that works and is correct
+- some of my main concerns were to build something that tells what it is about, that scales itself but also scales the team
+- so I got my knowledge on architecture in practice
+
+## Conventional web application architecture - you believe you know
+
+- repository
+- domain
+- application layer with use cases
+- infrastructure
 
 ## Task runner: how is it different?
 
