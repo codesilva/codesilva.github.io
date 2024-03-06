@@ -17,15 +17,33 @@ through a real use case where I could apply and learn about software design.
 - it is important to tell you, what I call a task runner is an application that deals with background jobs, that's the terminology we use in the team
 - so we started working on a definition. we defintely wanted to have a piece of softwara that works and is correct
 - some of my main concerns were to build something that tells what it is about, that scales itself but also scales the team
-- so I got my knowledge on architecture in practice
+- so I got my knowledge on architecture pushed to its limits, and they weren't that expanded
 
 ## Conventional web application architecture - you believe you know
+
+- Architectural patterns tell you about the organization and boundaries of your application.
+- A thing I like in software arcthitecture is that it is like a map. It guides you how you can walk in the application, how you can change it. It scales your team
+- So architecting a REST API application would be like
+  - We can start thinking of what drives and what is driven by our application
+  - In a REST application, HTTP requests drive our app
+    - They come in, we do something with that and respond to it
+  - The application drives, most likely, a database after processing the request
+
+  ![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/5c26daee-e388-41d9-a195-fb7505b5e8fb)  
+
+- These boundaries are quite clear.
+- Now let's wonder what is in the middle. What's the application core?
+- it's where the things that really matter lie: your domain, use cases, and service (that support use cases)
+  - domain is your business logic, what goes beyond this automation. logic that would still exist if there were no code at all. e.g. Order
+  - use case is a unit of work. it the feature itself. it takes entities from your domain to perform the desired operation e.g. CreateOrder
+
+### Expanding a little bit
 
 - repository
 - domain
 - application layer with use cases
 - infrastructure
-
+[
 ## Task runner: how is it different?
 
 we have no controllers neither http requests, just workers and a bunch of jobs coming in - sometimes self-enqued.
