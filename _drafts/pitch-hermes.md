@@ -9,13 +9,13 @@ through a real use case where I could apply and learn about software design.
 - Not all applications are web-like applications though, and I believe that due to all these examples we aren't, in fact, learning how to architect software. we are learning how to architect web apis.
 - I realized I didn't know architecture when I needed to implement it in a new project, a project that was not a REST API.
 
-## Hermes, the task runner
+## Hermes, the task runner (where the journy starts)
 
 - I was recently moved to a new team. I saw members of that team struggling to identify a bug that appeared in an application. It was a bug that sould be simple to identify, as well as to fix, but it wasn't due to some reasons which I can tell two: no tests and no clear baoundaries.
 - After struggling with stuff like that, our boss decided we had to migrate that. Move that core concern to an isolated application.
 - Here's what our journey starts. I had the opportunity to come up with a solution for that. A whole new project.
 - it is important to tell you, what I call a task runner is an application that deals with background jobs, that's the terminology we use in the team
-- so we started working on a definition. we defintely wanted to have a piece of softwara that works and is correct
+- so we started working on a definition. we defintely wanted to have a piece of software that works and is correct
 - some of my main concerns were to build something that tells what it is about, that scales itself but also scales the team
 - so I got my knowledge on architecture pushed to its limits, and they weren't that expanded
 
@@ -142,7 +142,6 @@ analogies to these conventional web applications that apply architecture.
         that
     - Telling how our journey starts - from a chaotic situation where it was hard to change software and find simple
         bugs
-    - Establishing what is the "task runner"
 
 - Conventional web application architecture
     - Explaining how having a well-defined architecture is good for a project
