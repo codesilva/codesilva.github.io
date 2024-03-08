@@ -29,7 +29,7 @@ through a real use case where I could apply and learn about software design.
     - They come in, we do something with that and respond to it
   - The application drives, most likely, a database after processing the request
 
-  ![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/5c26daee-e388-41d9-a195-fb7505b5e8fb)  
+  ![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/5c26daee-e388-41d9-a195-fb7505b5e8fb)
 
 - These boundaries are quite clear.
 
