@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Alterando o banco de produção de forma segura
+title: Não execute migrations no seu CD - Continuous Delivery
 date: 2024-03-12
 lang: pt-BR
 tags: ["banco de dados", "database migrations"]
@@ -43,7 +43,79 @@ ERP, pois este era escrito em Java, e tinha o banco de dados que, como já menci
 
 ## Deployment e Banco de Dados
 
-## Noites de deployment
+Agore que você entendeu nossa stack, vamos ao que interessa. As versões eram liberadas pela empresa fornecedora do ERP
+e era nossa missão fazer a atualização da nossa base de tempos em tempos. E, por incrível que pareça, acredito que
+fazíamos certas práticas interessantes. Práticas que depois veremos que podem ser utilizadas em suas aplicações.
+
+A cada versão que recebíamos tínhamos uma ideia sobre o que seria modificado, se algo no banco de dados seria invasivo
+demais, etc.
+
+Quase sempre tinha uma mudança de banco de dados sim. Então seguíamos o processo a risca. Que era como segue.
+
+
+### A preparação
+
+O horário comercial da indústria era das 7:30 às 17:30. Em dia de fazer upgrade, notificávamos os setores da empresa
+acerca disso ainda pela manhã.
+
+Quando o relógio marcava 17:30, iniciávamos nosso rito de deploy que envolvia baixar os programas de upgrade fornecidos
+pela Senior. Depois disso ficávamos por conta do setor de faturamento que fazia emissões de notas fiscais ainda no
+começo da noite. Ao terminar, aí sim iniciávamos nosso procedimento.
+
+### Backup do banco de dados de produção
+
+O primeiro passo era fazer um backup do banco de dados. Isso nos dava a segurança de se, por algum motivo,
+o procedimento de atualização falhasse e algo corrompesse poderíamos voltar a este estado.
+
+### Teste do backup no servidor de testes
+
+Com esse backup em mãos, fazíamos o restore no servidor de testes e verificávamos se o backup havia sido realizado com
+êxito.
+
+### Upgrage no servidor de testes
+
+Nesse ponto já tínhamos o banco de dados espelhado no ambiente de testes, assim, fazíamos o upgrade na versão de testes
+primeiro. Nosso objetivo era checar se tudo correria bem para aquele upgrade com aquele estado do banco de dados.
+
+Com esse passo, identificávamos eventuais consistências.
+
+### Upgrade no servidor de produção
+
+Uma vez que tudo ocorre bem com o upgrade no servidor de testes, partimos, finalmente para o servidor de produção. Se
+tudo corresse bem, íamos pra casa. Caso contrário procuraríamos debugar o que houve e, na pior das hipótestes,
+retomaríamos o estado anterior do banco de dados, aquele do backup.
+
+## Migrations no banco de produção
+
+Diferente do processo descrito na seção anterior, em desenvolvimento web não há um upgrade de um terceiro. O upgrade vem
+de você mesmo, é seu código. São suas também as mudanças no banco de dados, muitas vezes através de ferramentas
+interessantes que temos em frameworks, as _migrations_.
+
+O ponto é que eu não vejo como muito benéfico ter como parte da sua pipeline de deployment pra produção, a execução de
+migrations automaticamente. Nunca se sabe o que pode acontecer e todo cuidado é pouco.
+
+Acredito que o processo anterior, que fazíamos manualmente, possa ser automatizado como parte de uma pipeline. Mas acho
+que é imprescíndivel que se tome os mesmos cuidados que tomávamos em tal ambiente rústico. Resumindo, antes de rodar
+suas migrations em prod:
+
+- Faça backup do banco de dados;
+- garanta que o backup funcionou;
+- tenha a versão funcionando em um outro ambiente que não produção - em nosso caso tínhamos dois, mas você pode ter mais;
+- execute as migrations para prod.
+
+### Notas
+
+- Testes testes na sua aplicação é extremamente útil! Escreva-os.
+- Alterações em tabelas grandes podem demorar mais, então certifique-se de notificar seus usuários acerca de uma
+    manutenção programada.
+
+## Conclusão
+
+Por hoje é isso. São dicas triviais, mas já vi bastante gente fazendo isso de ter migrations rodando antes do deploy de
+forma automatizada e a chance de isso dar errado existe e sem backup ficamos com uma aplicação quebrada e uma dor de
+cabeça enorme.
+
+Por hoje é só. Até a próxima.
 
 ## Referências
 
