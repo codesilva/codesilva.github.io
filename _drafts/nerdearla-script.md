@@ -33,23 +33,50 @@ categoria: ["nerdearla"]
 8. Whith a clear separation of concerns. I was aiming for an application that could be easy to change in various
    aspects.
 
-## Hand-on
+## Hands-on
+
+1. one of the basic feature we have in this project is that:
+2. we have a cron job, that runs periodically - five minutes let's say
+3. this job for fetching shipping releases is triggered and it continues the flow
+4. processing shipping releases and so on.
 
 1. In order to apply an architecture you either master it or you make some analogies.
 2. This talk exists, which means I didn't master it.
 3. So I just searched for some content, also examples because I think that learning from examples is much easier.
 4. From these examples, I started mounting the architecture of our project.
 
-## Fundamentals of separation
+## Fundamentals software architecture
 
-1. The essence of the examples I found is that
-2. We isolate tools from what most important in our application, the business logic.
-3. I knew I could apply that to my project, for sure.
+1. The essence of the examples I found is: we wanna isolate details from what matters.
+2. I mean, your actual application, your business, has nothing to do with any particular database or web framework, for
+   example.
+3. The fundamental definition of layers/boundaries is like: details that drive, core, and details that are driven.
+4. Details that drive are those that allow the outside world to get in touch with the core. eg. http web framework, that
+   receives http requests
+5. Details that are driven by the core are also tools, they are the outcome. eg. database, payment providers etc.
+6. The core can be anything, actually. It's up to you. What I find a lot in this layer are:
+    - use cases;
+    - domain;
+    - services/repositories.
+7. A REST API boilerplate is like that then
+    - http controller taking http requests
+    - delegating to use case
+    - use case holding domain objects and services/repositorie to perform the operation
+8. from these definitions I started applying to my case
+9. The separation would be the same. after all, it is the foundation of architecture. not having such a separation would
+   be a mistake
+10. The core and the infrastructure are equal.
+11. I wanted to have use cases cause they are like that: [show an image with some use cases]
+    they are great! looking at this project you could easily say what it deals with
+12. The use case takes your domain and service contracts to perform its operation.
 
-## What drives the application - the harder part
+13. The infrastructure has the implementation of contracts. So such repository could be something like: [image with
+    orderrepository implementation]
 
-## The application
+14. Interface, however, seemed very different to me. I needed jobs processing, but, different from what I had done before, this application would not have an http request that then enqueues job. it was a cron job, actually.
+15. But if we take a moment to think about it we will realize that, jobs are enqueue to an specific queue. jobs are, in
+    fact, data. Hmm, queues reeally sound like http endpoints. and jobs sound like http requests
+16. hopefully, it's easy to see that, indeed, workers are just like http controllers. since like http controllers, the
+    are listening to an specific queue.
 
-## What is driven by the application
-
-## It has to start somewhere
+## Bootstraping
