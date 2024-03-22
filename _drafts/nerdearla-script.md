@@ -80,3 +80,30 @@ categoria: ["nerdearla"]
     are listening to an specific queue.
 
 ## Bootstraping
+
+1. We ended up with something like that: [architecture diagram figure]
+2. One last detail we had to implement: the cron job.
+3. Getting a cron job working is not that hard. What might be confusing is where to put this. At least, it was for me.
+4. What I did, and my tip for you, was: think about this component, and check it against each layer of your architecture
+   - you might not have tons of layers so it is feasible.
+5. We can try this exercise:
+    - cron job is not a domain rule, definitely
+    - a use case? I don't think so, it's not a feature of the business
+    - interface? Almost, we saw that interface is a layer that get the software ready for receiving calls from the
+        outside eg. listening to endpoint or queues
+    - infreastructure? well, it might be, it sounds something really concrete. but where's the abstraction in this case?
+6. Where to put then?
+7. Well, this cron job has to start with the application as well as with the queue service. So, it's something we put in
+   the main layer/module.
+8. Yeah, even though we don't see people talking about that very often, it exists and it's where things get real.
+
+## Evolving
+
+1. The goals of this application were fulfilled.
+2. The team could work on that with no problems.
+3. Since things were decoupled, testing it is very easy. The consequence we have a lot of tests. It's a stable
+   application.
+4. Also, it's evolving. Nowadays, we even have a dashboard in this application. We actually, have two interfaces.
+5. That's joyful and amazing. I hope you got all the benefits that an architecture can bring to your team and
+   organization. And I hope you can do somethiong similar soon.
+6. That's all for today. Thank you!
