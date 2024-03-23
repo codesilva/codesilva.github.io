@@ -54,10 +54,12 @@ categoria: ["nerdearla"]
 4. Details that drive are those that allow the outside world to get in touch with the core. eg. http web framework, that
    receives http requests
 5. Details that are driven by the core are also tools, they are the outcome. eg. database, payment providers etc.
-6. The core can be anything, actually. It's up to you. What I find a lot in this layer are:
-    - use cases;
-    - domain;
-    - services/repositories.
+6. The core can be anything, actually. It's up to you. What I find a lot in this layer is the following subdivision:
+    - domain
+        contains your core's business logic.
+    - application
+        services/repositories - contracts that will be uses by use cases to perform its operation
+        use cases - units of work; the features of your project
 7. A REST API boilerplate is like that then
     - http controller taking http requests
     - delegating to use case
