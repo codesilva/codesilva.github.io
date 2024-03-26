@@ -125,7 +125,7 @@ Que nem na música da banda Pedra Letícia:
 > Na Sexta-Feira, tenho dentista<br />
 > Sábado eu não vou porque eu sou adventista
 
-Essa é a essência do deenvolvedor Senil.
+Essa é a essência do desenvolvedor Senil.
 
 ## Conclusão
 
