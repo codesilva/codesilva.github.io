@@ -5,7 +5,7 @@ date: 2024-03-26
 lang: pt-BR
 tags: ["banco de dados", "database migrations", "deployments"]
 category: ["carreira", "deploy", "causos de TI"]
-excerpt: Migrations são uma excelente forma de gerencias mudanças no banco de dados. Fazer isso em banco de dados de produção, no entanto, pode acarretar em desastre. Nesse artigo te mostro algumas estratégias úteis para executar migrações em produção de forma segura.
+excerpt: Migrations são uma excelente forma de gerenciar mudanças no banco de dados. Fazer isso em banco de dados de produção, no entanto, pode acarretar em desastre. Nesse artigo te mostro algumas estratégias úteis para executar migrações em produção de forma segura.
 ---
 
 ## Table of contents
