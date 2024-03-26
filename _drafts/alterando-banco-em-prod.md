@@ -1,11 +1,18 @@
 ---
 layout: post
-title: Não execute migrations no seu CD - Continuous Delivery
+title: Continuous Delivery e Migrations não andam juntos
 date: 2024-03-26
 lang: pt-BR
 tags: ["banco de dados", "database migrations", "deployments"]
-category: ["banco de dados", "deploy", "carreira", "causos de TI"]
+category: ["carreira", "deploy", "causos de TI"]
+excerpt: Migrations são uma excelente forma de gerencias mudanças no banco de dados. Fazer isso em banco de dados de produção, no entanto, pode acarretar em desastre. Nesse artigo te mostro algumas estratégias úteis para executar migrações em produção de forma segura.
 ---
+
+## Table of contents
+1. [Nossa stack](#nossa-stack)
+2. [Deployment e Banco de Dados](#deployment-e-banco-de-dados)
+3. [Migrations no banco de produção](#migrations-no-banco-de-produção)
+3. [Conclusão](#conclusão)
 
 Preparando uma talk interna sobre deployment eu tive memórias da guerra. Memórias de quando trabalhei em uma indústria
 de laticínios que possuia todas as suas aplicações em dois servidores `bare-metal`. Os servidores não eram lá dos
@@ -118,4 +125,4 @@ Por hoje é só. Até a próxima.
 
 ## Referências
 
-- https://stackoverflow.com/questions/40987909/best-practice-for-updating-production-database
+- [https://stackoverflow.com/questions/40987909/best-practice-for-updating-production-database](https://stackoverflow.com/questions/40987909/best-practice-for-updating-production-database)
