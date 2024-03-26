@@ -1,19 +1,19 @@
 ---
 layout: post
 title: Não execute migrations no seu CD - Continuous Delivery
-date: 2024-03-12
+date: 2024-03-26
 lang: pt-BR
-tags: ["banco de dados", "database migrations"]
-category: ["banco de dados"]
+tags: ["banco de dados", "database migrations", "deployments"]
+category: ["banco de dados", "deploy", "carreira", "causos de TI"]
 ---
 
 Preparando uma talk interna sobre deployment eu tive memórias da guerra. Memórias de quando trabalhei em uma indústria
-de laticícinio que possuia todas as suas aplicações em dois servidores `bare-metal`. Os servidores não eram lá dos
+de laticínios que possuia todas as suas aplicações em dois servidores `bare-metal`. Os servidores não eram lá dos
 melhores e as tecnologias que usávamos pareciam não escalar corretamente.
 
-Há alguns causos que eu posso contar sobre esse perído da minha vida. Embora tenha sofrido um pouco, nem todo sofrimento
+Há alguns causos que eu posso contar sobre esse perído da minha carreira. Embora tenha sofrido um pouco nem todo sofrimento
 é em vão. Eu acredito profundamente que há um tipo de sofrimento que constrói. No geral, isso só pode ser observado ou com
-experiência ou ligando os pontos, este segundo só acontece depois então pode ser frustrante mesmo.
+experiência ou ligando os pontos, este segundo só acontece depois, então a caminhada pode ser frustrante mesmo.
 
 Um dos momentos mais sofridos e tensos era o deployment de versões. Devido à criticidade da aplicação, fazíamos um
 processo minucioso e muito cuidadoso para evitar desastres. Nesse post quero compartilhar esse causo e te deixar alguns
@@ -21,11 +21,11 @@ insights sobre deployment, mais especificamente sobre alteração de banco de da
 
 ## Nossa stack
 
-Nossa stack era talk qual como descrita abaixo. O core das nossa empresa e de muitas outras indústrias semelhantes era
-o ERP. ERP é um tipo de aplicação que traz consigo já muitas funcionalidades que são de extrema importância para os
-múltiplos setores de uma empresa. Então módulos dos setores de comercial, logística, estoque, contabilidade e mais.
+Nossa stack era tal como descrita abaixo. O core da empresa, e de outras indústrias semelhantes, era
+o ERP. ERP é um tipo de aplicação que traz consigo muitas funcionalidades que são de extrema importância para os
+múltiplos setores de uma empresa. Módulos como comercial, logística, estoque, contabilidade e mais.
 
-São muitas atribuições e trabalhar em um tipo de aplicação dessas é outra perspectiva.
+São muitas atribuições e trabalhar com esse tipo de aplicação te dá uma outra perspectiva.
 
 ![Imagem com a stack utilizada pelo setor de TI da indústria mostrando como os usuários interagem com as aplicações](/assets/maranguape.png)
 
@@ -43,15 +43,14 @@ ERP, pois este era escrito em Java, e tinha o banco de dados que, como já menci
 
 ## Deployment e Banco de Dados
 
-Agore que você entendeu nossa stack, vamos ao que interessa. As versões eram liberadas pela empresa fornecedora do ERP
+Agora que você entendeu nossa stack, vamos ao que interessa. As versões eram liberadas pela empresa fornecedora do ERP
 e era nossa missão fazer a atualização da nossa base de tempos em tempos. E, por incrível que pareça, acredito que
-fazíamos certas práticas interessantes. Práticas que depois veremos que podem ser utilizadas em suas aplicações.
+tínhamos certas práticas interessantes. Práticas que depois veremos que podem ser utilizadas em suas aplicações.
 
 A cada versão que recebíamos tínhamos uma ideia sobre o que seria modificado, se algo no banco de dados seria invasivo
-demais, etc.
+demais etc.
 
-Quase sempre tinha uma mudança de banco de dados sim. Então seguíamos o processo a risca. Que era como segue.
-
+Quase sempre tinha uma mudança de banco de dados sim. Então seguíamos o processo à risca. Que era como segue.
 
 ### A preparação
 
@@ -59,12 +58,12 @@ O horário comercial da indústria era das 7:30 às 17:30. Em dia de fazer upgra
 acerca disso ainda pela manhã.
 
 Quando o relógio marcava 17:30, iniciávamos nosso rito de deploy que envolvia baixar os programas de upgrade fornecidos
-pela Senior. Depois disso ficávamos por conta do setor de faturamento que fazia emissões de notas fiscais ainda no
+pela Senior - fornecedora do ERP que utilizávamos. Depois disso ficávamos por conta do setor de faturamento que fazia emissões de notas fiscais ainda no
 começo da noite. Ao terminar, aí sim iniciávamos nosso procedimento.
 
 ### Backup do banco de dados de produção
 
-O primeiro passo era fazer um backup do banco de dados. Isso nos dava a segurança de se, por algum motivo,
+O primeiro passo era fazer um backup do banco de dados. Isso nos dava a segurança. Se, por algum motivo,
 o procedimento de atualização falhasse e algo corrompesse poderíamos voltar a este estado.
 
 ### Teste do backup no servidor de testes
@@ -77,13 +76,13 @@ Com esse backup em mãos, fazíamos o restore no servidor de testes e verificáv
 Nesse ponto já tínhamos o banco de dados espelhado no ambiente de testes, assim, fazíamos o upgrade na versão de testes
 primeiro. Nosso objetivo era checar se tudo correria bem para aquele upgrade com aquele estado do banco de dados.
 
-Com esse passo, identificávamos eventuais consistências.
+Com esse passo, identificávamos eventuais inconsistências.
 
 ### Upgrade no servidor de produção
 
-Uma vez que tudo ocorre bem com o upgrade no servidor de testes, partimos, finalmente para o servidor de produção. Se
+Uma vez que o upgrade funciona como esperado no servidor de testes, partimos, finalmente, para o servidor de produção. Se
 tudo corresse bem, íamos pra casa. Caso contrário procuraríamos debugar o que houve e, na pior das hipótestes,
-retomaríamos o estado anterior do banco de dados, aquele do backup.
+retomaríamos ao estado anterior do banco de dados, aquele do backup.
 
 ## Migrations no banco de produção
 
@@ -91,21 +90,21 @@ Diferente do processo descrito na seção anterior, em desenvolvimento web não 
 de você mesmo, é seu código. São suas também as mudanças no banco de dados, muitas vezes através de ferramentas
 interessantes que temos em frameworks, as _migrations_.
 
-O ponto é que eu não vejo como muito benéfico ter como parte da sua pipeline de deployment pra produção, a execução de
-migrations automaticamente. Nunca se sabe o que pode acontecer e todo cuidado é pouco.
+O ponto é que eu não vejo como muito benéfico ter como parte da sua pipeline de deployment pra produção, a execução
+automática de migrations. Nunca se sabe o que pode acontecer e todo cuidado é pouco.
 
 Acredito que o processo anterior, que fazíamos manualmente, possa ser automatizado como parte de uma pipeline. Mas acho
 que é imprescíndivel que se tome os mesmos cuidados que tomávamos em tal ambiente rústico. Resumindo, antes de rodar
-suas migrations em prod:
+suas migrations em producção:
 
-- Faça backup do banco de dados;
+- faça backup do banco de dados;
 - garanta que o backup funcionou;
-- tenha a versão funcionando em um outro ambiente que não produção - em nosso caso tínhamos dois, mas você pode ter mais;
+- tenha a versão funcionando em um outro ambiente que não o de produção - em nosso caso tínhamos dois, mas você pode ter mais;
 - execute as migrations para prod.
 
 ### Notas
 
-- Testes testes na sua aplicação é extremamente útil! Escreva-os.
+- Tenha testes na sua aplicação. São extremamente úteis! Escreva-os.
 - Alterações em tabelas grandes podem demorar mais, então certifique-se de notificar seus usuários acerca de uma
     manutenção programada.
 
