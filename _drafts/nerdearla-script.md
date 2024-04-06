@@ -47,6 +47,8 @@ categoria: ["nerdearla"]
 
 ## Fundamentals software architecture
 
+NOTA: E se na verdade eu falar sobre como um REST API boilerplate é subdividido, sem entrar em muitos detalhes sobre as camadas por hora, e só depois eu ir falando de cada camada e como eu apliquei analogia ao meu caso
+
 1. The essence of the examples I found is: we wanna isolate details from what matters.
 2. I mean, your actual application, your business, has nothing to do with any particular database or web framework, for
    example.
