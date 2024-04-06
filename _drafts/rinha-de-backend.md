@@ -10,6 +10,9 @@ category: ["paralelismo", "concorrencia"]
 no dia 10 de marco se encerrou a segunda edicao "rinha de backend", um hackathon muito divertido. Eu pude participar
 dessa edição e trago aqui minhas percepções e insights que obtive ao longo do caminho.
 
+nesse posto discutiremos alguns aspectos tecnicos e sobre decisoes tecnicas, além de algumas observacoes sobre
+o comportamento da turma que participou
+
 ## Desafio da rinha
 
 A rinha é um hackathon como qualquer outro. Um desafio é proposto, voce da sua implementacao e competira com outros
@@ -63,11 +66,30 @@ Além da cartilha do Joe Armstrong (Programming Erlang 14.2) sobre desenvolvimen
 Meu objetivo era ter uma estrutura com um cluster Erlang de dois nós, cada nó teria um server rodando, apto a receber
 requests.
 
+A requests recebidas pelo endpoint seiam direcionadas ao Mnesia em uma transação. Como o mnesia é distribuído, fazer as
+oeprações em uma transacao já garantiria a parte do debito.
+
+## Pensando um pouco sobre o problema
+
+veja que, a despeito das validacoes em id de cliens, tipo de transacao, nosso real problema aqui era só evitar um saldo
+menor que seu limite. isso nos diz entao que transacoes de creditos podem ser aceitas indefinidamente, o que temos de
+checar é na transacao de credito, checar se nao há um limite menor.
+
+server -> mnesia transaction
+
+## Modelagem do banco de dados
+
+## Multitenancy
+
+## Docker no Mac
+
+### Profiling e código C (blazingly fast)
+
+# Parte 2
+
 ## A síndrome do segundo sistema e lei de goodhart
 
 https://en.wikipedia.org/wiki/Goodhart's_law
-
-### Profiling e código C (blazingly fast)
 
 ## Pavonismo
 
