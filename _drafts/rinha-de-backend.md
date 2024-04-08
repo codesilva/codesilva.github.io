@@ -153,41 +153,77 @@ máximo de 85ms. Redução em torno de 23% no tempo. Foi uma melhora razoável e
 Creio que poderia melhorar mais. Mas já não havia mais tempo e a submissão precisava ser feita. Assim enviei minha
 implementação com um pouco de Erlang no meu Elixir (através das chamadas do :mnesia) e um pouco de C no meu Erlang.
 
-# Parte 2
+# Parte 2 - As armadilhas
 
-## A síndrome do segundo sistema e lei de goodhart
+## Efeito do segundo sistema e a lei de goodhart
+
+Lembrenando que essa era a segunda edicao da rinha. Entao, alguns dos competidores que haviam participado da ultima
+edicao.
+
+E percebi que eles estavam extremamente focados em tempo, queriam processar o mais rapido possivel. Ou seja, desviando
+o foco. Isso me lembrou o capitulo cinco do libro O mitico homem-mes. Em que, por experiencia, ele viu o efeito do
+segundo sistema acontecer. Em resumo esse feito diz repeito a, no segundo sistema, tentarmos corrigir todos os pontos
+que achamos que ficamos aquém no primero.
+
+MAs depois entendi, que na verdade, o pessoal estava caindo mesmo era na lei de goodhart. Era meio que uma mistura, dado
+que todo mund estava enviesado pelos critérios da rinha passada.
 
 https://en.wikipedia.org/wiki/Goodhart's_law
 
 ## Pavonismo
 
+Uma outra armadilha que poderia pegar quem estava participando eram os resultados extraordinarios apresentados no
+twitter.
+
+A ideia da rinha nao é ter uma competicao em si, mas sim ter uma colaboracao entre todos. é comum ao fazer fuincionar
+postar seu resultado no twittwer, marcando o twitter da rinha.
+
+Alguns resultados eram extremamente impressionantes. ISso pode facilmente levar a uma pequena frustracao. Como aquele
+cara conseguiu aquele tempo?
+
+é importante lembrar onde você está. você tem a sua caminhada e sabe muito pouco sobre a caminhada de outrem. De repente
+muitas horas foram dedicadas em estudo e experimentacao, horas que voce nao pôde dedicar ainda.
+
+Ainda, voce nao sabe qual o hardware responsavel por aquela execucao. eu mesmo experimentei isso executando em dois
+sistemas operacionais diferentes.
+
+Algums implementações da rinha foram extremamente eficientes, atingindo um p75 de 0ms!! Algumas funcionaram bem,
+escritas em C++. Já outras acabaram sendo maquiagem, todas as requisições resultava em erro. A requisição vinha,
+quebrava e uma mensagem de erro era enviada. Isso torna a coisa bem rápida.
+
+Claro, isso pode ter sido acidental. Mas é algo que aconteceu, então cuidado com benchmarks em geral, sobretudo com
+esses.
+
 ## Resultados
 
+Uma vez que o prazo se encerrou a organização fez o teste final e liberou os resultados.
 
-```
-# Especificações do Ambiente de Testes
-
-Abaixo estão os detalhes do servidor (gentilmente concedido pelo Giovanni Bassi) que rodará os testes. 
+A especificaca do ambiente de execucao dos testes era:
 
 
-Docker
-``` 
-$ docker --version
+<details>
+  <summary>Docker</summary>
+
+<pre>
 Docker version 25.0.3, build 4debf41
-```
+</pre>
 
-Gatling
-``` 
-# gatling versão 3.10.3
-$ java --version
+</details>
+
+<details>
+  <summary>Gatling 3.10.3</summary>
+
+<pre>
 openjdk 21.0.1 2023-10-17
 OpenJDK Runtime Environment (build 21.0.1+12-Ubuntu-222.04)
 OpenJDK 64-Bit Server VM (build 21.0.1+12-Ubuntu-222.04, mixed mode, sharing)
-```
+</pre>
+</details>
 
-CPU
-``` 
-$ lscpu                          
+<details>
+  <summary>CPU</summary>
+
+<pre>
 Architecture:            x86_64
   CPU op-mode(s):        32-bit, 64-bit
   Address sizes:         46 bits physical, 57 bits virtual
@@ -234,22 +270,27 @@ Vulnerabilities:
   Spectre v2:            Mitigation; Retpolines, STIBP disabled, RSB filling, PBRSB-eIBRS Not affected
   Srbds:                 Not affected
   Tsx async abort:       Not affected
-```
+</pre>
+</details>
 
-Memória
-```
-$ free -h
+<details>
+  <summary>Memória (15Gi)</summary>
+<pre>
                total        used        free      shared  buff/cache   available
 Mem:            15Gi       1.0Gi       9.4Gi       3.0Mi       5.2Gi        14Gi
 Swap:             0B          0B          0B
-```
+</pre>
+</details>
 
-SO (Ubuntu 23.04)
-```
-$ uname -a
+<details>
+
+  <summary>Sistema operacional (Ubuntu)</summary>
+
+<pre>
 Linux rinha 6.2.0-1019-azure #19~22.04.1-Ubuntu SMP Wed Jan 10 22:57:03 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
-```
-```
+</pre>
+</details>
+
 
 ## Conclusão
 
