@@ -36,13 +36,13 @@ notas:
 Um POST É FEITO EM https://minhaagendavirtual.com.br/agendamentos/novo/casadocidadao
 
     ```
-    csrfmiddlewaretoken: XV3CuOsuwImq6Tj5rctpUc6iJU3LJCUFK92kvzwt02e1LRx45Eqs7uAF0uQxXsE8
-    agenda: 16268
+    csrfmiddlewaretoken: XV3CuOsuwImq6Tj5rctpUc6iJU3LJCUFK92kvzwt02e1LRx45Eqs7uAF0uQxXsE8 (do form)
+    agenda: 16268 (do form)
     pass_agenda: 
-    servico: 14529
+    servico: 14529 (do form)
     event_type: 
     dia: 
-    hora: 17374660
+    hora: 17374660 (vem do form)
     birthday: 07/04/1998 (optional)
     client_text: 
     name: Antonio Edigleysson Barbosa da Silva
