@@ -291,9 +291,39 @@ Linux rinha 6.2.0-1019-azure #19~22.04.1-Ubuntu SMP Wed Jan 10 22:57:03 UTC 2024
 </pre>
 </details>
 
+<br />
+
+### Critérios
+
+Eu gosto de definir os critérios da rinha como: os verdadeiros critérios da rinha de backend são os amigos que fizemos
+ao longo do caminho.
+
+Digo isso porque na verdade não há um ranking para a rinha de backend. Mas há criterios de modo que da pra de certa
+forma perder.
+
+Foi estabelecido um SLA. Com requisitos relacionados a tempo de resposta e consistencia da informacao. Ele definiram
+como se fosse um budget. A cada descumprimento do SLA havia uma penalização. A definicao do SLA e suas penalidades sao
+como segue:
+
+- 98% das requisicoes devem ser atendidas em menos de 250ms
+    a penalidade é calculada da forma: (98 - success_percentage) * 1000.00
+
+- Consistencia de saldo
+    a cada inconsistencia de saldo sera penalizado USD 803.01.
 
 ## Conclusão
 
+Bom, ao fim de tudo, consegui sair com os meus 100K USD. É uma pena que isso tudo seja fictício. O importante aqui,
+assim como na rinha passada, foi a jornada, não o resultado.
+
+Pessoas tentaram vários tipos de coisas. Há quem implementou o desafio em bash, houve pessoas mais habituadas a frontend
+que se aventuraram nessa tarefa mais de backend e há até quem fez coisas do zero como o web server e o load balancer.
+
+O ponto é esse: a experimentação. É sobre a jornada, não o fim. Eu aprendi muitas coisas sobre erlang no geral, sobre
+o mnesia, sobre cluster de processos e profiling. Isso me despertou um interesse maior por esses aspectos. Espero poder
+trazer conteúdos relacionados em breve.
+
+Por hoje é só. Até mais.
 
 ### Referencias
 
