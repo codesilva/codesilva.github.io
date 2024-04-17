@@ -7,7 +7,7 @@ tags: ["debugging", "nodejs"]
 category: ["post-it", "programacao", "debugging", "nodejs"]
 ---
 
-Inspirado pelo [surma.dev](https://surma.dev/postits/arm64/) estou iniciando essa nova categoria de posts. Post do tipo
+Inspirado pelo [surma.dev](https://surma.dev/postits/arm64/) estou iniciando essa nova categoria de posts. Posts do tipo
 `post-it` são mais uma documentação até pra eu mesmo lembrar de certas coisas. Você pode esperar desses posts algum tipo
 de insight, mas não uma estrutura completa presente em um post convencional.
 
@@ -19,14 +19,18 @@ o [debugger do nodejs](https://nodejs.org/api/debugger.html), aquele que você c
 Sobretudo em projetos que me sinto perdido, ter um call stack me ajuda muito quando preciso me situar. Debugar
 aplicações NodeJS com o Chrome Web Tools é bem simples.
 
-Basta executar sua aplicação/script com `--inspect`; exemplo: `node --inspect app.js`.
+Basta executar sua aplicação/script com `--inspect`. Exemplo:
 
-Geralmente trabalho em aplicações web, e uso `--inspect` no comando pra startar o servidor web. E vai iniciar o debugger
+```bash
+node --inspect app.js
+```
+
+Geralmente trabalho em aplicações web, e uso `--inspect` no comando pra startar o servidor web. Isso vai iniciar o debugger
 que você pode acessar no seu browswe Chromium-based. Basta acessar `chrome:inspect`.
 
-[imaem aqui]
+[imagem aqui]
 
-Clicando ali em `inspect` a ferramenta de [web dev tools](https://developer.chrome.com/docs/devtools) vai abrir pronta
+Clicando em `inspect` a ferramenta de [web dev tools](https://developer.chrome.com/docs/devtools) vai abrir pronta
 para debug da sua aplicação.
 
 ## Debug das requisições Web
