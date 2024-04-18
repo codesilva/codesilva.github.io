@@ -335,6 +335,9 @@ Por hoje é só. Até mais.
 
 ![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/a9333e62-36bb-4e72-88d1-1fd7056148ce)
 
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/7919eae8-dec1-4309-a64d-85a9291dec2f)
+
+
 
 
 ![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/6821a5ff-7453-4bf6-b786-7c84a802efa3)
