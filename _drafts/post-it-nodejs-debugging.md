@@ -28,7 +28,7 @@ node --inspect app.js
 Geralmente trabalho em aplicações web, e uso `--inspect` no comando pra startar o servidor web. Isso vai iniciar o debugger
 que você pode acessar no seu browswe Chromium-based. Basta acessar `chrome:inspect`.
 
-[imagem aqui]
+<img width="950" alt="image" src="https://github.com/codesilva/codesilva.github.io/assets/15680379/a36e971e-dd4b-4f92-8aa0-581489ed3d63">
 
 Clicando em `inspect` a ferramenta de [web dev tools](https://developer.chrome.com/docs/devtools) vai abrir pronta
 para debug da sua aplicação.
@@ -55,3 +55,7 @@ Isso funciona também com `npm`, exemplo:
 ```bash
 NODE_DEBUG=http,http2 npm start`
 ```
+
+O resultado vai ser algo mais ou menos como o que é mostrado abaixo
+
+<img width="1394" alt="image" src="https://github.com/codesilva/codesilva.github.io/assets/15680379/c4ff4a02-3be7-4cae-8936-9686c34372c7">
