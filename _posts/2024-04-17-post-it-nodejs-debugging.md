@@ -46,14 +46,14 @@ De modo geral a variável de ambiente [`NODE_DEBUG`](https://nodejs.org/docs/v20
 caso estava interessado nas requisições, assim fiz: 
 
 ```bash
-NODE_DEBUG=http,http2 node script.js`
+NODE_DEBUG=http,http2 node script.js
 ```
 
 Isso funciona também com `npm`, exemplo: 
 
 
 ```bash
-NODE_DEBUG=http,http2 npm start`
+NODE_DEBUG=http,http2 npm start
 ```
 
 O resultado vai ser algo mais ou menos como o que é mostrado abaixo
