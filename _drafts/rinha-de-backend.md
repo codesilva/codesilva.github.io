@@ -332,3 +332,6 @@ Por hoje é só. Até mais.
 
 - https://www.erlang.org/doc/efficiency_guide/profiling#do-not-guess-about-performance---profile
 - https://hexdocs.pm/mix/1.12/Mix.Tasks.Profile.Eprof.html
+
+
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/6821a5ff-7453-4bf6-b786-7c84a802efa3)
