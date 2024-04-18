@@ -1,7 +1,7 @@
 ---
 layout: post
-title: '[POST-IT] Debugando no NodeJS'
-date: 2023-07-08
+title: '[POST-IT] Depuração e NodeJS'
+date: 2024-04-17
 lang: pt-BR
 tags: ["debugging", "nodejs"]
 category: ["post-it", "programacao", "debugging", "nodejs"]
