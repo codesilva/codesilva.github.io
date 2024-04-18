@@ -97,6 +97,9 @@ validacoes, mas nao me agradou muito o tempo de execucao das coisas.
 Minha implementação perdia pra stacks que, pra mim deveriam ser mais lentas. Minha implementação perdia até pra NodeJS
 (nao posso acreditar nisso!).
 
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/8a8dcd2b-8b41-40a5-8ccd-a3c912c5e1a3)
+
+
 ## Multitenancy
 
 Como otimizacao da primeira implementacao, eu optei por fazer um multi tenancy. A ideia seria a mesma, de ter um log,
