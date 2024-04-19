@@ -1,3 +1,12 @@
+- title: 'Architecting the Unconventional: A Case Study in Software Design [EN]'
+  length_in_minutes: 30
+  talk_url: 'https://www.youtube.com/embed/TMsPC6oskCg?si=2tGeU0ynF2H7XD0J'
+  talk_url_iframe: true
+  slides_url: ''
+  description: |
+    If you search for 'clean architecture' on GitHub you will find a bunch of nice implementations applying such an architecture. The same goes for onion, hexagonal, and such. Besides the similarities between the architectural patterns, these applications are all implemented for common web applications. By common, I mean a web application that receives a request that a controller handles. It also has a database and so on.<br /><br />
+    Not all applications are like that, though. In this talk, I will walk through a use case where I implemented an unconventional application - an application that handles background jobs - and I will show how we can apply an architectural pattern to any kind of application
+
 - title: 'Do zero ao app com Firebase'
   length_in_minutes: 60
   talk_url: 'https://www.youtube.com/embed/_Rlm8gU-748?si=oq3IdHDke-YIsjfK'
@@ -10,9 +19,3 @@
   talk_url: ''
   slides_url: 'https://docs.google.com/presentation/d/13yKEtE6scy50vl-DXEJVcXWFg715yy_xKEtq8Oq8B3g/edit?usp=sharing'
   description: 'Nessa talk falamos sobre os paradigmas de programação existentes e como eles podem ser úteis para ver os problemas diários sob perspectivas diferentes. Além de notarmos o overlapping existente hoje em linguagems multiparadigmas como Ruby e JavaScript'
-
-# - title: 'Tudo é incrível com Flutter'
-#   length_in_minutes: 45
-#   talk_url: ''
-#   slides_url: ''
-#   description: ''

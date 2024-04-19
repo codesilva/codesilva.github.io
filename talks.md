@@ -26,4 +26,6 @@ permalink: /talks/
 <h4>Slides:</h4>
 [{{talk.slides_url}}]({{talk.slides_url}})
 {% endif %}
+
+<br />
 {% endfor %}
