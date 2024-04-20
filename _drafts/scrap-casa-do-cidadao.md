@@ -52,3 +52,15 @@ Um POST É FEITO EM https://minhaagendavirtual.com.br/agendamentos/novo/casadoci
     gender: 
     select_marital_status: 
     ```
+
+
+
+Cancelando agendamento
+
+
+
+
+Seleciona horarios com o dia já selecionado
+
+
+https://minhaagendavirtual.com.br/agendamentos/available_time_new/?day_id=17499178&app_type_id=16268&app_subtype_id%5B%5D=14529&internal=false

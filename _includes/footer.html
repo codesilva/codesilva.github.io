@@ -13,8 +13,10 @@
     measurementId: "G-S9806QBHHJ"
   };
 
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  if (window.location.hostname !== 'localhost') {
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  }
 </script>
 
 <footer class="site-footer h-card" style="padding-bottom: 10px;">
