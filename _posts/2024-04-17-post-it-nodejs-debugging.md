@@ -13,7 +13,7 @@ de insight, mas não uma estrutura completa presente em um post convencional.
 
 ## Chrome inspector
 
-Bom que mais tenho utilizado como debugger é o Chrome Web Tools. É uma ferramenta ligeiramente mais complexa do que
+O que mais tenho utilizado como debugger é o Chrome Web Tools. É uma ferramenta ligeiramente mais complexa do que
 o [debugger do nodejs](https://nodejs.org/api/debugger.html), aquele que você consegue executar no terminal.
 
 Sobretudo em projetos que me sinto perdido, ter um call stack me ajuda muito quando preciso me situar. Debugar
