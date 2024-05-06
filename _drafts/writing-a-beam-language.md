@@ -64,3 +64,5 @@ Elixir, Luerl, ePHP e Gleam
 [erlang parse tools](https://www.erlang.org/docs/26/apps/parsetools/parsetools.pdf)
 https://en.wikibooks.org/wiki/Erlang_Programming/Making_Parsers_with_yecc
 https://www.erlang.org/doc/man/cerl#type-1
+https://blog.stenmans.org/theBeamBook/#_compiling_erlang
+https://github.com/lfe/lfe
