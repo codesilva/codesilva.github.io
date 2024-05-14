@@ -57,3 +57,6 @@ Em suma é um adendo à gramática. No exemplo do livro ele mostra como usar STD
 5+2-1) em operacoes posfixas (ex: 52+1-).
 
 Para tal é usado STD e Translation schemes com uma instrucao de `print` para por os símbolos.
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar
