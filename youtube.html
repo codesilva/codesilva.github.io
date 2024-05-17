@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="youtube.css">
+  </head>
+
+  <body>
+    <h1 class="title">O dev coach tem que acabar</h1>
+    <div>
+      <div class="vinyl">
+        <div class="label"></div>
+      </div>
+    </div>
+
+    <script>
+      function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      };
+
+      document.addEventListener(
+        "keydown",
+        (e) => {
+          if (e.key === "Enter") {
+            toggleFullScreen();
+          }
+        },
+        false,
+      );
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,74 @@
+/* https://codepen.io/MonaAghili/pen/NWdvQgJ?editors=1100 */
+
+:root {
+	--bgl: #fffacd;
+	--bgd: #662;
+}
+
+body{
+	background: var(--bgl);
+	display:flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items:center;
+	height:100vh;
+	overflow:hidden;
+}
+
+.title {
+	font-family: monospace;
+	font-size: 3rem;
+}
+
+.vinyl{
+	-webkit-animation: spin 4s 0.51s linear infinite;
+  animation: spin 4s 0.51s linear infinite;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	width:500px;
+	height:500px;
+	border-radius:100%;
+	background:linear-gradient(-45deg,#333,black,#555, black,#333);
+}
+.vinyl:before,.vinyl:after{
+	content:'';
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:repeating-radial-gradient(
+	circle at center,
+	#222 4px,
+	transparent 8px);
+	border-radius:50%;
+}
+
+.label{
+	width:200px;
+	height:200px;
+	border-radius:100%;
+	z-index:1;
+/*	background-image:url(https://static.wikia.nocookie.net/selenagomez/images/c/c4/Stars_Dance_Standard.jpg);*/
+	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyrUwNb_2qUepG_SR0R8PWmKWv6HTryujnO4rJiLycWA&s);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.label:before{
+	content:'';
+	position:absolute;
+	width:12px;
+	height:12px;
+	border-radius:100%;
+	background-color: #fff;
+	margin:auto;
+	display:block;
+	top:0;left:0;right:0;bottom:0;
+}
+
+@keyframes spin {
+	to{
+		transform: rotate(360deg);
+	}
+}

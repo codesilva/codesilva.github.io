@@ -59,4 +59,6 @@ Em suma é um adendo à gramática. No exemplo do livro ele mostra como usar STD
 Para tal é usado STD e Translation schemes com uma instrucao de `print` para por os símbolos.
 
 
+ANTLR para produtividade -> https://medium.com/dailyjs/compiler-in-javascript-using-antlr-9ec53fd2780f
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar
