@@ -7,7 +7,7 @@
 
 body{
 	background-color: var(--bgl);
-	background-image: url(https://images.squarespace-cdn.com/content/v1/5a0e0437268b96c1d7102a8f/1587483376256-ETHOP345KH163WNO9KJI/MNG-KF-03.jpg?format=1500w);
+	/* background-image: url(https://images.squarespace-cdn.com/content/v1/5a0e0437268b96c1d7102a8f/1587483376256-ETHOP345KH163WNO9KJI/MNG-KF-03.jpg?format=1500w); */
 	background-size: cover;
 	display:flex;
 	flex-direction: column;
@@ -55,6 +55,7 @@ body{
 	z-index:1;
 /*	background-image:url(https://static.wikia.nocookie.net/selenagomez/images/c/c4/Stars_Dance_Standard.jpg);*/
 	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyrUwNb_2qUepG_SR0R8PWmKWv6HTryujnO4rJiLycWA&s);
+	/* background-image: url(https://d1c4rk9le5opln.cloudfront.net/473e3d66cf149aa835577f166d18982a.jpg); */
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -74,4 +75,10 @@ body{
 	to{
 		transform: rotate(360deg);
 	}
+}
+
+.soundboard {
+	margin-top: 1rem;
+	display: flex;
+	gap: 1rem;
 }
