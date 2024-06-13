@@ -1,3 +1,34 @@
+# TBD: O programador humilde
+
+## Voce está aqui (The humble programmer + The Mythical Man-Month)
+
+Voce está no meio, precisar subir para um nível maior de abstração, ao mesmo tempo que precisa descer para um nível
+menor de abstração.
+
+A atividade de programador é jovem, você também é.
+
+## The joys and woes of the craft (The Mythical Man-Month)
+
+## Entender como meio de simpificar as coisas (Richard Feynman + Learning how to learn)
+
+Richard Feynman e as analogias
+
+## Se está estudando, está estudando errado (Learning How to Learn)
+
+### A massiva produção de conteúdo e os conhecimentos atemporais
+
+Seu cérebro é limitado, precisa focar
+
+### Pratica deliberada
+
+## Referências
+
+- [https://www.akitaonrails.com/2010/04/12/off-topic-o-programador-humilde-por-edsger-w-dijkstra](https://www.akitaonrails.com/2010/04/12/off-topic-o-programador-humilde-por-edsger-w-dijkstra)
+
+## O cérebro do expert
+
+---
+
 # O que eu não consigo criar, eu não entendo
 
 [meme eletricidade]
@@ -16,8 +47,6 @@ Quando vi esse episódio lembrei do dia em que precisei fazer isso com água e e
 explicar para mim mesmo esse processo. bom, não consegui.
 
 Enquanto escrevo isso pesquisei e o processo de transmitir água de um lugar para outro do jeito que descrevi é chamado de `sifonar`.
-
-## Saber um procedimento é diferente de conhecê-lo
 
 ## As coisas são simples... até que deixam de ser
 
