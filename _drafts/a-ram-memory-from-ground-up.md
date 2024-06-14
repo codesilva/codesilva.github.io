@@ -153,3 +153,13 @@ tamanho da tela do browser em que voce le esse artigo, por aí vai
 # RAM, feita a partir de flip-flops
 
 ## O que é um endereço de memória?
+
+
+```js
+const SIGNAL = (a) => a ? 1 : 0;
+const XOR = (a, b) => a === !b;
+const NOT = (a) => !a;
+const OR = (a, b) => a || b;
+const AND = (a, b) => a && b;
+const NAND = (a, b) => NOT(AND(a, b));
+```
