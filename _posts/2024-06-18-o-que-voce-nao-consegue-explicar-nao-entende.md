@@ -4,6 +4,7 @@ title: 'O que você não consegue simplificar você não entende'
 date: 2024-06-18
 lang: pt-BR
 category: ["aprendizado"]
+excerpt: Você já percebeu que faz algumas atividades, como andar de bicicleta, sem saber? Claro, não é sem saber, é que você criou uma memória muscular, você ficou tão expert nessas atividas que faz sem nem perceber...
 ---
 
 ## Table of contents
