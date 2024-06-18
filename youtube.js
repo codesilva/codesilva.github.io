@@ -2,7 +2,7 @@ const soundBoardContainer = document.querySelector('.soundboard');
 const audio = document.querySelector('audio');
 const audioSourceElem = document.querySelector('#audio-source');
 const audioShortCutMap = {
-  'a': 'file:///Users/edysilva/Downloads/canal/abertura-let-love-flow.mp3',
+  'a': 'file:///Users/edysilva/Downloads/canal/abertura-champs-elysee.mp3',
   'b': 'file:///Users/edysilva/Downloads/canal/suspense-mayor-efecto-de-sonido-online-audio-converter.mp3',
   'c': 'file:///Users/edysilva/Downloads/canal/we-donot-care.mp3'
 };
