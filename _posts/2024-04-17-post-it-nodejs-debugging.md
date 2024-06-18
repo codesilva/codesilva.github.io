@@ -8,7 +8,7 @@ category: ["post-it", "programacao", "debugging", "nodejs"]
 ---
 
 Inspirado pelo [surma.dev](https://surma.dev/postits/arm64/) estou iniciando essa nova categoria de posts. Posts do tipo
-`post-it` são mais uma documentação até pra eu mesmo lembrar de certas coisas. Você pode esperar desses posts algum tipo
+`post-it` são mais uma documentação até para eu mesmo lembrar de certas coisas. Você pode esperar desses posts algum tipo
 de insight, mas não uma estrutura completa presente em um post convencional.
 
 ## Chrome inspector
@@ -16,7 +16,7 @@ de insight, mas não uma estrutura completa presente em um post convencional.
 O que mais tenho utilizado como debugger é o Chrome Web Tools. É uma ferramenta ligeiramente mais complexa do que
 o [debugger do nodejs](https://nodejs.org/api/debugger.html), aquele que você consegue executar no terminal.
 
-Sobretudo em projetos que me sinto perdido, ter um call stack me ajuda muito quando preciso me situar. Debugar
+Sobretudo em projetos nos quais que me sinto perdido, ter um call stack me ajuda muito quando preciso me situar. Debugar
 aplicações NodeJS com o Chrome Web Tools é bem simples.
 
 Basta executar sua aplicação/script com `--inspect`. Exemplo:
@@ -26,7 +26,7 @@ node --inspect app.js
 ```
 
 Geralmente trabalho em aplicações web, e uso `--inspect` no comando pra startar o servidor web. Isso vai iniciar o debugger
-que você pode acessar no seu browswe Chromium-based. Basta acessar `chrome:inspect`.
+que você pode acessar no seu browser Chromium-based. Basta acessar `chrome:inspect`.
 
 <img width="950" alt="image" src="https://github.com/codesilva/codesilva.github.io/assets/15680379/a36e971e-dd4b-4f92-8aa0-581489ed3d63">
 
@@ -35,7 +35,7 @@ para debug da sua aplicação.
 
 ## Debug das requisições Web
 
-Uma outra coisa legal, e que precisei recentemente, é o debug de requisições feitos pelo NodeJS em si. Basicamente eu
+Uma outra coisa legal, e que precisei recentemente, é o debug de requisições feitas pelo NodeJS em si. Eu
 estava trabalhando em uma aplicação que envolvia uns wrappers de chamadas a APIs, onde eu definia somente as
 configurações de chamada.
 
