@@ -27,7 +27,7 @@ recipiente com o líquido, fazemos a succção na outra ponta e isso traz a águ
 
 ![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/4eaa5d28-2bdb-4d6f-b5b4-b35e99dd93f4)
 
-## 1. Seu cérebro aprende assim
+## Seu cérebro aprende assim
 
 Você já percebeu que faz algumas atividades, como andar de bicicleta, sem saber? Claro, não é sem saber, é que você criou uma memória muscular, você ficou
 tão expert nessas atividas que faz sem nem perceber.
@@ -52,7 +52,7 @@ informações.
 
 Por essa descrição não é muito difícil perceber que o **foco é extremamente importante quando se aprende algo**.
 
-### 1.1 Resolvendo as limitações da memória de trabalho
+### Resolvendo as limitações da memória de trabalho
 
 Okay, você sabe que precisa focar para aprender. Mas o que acontece quando você parou de aprender aquele dia? Será que
 nada fica? Será que vai ser aquele mesmo procedimento todo dia?
@@ -76,7 +76,7 @@ informações "carregadas".
 
 Magnífico, não?!
 
-## 2. Você aprendeu? Então me explica aí
+## Você aprendeu? Então me explica aí
 
 Voltando à sifonação. Assim como Joel, eu sei sifonar água - e recentemente precisei fazer esse procedimento. Mas queria
 fazer aqui uma reflexão: quando posso dizer que aprendi algo?
@@ -103,7 +103,7 @@ Da mesma forma, quantos desenvolvedores web entendem realmente sobre protocolos 
 Então, para esse tipo de atividade mais intelectual, mais de conhecimento, **entender é ter a capacidade de explicar**.
 E vou além. Entender é ser capaz explicar em termos simples.
 
-## 3. Explicando como se fosse para uma criança
+## Explicando como se fosse para uma criança
 
 Um bom jeito de simplificar as coisas é com analogias. Analogias te permitem pegar um conhecimento ainda não compreendido
 e trazer para um terreno no qual o espectador já tenha domínio.
@@ -129,7 +129,7 @@ e a água flui para esse lado.
 Uma vez que ela chega em determinado ponto da mangueira a gravidade faz seu trabalho e é por isso que
 a água continua correndo e também é por isso que o recipiente de origem (o que contém o líquido a ser transmitido) precisa estar em um nível mais elevado se comparado ao recipiente de destino.
 
-## 4. Simplifique
+## Simplifique
 
 Se quer confirmar se entende algo mesmo, tente explicar para alguém. De preferência alguém que não saiba
 exatamente do que você fala. Minha esposa, por exemplo, me ajuda com isso. Ela não sabe nada de programação e explicar
@@ -140,7 +140,7 @@ Deixo essa última citação aqui em que podemos ver o que Richard Feynman que c
 > Certa vez, eu [David Goodstein] disse a ele: "Dick [Richard Feynman], explique-me, para que eu possa entender, por que as partículas de spin meio obedecem às estatísticas de Fermi-Dirac." Avaliando perfeitamente seu público, Feynman disse: “Vou preparar uma palestra para calouros sobre isso”.
 > Mas ele voltou alguns dias depois para dizer: "Não consegui. Não consegui reduzir ao nível de calouro. Isso significa que não entendemos realmente".
 
-## 5. Referências
+## Referências
 
 - [https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
 - OAKLEY, Barbara; MCCONVILLE, Alistair; SEJNOWSKI Terry. Learning How to Learn
