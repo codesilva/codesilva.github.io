@@ -15,7 +15,7 @@ episódio que achei legal foi o que Joel _sifona_ gasolina do tanque de um carro
 Sifonar água (ou gasolina com o Joel) é aquele processo que geralmente fazemos com uma mangueira em que colocamos a ponta da mangueira em um
 recipiente com o líquido, fazemos a sução na outra ponta e isso traz a água, assim enchemos este segundo recipiente.
 
-https://www.wikihow.com/images_en/thumb/6/63/Siphon-Water-Step-2-Version-2.jpg/v4-460px-Siphon-Water-Step-2-Version-2.jpg.webp
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/4eaa5d28-2bdb-4d6f-b5b4-b35e99dd93f4)
 
 ## É assim que você aprende
 
@@ -100,6 +100,9 @@ força o suficiente para que a bola atinja o pico, do contrário ela volta. Ent�
 onde estava antes do lançamento.
 
 Mas uma vez que atingiu o pico, ela não volta mais, pois será puxada para dentro do vulcão.
+
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/e4174b49-1e33-46a7-a3bb-bc6e7ce2de67)
+
 
 Sifonar água é fazer força o suficiente na sucção para que a água escoe pela mangueira. O trabalho é fazer ela chegar
 num ponto ela não volte mais - tal qual a bola cai no buraco ao chegar no topo.
