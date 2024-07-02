@@ -200,10 +200,14 @@ Aqui você tem que encontrar esses axiomas e isso é feito pensando no caso triv
 ## A prova
 
 ```
-log(2^n) > log(n^2)
-n*log(2) > 2*log(n)
+log2(2^(k + 1)) > log2((k+1)^2)
+(k + 1)*log2(2) > 2*log2(k+1)
 
-n > 2 * log(n)
+k + 1 > 2 * log2(k + 1)
+
+k > 2 * log2(k + 1) - 1
+
+k - 2 * log2(k + 1) + 1 > 0
 ```
 
 Aqui já ficou meio simples de ver que a funcao f(n) = n cresce de forma linear, já g(n) = 2*log2(n) é logarítimica,

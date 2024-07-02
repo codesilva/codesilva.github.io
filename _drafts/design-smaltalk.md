@@ -6,4 +6,4 @@ Componentes principais
 
 Compilador é stack-based. Pega o código fonte e converte em byte code, que são sequências de números de oito bits.
 
-Há um dicionario associando nomes com métodos compilados. 
+Há um dicionario associando nomes com métodos compilados.
