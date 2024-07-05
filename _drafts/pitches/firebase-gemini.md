@@ -23,3 +23,8 @@ https://github.com/firebase/quickstart-js/blob/master/vertexai/main.ts
 - [Ref](https://firebase.google.com/docs/reference/js/vertexai-preview?authuser=1)
 - [IAs e Redes Neurais](https://www.youtube.com/watch?v=UDrDg6uUOVs)
 - [Firebase Get started with Vertex API](https://firebase.google.com/docs/vertex-ai/get-started)
+
+-----
+
+![image](https://github.com/codesilva/codesilva.github.io/assets/15680379/0c8ff407-3712-40db-befc-58dcfe991b03)
+
