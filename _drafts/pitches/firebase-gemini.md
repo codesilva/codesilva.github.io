@@ -26,7 +26,7 @@ Minha sensação é que todo mundo fala de IA o tempo todo. Então ano passado d
 algumas coisas e experimentei o Gemini com Firebase e to aqui pra compartilhar insights acerca desses experimentos.
 
 A minha perspectiva é diferente. Não sou um profissional de dados, sou um profissional de desenvolvimento e um curioso.
-O máximo de projeto que tenho pra compartilhar é o que temos na GD.
+O máximo de projeto que tenho pra compartilhar é o que temos na GD - e farei uma versão simplificada dele.
 
 ## Firebase, uma tarde de quinta-feira
 
@@ -38,11 +38,62 @@ O máximo de projeto que tenho pra compartilhar é o que temos na GD.
 
 ## Meu blog
 
-Não dá para encontrar post por categoria. Não dá para sugerir posts :(
+Não dá para encontrar posts. Eu queria por algo como uma busca. Mas sei lá, parece simples demais. É 2024, só fazer uma
+busca é simples demais. Eu quero algo hi-tech, eu quero IA.
+
+Eu quero um chat em que o visitante do meu blog possa buscar posts. E quando não encontrar posts em uma categoria
+desejada, o visitante pode sugerir um novo post.
 
 ### Estendendo Vertex AI com chamada de funcoes
 
-## Leitura adicional
+Gemini é uma IA generativa. Se eu simplesmente perguntar por posts de uma determinada categoria no meu blog ele não vai
+trazer resultados. Ele não sabe o que é meu blog - pouca gente sabe inclusive :(
+
+[imagem mostrando a pergunta sobre posts no gemini, antes de estender o comportamento]
+
+O que preciso é dar contexto para o modelo. Podemos treinar o modelo, talvez? Bom, talvez, mas eu ainda não sei como
+fazer isso e, sendo sincero, não acho que precise.
+
+E aqui entramos em uma parte muito legal do Gemini que é a estenção de comportamento. Que são as chamadas de função.
+
+Em suma, vamos descrever funções que nosso modelo vai ter para executar. Uma vez que a mensagem é recebida o modelo
+interpreta e define qual função deverá ser chamada, assim como extrai os parâmetros a partir da mensagem.
+
+Simples, mas poderoso. Com esse recurso, você pode integrar o modelo a um backend seu que já exista. Um plugin wordpress
+pode, por exemplo, sugerir resumos dos seus posts. Ou puxando pro lado mais de ecommerce ele pode te auxiliar na criação
+de um produto. Então ele seria mais esse assistente mesmo, integrado ao seu negócio, ao seu domínio.
+
+O meu domínio é o meu blog e o assistente vai ser utilizado pelos visitantes, no caso. Então o que quero é essa função
+de busca por categoria.
+
+Se nenhum post for encontrado, o que deve aparecer é um form para sugestão de um post.
+
+[Form solicitando uma sugestao com campos de email, titulo e descricao do post]
+
+### A implementação
+
+Como pode ver temos aqui a funcao, que retorna dados estáticos. Mas entenda, isso aqui poderia ser tranquilamente um
+backend seu. O wordpress, por exemplo, já te dá uma interface dessas de busca. Então aqui poderíamos ter uma chamada
+à API do Wordpress buscando posts.
+
+Uma vez que coletamos os dados, devolvemos ele para o modelo. Que produz uma resposta.
+
+Veja que antes eu checo sem foi identificada uma funcao para chamar. Caso não tenha sido, eu mostro o form.
+
+NOTA: A implementação do componente é irrelevante para nosso propósito aqui, é só um ReactJS simples. Mas você pode
+conferir a implementação em [https://geeksilva](https://geeksilva)
+
+## Conclusao
+
+Vejam como foi simples ajustar o modelo para aderir ao nosso domínio e contexto. É essa simplicidade que quis trazer
+aqui, como é fácil fazer as coisas funcionarem.
+
+E acredito que esse é um approach que faz sentido para pessoas não academicas, o approach top-down. Isso aqui
+é a superfície da superfície. O que vou fazer, e minha dica para você, é continuar descendo nesse iceberg. Entendendo
+melhor os conceitos que tornam o Gemini possível como redes neurais e conceitos de algebra linear.
+
+Sobre esse último, tem um livro que estou lendo, que é grátis, e que gostaria de recomendar: Mathematics for MAchine
+Learning.
 
 ## Jargões
 
