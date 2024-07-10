@@ -30,11 +30,26 @@ O máximo de projeto que tenho pra compartilhar é o que temos na GD - e farei u
 
 ## Firebase, uma tarde de quinta-feira
 
-### Vertex AI
+A abordagem que tomei para aprender foi top-down. É bem assim que aprendemos as coisas, não? Começamos na superfície
+e vamos descendo.
 
-> Vertex AI is a machine learning (ML) platform that lets you train and deploy ML models and AI applications, and customize large language models (LLMs) for use in your AI-powered applications. Vertex AI combines data engineering, data science, and ML engineering workflows, enabling your teams to collaborate using a common toolset and scale your applications using the benefits of Google Cloud.
+Então eu pensei: como podemos fazer IA no firebase? Daí comecei a esbarrar com dois conceitos que falaremos aqui
 
-### Gemini (o modelo)
+- Vertex AI
+    Vertex AI is a machine learning (ML) platform that lets you train and deploy ML models and AI applications, and customize large language models (LLMs) for use in your AI-powered applications. Vertex AI combines data engineering, data science, and ML engineering workflows, enabling your teams to collaborate using a common toolset and scale your applications using the benefits of Google Cloud.
+- Gemini (o modelo)
+    É essa caixa em que damos informacoes e ele nos dá a resposta em cima de dados não vistos.
+
+        "A model is typically used to describe a process for generating data, similar to the dataset at hand. Therefore, good models can also be thought
+        of as simplified versions of the real (unknown) data-generating process,
+        capturing aspects that are relevant for modeling the data and extracting
+        hidden patterns from it. A good model can then be used to predict what
+        would happen in the real world without performing real-world experiments."
+
+Daí seguindo na documentação peguei uns exemplos e fui brincando com eles.
+
+Sendo sincero, a documentação, mesmo em inglês, não é muito acurada. Em alguns casos tive de examinar a definição de
+tipos para fazer as coisas direito. Mas isso é até esperado uma vez que isso aqui ainda está em Beta.
 
 ## Meu blog
 
