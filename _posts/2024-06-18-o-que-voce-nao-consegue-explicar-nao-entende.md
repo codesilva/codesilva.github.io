@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'O que você não consegue simplificar, você não entende'
+title: 'O que você não consegue simplificar você não entende'
 date: 2024-06-18
 lang: pt-BR
 category: ["aprendizado"]

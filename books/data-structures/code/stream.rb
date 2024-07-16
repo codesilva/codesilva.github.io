@@ -11,7 +11,6 @@ class Stream
 
   def each(&block)
     enumerator = Enumerator.new do |yielder|
-      pp block
       @block.call(yielder)
     end
 
@@ -36,18 +35,23 @@ class Stream
 
   def take(n)
     results = []
-    each do |elem|
+    each do |elem| # this elem is determined by the @block.call(yielder) in each method, line 14
       pp elem
       results << elem
       break if results.size >= n
     end
+
     results
   end
 end
 
 s = Stream.from_array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-# s.map { |x| x * 2 }.filter { |x| x > 5 }.take(3)
-result = s.filter{|n| n % 2 == 1}.map{|x| x * 2}.take(2)
-pp result
+result = s.filter do |number|
+  puts 'filter was called'
+  number.even?
+end.map do |n|
+  puts 'map was called'
+  n * 2
+end.take(2)
 
-pp s
+pp result
