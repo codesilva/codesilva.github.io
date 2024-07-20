@@ -211,3 +211,28 @@ O bom de começar pelo método each é que ele é building block para os outros.
 usar o each para percorrer os itens e ir guardando em um array.
 
 ### Iterador externo: O inimigo agora é outro
+
+Estava pensando em como poderia fazer isso. Essa nota, na documentação, me salvou.
+
+> Note that enumeration sequence by next does not affect other non-external enumeration methods, unless the underlying iteration methods itself has side-effect,
+
+O iterator externo não surte efeito no iterator interno o que me dá a ideia de um yielder separado pra isso. 
+
+Confesso que não sei como detectar o fim ainda. Vou experimentar pra ver o que rola.
+
+Tá difícil. nem copilot tá ajudando muito. Mas pensei em fazer um lazy evaluation. Assim, quando o método next for
+chamado vou executando a proc e pegando o retultado.
+
+Foi complicado. Minha implementação até funcionou para sequências finitas com closures. Mas para sequências infinitas
+ficava travado.
+
+Depois de quebrar muito a cabeça procurei pensar como fazer a troca de contexto. Em ruby isso funciona com Fibers.
+Fiber.yield parece o yield do javascript.
+
+https://stackoverflow.com/questions/9052621/why-do-we-need-fibers#:~:text=Probably%20the%20%231%20use%20of,it%20will%20return%20an%20Enumerator%20.
+https://github.com/ruby/ruby/blob/master/enumerator.c#L785
+https://github.com/ruby/ruby/blob/master/enumerator.c#L863
+
+Aparentemente a cada next é chamado um Fiber.yield. Isso faz sentido. O Enumerator é um objeto que guarda um bloco
+e a cada next ele chama o bloco.
+
