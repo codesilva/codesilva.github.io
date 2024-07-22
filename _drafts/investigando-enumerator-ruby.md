@@ -236,3 +236,4 @@ https://github.com/ruby/ruby/blob/master/enumerator.c#L863
 Aparentemente a cada next é chamado um Fiber.yield. Isso faz sentido. O Enumerator é um objeto que guarda um bloco
 e a cada next ele chama o bloco.
 
+https://gist.github.com/geeksilva97/95266a1382cf68aaf5407138aceff154
