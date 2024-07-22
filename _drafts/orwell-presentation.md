@@ -38,8 +38,12 @@ E foi aí que passei a conhecer os Watchers.
 
 ## Watcher trazem flexibilidade (trade-off: complexidade)
 
+[Explicar o que é um Watcher]
+
 ### Painless alerts
 
-## O problema: como gerenciar os watchers?
+Painless alerts é uma estrutura completa que gerencia alertas.
 
 ### A solução: orwell
+
+Orwell é o passo adiante. É o desacoplamento da lógica de gerenciamento de alertas no elastic.
