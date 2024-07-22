@@ -6,6 +6,160 @@ lang: pt-BR
 category: ["ruby", "enumerator", "design patterns", "from scratch"]
 ---
 
+Esse post começou como um experimento, um exame de como a classe `Enumerator` funciona no Ruby. Fiz isso por conta que
+vou precisar desse conhecimento interno para uma série de materiais que estou preparando.
+
+Trabalhar com coleções são coisas que fazemos bastante em nosso trabalho diário. Entender estruturas de dados é crucial
+para um código mais eficiente e até mais limpo.
+
+Se voce é de ruby, são grandes as chances de já ter usado um Enumerator. Eles são usados para representar coleções de
+itens que podem ser percorridos. Eles são usados para representar sequências de elementos que ainda não foram
+calculados e são úteis para representar sequências infinitas.
+
+Se você já percorreu um array usando `each` ou mesmo até já usou `map`, você já usou um Enumerator.
+
+```ruby
+squared_numbers = [1, 2, 3, 4].map { |n| n * n }
+```
+
+## O que é um Enumerator segundo a documentação?
+
+É isso que documentação fala sobre Enumerator
+
+> A class which allows both internal and external iteration.
+
+Não é nada esclarecedor para ser sincero. Porém, menciona o fato de lidar com iteração. Isso me remete a iteradores, ao
+Iterator Pattern.
+
+Isso me lembra Java. Porque em Java, quando se usa JDBC cru, você tem um ResultSet que é um iterator. Você chama
+o método `next` e ele te retorna o próximo item. Ao fazer uma consulta o que vinha era um ResultSet e colocando num while
+loop era possível caminhar pelos registros.
+
+```java
+ResultSet rs = stmt.executeQuery("SELECT * FROM table");
+
+while (rs.next()) {
+  System.out.println(rs.getString("column"));
+}
+```
+
+Esse exemplo do Resultset é o que no Enumerator chamamos de iterador externo. Uma vez que você tem um `enumerator` pode
+caminhar por seus itens usando o método next. Se a sequência chegar no fim, qualquer chamada subsequente causará um erro
+de `StopIteratio`
+ 
+```rb
+my_enum = [1, 2, 3].each
+
+puts my_enum.next # 1
+puts my_enum.next # 2
+puts my_enum.next # 3
+puts e.next   # raises StopIteration
+```
+
+Ter um iterador externo te dá a capacidade de fazer sua própria iteração e buscar o próximo item só quando for
+necessário. Podemos até (tentar) replicar o aquele exemplod e java em ruby, com o seguinte código:
+
+```rb
+arr = [1, 2, 3].to_enum
+
+begin
+    while r = a.next
+        puts r
+    end
+rescue StopIteration
+    :done
+end
+```
+
+Duas coisas sobre esse último snippet:
+
+1. precisei do `rescue` porque diferente do funcionamento do ResultSet, Enumerator lança uma exceção quando os itens
+   acabaram;
+2. usamos um array. Assim é fácil ver que um array é tipo, que pode ser convertido em um Enumerator.
+
+Todo os objetos no Ruby podem ser convertidos em um Enumerator, afinal tudo pode ser convertido em uma sequência. Até
+o último exemplo de código que pode ser quebrado em uma sequência de tokens, por exemplo.
+
+## Enumerators são coleções?
+
+Um pensamento que você pode ter a princípio é que Enumerators são coleções. No sentido de, de alguma forma, um
+enumerator ser um objeto que tem uma coleção que nós podemos percorrer.
+
+Vamos voltar ao caso do ResultSet um pouco. O que acontece ali é: a query é feita no banco, os dados são obtidos
+e colocados em uma lista de items. Uma interface de iterador é exposta e podemos navegar pelos itens.
+
+Abaixo uma implementação para ficar mais claro o ponto:
+
+```rb
+class ResultSet
+    def initialize(items = [])
+        @items = items
+        @done = false
+        @index = -1
+    end
+
+    def next
+        @index += 1
+        @items[@index]
+    end
+end
+
+# executando
+rs = ResultSet.new([1, 2, 3])
+rs.next # => 1
+rs.next # => 2
+rs.next # => 3
+rs.next # => nil
+```
+
+Eu sei que a interface ficou bem semelhante - embora eu tenha optado por não lançar exceção quando a coleção termina.
+
+O Enumerator, no entanto, faz mais que isso. Por isso gostaria de estabelecer aqui o Enumerator como um Gerador, mais
+precisamente um Gerador de Sequências. Por
+algum motivo essa denotação de _iterar_ me dá a ideia de algo finito. Mas um Enumerator pode gerar sequências finitas.
+
+## Gerando sequências
+
+Até aqui fizemos exemplos só com Arrays. Isso é proposital, pois arrays são mais simples de se entender nesse contexto.
+Afinal, arrays são literalmente coleções de itens sobre as quais podemos iterar.
+
+Quero que pense em enumerators como um gerador de sequencias para coisas como: sequencia dos números naturais. Isso
+é bem fácil de fazer. Podemos usar o tipo Range para isso
+
+```rb
+natural_seq = (1..Float::INFINITY).to_enum
+
+puts natural_seq.next # => 1
+puts natural_seq.next # => 2
+puts natural_seq.next # => 3
+```
+
+Temos uma sequência infinita! E meu computador nem travou.
+
+Você deve estar pensando: mas pra Range é muito simples. Não há uma coleção infinita salva pois não precisa. Para
+representar um range só preciso salvar as delimitações.
+
+Isso não poderia estar mais certo. É por isso que mencionei que temos uma **sequência** infinita. Quero te dar essa
+ideia de geração de sequência.
+
+Essa foi bem simples. Vamos complicar mais um pouco gerando uma sequência infinita menos previsível, uma que eu não possa
+simplesmente usar um Range.
+
+### Uma sequência de Fibonacci
+
+https://docs.oracle.com/javase/8/docs/api/java/sql/ResultSet.html
+https://www.baeldung.com/jdbc-resultset#:~:text=Typically%2C%20when%20loading%20data%20into,records%20into%20memory%20at%20once.
+
+<!--
+1. Understanding Enumerators: not collections but sequences
+1. Understanding Enumerators: actually sequence generators
+
+2. Writing the Enumerator from scratch.
+
+3. Be lazy with enumerators + implementing lazy from scratch
+-->
+
+<!--
 Isso aqui é um experimento. Meu objetivo é criar um Enumerator do zero que performe as principais operações do
 Enumerator da linguagem Ruby.
 
@@ -237,3 +391,4 @@ Aparentemente a cada next é chamado um Fiber.yield. Isso faz sentido. O Enumera
 e a cada next ele chama o bloco.
 
 https://gist.github.com/geeksilva97/95266a1382cf68aaf5407138aceff154
+-->
