@@ -202,6 +202,9 @@ yielder << a if a.odd?
 
 ## Casos de Uso
 
+- um exemplo que meio veio a mente agora é parsing de logs. No kubernetes temos logs do tipo: `timestamp stdout
+    F [mensagem]`. Pode ser também um `stdout P`, que indica parcial. Em nosso enumerator poderíamos ter um bloco que da
+    yield em stout F, e quando for P, acumula as mensagens até completar
 - Digamos que você quer ter um parser de um arquivo de banco de dados por exemplo, ou um arquivo em MP3 em que quer
     enumerar sobre certos blocos. Digamos: yield do cabeçalho, yield do corpo, yield do rodapé.
 
