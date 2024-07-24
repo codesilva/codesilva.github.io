@@ -147,6 +147,99 @@ simplesmente usar um Range.
 
 ### Uma sequência de Fibonacci
 
+Você sabe, a sequência de fibonacci é dada pela soma de números naturais. O terceiro número em diante são deinidos como
+a soma dos dois anteriores. A sequência fica: 0 1 1 2 3 5 8...
+
+Isso não é uma séria que pode ser definida com um simples Range, que por sua vez é transformado num Enumerator. Para
+representá-la podemos usar a classe Enumerator direto
+
+```rb
+fib = Enumerator.new do |yielder|
+    a = 0
+    b = 1
+
+    loop do
+        yielder << a
+
+        a, b = b, a + b
+    end
+end
+```
+
+Temos nossa sequência em que cada step é definido por essa soma e transformamos isso num enumerator. sim, é isso que
+acontece com o objeto quando você chama um `to_enum`.
+
+Um range seria algo como
+
+```rb
+range_enum = Enumerator.new do |yielder|
+    step = 1
+    range_end = Float::INFINITY
+    current = 1 # current is where it starts
+
+    loop do
+        yielder << current
+
+        current += step
+
+        break if current > range_end
+    end
+end
+
+# isso é equivalente a 
+# range_enum = (1..Float::INFINITY).to_enum
+```
+
+Como vimos, essa forma de definir enumerators, passando um bloco, é bem mais flexível uma vez que podemos definir como
+os elementos serão gerados.
+
+Digamos, por exemplo, que queremos gerar números de fibonacci desde que sejam ímpares, bastaria modificar a parte que
+faz yield do item.
+
+```rb
+yielder << a if a.odd?
+```
+
+## Casos de Uso
+
+- Digamos que você quer ter um parser de um arquivo de banco de dados por exemplo, ou um arquivo em MP3 em que quer
+    enumerar sobre certos blocos. Digamos: yield do cabeçalho, yield do corpo, yield do rodapé.
+
+## Iteradores internos e o módulo Enumerable
+
+Tudo o que você precisa é um `each`. Seja qual for o objeto, se quiser que ele seja um Enumerator, basta implementar um
+each.
+
+Até o proprio Enumerator sem seu each, que executa blocos baseado no yield.
+
+```rb
+class Document
+    include Enumerable
+
+    def initialize(content)
+        @content = content
+    end
+
+    def words
+        @content.split
+    end
+
+    def each
+        words.each { |word| yield word }
+    end
+end
+
+doc = Document.new("Hello, world!")
+doc.each { |word| puts word }
+```
+
+Com essa simples implementacao temos todos os métodos do módulo Enumerable disponíveis para nós. Isso é muito poderoso
+e é o que faz o Ruby ser tão expressivo.
+
+a implementacao aciam é simples e funciona. no entanto, algo mais e
+ 
+https://github.com/ruby/ruby/blob/master/array.c#L2560-L2569 - Array tem seu próprio each
+https://github.com/ruby/ruby/blob/master/hash.c#L7156C40-L7156C57 - Hash também tem seu each definido
 https://docs.oracle.com/javase/8/docs/api/java/sql/ResultSet.html
 https://www.baeldung.com/jdbc-resultset#:~:text=Typically%2C%20when%20loading%20data%20into,records%20into%20memory%20at%20once.
 
