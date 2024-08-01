@@ -16,7 +16,7 @@ de insight, mas não uma estrutura completa presente em um post convencional.
 O que mais tenho utilizado como debugger é o Chrome Web Tools. É uma ferramenta ligeiramente mais complexa do que
 o [debugger do nodejs](https://nodejs.org/api/debugger.html), aquele que você consegue executar no terminal.
 
-Sobretudo em projetos nos quais que me sinto perdido, ter um call stack me ajuda muito quando preciso me situar. Debugar
+Sobretudo em projetos nos quais me sinto perdido, ter um call stack me ajuda muito quando preciso me situar. Debugar
 aplicações NodeJS com o Chrome Web Tools é bem simples.
 
 Basta executar sua aplicação/script com `--inspect`. Exemplo:
@@ -25,7 +25,7 @@ Basta executar sua aplicação/script com `--inspect`. Exemplo:
 node --inspect app.js
 ```
 
-Geralmente trabalho em aplicações web, e uso `--inspect` no comando pra startar o servidor web. Isso vai iniciar o debugger
+Geralmente trabalho em aplicações web e uso `--inspect` no comando pra startar o servidor. Isso vai iniciar o debugger
 que você pode acessar no seu browser Chromium-based. Basta acessar `chrome:inspect`.
 
 <img width="950" alt="image" src="https://github.com/codesilva/codesilva.github.io/assets/15680379/a36e971e-dd4b-4f92-8aa0-581489ed3d63">
@@ -33,13 +33,13 @@ que você pode acessar no seu browser Chromium-based. Basta acessar `chrome:insp
 Clicando em `inspect` a ferramenta de [web dev tools](https://developer.chrome.com/docs/devtools) vai abrir pronta
 para debug da sua aplicação.
 
-## Debug das requisições Web
+## Debug das requisições HTTP
 
 Uma outra coisa legal, e que precisei recentemente, é o debug de requisições feitas pelo NodeJS em si. Eu
 estava trabalhando em uma aplicação que envolvia uns wrappers de chamadas a APIs, onde eu definia somente as
 configurações de chamada.
 
-Alguns erros na requisição acontecerem e eu queria entender isso melhor. Até que esbarrei com esse jeito aqui de
+Alguns erros na requisição aconteceram e eu queria entender o que estava havendo. Até que esbarrei com esse jeito aqui de
 debuggar requisições no NodeJS.
 
 De modo geral a variável de ambiente [`NODE_DEBUG`](https://nodejs.org/docs/v20.12.1/api/cli.html#node_debugmodule) permite definir uma lista de módulos que queremos debugar. Para o meu
@@ -59,3 +59,6 @@ NODE_DEBUG=http,http2 npm start
 O resultado vai ser algo mais ou menos como o que é mostrado abaixo
 
 <img width="1394" alt="image" src="https://github.com/codesilva/codesilva.github.io/assets/15680379/c4ff4a02-3be7-4cae-8936-9686c34372c7">
+
+Assim você pode examinar a requeste, seu payload, o retorno etc. Mesmo que o seu código não seja o originador da
+requisição.
