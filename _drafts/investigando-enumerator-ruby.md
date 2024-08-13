@@ -27,14 +27,13 @@ funciona e expandir as possibilidades para quem sabe, resolver aqueles 20% dos p
 
 É isso que documentação fala sobre Enumerator
 
-> A class which allows both internal and external iteration.
+> Uma classe que permite iteração interna e externa.
 
-Não é nada esclarecedor para ser sincero. Porém, menciona o fato de lidar com iteração. Isso me remete a iteradores, ao
-Iterator Pattern.
+Não é muito detalhista. Porém, menciona o fato de lidar com iteração. O que nos remete ao Iterator Pattern.
 
-Isso me lembra Java. Porque em Java, quando se usa JDBC cru, você tem um ResultSet que é um iterator. Você chama
-o método `next` e ele te retorna o próximo item. Ao fazer uma consulta o que vinha era um ResultSet e colocando num while
-loop era possível caminhar pelos registros.
+Em minha memória vem Java e JDBC. Porque em Java, quando se usa JDBC, você tem um `ResultSet` que é um iterator.
+Chamando o método `next()`, o próximo item é retornado. Ao fazer uma consulta com `executeQuery` o que vinha era um ResultSet e colocando num while
+loop era possível percoreer os registros.
 
 ```java
 ResultSet rs = stmt.executeQuery("SELECT * FROM table");
@@ -44,12 +43,12 @@ while (rs.next()) {
 }
 ```
 
-Esse exemplo do Resultset é o que no Enumerator chamamos de iterador externo. Uma vez que você tem um `enumerator` pode
-caminhar por seus itens usando o método next. Se a sequência chegar no fim, qualquer chamada subsequente causará um erro
-de `StopIteratio`
- 
+Esse exemplo do Resultset é o que no Enumerator chamamos de *iterador externo*. Uma vez que você tem um `enumerator` pode
+caminhar por seus itens usando o método `next`. Se a sequência chegar no fim, qualquer chamada subsequente causará um erro
+de `StopIteration`.
+
 ```rb
-my_enum = [1, 2, 3].each
+my_enum = [1, 2, 3].each # retorna um enum
 
 puts my_enum.next # 1
 puts my_enum.next # 2
@@ -58,7 +57,8 @@ puts e.next   # raises StopIteration
 ```
 
 Ter um iterador externo te dá a capacidade de fazer sua própria iteração e buscar o próximo item só quando for
-necessário. Podemos até (tentar) replicar o aquele exemplod e java em ruby, com o seguinte código:
+necessário. Podemos até (tentar) replicar o loop em um iterador (código Java mostrado anteriormente) em Ruby, fazendo
+algo como mostrado abaixo.
 
 ```rb
 arr = [1, 2, 3].to_enum
@@ -79,7 +79,7 @@ Duas coisas sobre esse último snippet:
 2. é fácil ver um como um array descreve bem um Enumerator, algo que pode ser iterado.
 
 Todo os objetos no Ruby podem ser convertidos em um Enumerator, afinal tudo pode ser convertido em uma sequência. Até
-o último exemplo de código que pode ser quebrado em uma sequência de tokens, por exemplo.
+o próprio código que escrevemos é uma sequência - de tokens, no caso.
 
 ## Enumerators são coleções?
 
@@ -89,7 +89,7 @@ enumerator ser um objeto que tem uma coleção que nós podemos percorrer.
 Vamos voltar ao caso do ResultSet um pouco. O que acontece ali é: a query é feita no banco, os dados são obtidos
 e colocados em uma lista de items. Uma interface de iterador é exposta e podemos navegar pelos itens.
 
-Abaixo uma implementação para ficar mais claro o ponto:
+Abaixo uma implementação simples para clarificar.
 
 ```rb
 class ResultSet
@@ -113,11 +113,14 @@ rs.next # => 3
 rs.next # => nil
 ```
 
-Eu sei que a interface ficou bem semelhante - embora eu tenha optado por não lançar exceção quando a coleção termina.
+NOTA: Perceba que a interface ficou diferente do que é um Enumerator, uma vez que ao terminar os itens, o método `next`
+retorna `nil` ao invés de lançar uma exceção. Isso é proposital.
 
-O Enumerator, no entanto, faz mais que isso. Por isso gostaria de estabelecer aqui o Enumerator como um Gerador, mais
-precisamente um Gerador de Sequências. Por algum motivo essa denotação de _iterar_ me dá a ideia de algo finito.
-Mas um Enumerator pode gerar sequências infinitas.
+É uma implementação simples do Iterator Pattern. Onde há uma coleção de itens e um iterador que permite navegar por
+eles.
+
+O Enumerator, no entanto, faz mais que isso. Por isso gostaria de estabelecer aqui o Enumerator como um Gerador de
+Sequências. Por algum motivo essa denotação de _iterar/iterador_ me dá a ideia de algo finito. Mas um Enumerator pode gerar sequências infinitas.
 
 ## Gerando sequências
 
@@ -222,9 +225,9 @@ específico. Eles são prefixados com um timestamp e um indicador de qual stream
 
 ```
 2023-10-06T00:17:09.669794202Z stdout F Your log message here
-2023-10-06T00:17:09.669794202Z stdout P Another log pt 1
-2023-10-06T00:17:09.669794202Z stdout P Another log pt 2
-2023-10-06T00:17:10.113242941Z stderr F Another log final
+2023-10-06T00:17:09.669794202Z stdout P I see trees of green.
+2023-10-06T00:17:09.669794202Z stdout P Red roses too.
+2023-10-06T00:17:09.669794202Z stdout P I see them bloom. For me and you.
 ```
 
 Como poderíamos ter um parser de logs assim de modo que ele nos desse um Enumerator que nos permitisse iterar sobre os
@@ -236,9 +239,9 @@ de forma agregada.
 ```rb
 logs = [
     '2023-10-06T00:17:09.669794202Z stdout F Your log message here',
-    '2023-10-06T00:17:09.669794202Z stdout P I see trees of green, red roses too ',
-    '2023-10-06T00:17:09.669794202Z stdout P I see them bloom for me and you ',
-    '2023-10-06T00:17:10.113242941Z stdout F and I think to myself, what a wonderful world'
+    '2023-10-06T00:17:09.669794202Z stdout P I see trees of green. ',
+    '2023-10-06T00:17:09.669794202Z stdout P Red roses too. ',
+    '2023-10-06T00:17:10.113242941Z stdout F I see them bloom. For me and you.'
 ]
 
 class CRIParserEnumerator
@@ -278,7 +281,7 @@ Your log message here
 
 ======= Log 2 =======
 
-I see trees of green, red roses too I see them bloom for me and you and I think to myself, what a wonderful world
+I see trees of green. Red roses too. I see them bloom. For me and you.
 ```
 
 Interessante, não? No geral, esses são casos em que você pode querer ter um Enumerator customizado. Coisas mais
