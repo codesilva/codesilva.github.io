@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Investigando o enumerator em Ruby
+title: Entendendo Enumerator em Ruby
 date: 2023-06-23
 lang: pt-BR
 category: ["ruby", "enumerator", "design patterns", "from scratch"]
@@ -18,9 +18,10 @@ calculados e são úteis para representar sequências infinitas.
 
 Se você já percorreu um array usando `each` ou mesmo até já usou `map`, você já usou um Enumerator.
 
-```ruby
-squared_numbers = [1, 2, 3, 4].map { |n| n * n }
-```
+Já existem muitos posts por aí tratando de casos triviais de uso, explicando como os métodos mais comuns como `select`, `map`, `each` etc funcionam.
+
+Nesse post, levo a coisa para um outro espectro do princípio de Pareto. A ideia é realmente entender como um Enumerator
+funciona e expandir as possibilidades para quem sabe, resolver aqueles 20% dos problemas - menos triviais - que dão 80% da dor de cabeça.
 
 ## O que é um Enumerator segundo a documentação?
 
@@ -73,9 +74,9 @@ end
 
 Duas coisas sobre esse último snippet:
 
-1. precisei do `rescue` porque diferente do funcionamento do ResultSet, Enumerator lança uma exceção quando os itens
-   acabaram;
-2. usamos um array. Assim é fácil ver que um array é tipo, que pode ser convertido em um Enumerator.
+1. precisei do `rescue` porque diferentemente do funcionamento do ResultSet, Enumerator lança uma exceção quando os itens
+   acabam;
+2. é fácil ver um como um array descreve bem um Enumerator, algo que pode ser iterado.
 
 Todo os objetos no Ruby podem ser convertidos em um Enumerator, afinal tudo pode ser convertido em uma sequência. Até
 o último exemplo de código que pode ser quebrado em uma sequência de tokens, por exemplo.
@@ -115,8 +116,8 @@ rs.next # => nil
 Eu sei que a interface ficou bem semelhante - embora eu tenha optado por não lançar exceção quando a coleção termina.
 
 O Enumerator, no entanto, faz mais que isso. Por isso gostaria de estabelecer aqui o Enumerator como um Gerador, mais
-precisamente um Gerador de Sequências. Por
-algum motivo essa denotação de _iterar_ me dá a ideia de algo finito. Mas um Enumerator pode gerar sequências finitas.
+precisamente um Gerador de Sequências. Por algum motivo essa denotação de _iterar_ me dá a ideia de algo finito.
+Mas um Enumerator pode gerar sequências infinitas.
 
 ## Gerando sequências
 
@@ -150,8 +151,7 @@ simplesmente usar um Range.
 Você sabe, a sequência de fibonacci é dada pela soma de números naturais. O terceiro número em diante são deinidos como
 a soma dos dois anteriores. A sequência fica: 0 1 1 2 3 5 8...
 
-Isso não é uma séria que pode ser definida com um simples Range, que por sua vez é transformado num Enumerator. Para
-representá-la podemos usar a classe Enumerator direto
+Isso não é uma sequência que pode ser definida com um simples Range. Para representá-la podemos usar a classe Enumerator direto
 
 ```rb
 fib = Enumerator.new do |yielder|
@@ -166,7 +166,7 @@ fib = Enumerator.new do |yielder|
 end
 ```
 
-Temos nossa sequência em que cada step é definido por essa soma e transformamos isso num enumerator. sim, é isso que
+Temos nossa sequência em que cada step é definido por essa soma e transformamos isso num enumerator. Sim, é isso que
 acontece com o objeto quando você chama um `to_enum`.
 
 Um range seria algo como
@@ -197,8 +197,158 @@ Digamos, por exemplo, que queremos gerar números de fibonacci desde que sejam �
 faz yield do item.
 
 ```rb
-yielder << a if a.odd?
+odd_fib = Enumerator.new do |yielder|
+    a = 0
+    b = 1
+
+    loop do
+        yielder << a if a.odd?
+
+        a, b = b, a + b
+    end
+end
 ```
+
+## Casos de uso para custom Enumerators
+
+Ninguém fica fazendo sequência de Fibonacci, de fato. Mas pense num caso de parser de sequências no geral.
+
+Em Kubernetes, Container Runtime Interface (CRI) é um componente que faz o meio campo entre o kubelet e o container
+runtime. CRI é esse protocolo que define como o kubelet deve interagir com o container runtime.
+
+O que isso tem a ver com enumerators? Bom, nada. A não ser pelo fato de que logs do CRI seguem um formato em
+específico. Eles são prefixados com um timestamp e um indicador de qual stream de log é e um identificador se o log
+é `full` (F) ou `partial` (P). Por exemplo:
+
+```
+2023-10-06T00:17:09.669794202Z stdout F Your log message here
+2023-10-06T00:17:09.669794202Z stdout P Another log pt 1
+2023-10-06T00:17:09.669794202Z stdout P Another log pt 2
+2023-10-06T00:17:10.113242941Z stderr F Another log final
+```
+
+Como poderíamos ter um parser de logs assim de modo que ele nos desse um Enumerator que nos permitisse iterar sobre os
+logs agregados. Ou seja, logs parciais devem ser agrupados até que um log full seja encontrado.
+
+Abaixo a implementação de um simples parser de logs CRI que retorna um Enumerator que nos permite iterar sobre os logs
+de forma agregada.
+
+```rb
+logs = [
+    '2023-10-06T00:17:09.669794202Z stdout F Your log message here',
+    '2023-10-06T00:17:09.669794202Z stdout P I see trees of green, red roses too ',
+    '2023-10-06T00:17:09.669794202Z stdout P I see them bloom for me and you ',
+    '2023-10-06T00:17:10.113242941Z stdout F and I think to myself, what a wonderful world'
+]
+
+class CRIParserEnumerator
+    def initialize(logs)
+        @logs = logs
+    end
+
+    def to_enum
+        Enumerator.new do |yielder|
+            current_log = ''
+
+            @logs.each do |log|
+                parsed = log.split(/stdout (F|P) /).last
+                current_log += parsed
+
+                if log.match?(/stdout F/)
+                    yielder << current_log
+                    current_log = ''
+                end
+            end
+        end
+    end
+end
+
+parser_enum = CRIParserEnumerator.new(logs).to_enum
+parser_enum.each_with_index do |log, index|
+    puts "======= Log #{index + 1} =======\n\n#{log}\n"
+end
+```
+
+O output desse código seria algo como:
+
+```
+======= Log 1 =======
+
+Your log message here
+
+======= Log 2 =======
+
+I see trees of green, red roses too I see them bloom for me and you and I think to myself, what a wonderful world
+```
+
+Interessante, não? No geral, esses são casos em que você pode querer ter um Enumerator customizado. Coisas mais
+semelhantes a buffers. Parsers de arquivos, parsers de logs, parsers de protocolos, etc.
+
+### Iteradores internos
+
+Perceba que no uso do parser, diferentemente do que fizemos com os outros Enumeradores que criamos, não fazemos uso de
+um iterador externo - poderíamos, você pode chamar `parser_enum.next` e ele te retornará o próximo log agregado.
+
+No caso, o que usamos foi um iterador interno. Isso torna o código um pouco mais declarativo e mais fácil de ler.
+O fundamento de um iterador interno é o método `each`. Seja qual for o objeto, se quiser que ele seja um Enumerator,
+basta implementar um `each`.
+
+Mas em nosso parser, não implementamos um `each`. Muito menos um `each_with_index`. Acontece que o Enumerator - por meio
+do mixing `Enumerable` - já implementa esses métodos para nós.
+
+```rb
+class CRIParserEnumerator
+    include Enumerable
+
+    def initialize(logs)
+        @logs = logs
+    end
+
+    def each
+        current_log = ''
+
+        @logs.each do |log|
+            parsed = log.split(/stdout (F|P) /).last
+            current_log += parsed
+
+            if log.match?(/stdout F/)
+                yield current_log
+                current_log = ''
+            end
+        end
+    end
+end
+
+parser_enum = CRIParserEnumerator.new(logs)
+parser_enum.each_with_index do |log, index|
+    puts "======= Log #{index + 1} =======\n\n#{log}\n"
+end
+```
+
+Perceba:
+
+- Não precisamos mais chamar um Enumerator.new dentro da nossa classe
+- O `to_enum` não é mais necessário - embora ele exista devido ao método de objetos (Kernel::to_enum)
+
+Perceba também que, para esse parser, pudemos, de forma simples, definir o each. Estamos enumerando em um array, que é sequencial.
+
+Mas e se não houvesse lista prévia? Digamos que nosso programa precisa pegar esses logs através de polling. Não tem como
+definir um each simples assim pois não temos uma lista prévia. Definir um bloco no Enumerator é o que vai funcionar,
+é o que vai permitir adicionar essa lógica extra que permite essa espécie de `buffering`.
+
+## Conclusão
+
+Nesse post vimos um pouco sobre a classe Enumerator do Ruby. Focamos no uso um pouco mais específico da classe, já que
+o uso mais comum com o mixing de Enumerable e com sequências finitas baseadas em arrays é o mais trivial.
+
+## Referências
+
+- [https://docs.zeet.co/integrations/log-formats/#2-kubernetes-cri-format](https://docs.zeet.co/integrations/log-formats/#2-kubernetes-cri-format)
+
+<!--
+---------
+
+---------
 
 ## Casos de Uso
 
@@ -213,40 +363,18 @@ yielder << a if a.odd?
 Tudo o que você precisa é um `each`. Seja qual for o objeto, se quiser que ele seja um Enumerator, basta implementar um
 each.
 
-Até o proprio Enumerator sem seu each, que executa blocos baseado no yield.
-
-```rb
-class Document
-    include Enumerable
-
-    def initialize(content)
-        @content = content
-    end
-
-    def words
-        @content.split
-    end
-
-    def each
-        words.each { |word| yield word }
-    end
-end
-
-doc = Document.new("Hello, world!")
-doc.each { |word| puts word }
-```
+Até o proprio Enumerator tem seu each, que executa blocos baseado no yield.
 
 Com essa simples implementacao temos todos os métodos do módulo Enumerable disponíveis para nós. Isso é muito poderoso
 e é o que faz o Ruby ser tão expressivo.
 
 a implementacao aciam é simples e funciona. no entanto, algo mais e
- 
+
 https://github.com/ruby/ruby/blob/master/array.c#L2560-L2569 - Array tem seu próprio each
 https://github.com/ruby/ruby/blob/master/hash.c#L7156C40-L7156C57 - Hash também tem seu each definido
 https://docs.oracle.com/javase/8/docs/api/java/sql/ResultSet.html
 https://www.baeldung.com/jdbc-resultset#:~:text=Typically%2C%20when%20loading%20data%20into,records%20into%20memory%20at%20once.
 
-<!--
 1. Understanding Enumerators: not collections but sequences
 1. Understanding Enumerators: actually sequence generators
 

@@ -42,7 +42,8 @@ E foi aí que passei a conhecer os Watchers.
 
 ### Painless alerts
 
-Painless alerts é uma estrutura completa que gerencia alertas.
+Gerenciar alertas desse jeito de ficar subindo manualmente e essas coisas é chato demais. Assim nasceu o Painless
+Alerts; um projeto que tem toda uma estrutura para gerenciamento de alertas no Elastic.
 
 ### A solução: orwell
 
