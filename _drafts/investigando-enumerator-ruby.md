@@ -124,6 +124,9 @@ Sequências. Por algum motivo essa denotação de _iterar/iterador_ me dá a ide
 
 ## Gerando sequências
 
+**NOTA**: Mencionar aqui, que mesmo com poucos detalhes, o exemplo dado para uso de blocos na doc do ruby é justamente geração de
+sequências (potencialment) infinitas.
+
 Até aqui fizemos exemplos só com Arrays. Isso é proposital, pois arrays são mais simples de se entender nesse contexto.
 Afinal, arrays são literalmente coleções de itens sobre as quais podemos iterar.
 
@@ -408,7 +411,7 @@ class CRIParserEnumerator
     end
 end
 
-parser = CRIParserEnumerator.new()
+parser = CRIParserEnumerator.new
 parser.take(10).each_with_index do |log, index|
     puts "\n" if index > 0
     puts "======= Log #{index + 1} =======\n\n#{log}\n"
