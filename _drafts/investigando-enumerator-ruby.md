@@ -224,10 +224,10 @@ específico. Eles são prefixados com um timestamp e um indicador de qual stream
 é `full` (F) ou `partial` (P). Por exemplo:
 
 ```
-2023-10-06T00:17:09.669794202Z stdout F Your log message here
-2023-10-06T00:17:09.669794202Z stdout P I see trees of green.
-2023-10-06T00:17:09.669794202Z stdout P Red roses too.
-2023-10-06T00:17:09.669794202Z stdout P I see them bloom. For me and you.
+2023-10-06T00:17:09.669794202Z stdout F Uma mensagem de log aqui
+2023-10-06T00:17:09.669794202Z stdout P Me machucando provocou a minha ira
+2023-10-06T00:17:09.669794202Z stdout P Só que eu nasci entre o velame e a macambira
+2023-10-06T00:17:09.669794202Z stdout F Quem é você pra derramar meu mungunzá?
 ```
 
 Como poderíamos ter um parser de logs assim de modo que ele nos desse um Enumerator que nos permitisse iterar sobre os
@@ -239,9 +239,9 @@ de forma agregada.
 ```rb
 logs = [
     '2023-10-06T00:17:09.669794202Z stdout F Your log message here',
-    '2023-10-06T00:17:09.669794202Z stdout P I see trees of green. ',
-    '2023-10-06T00:17:09.669794202Z stdout P Red roses too. ',
-    '2023-10-06T00:17:10.113242941Z stdout F I see them bloom. For me and you.'
+    '2023-10-06T00:17:09.669794202Z stdout P Me machucando provocou a minha ira. ',
+    '2023-10-06T00:17:09.669794202Z stdout P Só que eu nasci entre o velame e a macambira. ',
+    '2023-10-06T00:17:09.669794202Z stdout F Quem é você pra derramar meu mungunzá?'
 ]
 
 class CRIParserEnumerator
@@ -253,7 +253,7 @@ class CRIParserEnumerator
         Enumerator.new do |yielder|
             current_log = ''
 
-            @logs.each do |log|
+            for log in @logs
                 parsed = log.split(/stdout (F|P) /).last
                 current_log += parsed
 
@@ -281,23 +281,22 @@ Your log message here
 
 ======= Log 2 =======
 
-I see trees of green. Red roses too. I see them bloom. For me and you.
+Me machucando provocou a minha ira. Só que eu nasci entre o velame e a macambira. Quem é você pra derramar meu mungunzá?
 ```
 
-Interessante, não? No geral, esses são casos em que você pode querer ter um Enumerator customizado. Coisas mais
-semelhantes a buffers. Parsers de arquivos, parsers de logs, parsers de protocolos, etc.
+Interessante, não? Como falei no início do post, um pre-requisito para entender esse post é ter um conhecimento sobre
+Enumerables e Enumerators.
+
+Assim, você já notou que a definição desse Enumerator com um bloco é overengineering. Isso pode ser feito de forma bem
+mais simples com o mixing `Enumerable` e um método `each`.
 
 ### Iteradores internos
 
-Perceba que no uso do parser, diferentemente do que fizemos com os outros Enumeradores que criamos, não fazemos uso de
-um iterador externo - poderíamos, você pode chamar `parser_enum.next` e ele te retornará o próximo log agregado.
+Já no exemplo antetior deixamos de usar o metodo next. Depois de chamar criar um Enumerator com `to_enum` iteramos sobre
+os logs usando o método `each_with_index`.
 
-No caso, o que usamos foi um iterador interno. Isso torna o código um pouco mais declarativo e mais fácil de ler.
-O fundamento de um iterador interno é o método `each`. Seja qual for o objeto, se quiser que ele seja um Enumerator,
-basta implementar um `each`.
-
-Mas em nosso parser, não implementamos um `each`. Muito menos um `each_with_index`. Acontece que o Enumerator - por meio
-do mixing `Enumerable` - já implementa esses métodos para nós.
+Com a implementação abaixo temos o uso de iteradores internos, que são feitos em cima do método `each`. Isso torna
+o código mais declarativo, simples de entender e é o que é mais comum de se ver em implementações em Ruby.
 
 ```rb
 class CRIParserEnumerator
@@ -339,10 +338,156 @@ Mas e se não houvesse lista prévia? Digamos que nosso programa precisa pegar e
 definir um each simples assim pois não temos uma lista prévia. Definir um bloco no Enumerator é o que vai funcionar,
 é o que vai permitir adicionar essa lógica extra que permite essa espécie de `buffering`.
 
+## Eu sou uma fraude?
+
+Fiz minha tese toda até aqui falando sobre Enumerator com bloco e no final tudo isso foi substituido por um simples
+`each`. 
+
+Esse é o momento da virada. De fato a implementação anterior pôde ser simplificada com um `each`. Mas isso é porque
+conta que fizemos, de novo, com um Array que pudemos iterar sobre.
+
+Alguns exemplos são mais complexos. E se para obter os logs tivéssemos de fazer fetch em um serviço externo? Como um
+cursor. Em cada fetch podemos ter os logs vindo parciais o completos. Inclusive uma chamada pode até não ter trazido
+nada.
+
+`LogBucket` é esse serviço que vai contar os logs. Esse serviço, em chamadas subsequentes pode trazer resultados como:
+
+```
+2024-08-14T02:38:46.282585000ZZ stdout P Só que eu nasci entre o velame e a macambira.
+2024-08-14T02:38:46.282681000ZZ stdout P Quem é você pra derramar meu mungunzá?
+```
+
+```
+2024-08-14T02:38:46.282698000ZZ stdout P Quem é você pra derramar meu mungunzá?
+2024-08-14T02:38:46.282710000ZZ stdout P Quem é você pra derramar meu mungunzá?
+2024-08-14T02:38:46.282723000ZZ stdout P Eu vou me embora, vou soltar a minha voz.
+```
+
+```
+2024-08-14T02:38:46.282723000ZZ stdout F Log final
+```
+
+Lembre-se que nosso parser precisa agregar os logs. No exemplo anterior teria de acumular as três chamadas pra montar
+uma mensagem que pode ser exibida.
+
+Esse polling é algo que não dá pra saber previamente, tem de ser feito sob demanda. E é aí que o Enumerator com bloco
+é necessário.
+
+```rb
+class CRIParserEnumerator
+    include Enumerable
+
+    def each
+        e = Enumerator.new do |yielder|
+            current_log = ''
+
+            loop do
+                logs = bucket_service.fetch
+
+                logs.each do |log|
+                    parsed = log.split(/stdout (F|P) /).last
+                    current_log += parsed
+
+                    if log.match?(/stdout F/)
+                        yielder << current_log
+                        current_log = ''
+                    end
+                end
+            end
+        end
+
+        return e unless block_given?
+
+        e.each { |log| yield log }
+    end
+
+    private
+
+    def bucket_service
+        @bucket_service ||= LogBucket.new
+    end
+end
+
+parser = CRIParserEnumerator.new()
+parser.take(10).each_with_index do |log, index|
+    puts "\n" if index > 0
+    puts "======= Log #{index + 1} =======\n\n#{log}\n"
+
+    sleep 1
+end
+```
+
+Como um polling foi necessário, adicionamos essa lógica ao bloco do Enumerator assim temos um loop infinito que faz
+yield dos logs a medida que vai recebendo.
+
 ## Conclusão
 
 Nesse post vimos um pouco sobre a classe Enumerator do Ruby. Focamos no uso um pouco mais específico da classe, já que
 o uso mais comum com o mixing de Enumerable e com sequências finitas baseadas em arrays é o mais trivial.
+
+## Implementação do LogBucket
+
+```rb
+require 'fiber'
+require 'time'
+
+class LogBucket
+    def initialize
+        @log_generator = log_generator_fiber
+    end
+
+    def fetch
+        @log_generator.resume
+    end
+
+    private
+
+    def log_generator_fiber
+        Fiber.new do
+            loop do
+                logs = []
+
+                # Random number of log entries to generate (0 to 5 in this example)
+                num_logs = rand(0..5)
+
+                num_logs.times do
+                    # Randomly choose the type (P or F) and generate the log message
+                    type = ['P', 'F'].sample
+                    logs << generate_log_message(type)
+
+                    # Randomly decide if we should add another 'P' log
+                    if type == 'P' && rand < 0.5
+                        logs << generate_log_message('P')
+                    end
+                end
+
+                Fiber.yield logs
+            end
+        end
+    end
+
+    def generate_log_message(type)
+        timestamp = Time.now.utc.iso8601(9) + "Z"
+        message = case type
+                  when 'P'
+                      [
+                          "Me machucando provocou a minha ira.",
+                          "Só que eu nasci entre o velame e a macambira.",
+                          "Quem é você pra derramar meu mungunzá?",
+                          "Eu vou me embora, vou soltar a minha voz."
+                      ].sample
+                  when 'F'
+                      [
+                          "Your log message here",
+                          "Another important log entry",
+                          "This is a warning message",
+                          "System failure imminent"
+                      ].sample
+                  end
+        "#{timestamp} stdout #{type} #{message}"
+    end
+end
+```
 
 ## Referências
 
