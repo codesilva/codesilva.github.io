@@ -489,6 +489,11 @@ class LogBucket
 end
 ```
 
+## Imagens
+
+<img width="1502" alt="Exemplo de execução que mostra uma dois fetchings que não trouxeram nada - logo não gerando nada a ser agregado - e um tercrito fetch que trouxe cinco entradas que agregadas formam um log já que quatro delas são stdouf P e a última stdout F" src="https://github.com/user-attachments/assets/375d95fa-b586-4f5a-a3dc-9a25006e7dbc">
+
+
 ## Referências
 
 - [https://docs.zeet.co/integrations/log-formats/#2-kubernetes-cri-format](https://docs.zeet.co/integrations/log-formats/#2-kubernetes-cri-format)
