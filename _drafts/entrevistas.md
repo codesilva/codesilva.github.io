@@ -54,6 +54,20 @@ Algumas regras sao implicitas. Só de jogar voce já concorda
 
 # Roteiro brownbag
 
+## Introdução
+
+eu sou edy e tenho um computador
+
+### CodeMiner42: uma software boutique
+
+Somos uma software boutique e um dos servicos que oferecemos é consultoria.
+
+### Tipos de entrevista
+
+## Provas Matemáticas
+
+Eu sabia que a disciplina de Matemática Discreta estava me ajudando. De alguma forma eu conseguia pensar melhor.
+
 Esse livro aqui, Concrete Mathematics, é muito bom. Ele me fez lembrar do modelo matemático. Como provas matemáticas.
 Provas podem ser de diferentes formas:
 
@@ -61,7 +75,8 @@ Provas podem ser de diferentes formas:
 - por inducao;
 - por absurdo;
 
-Independentemente da sua escolha, o que importa é que você vai ter que formar bases sólidas de argumentação para validar a sua prova. Você parte de axiomas e a proposição dada e chega numa conclusão, seja que a proposição é falsa ou verdadeira.
+Independentemente da sua escolha, o que importa é que você vai ter que formar bases sólidas de argumentação para validar a sua prova.
+Você parte de axiomas e a proposição dada e chega numa conclusão, seja que a proposição é falsa ou verdadeira.
 
 E como isso funciona? Bom, para tornar explícito, vamos entender como provaríamos que `para qualquer n inteiro >= 5, 2^n > n^2`.
 
@@ -74,6 +89,8 @@ O que temos é a hipótese e começamos validando o caso base dessa hipótese, n
 De fato, o caso base funciona. O que vem a seguir é uma série de aplicações de axiomas com o objetivo de mostrar que de
 fato a hipótese é verdadeira.
 
+Essa prova é simples. Tem vídeos do youtube mostrando como faz.
+
 ## O que isso tem a ver?
 
 Essa é a pergunta que você se faz nese momento. No dia a dia de um programador eu vejo essa mentalidade como algo
@@ -84,7 +101,7 @@ Eis um guia interessante para a resolução de problemas envolvendo algoritmo
 
 1. A hipótese e os axiomas;
 2. O caso trivial/base
-    1. As limitações do problema.
+    1. As restrições do problema.
 
 ## Treinando 1
 
@@ -114,7 +131,7 @@ Daí o que você faz? Agora com a mente mais leve, você volta a pensar em casos
 
 O problema tá resolvido, agora é fundir os loops. os dois vao virar um só.
 
-Pense comigo, qual o caso mais trivial aqui? um array de dois elementos. Ora, em um array de dois elementos é simples
+Pense comigo, qual o **caso mais trivial** aqui? um array de dois elementos. Ora, em um array de dois elementos é simples
 
 ```
 array = [n1, n2]
@@ -125,7 +142,7 @@ maior, segundo_maior = array[0] > array[1] ? array : [array[1], array[0]]
 Caso base OK
 
 E para arrays maiores? Aumentemos um pouco o caso, se temos 3 items no array. Faremos o processo para os dois, como
-fizemos anteriorment. Olhamos entao para o terceiro item. devemos checar entao
+fizemos anteriormente. Olhamos entao para o terceiro item. devemos checar entao
 
 se o terceiro item é maior (ou igual) que `maior`.
     ele passa entao a ser o `maior` e o `segundo_maior` passa a ser o antigo `maior`
@@ -196,6 +213,14 @@ Aqui você tem que encontrar esses axiomas e isso é feito pensando no caso triv
 ### Implementando a solucao mais simples
 
 ### Melhorando a solucao
+
+## Treinando 3
+
+## Treinando 4
+
+```
+Você foi encarregado(a) de implementar uma simples engine de Excel.
+```
 
 ## A prova
 

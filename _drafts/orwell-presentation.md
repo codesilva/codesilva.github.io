@@ -36,6 +36,9 @@ time de Ecomm.
 
 E foi aí que passei a conhecer os Watchers.
 
+[kibana monitoring](https://github.com/gdcorp-ecomm/kibana-monitoring)
+[Ecomm Docs on Alerts](https://godaddy-corp.atlassian.net/wiki/spaces/CTOPLAT/pages/18393881/eComm+API+Slack+Monitoring)
+
 ## Watcher trazem flexibilidade (trade-off: complexidade)
 
 [Explicar o que é um Watcher]
