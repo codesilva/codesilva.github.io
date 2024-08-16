@@ -6,118 +6,81 @@ lang: pt-BR
 category: ["ruby", "enumerator", "design patterns", "from scratch"]
 ---
 
-Esse post começou como um experimento, um exame de como a classe `Enumerator` funciona no Ruby. Fiz isso por conta que
-vou precisar desse conhecimento interno para uma série de materiais que estou preparando.
+A regra do 80-20 é empiricamente obersavada em muitas fenômenos e atvidiades humanas. Em programação não é diferente.
+Compreendendo uma parcela das features do ReactJS você já é capaz de produzir aplicações web funcionais. Entendendo 20%
+dos comandos git você consegue trabalhar diariamente sem enfrentar grandes problemas.
 
-Trabalhar com coleções são coisas que fazemos bastante em nosso trabalho diário. Entender estruturas de dados é crucial
-para um código mais eficiente e até mais limpo.
+Falando de código, no geral, esses 20% são uma abstração que utilizamos. Eles nos permitem resolver a maioria dos
+problemas por que eles são os mais triviais - por isso já existe uma abstração que lida com isso.
 
-Se voce é de ruby, são grandes as chances de já ter usado um Enumerator. Eles são usados para representar coleções de
-itens que podem ser percorridos. Eles são usados para representar sequências de elementos que ainda não foram
-calculados e são úteis para representar sequências infinitas.
+As coisas são simples, até que deixam se ser e você se vê precisando implementar [iframes com altura dinâmica](https://blog.codeminer42.com/enhancing-user-experience-with-dynamic-iframe-height/). Só com ReactJS por si só você não consegue resolver esse problema.
 
-Se você já percorreu um array usando `each` ou mesmo até já usou `map`, você já usou um Enumerator.
+É nesse ponto que você precisa adentrar nos 80% do conhecimento ainda não desbravado, mas que vai te ajudar a resolver
+um problema em específico que, provavelmenete, vai impactar bastante sua aplicação, seu negócio.
 
-Já existem muitos posts por aí tratando de casos triviais de uso, explicando como os métodos mais comuns como `select`, `map`, `each` etc funcionam.
+Isso acontece com muitas ferramentas, incluindo linguagens de programação e suas features. Esse post inicia uma série
+sobre Enumerators em Ruby. Você provavelmente já usou Enumerators através de alguns métodos comuns como `each`, `map`,
+`select` - calma, eu sei que o dois últimos são tecnicamente do mixin Enumerable.
 
-Nesse post, levo a coisa para um outro espectro do princípio de Pareto. A ideia é realmente entender como um Enumerator
-funciona e expandir as possibilidades para quem sabe, resolver aqueles 20% dos problemas - menos triviais - que dão 80% da dor de cabeça.
+Uma vez que não estamos lidando com o trivial aqui, espero que você já saiba um pouco desses métodos que mencionei. Na
+verdade, esse post tem como objetivo te mostrar como e quando usar `Custom Enumerators`.
 
-## O que é um Enumerator segundo a documentação?
+## O pattern Iterator
 
-É isso que documentação fala sobre Enumerator
+A documentação da classe Enumerator do Ruby diz o seguinte:
 
-> Uma classe que permite iteração interna e externa.
+> A class which allows both internal and external iteration.
 
-Não é muito detalhista. Porém, menciona o fato de lidar com iteração. O que nos remete ao Iterator Pattern.
+Isso remete a um conhecido pattern que existe implementado em algumas lingagens como Java, Python e C#. É composto por um
+Iterator e um Iterable. O Iterable é a collection que vai ser iterada. O Iterator é o objeto que sabe como iterar
+naquela collection.
 
-Em minha memória vem Java e JDBC. Porque em Java, quando se usa JDBC, você tem um `ResultSet` que é um iterator.
-Chamando o método `next()`, o próximo item é retornado. Ao fazer uma consulta com `executeQuery` o que vinha era um ResultSet e colocando num while
-loop era possível percoreer os registros.
+É um pattern útil para encapsulamento e para manter a uniformidade sobre como coleções são iteradas. Em algumas
+linguagens, como JavaScript, aderir ao protocolo de iteradores permite, por exemplo, usar o `for...of` em qualquer
+objeto.
 
-```java
-ResultSet rs = stmt.executeQuery("SELECT * FROM table");
-
-while (rs.next()) {
-  System.out.println(rs.getString("column"));
-}
-```
-
-Esse exemplo do Resultset é o que no Enumerator chamamos de *iterador externo*. Uma vez que você tem um `enumerator` pode
-caminhar por seus itens usando o método `next`. Se a sequência chegar no fim, qualquer chamada subsequente causará um erro
-de `StopIteration`.
+Eis um exemplo de um iterador que itera sobre uma string.
 
 ```rb
-my_enum = [1, 2, 3].each # retorna um enum
-
-puts my_enum.next # 1
-puts my_enum.next # 2
-puts my_enum.next # 3
-puts e.next   # raises StopIteration
-```
-
-Ter um iterador externo te dá a capacidade de fazer sua própria iteração e buscar o próximo item só quando for
-necessário. Podemos até (tentar) replicar o loop em um iterador (código Java mostrado anteriormente) em Ruby, fazendo
-algo como mostrado abaixo.
-
-```rb
-arr = [1, 2, 3].to_enum
-
-begin
-    while r = a.next
-        puts r
-    end
-rescue StopIteration
-    :done
-end
-```
-
-Duas coisas sobre esse último snippet:
-
-1. precisei do `rescue` porque diferentemente do funcionamento do ResultSet, Enumerator lança uma exceção quando os itens
-   acabam;
-2. é fácil ver um como um array descreve bem um Enumerator, algo que pode ser iterado.
-
-Todo os objetos no Ruby podem ser convertidos em um Enumerator, afinal tudo pode ser convertido em uma sequência. Até
-o próprio código que escrevemos é uma sequência - de tokens, no caso.
-
-## Enumerators são coleções?
-
-Um pensamento que você pode ter a princípio é que Enumerators são coleções. No sentido de, de alguma forma, um
-enumerator ser um objeto que tem uma coleção que nós podemos percorrer.
-
-Vamos voltar ao caso do ResultSet um pouco. O que acontece ali é: a query é feita no banco, os dados são obtidos
-e colocados em uma lista de items. Uma interface de iterador é exposta e podemos navegar pelos itens.
-
-Abaixo uma implementação simples para clarificar.
-
-```rb
-class ResultSet
-    def initialize(items = [])
-        @items = items
-        @done = false
-        @index = -1
+class StringIterator
+    def initialize(text)
+        @iterable = text
+        @index = 0
     end
 
     def next
+        raise StopIteration if @index >= @iterable.length
+
+        value = @iterable[@index]
         @index += 1
-        @items[@index]
+
+        value
     end
 end
 
-# executando
-rs = ResultSet.new([1, 2, 3])
-rs.next # => 1
-rs.next # => 2
-rs.next # => 3
-rs.next # => nil
+# usando
+str_it = StringIterator.new("Hello")
+puts str_it.next # H
+puts str_it.next # e
+puts str_it.next # l
+puts str_it.next # l
+puts str_it.next # o
+puts str_it.next # raises StopIteration
 ```
 
-NOTA: Perceba que a interface ficou diferente do que é um Enumerator, uma vez que ao terminar os itens, o método `next`
-retorna `nil` ao invés de lançar uma exceção. Isso é proposital.
+É um iterador simples que pode ser feito facilmente com o uso da classe Enumerator. O código acima é apenas para termos
+a ideia de como um **iterador externo** funciona.
 
-É uma implementação simples do Iterator Pattern. Onde há uma coleção de itens e um iterador que permite navegar por
-eles.
+O código acima pode ser reescrito de forma mais simples usando Enumerator.
+
+```rb
+str_it = "Hello".each_char
+```
+
+## Enumerators são sobre coleções?
+
+Um pensamento que você pode ter a princípio é que Enumerators são coleções. No sentido de que ele só lida com listas
+finitas como arrays.
 
 O Enumerator, no entanto, faz mais que isso. Por isso gostaria de estabelecer aqui o Enumerator como um Gerador de
 Sequências. Por algum motivo essa denotação de _iterar/iterador_ me dá a ideia de algo finito. Mas um Enumerator pode gerar sequências infinitas.
@@ -147,7 +110,7 @@ Você deve estar pensando: mas pra Range é muito simples. Não há uma coleçã
 representar um range só preciso salvar as delimitações.
 
 Isso não poderia estar mais certo. É por isso que mencionei que temos uma **sequência** infinita. Quero te dar essa
-ideia de geração de sequência.
+ideia de geração de sequência. Sob demanda mesmo.
 
 Essa foi bem simples. Vamos complicar mais um pouco gerando uma sequência infinita menos previsível, uma que eu não possa
 simplesmente usar um Range.
@@ -217,13 +180,16 @@ end
 
 ## Casos de uso para custom Enumerators
 
-Ninguém fica fazendo sequência de Fibonacci, de fato. Mas pense num caso de parser de sequências no geral.
+Um case é esse de geração de sequências infinitas. Inclusivem, é um dos poucos exemplos de custom enumerators que há
+na documentação.
+
+Gerar sequência de Fibonacci, no entanto, não é algo muito prático. Mas pensemos num caso geral, como um parser de logs.
 
 Em Kubernetes, Container Runtime Interface (CRI) é um componente que faz o meio campo entre o kubelet e o container
 runtime. CRI é esse protocolo que define como o kubelet deve interagir com o container runtime.
 
-O que isso tem a ver com enumerators? Bom, nada. A não ser pelo fato de que logs do CRI seguem um formato em
-específico. Eles são prefixados com um timestamp e um indicador de qual stream de log é e um identificador se o log
+O que isso tem a ver com enumerators? A princípio nada. A não ser pelo fato de que logs do CRI seguem um formato em
+específico. Eles são prefixados com um timestamp, um indicador de qual stream de log é e um identificador se o log
 é `full` (F) ou `partial` (P). Por exemplo:
 
 ```
@@ -233,8 +199,10 @@ específico. Eles são prefixados com um timestamp e um indicador de qual stream
 2023-10-06T00:17:09.669794202Z stdout F Quem é você pra derramar meu mungunzá?
 ```
 
+NOTA: Para efeito de simplicidade lidaremos apenas com logs stdout.
+
 Como poderíamos ter um parser de logs assim de modo que ele nos desse um Enumerator que nos permitisse iterar sobre os
-logs agregados. Ou seja, logs parciais devem ser agrupados até que um log full seja encontrado.
+logs agregados, ou seja, logs parciais devem ser agrupados até que um log full seja encontrado?
 
 Abaixo a implementação de um simples parser de logs CRI que retorna um Enumerator que nos permite iterar sobre os logs
 de forma agregada.
@@ -242,9 +210,9 @@ de forma agregada.
 ```rb
 logs = [
     '2023-10-06T00:17:09.669794202Z stdout F Your log message here',
-    '2023-10-06T00:17:09.669794202Z stdout P Me machucando provocou a minha ira. ',
-    '2023-10-06T00:17:09.669794202Z stdout P Só que eu nasci entre o velame e a macambira. ',
-    '2023-10-06T00:17:09.669794202Z stdout F Quem é você pra derramar meu mungunzá?'
+    '2023-10-06T00:17:09.669794202Z stdout P Winx quando damos nosssas mãos ',
+    '2023-10-06T00:17:09.669794202Z stdout P Nos tornamos poderosas. ',
+    '2023-10-06T00:17:09.669794202Z stdout F Porque juntas somos invencíveis.'
 ]
 
 class CRIParserEnumerator
@@ -281,10 +249,9 @@ O output desse código seria algo como:
 ======= Log 1 =======
 
 Your log message here
-
 ======= Log 2 =======
 
-Me machucando provocou a minha ira. Só que eu nasci entre o velame e a macambira. Quem é você pra derramar meu mungunzá?
+Winx quando damos nosssas mãos Nos tornamos poderosas. Porque juntas somos invencíveis.
 ```
 
 Interessante, não? Como falei no início do post, um pre-requisito para entender esse post é ter um conhecimento sobre
@@ -332,48 +299,43 @@ end
 
 Perceba:
 
-- Não precisamos mais chamar um Enumerator.new dentro da nossa classe
-- O `to_enum` não é mais necessário - embora ele exista devido ao método de objetos (Kernel::to_enum)
+- não precisamos mais chamar um Enumerator.new dentro da nossa classe;
+- O `to_enum` não é mais necessário - embora ele exista devido ao método de objetos (Kernel::to_enum).
 
-Perceba também que, para esse parser, pudemos, de forma simples, definir o each. Estamos enumerando em um array, que é sequencial.
+Perceba também que, para esse parser, pudemos, de forma simples, definir o each. Estamos enumerando em um array, que
+é finito.
 
 Mas e se não houvesse lista prévia? Digamos que nosso programa precisa pegar esses logs através de polling. Não tem como
-definir um each simples assim pois não temos uma lista prévia. Definir um bloco no Enumerator é o que vai funcionar,
-é o que vai permitir adicionar essa lógica extra que permite essa espécie de `buffering`.
+definir um each simples assim pois não temos uma lista prévia. Definir um bloco no Enumerator é o que vai é o que vai permitir adicionar essa lógica extra para fazer essa espécie de `buffering`.
 
-## Eu sou uma fraude?
+## Exemplo completo
 
-Fiz minha tese toda até aqui falando sobre Enumerator com bloco e no final tudo isso foi substituido por um simples
-`each`. 
+Para esse exemplo usaremos objetos da classe `LogBucket`. É uma classe que criei para simular um serviço que traz logs
+sob demanda. Uma chamada ao método `fetch` traz logs de forma assíncrona. Em cada chamada zero o mais logs podem ser retornados.
 
-Esse é o momento da virada. De fato a implementação anterior pôde ser simplificada com um `each`. Mas isso é porque
-conta que fizemos, de novo, com um Array que pudemos iterar sobre.
+A implementação desse serviço pode ser encontrada [nesse gist](https://gist.github.com/geeksilva97/95266a1382cf68aaf5407138aceff154).
 
-Alguns exemplos são mais complexos. E se para obter os logs tivéssemos de fazer fetch em um serviço externo? Como um
-cursor. Em cada fetch podemos ter os logs vindo parciais o completos. Inclusive uma chamada pode até não ter trazido
-nada.
 
-`LogBucket` é esse serviço que vai contar os logs. Esse serviço, em chamadas subsequentes pode trazer resultados como:
+As chamadas a esse serviço vão trazer resultatos como o que é mostrado abaixo.
 
 ```
-2024-08-14T02:38:46.282585000ZZ stdout P Só que eu nasci entre o velame e a macambira.
-2024-08-14T02:38:46.282681000ZZ stdout P Quem é você pra derramar meu mungunzá?
+2024-08-14T02:38:46.282585000ZZ stdout P Sei que você vai querer ser
+2024-08-14T02:38:46.282681000ZZ stdout P uma de nós
 ```
 
 ```
-2024-08-14T02:38:46.282698000ZZ stdout P Quem é você pra derramar meu mungunzá?
-2024-08-14T02:38:46.282710000ZZ stdout P Quem é você pra derramar meu mungunzá?
-2024-08-14T02:38:46.282723000ZZ stdout P Eu vou me embora, vou soltar a minha voz.
+2024-08-14T02:38:46.282698000ZZ stdout P Winx quando damos nossas mãos
+2024-08-14T02:38:46.282710000ZZ stdout P Nos tornamos poderosas
 ```
 
 ```
-2024-08-14T02:38:46.282723000ZZ stdout F Log final
+2024-08-14T02:38:46.282723000ZZ stdout F Porque juntas somos invencíveis
 ```
 
-Lembre-se que nosso parser precisa agregar os logs. No exemplo anterior teria de acumular as três chamadas pra montar
+Lembre-se que nosso parser precisa agregar os logs. No exemplo anterior teria que acumular as três chamadas pra montar
 uma mensagem que pode ser exibida.
 
-Esse polling é algo que não dá pra saber previamente, tem de ser feito sob demanda. E é aí que o Enumerator com bloco
+Esse polling é algo que não dá pra saber previamente, precisa ser feito sob demanda. E é aí que o Enumerator com bloco
 é necessário.
 
 ```rb
@@ -420,85 +382,27 @@ parser.take(10).each_with_index do |log, index|
 end
 ```
 
-Como um polling foi necessário, adicionamos essa lógica ao bloco do Enumerator assim temos um loop infinito que faz
-yield dos logs a medida que vai recebendo.
+Agora sim. O bloco foi realmente necessário pois temos um loop infinito que faz polling de logs. A cada fetch, logs são
+agregados e yieldados.
+
+Parece que não, mas aqui temos até um pouco de concorrência, uma vez que o bloco do Enumerator é executado em uma Fiber.
+Por isso é possível ter um loop infinito sem travar o programa.
+
+O uso de iteradores internos é interessante pois as interfaces que usam o método não precisam ser alteradas. Nesse [caso
+de uso](https://thoughtbot.com/blog/how-we-used-a-custom-enumerator-to-fix-a-production-problem) usaram um custom Enumerator para aumentar a resiliência da aplicação.
 
 ## Conclusão
 
-Nesse post vimos um pouco sobre a classe Enumerator do Ruby. Focamos no uso um pouco mais específico da classe, já que
-o uso mais comum com o mixing de Enumerable e com sequências finitas baseadas em arrays é o mais trivial.
+Nesse post entendemos um caso de uso particular de Enumerators que é quando uma lógica mais complexa é necessária para
+a geração de sequências.
 
-## Implementação do LogBucket
-
-```rb
-require 'fiber'
-require 'time'
-
-class LogBucket
-    def initialize
-        @log_generator = log_generator_fiber
-    end
-
-    def fetch
-        @log_generator.resume
-    end
-
-    private
-
-    def log_generator_fiber
-        Fiber.new do
-            loop do
-                logs = []
-
-                # Random number of log entries to generate (0 to 5 in this example)
-                num_logs = rand(0..5)
-
-                num_logs.times do
-                    # Randomly choose the type (P or F) and generate the log message
-                    type = ['P', 'F'].sample
-                    logs << generate_log_message(type)
-
-                    # Randomly decide if we should add another 'P' log
-                    if type == 'P' && rand < 0.5
-                        logs << generate_log_message('P')
-                    end
-                end
-
-                Fiber.yield logs
-            end
-        end
-    end
-
-    def generate_log_message(type)
-        timestamp = Time.now.utc.iso8601(9) + "Z"
-        message = case type
-                  when 'P'
-                      [
-                          "Me machucando provocou a minha ira.",
-                          "Só que eu nasci entre o velame e a macambira.",
-                          "Quem é você pra derramar meu mungunzá?",
-                          "Eu vou me embora, vou soltar a minha voz."
-                      ].sample
-                  when 'F'
-                      [
-                          "Your log message here",
-                          "Another important log entry",
-                          "This is a warning message",
-                          "System failure imminent"
-                      ].sample
-                  end
-        "#{timestamp} stdout #{type} #{message}"
-    end
-end
-```
-
-## Imagens
-
-<img width="1502" alt="Exemplo de execução que mostra uma dois fetchings que não trouxeram nada - logo não gerando nada a ser agregado - e um tercrito fetch que trouxe cinco entradas que agregadas formam um log já que quatro delas são stdouf P e a última stdout F" src="https://github.com/user-attachments/assets/375d95fa-b586-4f5a-a3dc-9a25006e7dbc">
-
+Durante o post mencionamos o uso de Fibers por parte do Enumerator. No próximo post dessa série vamos explorar
+o funcionamento interno do Enumerator implementando o nosso próprio Enumerator do zero.
 
 ## Referências
 
+- [https://thoughtbot.com/blog/how-we-used-a-custom-enumerator-to-fix-a-production-problem](https://thoughtbot.com/blog/how-we-used-a-custom-enumerator-to-fix-a-production-problem)
+- [https://www.honeybadger.io/blog/creating-ruby-enumerators-on-the-fly/](https://www.honeybadger.io/blog/creating-ruby-enumerators-on-the-fly/)
 - [https://docs.zeet.co/integrations/log-formats/#2-kubernetes-cri-format](https://docs.zeet.co/integrations/log-formats/#2-kubernetes-cri-format)
 
 <!--
