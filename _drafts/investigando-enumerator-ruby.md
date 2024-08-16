@@ -6,20 +6,20 @@ lang: pt-BR
 category: ["ruby", "enumerator", "design patterns", "from scratch"]
 ---
 
-A regra do 80-20 é empiricamente obersavada em muitas fenômenos e atvidiades humanas. Em programação não é diferente.
-Compreendendo uma parcela das features do ReactJS você já é capaz de produzir aplicações web funcionais. Entendendo 20%
+A regra do 80-20 é empiricamente obersavada em muitos fenômenos e atvidiades humanas. Em programação não é diferente.
+Compreendendo uma parcela das features do ReactJS, por exemplo, você já é capaz de produzir aplicações web que funcionam bem. Entendendo 20%
 dos comandos git você consegue trabalhar diariamente sem enfrentar grandes problemas.
 
 Falando de código, no geral, esses 20% são uma abstração que utilizamos. Eles nos permitem resolver a maioria dos
-problemas por que eles são os mais triviais - por isso já existe uma abstração que lida com isso.
+problemas por que eles são os mais triviais/comuns - por isso já existe uma abstração que lida com isso.
 
 As coisas são simples, até que deixam se ser e você se vê precisando implementar [iframes com altura dinâmica](https://blog.codeminer42.com/enhancing-user-experience-with-dynamic-iframe-height/). Só com ReactJS por si só você não consegue resolver esse problema.
 
 É nesse ponto que você precisa adentrar nos 80% do conhecimento ainda não desbravado, mas que vai te ajudar a resolver
-um problema em específico que, provavelmenete, vai impactar bastante sua aplicação, seu negócio.
+um problema em específico que, provavelmenete, vai impactar bastante sua aplicação e seu negócio.
 
 Isso acontece com muitas ferramentas, incluindo linguagens de programação e suas features. Esse post inicia uma série
-sobre Enumerators em Ruby. Você provavelmente já usou Enumerators através de alguns métodos comuns como `each`, `map`,
+sobre Enumerators em Ruby. Você provavelmente já usou Enumerators através de alguns métodos comuns como `each`, `map` e
 `select` - calma, eu sei que o dois últimos são tecnicamente do mixin Enumerable.
 
 Uma vez que não estamos lidando com o trivial aqui, espero que você já saiba um pouco desses métodos que mencionei. Na
@@ -31,7 +31,7 @@ A documentação da classe Enumerator do Ruby diz o seguinte:
 
 > A class which allows both internal and external iteration.
 
-Isso remete a um conhecido pattern que existe implementado em algumas lingagens como Java, Python e C#. É composto por um
+Isso remete a um conhecido pattern que existe e é implementado em algumas lingagens como Java, Python e C#. O pattern composto por um
 Iterator e um Iterable. O Iterable é a collection que vai ser iterada. O Iterator é o objeto que sabe como iterar
 naquela collection.
 
@@ -71,27 +71,19 @@ puts str_it.next # raises StopIteration
 É um iterador simples que pode ser feito facilmente com o uso da classe Enumerator. O código acima é apenas para termos
 a ideia de como um **iterador externo** funciona.
 
-O código acima pode ser reescrito de forma mais simples usando Enumerator.
+Reescrevendo o código acima com Enumerator. Temos:
 
 ```rb
-str_it = "Hello".each_char
+str_it = "Hello".each_char # retorna um Enumerator que pode ser iterado usando o método next com omostrado anteriormente
 ```
 
-## Enumerators são sobre coleções?
+## Gerando sequências
 
 Um pensamento que você pode ter a princípio é que Enumerators são coleções. No sentido de que ele só lida com listas
 finitas como arrays.
 
 O Enumerator, no entanto, faz mais que isso. Por isso gostaria de estabelecer aqui o Enumerator como um Gerador de
 Sequências. Por algum motivo essa denotação de _iterar/iterador_ me dá a ideia de algo finito. Mas um Enumerator pode gerar sequências infinitas.
-
-## Gerando sequências
-
-**NOTA**: Mencionar aqui, que mesmo com poucos detalhes, o exemplo dado para uso de blocos na doc do ruby é justamente geração de
-sequências (potencialment) infinitas.
-
-Até aqui fizemos exemplos só com Arrays. Isso é proposital, pois arrays são mais simples de se entender nesse contexto.
-Afinal, arrays são literalmente coleções de itens sobre as quais podemos iterar.
 
 Quero que pense em enumerators como um gerador de sequencias para coisas como: sequencia dos números naturais. Isso
 é bem fácil de fazer. Podemos usar o tipo Range para isso
@@ -120,7 +112,11 @@ simplesmente usar um Range.
 Você sabe, a sequência de fibonacci é dada pela soma de números naturais. O terceiro número em diante são deinidos como
 a soma dos dois anteriores. A sequência fica: 0 1 1 2 3 5 8...
 
-Isso não é uma sequência que pode ser definida com um simples Range. Para representá-la podemos usar a classe Enumerator direto
+Isso não é uma sequência que pode ser definida com um simples Range. Para representá-la podemos usar a classe Enumerator
+com um bloco.
+
+Note que nesse caso o método `<<` é só um alias para o método `yield` da classe Enumerator::Yielder. Não confundir com
+o alias `<<` do método `push` de arrays.
 
 ```rb
 fib = Enumerator.new do |yielder|
@@ -144,7 +140,7 @@ Um range seria algo como
 range_enum = Enumerator.new do |yielder|
     step = 1
     range_end = Float::INFINITY
-    current = 1 # current is where it starts
+    current = 1
 
     loop do
         yielder << current
@@ -193,10 +189,10 @@ específico. Eles são prefixados com um timestamp, um indicador de qual stream 
 é `full` (F) ou `partial` (P). Por exemplo:
 
 ```
-2023-10-06T00:17:09.669794202Z stdout F Uma mensagem de log aqui
-2023-10-06T00:17:09.669794202Z stdout P Me machucando provocou a minha ira
-2023-10-06T00:17:09.669794202Z stdout P Só que eu nasci entre o velame e a macambira
-2023-10-06T00:17:09.669794202Z stdout F Quem é você pra derramar meu mungunzá?
+2023-10-06T00:17:09.669794202Z stdout F Uma mensagem de log
+2023-10-06T00:17:09.669794202Z stdout P Winx quando damos nosssas mãos
+2023-10-06T00:17:09.669794202Z stdout P Nos tornamos poderosas.
+2023-10-06T00:17:09.669794202Z stdout F Porque juntas somos invencíveis
 ```
 
 NOTA: Para efeito de simplicidade lidaremos apenas com logs stdout.
@@ -209,7 +205,7 @@ de forma agregada.
 
 ```rb
 logs = [
-    '2023-10-06T00:17:09.669794202Z stdout F Your log message here',
+    '2023-10-06T00:17:09.669794202Z stdout F Uma mensagem de log',
     '2023-10-06T00:17:09.669794202Z stdout P Winx quando damos nosssas mãos ',
     '2023-10-06T00:17:09.669794202Z stdout P Nos tornamos poderosas. ',
     '2023-10-06T00:17:09.669794202Z stdout F Porque juntas somos invencíveis.'
@@ -248,7 +244,7 @@ O output desse código seria algo como:
 ```
 ======= Log 1 =======
 
-Your log message here
+Uma mensagem de log
 ======= Log 2 =======
 
 Winx quando damos nosssas mãos Nos tornamos poderosas. Porque juntas somos invencíveis.
@@ -313,7 +309,7 @@ definir um each simples assim pois não temos uma lista prévia. Definir um bloc
 Para esse exemplo usaremos objetos da classe `LogBucket`. É uma classe que criei para simular um serviço que traz logs
 sob demanda. Uma chamada ao método `fetch` traz logs de forma assíncrona. Em cada chamada zero o mais logs podem ser retornados.
 
-A implementação desse serviço pode ser encontrada [nesse gist](https://gist.github.com/geeksilva97/95266a1382cf68aaf5407138aceff154).
+A implementação desse serviço pode ser encontrada [nesse gist](https://gist.github.com/geeksilva97/0b04814375e96cc587c67cb14edfae45).
 
 
 As chamadas a esse serviço vão trazer resultatos como o que é mostrado abaixo.
@@ -391,7 +387,8 @@ Por isso é possível ter um loop infinito sem travar o programa.
 O uso de iteradores internos é interessante pois as interfaces que usam o método não precisam ser alteradas. Nesse [caso
 de uso](https://thoughtbot.com/blog/how-we-used-a-custom-enumerator-to-fix-a-production-problem) usaram um custom Enumerator para aumentar a resiliência da aplicação.
 
-Abaixo a execução - com alguns logs adicionados.
+A imagem abaixo mostra o código acima executando. Alguns logs foram adicionados, mostrando o resultado entre o que foi
+retornado pelo serviço (em azul) e o que foi agregado pelo Enumerator (em branco).
 
 ![image](https://github.com/user-attachments/assets/ab96ad05-cd1e-428b-a9ec-9f0b94944cca)
 
@@ -406,6 +403,7 @@ o funcionamento interno do Enumerator implementando o nosso próprio Enumerator 
 
 ## Referências
 
+- [https://ruby-doc.org/core-3.0.2/Enumerator.html](https://ruby-doc.org/core-3.0.2/Enumerator.html)
 - [https://thoughtbot.com/blog/how-we-used-a-custom-enumerator-to-fix-a-production-problem](https://thoughtbot.com/blog/how-we-used-a-custom-enumerator-to-fix-a-production-problem)
 - [https://www.honeybadger.io/blog/creating-ruby-enumerators-on-the-fly/](https://www.honeybadger.io/blog/creating-ruby-enumerators-on-the-fly/)
 - [https://docs.zeet.co/integrations/log-formats/#2-kubernetes-cri-format](https://docs.zeet.co/integrations/log-formats/#2-kubernetes-cri-format)
