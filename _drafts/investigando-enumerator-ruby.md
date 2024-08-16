@@ -391,6 +391,11 @@ Por isso é possível ter um loop infinito sem travar o programa.
 O uso de iteradores internos é interessante pois as interfaces que usam o método não precisam ser alteradas. Nesse [caso
 de uso](https://thoughtbot.com/blog/how-we-used-a-custom-enumerator-to-fix-a-production-problem) usaram um custom Enumerator para aumentar a resiliência da aplicação.
 
+Abaixo a execução - com alguns logs adicionados.
+
+![image](https://github.com/user-attachments/assets/ab96ad05-cd1e-428b-a9ec-9f0b94944cca)
+
+
 ## Conclusão
 
 Nesse post entendemos um caso de uso particular de Enumerators que é quando uma lógica mais complexa é necessária para
