@@ -7,12 +7,14 @@
     - Sets
     - Streams e Enummerables são só arrays preguiçosos (Lazy arrays)
 3. Hash maps
-4. Node structures
+4. Bloom filters
+5. Node structures
     - Linked Lists
     - Trees
     - Balanced Trees
+        - AVLs
+        - B-Trees
     - Binary heaps
-5. Bloom filters
 
 # Livro 2 outline - getting down to file manipulation
 
@@ -20,7 +22,11 @@
     - File formats
     - It's all a bunch o bytes in a sequence
 2. Working with files
-
+3. Let's build a file system
+    - File allocation table
+    - Inodes
+    - Directories
+    - File descriptors
 
 # Livro 3 outline - Let's build a scylla db clone
 
