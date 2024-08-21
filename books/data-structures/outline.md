@@ -11,10 +11,11 @@
 5. Node structures
     - Linked Lists
     - Trees
+    - Binary Search Trees
+    - Binary heaps
     - Balanced Trees
         - AVLs
         - B-Trees
-    - Binary heaps
 
 # Livro 2 outline - getting down to file manipulation
 
