@@ -12,10 +12,11 @@
     - Linked Lists
     - Trees
     - Binary Search Trees
-    - Binary heaps
+    - Tree balancing and rotation
     - Balanced Trees
         - AVLs
         - B-Trees
+6. Binary heaps*
 
 # Livro 2 outline - getting down to file manipulation
 
