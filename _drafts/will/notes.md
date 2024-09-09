@@ -6,6 +6,30 @@ Versao em android/app/build.gradle
     compileOnly ('com.dji:dji-sdk-provided:4.14.1')
 ```
 
+https://github.com/dji-sdk/Mobile-SDK-Android/blob/462fb6cff590a9a7f0d5abfc127ab172386225cf/README.md?plain=1#L63
+
+uxsdk
+
+https://github.com/dji-sdk/Mobile-UXSDK-Android
+https://github.com/dji-sdk/Mobile-SDK-Android/tree/v4.17
+
+## Build da APK
+
+] Your project is configured to compile against Android SDK 33, but the following plugin(s) require to be compiled against a higher Android SDK version:
+[        ] - flutter_libphonenumber_android compiles against Android SDK 34
+[        ] - flutter_plugin_android_lifecycle compiles against Android SDK 34
+[        ] - google_maps_flutter_android compiles against Android SDK 34
+[        ] - image_picker_android compiles against Android SDK 34
+[        ] - shared_preferences_android compiles against Android SDK 34
+[        ] - sqflite compiles against Android SDK 34
+[        ] - url_launcher_android compiles against Android SDK 34
+[        ] Fix this issue by compiling against the highest Android SDK version (they are backward compatible).
+[        ] Add the following to /Users/edysilva/projects/personal/willfly-app/android/app/build.gradle:
+[        ]     android {
+[        ]         compileSdk = 34
+[        ]         ...
+[        ]     }
+
 ### Chamada ao sdk manager
 
 ./lib/main.dart:48:        BlocProvider<DJISDKManagerBloc>(
@@ -38,3 +62,10 @@ https://developer.dji.com/document/6659920d-b5cf-495e-8ff8-a6071ea43f12
 
 
 
+## Tentando rodar dji puro
+
+Precisei atualizar o gradle para versao 8 devido a minha versao do java que era a 17 -> motivo [https://discuss.gradle.org/t/unsupported-class-file-major-version-61/44988/2](https://discuss.gradle.org/t/unsupported-class-file-major-version-61/44988/2)
+
+build tools 31 corrupted.
+
+[https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted](https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted)
