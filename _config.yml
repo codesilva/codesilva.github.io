@@ -43,7 +43,6 @@ show_excerpts: true
 minima:
   social_links:
     - { platform: youtube, username: 'Assista no YouTube', user_url: "https://youtube.com/edigleyssonsilva" }
-    # - { platform: medium, username: 'Mais posts no Medium (en-US)', user_url: "https://edigleyssonsilva.medium.com" }
 
 # Exclude from processing.
 # The following items will not be processed, by default.
