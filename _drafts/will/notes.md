@@ -1,3 +1,19 @@
+## Map issue
+
+Acredito que em PilotFragment.kt é preciso chamar `onCreate` em mapWidget.
+
+To encucado com o binding de PilotFragment. Creio que deveria ser inicialiczado em algum lugar.
+
+
+https://developer.dji.com/api-reference/android-uilib-api/Widgets/DUXMapWidget.html#duxmapwidget_initgooglemap_inline
+https://developer.dji.com/api-reference/android-uilib-api/Widgets/DJIMap.html#djimap
+
+Exemplo de mapa: https://github.com/dji-sdk/Mobile-UXSDK-Android/blob/6a28754964a7517a0602dfda0bad09adc938489a/sample/app/src/main/java/com/dji/ux/sample/MapWidgetActivity.java#L151
+
+- https://sdk-forum.dji.net/hc/en-us/community/posts/21364221146905-Change-from-AMAP-to-Google-Maps
+- https://developer.dji.com/api-reference/android-uilib-api/Widgets/DUXMapWidget.html#duxmapwidget_initgooglemap_inline
+
+
 # DJI
 
 Versao em android/app/build.gradle
