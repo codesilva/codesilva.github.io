@@ -18,6 +18,11 @@ typedef struct {
 
 typedef unsigned char *t_memory;
 
+void set_memory_at(unsigned char *memory, unsigned int address,
+                   unsigned char value) {
+  memory[address - TEXT_SEGMENT] = value;
+}
+
 unsigned char get_memory_at(unsigned char *memory, unsigned int address) {
   return memory[address - TEXT_SEGMENT]; // memory[address];
 }
@@ -192,7 +197,8 @@ void execute_instruction(unsigned char *memory, unsigned char *registers,
 }
 
 unsigned char *fetch_instruction(unsigned char *memory, unsigned int *pc) {
-  unsigned char *instruction = (memory + *pc);
+  unsigned int index = *pc - TEXT_SEGMENT;
+  unsigned char *instruction = (memory + index);
 
   *pc += INSTRUCTION_SIZE;
 
@@ -211,16 +217,11 @@ void add_instructions(unsigned char *memory, int *instructions,
     unsigned int third_byte = get_nth_byte(1, instruction);
     unsigned int fourth_byte = get_nth_byte(0, instruction);
 
-    memory[memory_addr++] = first_byte;
-    memory[memory_addr++] = second_byte;
-    memory[memory_addr++] = third_byte;
-    memory[memory_addr++] = fourth_byte;
+    set_memory_at(memory, memory_addr++, first_byte);
+    set_memory_at(memory, memory_addr++, second_byte);
+    set_memory_at(memory, memory_addr++, third_byte);
+    set_memory_at(memory, memory_addr++, fourth_byte);
   }
-}
-
-void set_memory_at(unsigned char *memory, unsigned int address,
-                   unsigned char value) {
-  memory[address - TEXT_SEGMENT] = value;
 }
 
 unsigned int add_asciiz_to_memory(unsigned char *memory, unsigned int address,
@@ -231,6 +232,8 @@ unsigned int add_asciiz_to_memory(unsigned char *memory, unsigned int address,
     set_memory_at(memory, address + i, string[i]);
     i++;
   }
+
+  set_memory_at(memory, address + i++, '\0');
 
   return address + i;
 }
@@ -251,23 +254,23 @@ void run(unsigned char *memory, unsigned char *registers) {
   unsigned int pc = TEXT_SEGMENT;
 
   add_instructions(memory, my_program, num_instructions);
-  /* unsigned int addr = add_asciiz_to_memory(memory, DATA_SEGMENT, */
-  /*                      "Hi, Carlota Sounds and JV!" */
-  /*                      " This is MIPS machine code baby\n"); */
-  unsigned int addr =
-      add_asciiz_to_memory(memory, DATA_SEGMENT, "This is the second string\n");
-
-  /* unsigned int instruction_byte_sequence = *(int *)(memory + pc); */
-
-  /* printf("The whole instruction is: 0x%02x\n", instruction_byte_sequence); */
-
-  print_memory(memory, pc, pc + 4);
-
-  puts("\n");
-
-  print_memory(memory, DATA_SEGMENT, addr);
+  unsigned int addr = add_asciiz_to_memory(memory, DATA_SEGMENT,
+                       "Hi, Carlota Sounds and JV!"
+                       " This is MIPS machine code baby!\n");
+  addr =
+      add_asciiz_to_memory(memory, addr, "I love this\n");
 
   int current_instruction = 0;
+
+  my_program[2] = 0x3424003c; // ori $4, $1, 0x0000003c
+                              // endereco da outra string
+  add_instructions(memory, my_program, num_instructions);
+
+  /* printf("Code segment:\n"); */
+  /* print_memory(memory, pc, pc + num_instructions * INSTRUCTION_SIZE); */
+
+  /* printf("\nData segment:\n"); */
+  /* print_memory(memory, DATA_SEGMENT, addr); */
 
   while (current_instruction < num_instructions) {
     // Fetch instruction
