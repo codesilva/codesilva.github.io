@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MEMORY_SIZE (0x80000000 - 0x04000000) // Size of memory to simulate
 #define INSTRUCTION_SIZE 4 // Size of a MIPS instruction in bytes
@@ -15,8 +16,22 @@ typedef struct {
   unsigned long imm;
 } ITypeInstruction;
 
+typedef unsigned char *t_memory;
+
+unsigned char get_memory_at(unsigned char *memory, unsigned int address) {
+  return memory[address - TEXT_SEGMENT]; // memory[address];
+}
+
 void set_register(unsigned char *registers, int reg, int value) {
   *(int *)(registers + reg * 4) = value;
+}
+
+void print_memory(unsigned char *memory, int start, int end) {
+  unsigned int b;
+  for (int i = start; i < end; i++) {
+    b = get_memory_at(memory, i);
+    printf("Memory at 0x%02x = %02x (%c)\n", i, b, b);
+  }
 }
 
 void print_registers(unsigned char *registers) {
@@ -27,6 +42,10 @@ void print_registers(unsigned char *registers) {
 
 void print_register(unsigned char *registers, int reg) {
   printf("Register $%d = %02x\n", reg, *(int *)(registers + reg * 4));
+}
+
+unsigned int get_register_value(unsigned char *registers, int reg) {
+  return *(int *)(registers + reg * 4);
 }
 
 unsigned char *initialize_registers() {
@@ -72,20 +91,59 @@ void decode_instruction(unsigned char *memory_slice,
   instruction->rt = second_byte & 0x1f; // getting the 5 least significant bits
   instruction->imm = (third_byte << 8) | fourth_byte;
 
-  if (opcode == 0) {
-    if (instruction->imm == 0x0c) {
-      printf("Syscall instruction\n");
-    } else {
-      printf("R-Type intructions are not supported!!\n");
-      exit(EXIT_FAILURE);
-      return;
-    }
+  if (opcode == 0 && instruction->imm != 0x0c) {
+    printf("R-Type intructions are not supported!!\n");
+    exit(EXIT_FAILURE);
+    return;
   }
 
   if (opcode == 2 || opcode == 3) {
     printf("J-Type intructions are not supported!!\n");
     exit(EXIT_FAILURE);
     return;
+  }
+}
+
+void execute_print_syscall(int start_address, unsigned char *memory) {
+  int n_chars_to_print = 10;
+  unsigned char *text = malloc(sizeof(char) * n_chars_to_print);
+  int count = 0;
+
+  unsigned char c = get_memory_at(memory, start_address);
+
+  do {
+    text[count++] = c;
+    c = get_memory_at(memory, ++start_address);
+
+    if (count >= n_chars_to_print) {
+      text = realloc(text, sizeof(char) * (n_chars_to_print *= 2));
+    }
+  } while (c != '\0' && c != 0);
+
+  text[count++] = '\0';
+
+  if (count < n_chars_to_print) {
+    text = realloc(text, sizeof(char) * count);
+  }
+
+  printf("%s", text);
+
+  free(text);
+}
+
+void execute_syscall(unsigned char *registers, unsigned char *memory,
+                     unsigned char v0) {
+  switch (v0) {
+  case 0x0a:
+    exit(EXIT_SUCCESS);
+  case 0x04: {
+    int data_address = get_register_value(registers, 4);
+
+    execute_print_syscall(data_address, memory);
+  } break;
+  default:
+    printf("Unknown syscall: %02x\n", v0);
+    exit(EXIT_FAILURE);
   }
 }
 
@@ -97,9 +155,16 @@ void execute_instruction(unsigned char *memory, unsigned char *registers,
   unsigned long imm = instruction->imm;
 
   switch (opcode) {
-  case 0x09: // addiu
-    set_register(registers, rt, *(int *)(registers + rs) + imm);
+  case 0x00: // syscall
+    if (imm == 0x0c) {
+      execute_syscall(registers, memory, get_register_value(registers, 2));
+    }
     break;
+  case 0x09: // addiu
+  {
+    int rs_value = get_register_value(registers, rs);
+    set_register(registers, rt, rs_value + imm);
+  } break;
   case 0x0c: // andi
     set_register(registers, rt, *(int *)(registers + rs) & imm);
     break;
@@ -107,8 +172,11 @@ void execute_instruction(unsigned char *memory, unsigned char *registers,
     set_register(registers, rt, imm << 16);
     break;
   case 0x0d: // ori
-    set_register(registers, rt, *(int *)(registers + rs) | imm);
-    break;
+  {
+    int rs_value = get_register_value(registers, rs);
+
+    set_register(registers, rt, rs_value | imm);
+  } break;
   case 0x23: // lw
     set_register(registers, rt,
                  *(int *)(memory + *(int *)(registers + rs) + imm));
@@ -137,10 +205,6 @@ void add_instructions(unsigned char *memory, int *instructions,
 
   for (int i = 0; i < total_instructions; i++) {
     unsigned int instruction = instructions[i];
-    printf("Adding instruction 0x%02x to memory at 0x%02x\n", instruction,
-           memory_addr);
-
-    // starting by most significant bits
 
     unsigned int first_byte = get_nth_byte(3, instruction);
     unsigned int second_byte = get_nth_byte(2, instruction);
@@ -154,59 +218,82 @@ void add_instructions(unsigned char *memory, int *instructions,
   }
 }
 
-int main() {
-  unsigned char *memory = (unsigned char *)malloc(MEMORY_SIZE);
+void set_memory_at(unsigned char *memory, unsigned int address,
+                   unsigned char value) {
+  memory[address - TEXT_SEGMENT] = value;
+}
 
-  // 32 registers of 32 bits each
-  unsigned char *registers = initialize_registers();
+unsigned int add_asciiz_to_memory(unsigned char *memory, unsigned int address,
+                                  char *string) {
+  int i = 0;
+  while (string[i] != '\0') {
+    // TODO: We can probably use memcpy here
+    set_memory_at(memory, address + i, string[i]);
+    i++;
+  }
 
-  /* set_register(registers, 1, 0xff00ff00); // $v0 = DATA_SEGMENT */
+  return address + i;
+}
 
-  /* int instructions[4] = { */
-  /*     0x24020004, // addiu $v0, $zero, 4 */
-  /*     0x3c011101, // lui $1, 0x00001001 */
-  /*     0x34240000, // ori $4, $1, 0x00000000 */
-  /*     0x0000000c  // syscall */
-  /* }; */
+void run(unsigned char *memory, unsigned char *registers) {
+  ITypeInstruction *instruction = malloc(sizeof(ITypeInstruction));
 
-  int instructions[2] = {
+  int num_instructions = 6;
+  int my_program[6] = {
+      0x24020004, // addiu $v0, $zero, 4
+      0x3c011001, // lui $1, 0x00001001
+      0x34240000, // ori $4, $1, 0x00000000
+      0x0000000c, // syscall
       0x2402000a, // addiu $v0, $zero, 10
-      0x0000000c  // syscall
+      0x0000000c, // syscall
   };
 
   unsigned int pc = TEXT_SEGMENT;
 
-  add_instructions(memory, instructions, 2);
+  add_instructions(memory, my_program, num_instructions);
+  /* unsigned int addr = add_asciiz_to_memory(memory, DATA_SEGMENT, */
+  /*                      "Hi, Carlota Sounds and JV!" */
+  /*                      " This is MIPS machine code baby\n"); */
+  unsigned int addr =
+      add_asciiz_to_memory(memory, DATA_SEGMENT, "This is the second string\n");
 
-  ITypeInstruction *instruction = malloc(sizeof(ITypeInstruction));
+  /* unsigned int instruction_byte_sequence = *(int *)(memory + pc); */
 
-  printf("\n------- Let's start the simulation -------\n\n");
+  /* printf("The whole instruction is: 0x%02x\n", instruction_byte_sequence); */
 
-  printf("Fetching instruction at 0x%02x\n", pc);
-
-  // Fetch instruction
-  unsigned char *instruction_byte_sequence = fetch_instruction(memory, &pc);
-
-  puts("\n");
-
-  printf("Got instruction 0x%02x%02x%02x%02x\nStart decoding...\n",
-         *instruction_byte_sequence, instruction_byte_sequence[1],
-         instruction_byte_sequence[2], instruction_byte_sequence[3]);
-
-  // Decode instruction
-  decode_instruction(instruction_byte_sequence, instruction);
+  print_memory(memory, pc, pc + 4);
 
   puts("\n");
-  print_instructions(instruction);
-  puts("\n");
 
-  printf("Executing instruction...\n");
+  print_memory(memory, DATA_SEGMENT, addr);
 
-  // Execute instruction
-  execute_instruction(memory, registers, instruction);
-  printf("Done\n\n");
+  int current_instruction = 0;
 
-  printf("Printing registers...\n");
+  while (current_instruction < num_instructions) {
+    // Fetch instruction
+    unsigned char *instruction_byte_sequence = fetch_instruction(memory, &pc);
 
-  print_registers(registers);
+    // Decode instruction
+    decode_instruction(instruction_byte_sequence, instruction);
+
+    // Execute instruction
+    execute_instruction(memory, registers, instruction);
+
+    current_instruction++;
+  }
 }
+
+int main() {
+  unsigned char *memory = (unsigned char *)malloc(MEMORY_SIZE);
+  unsigned char *registers = initialize_registers();
+
+  run(memory, registers);
+
+  return 0;
+}
+
+/* puts("\n"); */
+
+/* printf("Got instruction 0x%02x%02x%02x%02x\nStart decoding...\n", */
+/*        *instruction_byte_sequence, instruction_byte_sequence[1], */
+/*        instruction_byte_sequence[2], instruction_byte_sequence[3]); */
