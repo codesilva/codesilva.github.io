@@ -172,8 +172,7 @@ That's why it's so simple to implement enumerators using Enumerable module. An `
 
 ## Traversor Limitations
 
-Our Enumerator is good enough. It covers the most cases. But there are some limitations. We can't, for example, have an
-infinite loop inside of the producer block - as we did in the last article. We can't have `next` or `rewind` methods on
+Our Enumerator is good enough. It covers the most cases. But there are some limitations. We can't have `next` or `rewind` methods on
 the consumer side. We can't have external iterators.
 
 This limitation is due to the fact that the Yielder produces all values at once. The lazyness we have so far is due to
@@ -194,6 +193,218 @@ for our case.
 Let's dig into fibers.
 
 ## Fibers
+
+## The Complete Enumerator
+
+```ruby
+require 'fiber'
+
+class Traversor
+  def initialize(&block)
+    @block = block
+  end
+
+  def rewind
+    start_fiber
+  end
+
+  def lazy
+    Traversor::Lazy.new(&@block)
+  end
+
+  def each
+    return self unless block_given?
+
+    y_fiber = Fiber.new do
+      yielder = Yielder.new
+
+      @block.call(yielder)
+    end
+
+    loop do
+      value = y_fiber.resume
+
+      yield value
+
+      break unless y_fiber.alive?
+    end
+  end
+
+  # def each(&each_block)
+  #   return self unless block_given?
+
+  #   yielder = Traversor::Yielder.new(&each_block)
+
+  #   # TODO: loop till the end of the fiber
+
+  #   @block.call(yielder)
+
+  #   puts "About to start the loop"
+
+  #   loop do
+  #     begin
+  #       puts "each block executed"
+  #       value = @fiber.resume
+
+  #       yield value
+  #     rescue StopIteration
+  #       break
+  #     end
+  #   end
+  # end
+
+  def next
+    start_fiber unless @fiber
+
+    value = @fiber.resume
+
+    raise StopIteration unless value && @fiber.alive?
+
+    value
+  end
+
+  def map(&map_block)
+    result = []
+
+    each do |item|
+      result << map_block.call(item)
+    end
+  end
+
+  def filter(&filter_block)
+    result = []
+
+    each do |item|
+      result << item if filter_block.call(item)
+    end
+  end
+
+  def take(n)
+    result = []
+
+    # fica um pingue-pongue entre o Traversor atraves do each e o Traversor::Yielder
+    each do |item|
+      result << item
+
+      break if result.size == n
+    end
+
+    result
+  end
+
+  private
+
+  def start_fiber
+    @fiber = Fiber.new do
+      yielder = Yielder.new
+
+      @block.call(yielder)
+    end
+  end
+
+  def fiber_yielder
+    @fiber_yielder ||= Fiber.new do
+      @block.call(self)
+    end
+  end
+end
+
+class Traversor::Yielder
+  # def initialize(&yielder_block)
+  #   @yielder_block = yielder_block
+  # end
+
+  def yield(item)
+    # return @yielder_block.call(item) if @yielder_block
+
+    Fiber.yield(item)
+  end
+
+  alias << yield
+
+  def next
+    Fiber.yield(10)
+  end
+end
+
+class Traversor::Lazy
+  def initialize(&block)
+    @block = block
+  end
+
+  def each(&each_block)
+    traversor = Traversor.new(&@block)
+    traversor.each(&each_block)
+  end
+
+  def map(&map_block)
+    Traversor::Lazy.new do |yielder|
+      each do |item|
+        yielder << map_block.call(item)
+      end
+    end
+  end
+
+  def filter(&filter_block)
+    Traversor::Lazy.new do |yielder|
+      each do |item|
+        yieldable = filter_block.call(item)
+
+        puts "filter was called for item #{item} :: yieldable #{yieldable}"
+        yielder << item if yieldable
+      end
+    end
+  end
+
+  def take(size)
+    raise ArgumentError.new('attempt to take a negative size') if size.negative?
+
+    Traversor::Lazy.new do |yielder|
+      count = 0
+
+      each do |item|
+        puts "take block executed :: count #{count} | size #{size}"
+
+        yielder << item if (size - count).positive?
+
+        count += 1
+
+        # checks again to be efficient, not breaking here cause the whole pipeline to execute again till this step again.
+        break if count >= size
+      end
+    end
+  end
+
+  def lazy
+    self
+  end
+
+  def to_a
+    results = []
+
+    each do |item|
+      results << item
+    end
+
+    results
+  end
+end
+
+
+fib = Traversor.new do |yielder|
+  a = b = 1
+  loop do
+    yielder << a
+    a, b = b, a + b
+  end
+end
+
+puts fib.next
+puts fib.next
+puts fib.next
+
+puts fib.take(10).inspect
+```
 
 ## References
 
