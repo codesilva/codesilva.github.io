@@ -208,3 +208,18 @@ https://courses.missouristate.edu/kenvollmar/mars/help/syscallhelp.html
 https://minnie.tuhs.org/CompArch/Resources/mips_quick_tutorial.html
 https://mathcs.holycross.edu/~csci226/MIPS/summaryHO.pdf
 [Machine code hello world](https://www.youtube.com/watch?v=aPHAxFAwC7g)
+
+[https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats](https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats)
+[https://www.cs.kzoo.edu/cs230/Resources/MIPS/MachineXL/InstructionFormats.html](https://www.cs.kzoo.edu/cs230/Resources/MIPS/MachineXL/InstructionFormats.html)
+[https://courses.missouristate.edu/kenvollmar/mars/help/syscallhelp.html](https://courses.missouristate.edu/kenvollmar/mars/help/syscallhelp.html)
+[https://minnie.tuhs.org/CompArch/Resources/mips_quick_tutorial.html](https://minnie.tuhs.org/CompArch/Resources/mips_quick_tutorial.html)
+[https://mathcs.holycross.edu/~csci226/MIPS/summaryHO.pdf](https://mathcs.holycross.edu/~csci226/MIPS/summaryHO.pdf)
+[https://www2.it.uu.se/education/course/homepage/os/vt18/images/mips/MIPS_detailed_memory_layout.png](https://www2.it.uu.se/education/course/homepage/os/vt18/images/mips/MIPS_detailed_memory_layout.png)
+[https://www.ufsm.br/pet/sistemas-de-informacao/2018/09/01/mars-ide-para-programacao-em-assembl](https://www.ufsm.br/pet/sistemas-de-informacao/2018/09/01/mars-ide-para-programacao-em-assembl)
+[https://wilkinsonj.people.charleston.edu/mmio.html](https://wilkinsonj.people.charleston.edu/mmio.html)
+[https://wilkinsonj.people.charleston.edu/MARS-data-segment.html](https://wilkinsonj.people.charleston.edu/MARS-data-segment.html)
+[https://courses.cs.vt.edu/cs2506/Fall2014/Notes/L04.MIPSAssemblyOverview.pdf](https://courses.cs.vt.edu/cs2506/Fall2014/Notes/L04.MIPSAssemblyOverview.pdf)
+[https://ww2.cs.fsu.edu/~dennis/teaching/2013_summer_cda3100/week5/week5-day3.pdf](https://ww2.cs.fsu.edu/~dennis/teaching/2013_summer_cda3100/week5/week5-day3.pdf)
+
+[Sistemas operacionais](https://www2.it.uu.se/education/course/homepage/os/vt20/)
+[https://github.com/uu-dsp-os-ospp-2020](https://github.com/uu-dsp-os-ospp-2020)
