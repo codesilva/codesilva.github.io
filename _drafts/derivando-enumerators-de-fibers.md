@@ -194,6 +194,69 @@ Let's dig into fibers.
 
 ## Fibers
 
+Fibers allow us to do cooperative concurrency in a way that's simple and efficient.
+
+Think of a simple way of doing concurrency. Well, Fibers are simpler than that. To get this straight, let's see an example:
+
+```ruby
+require 'fiber'
+
+puts "Root fiber: #{Fiber.current}\n\n"
+
+f = Fiber.new do
+  puts "Fiber says hello"
+  puts "I am fiber #{Fiber.current}"
+
+  Fiber.yield 10 # gets the control back to the caller
+
+  puts "Fiber says goodbye"
+end
+
+pp f
+value = f.resume # fiber execution starts till the first yield
+puts "Value received from Fiber is: #{value}"
+pp f
+
+puts "\n------- \n\n"
+
+
+value = f.resume
+pp f
+puts "Value received from Fiber is: #{value.inspect}"
+```
+
+In this simple script we can see a few things:
+
+- There's a root fiber. It's the main fiber that runs the script. You can see it on `irb`.
+- We create a new fiber using `Fiber.new`. The block passed to `Fiber.new` is the fiber's body.
+- When `resume` is called on a fiber, it starts running the fiber's body until it reaches a `Fiber.yield`. The control
+    is then passed back to the caller.
+- A Fiber has states: `created`, `resumed`, `suspended`, and `terminated`. When a fiber is `resumed` it's running. When it's `suspended` it's waiting for a `resume` call. When it's `terminated` it's
+    done.
+- If `resume` is called and the there's no `Fiber.yield` in the fiber's body, the fiber is `terminated` and `nil` is
+    returned to the caller.
+
+The output of this script is:
+
+```
+Root fiber: #<Fiber:0x000000014381a0a8 (resumed)>
+
+#<Fiber:0x0000000143819d38 /tmp/fibers.rb:5 (created)>
+Fiber says hello
+I am fiber #<Fiber:0x0000000143819d38 /tmp/fibers.rb:5 (resumed)>
+Value received from Fiber is: 10
+#<Fiber:0x0000000143819d38 /tmp/fibers.rb:5 (suspended)>
+
+-------
+
+Fiber says goodbye
+#<Fiber:0x0000000143819d38 /tmp/fibers.rb:5 (terminated)>
+Value received from Fiber is: nil
+```
+
+This can be useful for us. We can use fibers to control the interleaving of the producer and the consumer. The Yielder
+will execute inside of a fiber so we can produce values one by one, interleaving control.
+
 ## The Complete Enumerator
 
 ```ruby
@@ -216,9 +279,10 @@ class Traversor
     return self unless block_given?
 
     y_fiber = Fiber.new do
-      yielder = Yielder.new
+      # yielder = Yielder.new
 
-      @block.call(yielder)
+      # calling the producer block inside of a fiber
+      @block.call(Yielder.new)
     end
 
     loop do
