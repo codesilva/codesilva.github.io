@@ -72,28 +72,11 @@ A ideia dessa talk é dar uma perspectiva diferente acerca de código legado e d
     - Resistindo à tentação do refactor que leva à toca do coelho
     - Refatoracao massica leva a perda de contexto
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-----
 
 # Submissao TDC SP
 
-Em meus últimos três projetos trabalhei e com código legado e fui capaz de produzi uma melhoria efetiva neles. Mais recentemente pude liderar um pequeno time dedicado a resolver débitos técnicos na GoDaddy.
+Em meus últimos três projetos trabalhei e com código legado e fui capaz de produzir uma melhoria efetiva neles. Mais recentemente pude liderar um pequeno time dedicado a resolver débitos técnicos na GoDaddy.
 
 Aprender a trabalhar com código legado não é algo muito ensinado, não há cursos disso, por exemplo. Acredito que é por conta que não é algo simples de se passar em um curso assim tal qual é fazer um curso de zero to hero de alguma tecnologia X, além de que um curso de código legado não vende muito, afinal ninguém gosta de código legado.
 

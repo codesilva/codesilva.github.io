@@ -259,6 +259,14 @@ will execute inside of a fiber so we can produce values one by one, interleaving
 
 ## The Complete Enumerator
 
+We will do the following changes to our Enumerator:
+
+- Yielder will no longer receive a block. It will just call `Fiber.yield`.
+- The producer block will be executed inside of a fiber.
+- The consumer block - the block passed to `each` - will be executed inside of the Traversor instance.
+- There will be a fiber dedicated to external iteration. This fiber will be created when `next` method is called.
+- There will be a `rewind` method that will create a new fiber for the producer block.
+
 ```ruby
 require 'fiber'
 
