@@ -113,7 +113,7 @@ class Traversor
     end
 
     def each(&each_block)
-        yielder = Yielder.new(&each_block)
+        yielder = Traversor::Yielder.new(&each_block)
 
         @block.call(yielder)
     end
@@ -280,7 +280,7 @@ class Traversor
     def each(&each_block)
         return self unless block_given?
 
-        yielder = Yielder.new(&each_block)
+        yielder = Traversor::Yielder.new(&each_block)
 
         @block.call(yielder)
     end
@@ -305,7 +305,7 @@ class Traversor
 
     def start_yielder_fib
         @yielder_fib = Fiber.new do
-            @block.call(Yielder.new)
+            @block.call(Traversor::Yielder.new)
         end
     end
 end
