@@ -172,11 +172,14 @@ That's why it's so simple to implement enumerators using Enumerable module. An `
 
 ## Traversor Limitations
 
-Our Enumerator is good enough. It covers the most cases. But there are some limitations. We can't have `next` or `rewind` methods on
-the consumer side. We can't have external iterators.
+> Note that enumeration sequence by next, next_values, peek and peek_values do not affect other non-external enumeration methods, unless the underlying iteration method itself has side-effect, e.g. IO#each_line.
+>
+> Moreover, implementation typically uses fibers so performance could be slower and exception stacktraces different than expected.
 
-This limitation is due to the fact that the Yielder produces all values at once. The lazyness we have so far is due to
-blocks only. We settle blocks but once the run, they run until the end.
+Our Enumerator is good enough. It covers the most cases. But there are some limitations. We can't have `next` or `rewind` methods on
+the consumer side. In summary, we can't have external iterators.
+
+Our Traversor uses blocks to control the interleaving of the producer and the consumer. Thanks to lazy evaluation it's working as expected. For external iterators though, we need to have a way to pause and resume the execution.
 
 To achieve the full Enumerator behavior we need to use some construct that allows us to pause and resume the execution.
 We need some concurrency mechanism.
@@ -254,228 +257,58 @@ Fiber says goodbye
 Value received from Fiber is: nil
 ```
 
-This can be useful for us. We can use fibers to control the interleaving of the producer and the consumer. The Yielder
-will execute inside of a fiber so we can produce values one by one, interleaving control.
+Very useful for us. We can use fibers to control the interleaving of the producer and the consumer when using
+external enumerators. The Yielder will execute inside of a fiber so it produces a value then switches the execution to
+the consumer fiber.
 
 ## The Complete Enumerator
 
 We will do the following changes to our Enumerator:
 
-- Yielder will no longer receive a block. It will just call `Fiber.yield`.
 - The producer block will be executed inside of a fiber.
-- The consumer block - the block passed to `each` - will be executed inside of the Traversor instance.
-- There will be a fiber dedicated to external iteration. This fiber will be created when `next` method is called.
-- There will be a `rewind` method that will create a new fiber for the producer block.
+- There will be a fiber dedicated to external iteration. This fiber will be (lazily) created when `next` method is called.
+- There will be a `rewind` method that will clean up the consumer fiber so the external iteration can start over.
 
 ```ruby
 require 'fiber'
 
 class Traversor
-  def initialize(&block)
-    @block = block
-  end
-
-  def rewind
-    start_fiber
-  end
-
-  def lazy
-    Traversor::Lazy.new(&@block)
-  end
-
-  def each
-    return self unless block_given?
-
-    y_fiber = Fiber.new do
-      # yielder = Yielder.new
-
-      # calling the producer block inside of a fiber
-      @block.call(Yielder.new)
+    def initialize(&block)
+        @block = block
     end
 
-    loop do
-      value = y_fiber.resume
+    def each(&each_block)
+        return self unless block_given?
 
-      yield value
+        yielder = Yielder.new(&each_block)
 
-      break unless y_fiber.alive?
-    end
-  end
-
-  # def each(&each_block)
-  #   return self unless block_given?
-
-  #   yielder = Traversor::Yielder.new(&each_block)
-
-  #   # TODO: loop till the end of the fiber
-
-  #   @block.call(yielder)
-
-  #   puts "About to start the loop"
-
-  #   loop do
-  #     begin
-  #       puts "each block executed"
-  #       value = @fiber.resume
-
-  #       yield value
-  #     rescue StopIteration
-  #       break
-  #     end
-  #   end
-  # end
-
-  def next
-    start_fiber unless @fiber
-
-    value = @fiber.resume
-
-    raise StopIteration unless value && @fiber.alive?
-
-    value
-  end
-
-  def map(&map_block)
-    result = []
-
-    each do |item|
-      result << map_block.call(item)
-    end
-  end
-
-  def filter(&filter_block)
-    result = []
-
-    each do |item|
-      result << item if filter_block.call(item)
-    end
-  end
-
-  def take(n)
-    result = []
-
-    # fica um pingue-pongue entre o Traversor atraves do each e o Traversor::Yielder
-    each do |item|
-      result << item
-
-      break if result.size == n
+        @block.call(yielder)
     end
 
-    result
-  end
-
-  private
-
-  def start_fiber
-    @fiber = Fiber.new do
-      yielder = Yielder.new
-
-      @block.call(yielder)
+    def rewind
+        @yielder_fib = nil
     end
-  end
 
-  def fiber_yielder
-    @fiber_yielder ||= Fiber.new do
-      @block.call(self)
+    def next
+        value = yielder_fib.resume
+
+        raise StopIteration unless value && yielder_fib.alive?
+
+        value
     end
-  end
+
+    private
+
+    def yielder_fib
+        @yielder_fib ||= start_yielder_fib
+    end
+
+    def start_yielder_fib
+        @yielder_fib = Fiber.new do
+            @block.call(Yielder.new)
+        end
+    end
 end
-
-class Traversor::Yielder
-  # def initialize(&yielder_block)
-  #   @yielder_block = yielder_block
-  # end
-
-  def yield(item)
-    # return @yielder_block.call(item) if @yielder_block
-
-    Fiber.yield(item)
-  end
-
-  alias << yield
-
-  def next
-    Fiber.yield(10)
-  end
-end
-
-class Traversor::Lazy
-  def initialize(&block)
-    @block = block
-  end
-
-  def each(&each_block)
-    traversor = Traversor.new(&@block)
-    traversor.each(&each_block)
-  end
-
-  def map(&map_block)
-    Traversor::Lazy.new do |yielder|
-      each do |item|
-        yielder << map_block.call(item)
-      end
-    end
-  end
-
-  def filter(&filter_block)
-    Traversor::Lazy.new do |yielder|
-      each do |item|
-        yieldable = filter_block.call(item)
-
-        puts "filter was called for item #{item} :: yieldable #{yieldable}"
-        yielder << item if yieldable
-      end
-    end
-  end
-
-  def take(size)
-    raise ArgumentError.new('attempt to take a negative size') if size.negative?
-
-    Traversor::Lazy.new do |yielder|
-      count = 0
-
-      each do |item|
-        puts "take block executed :: count #{count} | size #{size}"
-
-        yielder << item if (size - count).positive?
-
-        count += 1
-
-        # checks again to be efficient, not breaking here cause the whole pipeline to execute again till this step again.
-        break if count >= size
-      end
-    end
-  end
-
-  def lazy
-    self
-  end
-
-  def to_a
-    results = []
-
-    each do |item|
-      results << item
-    end
-
-    results
-  end
-end
-
-
-fib = Traversor.new do |yielder|
-  a = b = 1
-  loop do
-    yielder << a
-    a, b = b, a + b
-  end
-end
-
-puts fib.next
-puts fib.next
-puts fib.next
-
-puts fib.take(10).inspect
 ```
 
 ## References
