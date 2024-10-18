@@ -62,25 +62,48 @@ def filter_by_date(orders, start_date, end_date, limit, offset)
     i += 1
   end
 
-  i = 0
+  # Dropping the first `offset` elements
+  j = 0
+  drop_result = []
 
   loop do
-    break if i < offset
+    break if j >= result.size
 
-    result.shift
-    i += 1
+    drop_result[j] = result[j] if j >= offset
+
+    j += 1
   end
 
-  i = 0
+  # Taking the first `limit` elements
+  k = 0
+  limit_result = []
 
   loop do
-    break if i >= limit
+    break if k >= limit || k >= drop_result.size
 
-    result.pop
-    i += 1
+    limit_result[k] = drop_result[k]
+
+    k += 1
   end
+
+  limit_result
 end
 ```
+
+Three loops!? Yeah, that's a lot of unnecessary work. But think about it. At every step in that pipeline an array is produced. It's
+not that hard to see that, at some level, `select`, `drop`, and `take` are all O(n) operations.
+
+For `drop` and `take` it might not be that clear but let's clarify it with an example.
+
+```ruby
+my_array = [1, 2, 3, 4, 5]
+
+my_array.drop(2).object_id == my_array.drop(2).object_id # => false
+```
+
+As expected, `drop` creates a new array. Comparing the object ids of the two arrays we can see that they are different.
+So, at least in the lower level, there's the copy of `my_array.size - n` (`n` being how many elements should be dropped)
+elements being moved to a new place in memory. The same happens with `take`.
 
 # Don't do it
 
