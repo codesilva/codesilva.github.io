@@ -49,7 +49,6 @@ conseguia entender, parecisa que o mais experiente falava em códigos. Eu já fu
 Você é expert e sempre que alguém aprende algo novo ao invés de você dar apoio você fala que aquilo é obvio. Não seja
 essa pessoa. Os outros não vão gostar de você, elas não vão nem te aturar a menos que você seja o chefe delas.
 
-
 ## Resumo
 
 ## Referencias
