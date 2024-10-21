@@ -1,3 +1,8 @@
+# Headlines
+
+- O Segredo que faz o Discord armazenar TRIHÕES de mensagens.
+
+
 # Estruturas de dados em ação: vamos criar um banco de dados
 
 O aprendizado em sala de aula pode ser pouco prático. Aprender sobre estruturas de dados é uma dessas

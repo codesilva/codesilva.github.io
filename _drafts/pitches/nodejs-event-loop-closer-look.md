@@ -1,10 +1,5 @@
-# JS event loop: a closer look
+# Takeaways
 
-Non blocking I/O is a lie
-
-## Outline
-
-- Overview of js event loop
-- Let's build one
-
-##
+- What is IO?
+- What is non-blocking IO?
+- How does the event loop work?
