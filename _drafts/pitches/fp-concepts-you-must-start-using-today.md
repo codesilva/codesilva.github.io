@@ -31,9 +31,25 @@ It's as simple as that. You might be wondering how it's possible to compute anyt
 Lambda Calculus is so powerful that we can redefine some contructions present in programming languages. Constructions like `booleans` and `if` statements can be defined using only functions.
 
 ```js
-const TRUE = a => b => a;
-const FALSE = a => b => b;
-const IF = p => a => b => p(a)(b);
+function TRUE(a) {
+    return function(b) {
+        return a;
+    };
+}
+
+function FALSE(a) {
+    return function(b) {
+        return b;
+    };
+}
+
+function IF(condition) {
+    return function(a) {
+        return function(b) {
+            return condition(a)(b);
+        };
+    };
+}
 ```
 
 With these definitions, we can now use `IF` to define a conditional statement.
@@ -62,9 +78,15 @@ return another function that takes another argument. This is called `Currying`. 
 can be turned into a sequence of functions that take only one argument. Take the next example:
 
 ```js
-const add = (a, b) => a + b;
+function add(a, b) {
+    return a + b;
+}
 
-const curriedAdd = a => b => a + b;
+function curriedAdd(a) {
+    return function(b) {
+        return a + b;
+    };
+}
 
 add(1, 2); // 3
 curriedAdd(1)(2); // 3
@@ -116,17 +138,44 @@ function composeEmail(product) {
     };
 }
 
-function sendEmail(to, subject, body) {
-    // Some side effect here to send the email
+async function sendEmail(composedEmail) {
+    const { to, subject, body } = composedEmail;
+
+    await gmail.send(to, subject, body); // side-effect
 }
 
-function shipProduct(product) {
-    const { to, subject, body } = composeEmail(product);
-    sendEmail(to, subject, body);
+async function shipProduct(product) {
+    const composedEmail = composeEmail(product);
+
+    await sendEmail(composedEmail);
 }
 ```
 
+Even though we don't have domain rules in this example, it's possible to see how Rick's approach isolates what matters from the details (or actions). Note how we can use any provider to actually send the email without touching the function that composes the email.
+
+This is a concept that is mandatory in Domain-Driven Design (DDD) and Architectural Patterns. Knowing how to isolate things will bring you and your team a lot of benefits.
+
 ## Composition
+
+`Inheritance vs Composition` is a common topic in Object-Oriented Programming (OOP). You probably heard about it and
+about the `Composition over Inheritance` principle. This principle states that you should prefer composition over
+inheritance.
+
+The issue with inheritance is that it's a `Is-A` relationship. It's good for taxonomy. For instance, a `Duck` is a `Bird` so it makes sense to
+use inheritance. An issue with this approach might arise when the parent class has behaviours defined that will dictate
+the child class behaviour.
+
+Suppose in the class `Bird` we have a method `fly`. It's a good method for a `Bird`, but not for a `Penguin`. Penguins are birds, but they don't fly. If we use inheritance, we will have to override the `fly` method in the `Penguin` class.
+
+A more clever approach is to isolate the behaviors and just use what you need where you need, isolating what changes from what doesn't.
+
+So the charateristics of a `Bird` that are common to all birds can be in the `Bird` class. The behaviours that are specific to children classes can be isolated and composed where needed. For instance, we can have a `Flyable` interface that has the `fly` method and compose it where needed.
+
+NOTE: There are other approaches to address this problem.
+
+## Composition in FP
+
+The essence of composition is the same as discussed in the last section. Compose small pieces to build something new, with different traits.
 
 ## Wrap up
 
