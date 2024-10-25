@@ -195,7 +195,8 @@ Let's catalogue things. In the function above we have:
 
 To make it simple, let's name these three objects as A, B and C respectively. Functions, in this example, are just mappings between these objects. The function `composeEmail` maps A to B. The function `sendEmail` maps B to C. The function `shipProduct` is a composition of these two functions, mapping A to C.
 
-![image](https://github.com/user-attachments/assets/9e187048-ef0a-46ef-bb8f-680e4a9f965b)
+![image](https://github.com/user-attachments/assets/fff8b72d-c488-48a6-a9bc-7b22c9807126)
+
 
 
 ### Flying Within A Category
