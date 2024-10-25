@@ -195,6 +195,9 @@ Let's catalogue things. In the function above we have:
 
 To make it simple, let's name these three objects as A, B and C respectively. Functions, in this example, are just mappings between these objects. The function `composeEmail` maps A to B. The function `sendEmail` maps B to C. The function `shipProduct` is a composition of these two functions, mapping A to C.
 
+![image](https://github.com/user-attachments/assets/9e187048-ef0a-46ef-bb8f-680e4a9f965b)
+
+
 ### Flying Within A Category
 
 Analogously you can also think of `Bird`, `Walkable Bird`, and `Flyable Bird` as objects. With morphisms or arrows - the functions - a bird can be turned into a duck or a penguin with their specific behaviors. The behaviors are the morphisms that compose the objects. See the example below:
