@@ -20,6 +20,16 @@
 
 # Copy
 
+When I first heard about Functional Programming I just thought it was about using functions. If it was about using functions I was fine, I used them.
+
+A couple of years ago I was chosen to talk about programming paradigms. To have a perspective I digged into FP paradigm and there's much more than 'just use functions'. There's much math theory surrounding it.
+
+Knowing the theory if defintely good. But you don't need to. At least, you don't need to have a deep knowledge about it.
+
+In this article, I'll present you three or more Functional Programming concepts. The best thing of this article is that it was made specially for people who don't know much about the FP paradigm. Though it's still useful for any developer who wants to write better code.
+
+# The Enough Theory (for now)
+
 We can't start talking about Functional Programming without mentioning Lambda Calculus. It's the foundation and it's where many FP programming languages like Haskell and Clojure bring their inspiration from.
 
 Lambda Calculus is a mathematical system that defines functions and application of functions. It's simple, stateless yet powerful. Anything can be computed with Lambda Calculus. You just need:
@@ -285,6 +295,10 @@ loop(
 ```
 
 ### Be Careful With Immutability In Non-FP Languages
+
+Despite writing imutable code is a good thing, it's not always possible. Imutability on a programming language like Erlang or Elixir is possible because the language was designed to work that way. JavaScript is not meant to be like those languages.
+
+Sometimes you will need to write an imperative code to leverage performance and that's fine. Don't be afraid of using `for` loops if you need. Don't be afraid of reassigning a variable a new value. Just analyze the trade-offs and pick the best approach for your case.
 
 ## Bonus: ReactJS Components Lifecycle Is Based On Immutability
 
