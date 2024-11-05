@@ -212,8 +212,36 @@ Time: 13.91 seconds
 Memory usage (delta): 2255.3 MB / Current: 2578.5 MB
 ```
 
+# Como foi resolvido?
+
+Trocar o método para each_row_streaming resolveu o problema, pois ele faz em uma passada. Ainda 300MB (o dobro do
+tamanho do arquivo descompactado), mas é razoável.
+
+Ainda quero brincar um pouco com esse problema e experimentar se há maneiras mais eficientes de processar um XML.
+
+# Performance Mantras
+
+As vezes o problema não é tão simples. Então eu quero deixar aqui alguns guidelines para lidar com problemas parecidos
+
+## Enumerators Customizados
+
+Use enumerators a seu favor. Com enumerators você pode gerar sequências infinitas sob demanda, com sua própria logica.
+
+## Lazy Evaluation
+
+Não faça hoje o que pode deixar para amanhã.
+
+## Garbage Collector
+
+Em um processo Ruby, apenas uma thread por vez pode executar código Ruby - devido a GVL. Assim, se o GC estiver rodando, o código Ruby não pode ser
+executado. Isso pode ser um problema se o GC executar com muita frequência.
+
+## Heap snapshots
+
 # Um script que lê queries de um banco
 
+https://www.speedshop.co/2020/05/11/the-ruby-gvl-and-scaling.html
 https://thoughtbot.com/blog/how-we-used-a-custom-enumerator-to-fix-a-production-problem
 https://www.speedshop.co/2017/03/09/a-guide-to-gc-stat.html
 https://tjay.dev/howto-working-efficiently-with-large-files-in-ruby/
+https://www.reddit.com/r/ruby/comments/1cslfrj/any_info_on_how_ruby_32_default_garbage_collector/
