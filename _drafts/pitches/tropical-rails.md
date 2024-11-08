@@ -1,5 +1,7 @@
 # Headline
 
+Hotwire meets The Platform™: a new way to build PWAs relying on native HTML APIs
+
 What you need to know about PWAs before ActionNotifier is released
 PWA on Rails: Cool features to use before ActionNotifier is released
 What can your PWA do?
@@ -48,47 +50,34 @@ APIs and build apps that engage 120% more!
 
 # Abstract
 
-Every software is made to be useful and to solve people's prolems. The more people benefited by your software better.
+Every software is made to solve people's prolems. The more people benefited by your software better.
 
-With Rails, we, developers, are very productive and can deliver high-quality software prety fast. Not only regular Rails
-apps but now Progressive Web Apps (PWAs).
+With Rails, developers are very productive and can deliver high-quality software prety fast. Not only regular Rails apps but now Progressive Web Apps (PWAs).
 
-Offering a native-like app experience, PWAs are a good way to build more engaging apps without needing App Store or
-Google Play as gatekeepers.
+Offering a native-like app experience, PWAs are a good way to build more engaging apps without needing App Store or Google Play as gatekeepers.
 
-This talk is for anyone who wants to build more efficient, smooth, and engaging applications using Rails, Hotwire and just a bit of
-JavaScript.
+This talk is for anyone who wants to build more efficient, smooth, and engaging applications using Rails, Hotwire and - just a bit of - JavaScript.
 
 # Pitch
 
-pontos: a maioria dos aplicativos requerem funcionalidades simples
+If you have never faced issues with Apple or Play store you probably know someone who had. Sometimes they are weird, but simple to solve, like an incorrect alpha filter on the image.
 
-I worked with mobile app development for a couple of years - hybrid and native. In my memories, I remeber struggling with stores (Google and
-Apple Stores) due to peculiar issues. Sometimes my images didn't have the correct alpha filter. Sometime it was worse.
-We needed to do some workarounds to make the app to perform differently based on the platform.
+Sometimes the issue is hard to solve like they enforcing you to use their expensive payment methods. You end up implementing a feature you didn't want to - making your team less productive on what matters.
 
-Even worse: sometimes your are force to use their (expensive) services.
+Most apps you work on, while deliverying much value, are simple in their mechanisms. That's why you use Rails. It makes things very simple.
 
-As software developers you want consistency. Write a code once and run anywhere is a good way to achive that. As an
-enterpreneur you don't want to spend money on services you don't want to use.
+As Rails, PWAs are simple yet powerful. You write once and run anywhere as regular web pages or as a native-like app. It gets better when you finds out how powerful HTML APIs are today.
 
-PWAs bring simplicity, flexibility and freedom - just like Rails. Indeed, the average applications we build are simple.
-Based on a CRUD with not much variations.
-
-For most applications PWAs are suitable. They join the capabilities of a regular web application with the native-like
-plus. Using the right APIs you can build something really powerful.
-
-<!-- As a software developer you don't want to need to make workarounds, hide features in certain platform or anything like -->
-<!-- that. And as product owner you don't want to spend much money with integrations or services that you are not interested -->
-<!-- in. -->
+I will show you how we can leverage all those benefits while build an engaging and efficient app using Rails and Hotwire.
 
 ## Outcomes
 
 After attending this talk, audience should know:
 
 1. How Web Push works and how they can add this to their app (while ActionNotifier is not here)
-2. Know HTML APIs that provide more interaction and smooth apps (e.g. Vibration API and View Transitions API)
-3. Use APIs to make apps more effficient (e.g. Background Fetch API)
+2. Use APIs to make apps more effficient (e.g. Background Fetch API)
+3. Know HTML APIs that provide more interaction and smooth apps (e.g. Vibration API and View Transitions API)
+4. What can we expect to be even better once ActionNotifier is released
 
 ## Outline
 
@@ -100,17 +89,24 @@ After attending this talk, audience should know:
 
 ### Getting started
 
-- rails new: let's create a simple app
-- the minimal configuration needed 
+- rails new: let's create a simple study coaching app
+- the minimal configuration needed
 
 ### Making it smooth and efficient
 
 - Hotwire + View Transitions API
-- Background Fetching
+- Background Fetching (for downlading materials)
 
-### Engagement
+### PWA Engagement features
+
+- Some statistics (I provide statistics on app engagement when using push notifications)
+- Implementing Push Notificatios
+
+### Other engagement features
 
 - Context menu
 - Vibration API
-- Some statistics
-- Push Notifications
+
+### Demo
+
+- Demo the app

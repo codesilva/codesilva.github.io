@@ -123,10 +123,6 @@ class Import
     private
 
     attr_reader :spreadsheet
-
-    def spreadsheet
-        @spreadsheet
-    end
 end
 ```
 
@@ -178,7 +174,7 @@ end
 
 def invalid_type?(row_number)
     raw_cell_value(row_number:,
-                    column_number: SpreadsheetColumns::EJACULATE[:TYPE]) != SpreadsheetCells::VALID_EXAM_TYPE
+                    column_number: SpreadsheetColumns::DEFINITIONS[:TYPE]) != SpreadsheetCells::VALID_EXAM_TYPE
 end
 
 def row_reference_invalid?(row_number)
@@ -189,10 +185,10 @@ end
 
 def invalid_non_zero_fields?(row_number)
     [
-    SpreadsheetColumns::EJACULATE[:NAAB],
-    SpreadsheetColumns::EJACULATE[:CODE],
-    SpreadsheetColumns::EJACULATE[:BATCH_NUMBER],
-    SpreadsheetColumns::EJACULATE[:CREATED_DATE]
+    SpreadsheetColumns::DEFINITIONS[:NAAB],
+    SpreadsheetColumns::DEFINITIONS[:CODE],
+    SpreadsheetColumns::DEFINITIONS[:BATCH_NUMBER],
+    SpreadsheetColumns::DEFINITIONS[:CREATED_DATE]
     ].map { |column_number| raw_cell_value(row_number:, column_number:) }.any?('0')
 end
 ```
