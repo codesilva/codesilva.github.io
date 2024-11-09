@@ -50,32 +50,32 @@ APIs and build apps that engage 120% more!
 
 # Abstract
 
-Every software is made to solve people's prolems. The more people benefited by your software better.
+Every software is made to solve people's problems. The more people benefit from your software better.
 
-With Rails, developers are very productive and can deliver high-quality software prety fast. Not only regular Rails apps but now Progressive Web Apps (PWAs).
+With Rails, developers are very productive and can deliver high-quality software pretty fast. This includes not only regular Rails apps but now Progressive Web Apps (PWAs).
 
-Offering a native-like app experience, PWAs are a good way to build more engaging apps without needing App Store or Google Play as gatekeepers.
+Offering a native-like app experience, PWAs are a good way to build more engaging apps without needing the App Store or Google Play as gatekeepers.
 
-This talk is for anyone who wants to build more efficient, smooth, and engaging applications using Rails, Hotwire and - just a bit of - JavaScript.
+This talk is for anyone who wants to build more efficient, smooth, and engaging applications using Rails, Hotwire, and - just a bit of - JavaScript.
 
 # Pitch
 
-If you have never faced issues with Apple or Play store you probably know someone who had. Sometimes they are weird, but simple to solve, like an incorrect alpha filter on the image.
+If you have never had issues with Apple or the Play Store, you probably know someone who has. Sometimes, they are weird but simple to solve, like an incorrect alpha filter on the image.
 
-Sometimes the issue is hard to solve like they enforcing you to use their expensive payment methods. You end up implementing a feature you didn't want to - making your team less productive on what matters.
+Sometimes, the issue is hard to solve, like forcing you to use their expensive payment methods. You end up implementing a feature you didn't want to, making your team less productive on what matters.
 
-Most apps you work on, while deliverying much value, are simple in their mechanisms. That's why you use Rails. It makes things very simple.
+Most apps you work on, while delivering much value, are simple in their mechanisms. That's why you use Rails. It makes things very simple.
 
-As Rails, PWAs are simple yet powerful. You write once and run anywhere as regular web pages or as a native-like app. It gets better when you finds out how powerful HTML APIs are today.
+As Rails, PWAs are simple yet powerful. You write once and run anywhere as regular web pages or as a native-like app. It gets better when you find out how powerful HTML APIs are today.
 
-I will show you how we can leverage all those benefits while build an engaging and efficient app using Rails and Hotwire.
+I will show you how to leverage all those benefits while building an engaging and efficient app using Rails and Hotwire.
 
 ## Outcomes
 
-After attending this talk, audience should know:
+After attending this talk, the audience should know:
 
 1. How Web Push works and how they can add this to their app (while ActionNotifier is not here)
-2. Use APIs to make apps more effficient (e.g. Background Fetch API)
+2. Use APIs to make apps more efficient (e.g. Background Fetch API)
 3. Know HTML APIs that provide more interaction and smooth apps (e.g. Vibration API and View Transitions API)
 4. What can we expect to be even better once ActionNotifier is released
 
@@ -100,7 +100,7 @@ After attending this talk, audience should know:
 ### PWA Engagement features
 
 - Some statistics (I provide statistics on app engagement when using push notifications)
-- Implementing Push Notificatios
+- Implementing Push Notifications
 
 ### Other engagement features
 

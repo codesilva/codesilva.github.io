@@ -113,6 +113,11 @@ Hi = Ni * T
 
 Onde `T` é o máximo de horas do ciclo de estudos.
 
-PS. Ajustes podem ser necessários caso passe ou falte do tempo limite
+PS. Ajustes podem ser necessários caso passe ou falte do tempo limite - isso deve ser feito na disciplina com menor
+factor.
 
 https://en.wikipedia.org/wiki/Equitable_coloring
+https://en.wikipedia.org/wiki/Anki_(software)
+https://en.wikipedia.org/wiki/Spaced_repetition
+[https://www.youtube.com/watch?v=AjU0UmGHm2Q](https://www.youtube.com/watch?v=AjU0UmGHm2Q)
+[https://www.youtube.com/watch?v=Y5gCFOzV6so](https://www.youtube.com/watch?v=Y5gCFOzV6so)
