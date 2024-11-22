@@ -41,10 +41,15 @@ APIs and build apps that engage 120% more!
 - [Retenção de notificações push](https://www.mobiloud.com/blog/push-notification-statistics#push-notification-retention-statistics)
 - [Rails push notifications](https://joyofrails.com/articles/web-push-notifications-from-rails)
 - [Chrome Web Push](https://developer.chrome.com/docs/extensions/how-to/integrate/web-push)
+- https://web.dev/learn/pwa/update
+- https://web.dev/articles/service-worker-lifecycle#the_intent
+- https://joyofrails.com/articles/add-your-rails-app-to-the-home-screen
+- https://developer.chrome.com/docs/capabilities/pwa-manifest-id
 - https://www.notifyvisitors.com/blog/web-push-notifications-stats/
 - https://www.w3.org/TR/appmanifest/#shortcut-items
 - https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
 - https://github.com/rails/rails/blob/7-2-stable/railties/CHANGELOG.md
+- https://github.com/rails/rails/issues/50454
 
 ---
 
