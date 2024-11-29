@@ -53,7 +53,7 @@ Como um dos participantes, eu achei muito interessante o desafio em si que nos l
 A maioria das duplas usou a abordagem padrão de deixar o backend a cargo da criptografia usando `salts` e `hashes` nos vaults. Em pseudocodigo seria algo como:
 
 ```
-salt = generate_salt()
+salt = get_random_salt()
 encrypted_password = encrypt(SOME_SYMETRIC_KEY, password_plain_text + salt)
 
 vault = {
@@ -86,6 +86,34 @@ A implicação disso é que a senha do usuário também precisa ser segura e o b
 
 Durante o registro, o frontend, antes de enviar a senha para o backend, faz salt e hashing da senha. O backend recebe esse hash e por sua vez faz mais um hash e aí sim armazena no banco de dados.
 
-## Arrependimentos
+## "Arrependimentos" e Resultados
+
+Todas as duplas que tentaram implementar a abordagem de Zero-Knowledge Encryption não conseguiram terminar a tempo. A aplicação não chegava a atender os requerimentos mínimos. Quem arriscou experimentar com Rust também levou um tempo maior para se adaptar à linguagem e não conseguiu terminar a tempo.
+
+As duplas top 3 foram:
+
+- `Spice Miners` usando Python e Svelte
+- `42Passwords` usando Go e Svelte
+- `Open Sesame` usando Python e Svelte
+
+Cada integrante da dupla vencedora ganhou um Macbook Air M2 13". A dupla que ficou em segundo lugar ganhou um Echo Show 8.
+
+## Utilitarismo e Recompensa Imediata
+
+Tem uma estória que conta que um dia um aluno de Euclides, pai da Geometria plana, na biblioteca de Alexandria, perguntou: o que eu ganho com esse conhecimento? Euclides respondeu: "De-lhe uma moeda pois ele precisa lucrar com o que aprende".
+
+Afinal, quem participou, o que ganha com tudo isso? Pra que saber Zero-Knowledge Encryption? Pra que saber Rust? Pra que saber Go? Pra que, se na próxima semana você vai estar lidando com um framework que já resolve isso pra você?
+
+A resposta é: _NADA_. Boa parte das pessoas que participaram o fizeram pelo simples exercício de aprender algo novo. O conhecimento como um fim não um meio. O seu ganho já é o conhecimento.
+
+Isso não significa que isso nunca vai te ajudar. Os pontos só podem ser conectados olhando para trás. Claro que isso pode ser, e provavelmente será, útil no futuro.
+
+Mas o valor desse _nada_ é o que te faz crescer. A ciência é assim. Maxwell quando descobriu as equações de Maxwell não
+sabia que isso ia ser útil para a comunicação sem fio. Newton também não sabia que o cálculo ia ser útil para a física
+e a engenharia.
+
+Esse nada é sobre experimentar. Seja um novo conceito, uma nova tecnologia, etc. Mesmo que aquilo não seja útil.
+
+## Referencias
 
 https://chatgpt.com/share/674a0aa6-c230-800b-a1a5-c2df660a699b
