@@ -193,6 +193,7 @@ Assim, pra fazermos a soma de números multibit resolvemos casa a casa, posiçã
 
 - [https://logic.ly/demo/](https://logic.ly/demo/)
 - [https://academo.org/demos/logic-gate-simulator/](https://academo.org/demos/logic-gate-simulator/)
+https://circuitverse.org/simulator
 
 # Two's complment for handling subtractions
 
