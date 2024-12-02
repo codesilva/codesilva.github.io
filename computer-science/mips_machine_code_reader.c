@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #define MEMORY_SIZE (0x80000000 - 0x04000000) // Size of memory to simulate
 #define INSTRUCTION_SIZE 4 // Size of a MIPS instruction in bytes

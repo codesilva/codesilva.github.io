@@ -92,7 +92,7 @@ Todas as duplas que tentaram implementar a abordagem de Zero-Knowledge Encryptio
 
 As duplas top 3 foram:
 
-- `Spice Miners` usando Python e Svelte
+- `SecureMiner` usando Python e Svelte
 - `42Passwords` usando Go e Svelte
 - `Open Sesame` usando Python e Svelte
 
@@ -102,7 +102,7 @@ Cada integrante da dupla vencedora ganhou um Macbook Air M2 13". A dupla que fic
 
 Tem uma estória que conta que um dia um aluno de Euclides, pai da Geometria plana, na biblioteca de Alexandria, perguntou: o que eu ganho com esse conhecimento? Euclides respondeu: "De-lhe uma moeda pois ele precisa lucrar com o que aprende".
 
-Afinal, quem participou, o que ganha com tudo isso? Pra que saber Zero-Knowledge Encryption? Pra que saber Rust? Pra que saber Go? Pra que, se na próxima semana você vai estar lidando com um framework que já resolve isso pra você?
+Afinal, quem participou, fora os top dois, o que ganha com tudo isso? Pra que saber Zero-Knowledge Encryption? Pra que saber Rust? Pra que saber Go? Pra que, se na próxima semana você vai estar lidando com um framework que já resolve isso pra você?
 
 A resposta é: _NADA_. Boa parte das pessoas que participaram o fizeram pelo simples exercício de aprender algo novo. O conhecimento como um fim não um meio. O seu ganho já é o conhecimento.
 
@@ -113,6 +113,12 @@ sabia que isso ia ser útil para a comunicação sem fio. Newton também não sa
 e a engenharia.
 
 Esse nada é sobre experimentar. Seja um novo conceito, uma nova tecnologia, etc. Mesmo que aquilo não seja útil.
+
+## Conclusão
+
+Foi uma grande experiência e de fato todo mundo aprendeu algo novo e isso por si só já valeu. Da perspectiva da
+companhia, foi uma ótima forma de fomentar a experimentação e a curiosidade. Mesmo as pessoas mais curiosas têm
+dificulddades em se organizar para experimentar o novo. Um evento como esse é uma ótima forma de fazer isso.
 
 ## Referencias
 

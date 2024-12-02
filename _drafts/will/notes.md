@@ -156,3 +156,23 @@ Precisei atualizar o gradle para versao 8 devido a minha versao do java que era 
 build tools 31 corrupted.
 
 [https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted](https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted)
+
+
+## COnectanto ADB wifi
+
+IP do dispositivo
+
+    adb shell "ip addr show wlan0 | grep -e wlan0$ | cut -d\" \" -f 6 | cut -d/ -f 1"
+
+Conectar
+
+    adb connect [IP]
+
+Habilitar o adb wifi
+
+    adb tcpip 5555
+
+## APW-9: Upload de arquivos
+
+    I/flutter (19550): Request: https://storage-staging.wearewil.com/api/willfly/upload/multipart {key: c60b9dddc717d174bae76009a521bce1, mimetype: image/jpeg} {content-type: application/json; charset=utf-8, Authorization: Basic NGQ0NmQ2ZmItM2I0MC00OTEwLWJkMjUtNjZmMTY5Y2IwNDEzOno4cnV3eHdGb0lZRUtjMWhtZkhwYm53T0R1ZnY0bGJ2}
+
