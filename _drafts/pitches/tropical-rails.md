@@ -80,8 +80,8 @@ I will show you how to leverage all those benefits while building an engaging an
 After attending this talk, the audience should know:
 
 1. How Web Push works and how they can add this to their app (while ActionNotifier is not here)
-2. Use APIs to make apps more efficient (e.g. Background Fetch API)
-3. Know HTML APIs that provide more interaction and smooth apps (e.g. Vibration API and View Transitions API)
+2. Use APIs to make apps more efficient (e.g. Background Fetch API and Background Sync)
+3. Know HTML APIs that provide more interaction and smooth apps (e.g. Vibration API)
 4. What can we expect to be even better once ActionNotifier is released
 
 ## Outline
@@ -94,12 +94,14 @@ After attending this talk, the audience should know:
 
 ### Getting started
 
-- rails new: let's create a simple study coaching app
+- rails new: let's create a simple study coaching app where the teacher can publish materials and the students can
+    download them
 - the minimal configuration needed
 
-### Making it smooth and efficient
+### Delivering an offline-capable application
 
-- Hotwire + View Transitions API
+- Cache API
+- ~~Hotwire + View Transitions API~~ Background Sync (for publishing materials)
 - Background Fetching (for downlading materials)
 
 ### PWA Engagement features
