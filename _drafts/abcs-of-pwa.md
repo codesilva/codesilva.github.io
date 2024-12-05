@@ -53,3 +53,42 @@ what if we have a generator to handle this boilerplate for us?
 https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Offline_and_background_operation
 https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Caching
 https://guides.rubyonrails.org/generators.html
+https://alicia-paz.medium.com/make-your-rails-app-work-offline-part-3-crud-actions-with-indexeddb-and-stimulus-ad669fe0141c
+
+
+---
+
+# PWA on Rails: How to handle Service Worker upgrades
+
+Since version X Rails fresh new applications come with a manifest.json and a service-worker.js file under
+`app/views/pwa/` folder. This is for a good reason.
+
+The Rails team is pushing for PWAs. And they are right. PWAs are a good way to build more engaging apps without needing
+the App Store or Google Play as gatekeepers.
+
+In this article I will show you how to quickly setup PWA + Service Worker to handle caches and Service Worker upgrades.
+
+# PWA on Rails: Offline and Background Operation
+
+background sync, background fetch, indexedDB, cache, service worker
+
+# PWA on Rails: Push Notifications
+
+# PWA on Rails: Stimulus meets The Platform
+
+- IndexDB
+- https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API
+- Bluetooth API
+- https://developer.mozilla.org/en-US/docs/Web/API/Contact_Picker_API
+- https://developer.mozilla.org/en-US/docs/Web/API/File_System_API
+- https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API
+- https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
+- https://developer.mozilla.org/en-US/docs/Web/API/Idle_Detection_API
+- https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Image_Capture_API
+https://developer.mozilla.org/en-US/docs/Web/API/Keyboard_API
+https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API
+https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API
+https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API
+https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs
+
+https://developer.mozilla.org/en-US/docs/Web/API
