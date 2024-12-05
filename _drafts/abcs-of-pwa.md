@@ -60,6 +60,8 @@ https://alicia-paz.medium.com/make-your-rails-app-work-offline-part-3-crud-actio
 
 # PWA on Rails: How to handle Service Worker upgrades
 
+[pwa-on-rails-handle-service-worker-upgrades.md](./pwa-on-rails-handle-service-worker-upgrades.md)
+
 Since version X Rails fresh new applications come with a manifest.json and a service-worker.js file under
 `app/views/pwa/` folder. This is for a good reason.
 
