@@ -1,6 +1,21 @@
 # ABCs of PWAS with Rails
 
-in this article I will show you how to quickly get your Rails application installable using nice apis.
+This article starts a series about Progressive Web Applications (PWAs) in Rails. In this series I will show you how to
+turn your Rails application into a native-like app that works offline, handles background operations, and push
+notifications.
+
+With PWAs and HTML APIs you can build very powerful application that can be installed in the user's device. This is
+a killer feature for user engagement. Especially when talking about mobile devices.
+
+You can deliver your app without those gatekeepers that block your app from being published because they want to force you to use their expensiver
+services like in-app purchases; or even deny your app because they don't like an image you used.
+
+> "Alpha filter is not allowed. I deny you"
+
+_They say._
+
+PWAs bring freedom, power, and control back to the developers. And Rails is a great framework to build PWAs. In this
+article I will give you an introduction to PWAs and show you how to quickly setup a PWA in a Rails application.
 
 ## a brand new Rails application
 
@@ -254,23 +269,93 @@ In cache-first strategy you first try to get the response from the cache. If it'
 network.
 
 ```javascript
+const VERSION = 'v1'; // Version will be the key
+
+async function cacheFirst(request) {
+  const cache = await caches.open(VERSION);
+  const cachedResponse = await caches.match(request);
+
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+
+  try {
+    const responseFromNetwork = await fetch(request.clone());
+
+    cache.put(request, responseFromNetwork.clone());
+
+    return responseFromNetwork;
+  } catch (error) {
+    return new Response('Network error happened', {
+      status: 408,
+      headers: { 'Content-Type': 'text/plain' },
+    });
+  }
+}
+
 self.addEventListener('fetch', function(event) {
-  console.log('Fetch event for ', event.request.url);
+    event.respondWith(cacheFirst(event.request))
+});
+```
 
-  event.respondWith(
-    caches.open('my-cache').then(async (cache) => {
-      const response = await cache.match(event.request);
+This will cache every request in the `v1` cache. If the request is not in the cache it will fetch it from the network.
+Run this once and you will see entries in the cache.
 
-      if (response) {
-        console.log('Response from cache:', response);
-        return response;
-      }
+[screenshot showing the cache in the devtools]
 
-      return fetch(event.request);
+If you examine the `Network` tab you will see the requests being intercepted by the service worker.
+
+[screenshot showing cache served from the service worker]
+
+This caching example was very simple. It aggregates all requests in a single cache. Of course, you can have multiple
+caches; YouTube, for example, has a three caches holding assets.
+
+#### Invalidating the cache
+
+Bugs come, new features are requested, and you need to update your application. This application though is not good at
+being updated. To confirm it, change the text in `app/views/home/index.html.erb` to something like `Hello, PWA! v2`.
+
+No matter how much you refresh the page the service worker will still serve the old content. This is because the cache
+is still holding the old content.
+
+To fix this you must invalidate the cache. You can do that by changing the cache key in your service worker.
+
+```javascript
+const VERSION = 'v2'; // Version will be the key
+```
+
+Now the service worker will create a new cache and serve the new content. In DevTools you can see the new cache but also
+the old cache.
+
+If you want to delete the old cache you can do it in the service worker doing something like this:
+
+```javascript
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheName !== VERSION) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
     })
   );
 });
 ```
+
+The 'activate' event is triggered when the service worker is activated. At this point you can delete the old caches. The
+code above simply walks through all caches and deletes the ones that are not the current version.
+
+The `waitUntil` method is used to keep the service worker alive until the promise is resolved.
+
+Add this to your service worker and notice that the only cache left is the current one.
+
+### Conclusion
+
+This article is the first of a series about PWAs in Rails. You learned how to quickly turn your Rails application into
+a PWA that works offline by handling caches and some service worker lifecycle events.
 
 <!-- # PWA on Rails: How to handle Service Worker upgrades -->
 

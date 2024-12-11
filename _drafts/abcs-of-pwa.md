@@ -80,7 +80,7 @@ background sync, background fetch, indexedDB, cache, service worker
 
 - IndexDB
 - https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API
-- Bluetooth API
+- Bluetooth API - that's how moonlander keyboard works
 - https://developer.mozilla.org/en-US/docs/Web/API/Contact_Picker_API
 - https://developer.mozilla.org/en-US/docs/Web/API/File_System_API
 - https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API
