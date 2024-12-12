@@ -1,36 +1,29 @@
 # ABCs of PWAS with Rails
+# PWAs From The Ground Up + Rails
 
-This article starts a series about Progressive Web Applications (PWAs) in Rails. In this series I will show you how to
-turn your Rails application into a native-like app that works offline, handles background operations, and push
-notifications.
+This article starts a series about Progressive Web Applications (PWAs) in Rails. In this series I will show you how to turn your Rails application into a native-like app that works offline, handles background operations, and push notifications.
 
-With PWAs and HTML APIs you can build very powerful application that can be installed in the user's device. This is
-a killer feature for user engagement. Especially when talking about mobile devices.
+With PWAs and HTML APIs you can build very powerful application that can be installed in the user's device. This is a killer feature for user engagement. Especially when talking about mobile devices.
 
-You can deliver your app without those gatekeepers that block your app from being published because they want to force you to use their expensiver
-services like in-app purchases; or even deny your app because they don't like an image you used.
+You can deliver your app without those gatekeepers that block your app from being published because they want to force you to use their expensiver services like in-app purchases; or even deny your app because they don't like an image you used.
 
-> "Alpha filter is not allowed. I deny you"
+> Alpha filter is not allowed. I deny you
 
 _They say._
 
-PWAs bring freedom, power, and control back to the developers. And Rails is a great framework to build PWAs. In this
-article I will give you an introduction to PWAs and show you how to quickly setup a PWA in a Rails application.
+PWAs bring freedom, power, and control back to the developers. And Rails is a great framework to build PWAs. In this article I will give you an introduction to PWAs and show you how to quickly setup a PWA in a Rails application.
 
-## a brand new Rails application
+## A Brand-New Rails Application
 
-A new rails project created since version 7.2 comes with files that makes it easy to turn it into a PWA. A PWA is web
-applpication that can behave as it was a native app.
+A new rails project created [since version 7.2][rails-72-changelog-default-pwa] comes with files that makes it easy to turn it into a PWA.
 
-A pre-condition is to have your own views under application.html.erb. This does not work with the default Rails
-controller.
+For this series you will need a Rails app. The unique pre-condition is to have your own views under some layout. The default Rails controller does not work with the PWA setup.
 
 For this article I created a simple controller using `rails g controller home`. And defined the root route to point to `home#index`. The view content is just a simple `Hello, PWA!`.
 
-[screenshot showing the app running]
+![Rails app running with a "Hello, PWA"][base-app-running]
 
-The most basic action to turn your application installable is enabling the `manifest.json`. You two steps you can do
-that:
+The most basic action to turn your application installable is enabling the `manifest.json`. You two steps you can do that:
 
 1. enable the routes for the manifest.json
 
@@ -62,17 +55,15 @@ end
 
 Voilà! Your application is now installable. Open it in the browser and you will see a button to install it.
 
-[screenshot showing the install button]
+![Install button][install-button]
 
 Clicking to install will prompt the user to install the app.
 
-[screenshot showing the install prompt]
+![Install prompt][install-prompt]
 
-The information in this dialog comes from the `manifest.json` file. You can customize it to show your app's name, icon,
-and other information.
+The information in this dialog comes from the `manifest.json` file. You can customize it to show your app's name, icon, and other information.
 
 https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json
-
 
 Try changing some information.
 
@@ -82,16 +73,13 @@ In DevTools you should be able to see Manifest information under `Application` t
 
 ## Running the app
 
-after installation you can open it as an standalone app. You can see it in the app drawer. You can even create multiple
-windows.
+After installation you can open it as an standalone app. You can see it in the app drawer. You can even create multiple windows.
 
-From now on you can do a bunch of cool things. Things I will bring in the next articles. One of these cool things is
-this badge that shows up in the app drawer.
+From now on you can do a bunch of cool things. Things I will bring in the next articles. One of these cool things is this badge that shows up in the app drawer.
 
 [screenshot showing the app in the app drawer]
 
-It's great to see a very smooth and nice integration with simple steps. Badge can be set using Badging API. The code
-looks like
+It's great to see a very smooth and nice integration with simple steps. Badge can be set using Badging API. The code looks like
 
 ```javascript
 navigator.setAppBadge(12);
@@ -101,19 +89,15 @@ You must keep the server running otherwise you see a page like this:
 
 [screenshot showing the app not working]
 
-Our application is a PWA but not yet a good one since it does not work offline.
+This application is a PWA but not yet a good one; it does not work offline.
 
 ## An offline-capable PWA
 
-One of the main goals with PWAs is to have the application working offline at some level. For a better experience, even
-for that features that require internet connection, it's good to have some level of offline support. Instead of show
-a blank page or something like that we can let the user know that the app is offline. Depending on the feature we can
-show a cached version of the content.
+One of the main goals with PWAs is to have the application working offline at some level. For a better experience, even for that features that require internet connection, it's good to have some level of offline support. Instead of show a blank page or something like that we can let the user know that the app is offline. Depending on the feature we can show a cached version of the content.
 
 ### Service Worker
 
-Roughly speaking, a Service Worker is a proxy. It exists between your application and the outside world. Every request
-and response goes through it. 
+Roughly speaking, a Service Worker is a proxy. It exists between your application and the outside world. Every request and response goes through it. 
 
 Your brand new Rails app has a service-worker.js file under `app/views/pwa/` folder. It's not functional yet.
 
@@ -154,9 +138,9 @@ service worker was registered. You can also see it in the DevTools under `Applic
 [screenshot console]
 [screenshot devtools]
 
-NOTE: No matter how many times you call `navigator.serviceWorker.register` it will only register the service worker once. Subsequent calls are no-ops[1].
+NOTE: No matter how many times you call `navigator.serviceWorker.register` it will only register the service worker once. [Subsequent calls are no-ops][sw-subsequent-visits].
 
-[1]: https://web.dev/articles/service-workers-registration#subsequent_visits
+[sw-subsequent-visits]: https://web.dev/articles/service-workers-registration#subsequent_visits
 
 #### Intercepting Requests
 
@@ -345,112 +329,87 @@ self.addEventListener('activate', function(event) {
 });
 ```
 
-The 'activate' event is triggered when the service worker is activated. At this point you can delete the old caches. The
+The `activate` event is triggered when the service worker is activated. At this point you can delete the old caches. The
 code above simply walks through all caches and deletes the ones that are not the current version.
 
 The `waitUntil` method is used to keep the service worker alive until the promise is resolved.
 
 Add this to your service worker and notice that the only cache left is the current one.
 
+### BONUS: Letting the user know the app is offline
+
+This whole discovering on `fetch` started because we we realized that if the user got offline the app would show the browser's offline page. This is not a good experience.
+
+It's not longer a problem now. The service worker you just created following this article caches pages. Even if the user is offline the app will show the cached page.
+
+As a user it's good to know that the app is offline. We will add a simple banner to let the user know that the app is offline.
+
+In `app/views/layouts/application.html.erb` add the following code:
+
+```html
+<header class="bg-zinc-500 hidden" data-controller="offline">
+    <p class="text-white text-center py-2">You are offline - Content may be outdated</p>
+</header>
+```
+
+In `app/javascript/controllers/offline_controller.js` add the following code:
+
+```javascript
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  connect() {
+    this.updateStatus()
+
+    window.addEventListener('online', this.updateStatus.bind(this))
+    window.addEventListener('offline', this.updateStatus.bind(this))
+  }
+
+  disconnect() {
+    window.removeEventListener('online', this.updateStatus.bind(this))
+    window.removeEventListener('offline', this.updateStatus.bind(this))
+  }
+
+  updateStatus() {
+    this.element.classList.toggle('hidden', navigator.onLine)
+  }
+}
+```
+
+That's it. You have a Stimulus controller that will toggle the banner visibility based on the `online` and `offline` events.
+
+Testing this is very simple. Just turn off your network and the banner will show uo. Turn it back on and the banner will disappear. You can also use DevTools to simulate offline mode.
+
+[screenshot showing the offline banner]
+
+Keep in mind that `navigator.onLine` is not a reliable way to check if the browser is connected to the internet. It only checks if the browser is connected to a local area network (LAN) or a router. You should develop additional means for checking the online status.
+
+
+[2]: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine
+
 ### Conclusion
 
-This article is the first of a series about PWAs in Rails. You learned how to quickly turn your Rails application into
-a PWA that works offline by handling caches and some service worker lifecycle events.
+We covered a lot of ground in this article. You learned how to quickly turn your Rails application into a PWA that works offline by handling caches and some service worker lifecycle events.
 
-<!-- # PWA on Rails: How to handle Service Worker upgrades -->
+There's more to come. In the next articles I will show more great APIs that you can use to build a better PWA. Stay tuned!
 
-<!-- During Rails World 2024 DHH announced Rails 8. There were amazing changes in Rails 8 as you can see here. Among all -->
-<!-- those updates there was as single goal: make it easier to deliver high-quality software. -->
+### References
 
-<!-- You software solves peoples's problems. The more people use your software better. Having an engaging app is extremely -->
-<!-- important. -->
+[rails-72-changelog-default-pwa]: https://guides.rubyonrails.org/7_2_release_notes.html#default-progressive-web-application-pwa-files
 
-<!-- PWAs are a good way to build engaging apps. You can deliver a native-like experience in both desktop and mobile devices -->
-<!-- without needing the App Store or Google Play as gatekeepers. -->
-
-<!-- A fresh new rails application already comes with the most basic components of a PWA: manifest.json and -->
-<!-- a service-worker.js. In this article I will show you the lifecycle of a service worker and how to handle its upgrades. -->
-
-<!-- ## Basic Setup -->
-
-<!-- The `manifest.json` and `service-worker.js` can be found under `app/views/pwa/` folder. The files are there but not yet -->
-<!-- enabled. -->
-
-<!-- To get PWA stuff working you need two things: -->
-
-<!-- - enable the routes for the manifest.json and service-worker.js -->
-<!-- - add the manifest.json to the `application.html.erb` file -->
-<!-- - register the service worker -->
-
-<!-- ### Enabling the routes -->
-
-<!-- In the `config/routes.rb` file you will find the commented lines that enable the routes for the manifest.json and the service-worker.js. -->
-
-<!-- ```ruby -->
-<!-- # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html -->
-<!-- get '/manifest.json', to: 'pwa#manifest' -->
-<!-- get '/service-worker.js', to: 'pwa#service_worker' -->
-<!-- ``` -->
-
-<!-- ### Enabling the manifest.json -->
-
-<!-- In the `application.html.erb` file you will find a commented line that includes the manifest.json. Uncomment it. -->
-
-<!-- ```erb -->
-<!-- <%= tag :link, rel: "manifest", href: "/manifest.json" %> -->
-<!-- ``` -->
-
-<!-- ### Registering the service worker -->
-
-<!-- In the `app/javascript/packs/application.js` file you will find a commented line that registers the service worker. Uncomment it. -->
-
-<!-- ```javascript -->
-<!-- if ('serviceWorker' in navigator) { -->
-<!--   window.addEventListener('load', () => { -->
-<!--     navigator.serviceWorker.register('/service-worker.js') -->
-<!--       .then(registration => { -->
-<!--         console.log('Service Worker registered! Scope: ', registration.scope); -->
-<!--       }) -->
-<!--       .catch(err => { -->
-<!--         console.log('Service Worker registration failed: ', err); -->
-<!--       }); -->
-<!--   }); -->
-<!-- } -->
-<!-- ``` -->
-
-<!-- After doing these steps you will have a PWA already. Get the app running and check open it in the browser. You will see, -->
-<!-- on top right, a button to install the app. -->
-
-<!-- In the dev tools, in `Application` tab, you will see the `Manifest` and `Service Workers` sections. -->
-
-<!-- ## Service Worker Lifecycle -->
-
-<!-- One of the most important features of a PWA is offline support. Service Workers and the Cache API are the key to this feature. -->
-
-<!-- Having an application working offline is a great feature but it has its specific challenges. One of them is how to -->
-<!-- upgrade your application. Since the service worker is a proxy between your application and the network it's crucial to -->
-<!-- know the service worker lifecycle to provide a smooth experience to your users. -->
-
-<!-- ### The First Service Worker -->
-
-<!-- ### Updating the Service Worker -->
-
-<!-- The Service Worker acts as a proxy between the browser and the network. It allows you to intercept requests and -->
-<!-- responses. It's used to offer capabilities like offline support and background operations. -->
-
-<!-- The content of the service-worker.js file is the following: -->
-
-<!-- ```javascript -->
-<!-- // Add a service worker for processing Web Push notifications: -->
-<!-- // -->
-<!-- // self.addEventListener("push", async (event) => { ... }) -->
-<!-- // -->
-<!-- // self.addEventListener("notificationclick", function(event) { ... }) -->
-<!-- ``` -->
-
-<!-- ## Handling Service Worker Upgrades -->
-
-<!-- - button in hotwire (an updater stimulus controller) -->
-
-<!-- https://web.dev/articles/service-worker-lifecycle -->
-<!-- https://guides.rubyonrails.org/7_2_release_notes.html -->
+[base-app-running]: https://media.discordapp.net/attachments/1316410115989180487/1316410140832043038/image.png?ex=675af1fb&is=6759a07b&hm=9368f5c472a6e628dbaad04dbc328f378cd7a0c86dca954ebf57ee514be9e299&=&format=webp&quality=lossless&width=2268&height=428
+[install-button]: https://media.discordapp.net/attachments/1316410115989180487/1316410598107643944/image.png?ex=675af268&is=6759a0e8&hm=08fa28f7d042a8fec3d04f5625d3bd8a0c87855d23a9fd624a8820d68a636143&=&format=webp&quality=lossless&width=2268&height=420
+[install-prompt]: https://media.discordapp.net/attachments/1316410115989180487/1316410659075919894/image.png?ex=675af276&is=6759a0f6&hm=be31e86e41d375799a8ccfdc4c268de5bf6a2ff32be5dfa2edf77ba29b07ef89&=&format=webp&quality=lossless&width=904&height=354
+[manifest-in-dev-tools]: https://media.discordapp.net/attachments/1316410115989180487/1316411403489513533/image.png?ex=675af328&is=6759a1a8&hm=f8aa223c421f392fa9d17d95be36a706beb008326b191268eaa943ccdf9d8206&=&format=webp&quality=lossless&width=2268&height=390
+[pwa-installed]: https://media.discordapp.net/attachments/1316410115989180487/1316412538535153754/image.png?ex=675af436&is=6759a2b6&hm=cc5d8568f0073b20b8cbce61ef57d0c96766f89c76f959e863789f5b07b6b87d&=&format=webp&quality=lossless&width=1864&height=1228
+[app-offline-crash]: https://media.discordapp.net/attachments/1316410115989180487/1316412868878663680/image.png?ex=675af485&is=6759a305&hm=eaab3dcfb39a904826d70cb9573b5b7038f93075e9a25b95d9e8c3d4288dc6c4&=&format=webp&quality=lossless&width=1472&height=1228
+[badge-sample]: https://cdn.discordapp.com/attachments/1316410115989180487/1316414372813471744/image.png?ex=675af5ec&is=6759a46c&hm=c4ce818f34440685733a4b8d70c4e2d407b489c2082a8e1b44e4830a54678d15& 
+[service-worker-in-dev-tools]: https://media.discordapp.net/attachments/1316410115989180487/1316443759394820186/image.png?ex=675b114a&is=6759bfca&hm=dde3ff0c2535d2789e9eeecb00b7f7e11777ad2a4a6fbbcbc1462360186b336b&=&format=webp&quality=lossless&width=2268&height=792
+[service-worker-registration-console]: https://media.discordapp.net/attachments/1316410115989180487/1316443853653413949/image.png?ex=675b1161&is=6759bfe1&hm=b729dbf1404b3ac6f0d3de7edf2a457cfffca6a4eeb1b58943bfecbf086d0bc3&=&format=webp&quality=lossless&width=2268&height=562
+[service-worker-skip-waiting]: https://media.discordapp.net/attachments/1316410115989180487/1316446761128296478/image.png?ex=675b1416&is=6759c296&hm=4a4235c675a9dfed8e8d6d93d9b8c902c38eb39fe193f788729f551a5db74741&=&format=webp&quality=lossless&width=1500&height=342
+[service-worker-fetch-event-console]: https://media.discordapp.net/attachments/1316410115989180487/1316450983563497623/image.png?ex=675b1804&is=6759c684&hm=a5ae89895ba74d0f1515d9acac0e386e106b5dec10f06a22e873ddf1d7734e13&=&format=webp&quality=lossless&width=2268&height=640
+[service-worker-network-interception]: https://media.discordapp.net/attachments/1316410115989180487/1316451183845703790/image.png?ex=675b1834&is=6759c6b4&hm=bb4ae2f74c61821113f227a1363632fc89a61fb0d1cc02595cc5e3c6e6cc2414&=&format=webp&quality=lossless&width=2268&height=758
+[cache-demo]: https://media.discordapp.net/attachments/1316410115989180487/1316456956621225994/image.png?ex=675b1d95&is=6759cc15&hm=f7cf099857eb92647ca9115d036fbd0af1acd286c49aff8ad828b55ba62a4ac6&=&format=webp&quality=lossless&width=2268&height=572
+[cache-in-dev-tools]: https://media.discordapp.net/attachments/1316410115989180487/1316458041939464213/image.png?ex=675b1e97&is=6759cd17&hm=428cf246477b0095e9b122c4d497c37dfb5362b6af5f69c3f3f97037819af6f2&=&format=webp&quality=lossless&width=2268&height=434
+[cache-serving-from-service-worker]: https://media.discordapp.net/attachments/1316410115989180487/1316465964782456942/image.png?ex=675b25f8&is=6759d478&hm=1f9764996b1ad0c79fd88ce2e251130366d8e0b750ecf41df2b06d216763fed9&=&format=webp&quality=lossless&width=2268&height=508
+[banner]: https://media.discordapp.net/attachments/1316410115989180487/1316480593537667072/image.png?ex=675b3398&is=6759e218&hm=50ab6ff51e7ce49cc64dedbf4c0402a91730d3a6ba1fb9d303650726ddf32f01&=&format=webp&quality=lossless&width=2268&height=656
