@@ -4,9 +4,9 @@ Christmas is coming and so is a new Ruby version. The first release candidate is
 
 # What's new in the language
 
-## Warning on `frozen_string_literal`
+## [Warning on `frozen_string_literal`](https://bugs.ruby-lang.org/issues/20205)
 
-The plan for Ruby is to make all string literals frozen by default. This is a step towards that direction.
+The plan for Ruby is to make all string literals frozen by default. This is a step in that direction.
 
 ```ruby
 # filename: frozen_string_literal.rb
@@ -23,7 +23,7 @@ code will raise a `FrozenError`.
 
 > frozen_string_literal.rb:2:in '<main>': can't modify frozen String: "John" (FrozenError)
 
-## `it` the new reference block parameter
+## [`it` the new reference block parameter](https://bugs.ruby-lang.org/issues/18980)
 
 `it` is an alternative to the numbered parameter `_1`.
 
@@ -33,7 +33,7 @@ code will raise a `FrozenError`.
 
 This makes the code more readable and less error-prone.
 
-## `**nil` is a valid syntax for keyword splatting
+## [`**nil` is a valid syntax for keyword splatting](https://bugs.ruby-lang.org/issues/20064)
 
 This one has been around for a while. It's for handling cases like the one below:
 
@@ -48,7 +48,7 @@ User.create(
 )
 ```
 
-No need to check if `invitation` is `nil` anymore.
+Checking if 1 `invitation` is `nil` is no longer necessary.
 
 ## Error messages and backtrace have been changed (and they are better)
 
@@ -84,9 +84,9 @@ sample.rb:2:in `raise_nested_exceptions': First error (RuntimeError)
 
 In Ruby 3.4 some changes have been made to make it more readable.
 
-1. Backtick (\`) on the left side was replace with a single quote (').
-2. Class names are displayed before method names: in a huge code base, potentially with multiple methods with the same name, finding the right was difficult. This change makes it easier to locate the right method.
-3. Extra frames from `rescue`/`ensure` blocks are removed: this makes the backtrace shorter and easier to read.
+1. [Backtick (\`) on the left side was replace with a single quote (').](https://bugs.ruby-lang.org/issues/16495)
+2. [Class names are displayed before method names: in a huge code base, potentially with multiple methods with the same name, finding the right was difficult. This change makes it easier to locate the right method.](https://bugs.ruby-lang.org/issues/19117)
+3. [Extra frames from `rescue`/`ensure` blocks are removed: this makes the backtrace shorter and easier to read.](https://bugs.ruby-lang.org/issues/20275)
 
 With all these changes, the backtrace now looks like this:
 
@@ -101,9 +101,9 @@ sample.rb:2:in 'Object#raise_nested_exceptions': First error (RuntimeError)
 
 # What's new in core classes
 
-## Hash.new now accepts a capacity argument
+## [Hash.new now accepts a capacity argument](https://bugs.ruby-lang.org/issues/19236)
 
-Reallocation of data structures is expensive. When you know the size of the strcture in advance you can save memory roundtrips by preallocating the structure.
+The reallocation of data structures is expensive. When you know the size of the structure in advance you can save memory roundtrips by preallocating the structure.
 
 That's what `capacity` is for. You can now create a Hash with a predefined capacity.
 
@@ -111,7 +111,7 @@ That's what `capacity` is for. You can now create a Hash with a predefined capac
 hash = Hash.new(capacity: 10)
 ```
 
-## Introduced GC.config
+## [Introduced GC.config](https://bugs.ruby-lang.org/issues/20443)
 
 A new method `GC.config` has been introduced to configure the garbage collector. Along with this, a new configuration
 parameter that can turn on/off GC Major executions.
@@ -120,36 +120,38 @@ parameter that can turn on/off GC Major executions.
 GC.config(full_mark: false)
 ```
 
-This is useful technique to can reduce latency. See [how pausing GC might be useful](https://railsatscale.com/2024-10-23-next-generation-oob-gc/).
+This is a useful technique to reduce latency. See [how pausing GC might be useful](https://railsatscale.com/2024-10-23-next-generation-oob-gc/).
 
 # Implementation improvements
 
-### Default parser is now Prism
+### [Default parser is now Prism](https://bugs.ruby-lang.org/issues/20564)
 
-#### Array methods rewritten in Ruby
+Prism is a handwritten parser with a focus on error-tolerance. It means that it can parse code with syntax errors and still provide a meaningful error message.
 
-`Array#each`, `Array#map` and `Array#select` have been rewritten in Ruby.
+In days of VSCode and Langa, this is a great improvement. It makes the development experience better.
 
-This makes it less expensive, since calling Ruby from C is expensive. Having these methods in Ruby makes them eligible for JIT optimization making them faster.
+#### [Array methods were rewritten in Ruby](https://bugs.ruby-lang.org/issues/20182)
 
-A microbenchmark made on `Array#each`, for instance, show it is 7x faster.
+`Array#each`, `Array#map`, and `Array#select` have been rewritten in Ruby.
 
-Ref: https://github.com/ruby/ruby/pull/9533
+This allows a Ruby-to-Ruby communication - less expensive than a Ruby-to-C communication. Having these methods in Ruby makes them eligible for JIT optimization making them faster.
+
+A microbenchmark made on `Array#each`, for instance, shows it is **7x faster**.
 
 ## What else?
 
-- Alternative Garbage Collector implementatoins can be loaded at runtime.
-- YJIT optimizations reducing memory usage and improving performance.
-- An optional `Fiber::Scheduler#blocking_operation_wait` hook that allows blocking operations to be moved out of the event loop.
+- Alternative Garbage Collector implementations can be loaded at runtime.
+- YJIT optimizations reduce memory usage and improve performance.
+- An optional `Fiber::Scheduler#blocking_operation_wait` hook allowing blocking operations to be moved out of the event loop.
 - `require` can now be used in `Reactors`.
 
-In this article we covered some of the most important changes in Ruby 3.4. There are a few more that you can check out in the [official release notes](https://www.ruby-lang.org/en/news/2024/12/12/ruby-3-4-0-rc1-released/).
+In this article, we covered some of the most important changes in Ruby 3.4. There are a few more that you can check out in the [official release notes](https://www.ruby-lang.org/en/news/2024/12/12/ruby-3-4-0-rc1-released/).
 
 # Conclusion
 
 This version brings many improvements. Having standard libraries rewritten in Ruby is now a great advantage; not only for performance but also for maintainability. Even more, it makes it easier for the community to contribute to Ruby.
 
-Changes on the language were also very welcome. The new `it` reference block parameter is a great addition to the
+Changes in the language were also very welcome. The new `it` reference block parameter is a great addition to the
 language. It makes the code more readable and less error-prone. With better error messages and backtraces, debugging
 will be easier.
 
