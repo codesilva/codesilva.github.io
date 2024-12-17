@@ -50,6 +50,7 @@ APIs and build apps that engage 120% more!
 - https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
 - https://github.com/rails/rails/blob/7-2-stable/railties/CHANGELOG.md
 - https://github.com/rails/rails/issues/50454
+- https://wisernotify.com/blog/push-notification-stats/#:~:text=Push%20notifications%20have%20high%20open,agree%20to%20receive%20push%20notifications.
 
 ---
 
@@ -108,6 +109,8 @@ After attending this talk, the audience should know:
 
 - Some statistics (I provide statistics on app engagement when using push notifications)
 - Implementing Push Notifications
+
+Your app can have much more retention if you use push notifications. I will show you how to implement them.
 
 ### Other engagement features
 
