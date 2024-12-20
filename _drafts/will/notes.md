@@ -1,5 +1,10 @@
 ## Performance da tela de listagem de missoes
 
+## Notas sobre o futuro
+
+- Evitar usar build runner pra setialização caso não seja necessário
+
+
 - Tirar o mapa melhorou bastante a performance pois não precisa ficar renderizando o mapa. Dá pra usar static map.
 
 A parte de detalhes da missão ainda causa o crash do app. Acredito que seja por causa do mapa - de alguma forma pois há

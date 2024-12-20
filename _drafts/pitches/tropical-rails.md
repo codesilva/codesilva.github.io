@@ -89,34 +89,60 @@ After attending this talk, the audience should know:
 
 ### Intro
 
-- manifest.json and service-worker.js (Rails does that for you, but it's good to know)
+- Understand manifest.json and service-worker.js (Rails does that for you, but it's good to know)
 - Show some companies using PWAs (like Reddit, Pinterest, etc.)
-- Web APIs are more powerful than you remember: let's see what a PWA can do today and compare with native apps.
+- Web APIs are more powerful than you remember: let's see what a PWA can do today and compare to native apps.
 
 ### Getting started
 
-- rails new: let's create a simple study coaching app where the teacher can publish materials and the students can
-    download them
-- the minimal configuration needed
+- How to quickly turn your Rails app into a PWA
+- An application for demoinstrating PWA capabilities
+
+    Let's create a simple study coaching app where the teacher can publish materials and the students can download them
+
+    NOTE:There will be no true live coding, the application will be ready to show and I will show the code snippets.
 
 ### Delivering an offline-capable application
 
-- Cache API
-- ~~Hotwire + View Transitions API~~ Background Sync (for publishing materials)
-- Background Fetching (for downlading materials)
+- Cache API for enabling offline usage
+- Background Sync for publishing materials efficiently and offline-tolerant
+- Background Fetching to efficiently download materials
 
 ### PWA Engagement features
 
-- Some statistics (I provide statistics on app engagement when using push notifications)
-- Implementing Push Notifications
-
-Your app can have much more retention if you use push notifications. I will show you how to implement them.
+- Some statistics
+    Having push notifications you can get the user's attention even when they are not using your app. I show some
+    statistics about push notifications to show how they can be powerful.
+- Implement Push Notifications
 
 ### Other engagement features
 
-- Context menu
-- Vibration API
+- Use `share_target` to allow our app to be a target for sharing materials
+- Use `shortcuts` to allow the user to quickly access the app's sections
+- Mention other APIs that can be used to engage users and deliver native-like experiences
 
-### Demo
+### Demo and Expectations
 
-- Demo the app
+- Quick demo of the app
+- Discuss expectations with ActionNotifier based on the mentioned gems: `active_delivery` and `noticed`.
+
+---
+
+
+
+
+# Tropical on Rails
+
+## Elevator Pitch (300 characters)
+
+Most apps are simple yet valuable — that's why we love Rails. PWAs share this spirit: build once, run anywhere.
+
+You'll learn how to build engaging and offline-capable apps. With most of the knowledge you already have you will ace PWAs and get prepared for the future of Rails.
+
+## Notes
+
+I've been a software developer for 10 years now. I worked with a variety of web frameworks in different programming languages. In the last three years, I've been working with and writing about Ruby and Rails. Both became my favorite technologies. I even led a workshop where we made a Database from scratch in plain Ruby and as an open-source enthusiast, I've been contributing to projects using Ruby on Rails.
+
+My background in mobile and JavaScript development makes me a good fit because I have the perspective of someone who worked with native and hybrid implementations and I can speak confidently that most of the apps can be easily achieved with PWAs. HTML APIs (The Platform) are powerful today allowing us to access file systems, bluetooth devices, geocoding, and much more!
+
+Talk attendees just need to know Rails and a bit o JavaScript. That's good enough to absorb all the outcomes.
