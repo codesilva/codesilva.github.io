@@ -50,6 +50,30 @@ You should contribute to NodeJS. Here's why:
 
 In this workshop, you will learn a ground-up approach to contributing to Node.js. We will compile, add features, and write tests for Node.js. We will also learn how to write documentation and interact with the core team in various ways.
 
+## Previous Talks
+
+Nerdearla 2024: Architecting the unconventinal
+
+In this talk I showcase an architecture I made on a project. This architecture was for a project using TypeScript, NodeJS and BullMQ.
+
+  - Recording: https://www.youtube.com/watch?v=TMsPC6oskCg
+  - Slides: https://docs.google.com/presentation/d/1sMEhBqycXWgFTut750sU9QXz7crkH6NLPsmQE6OfJD0/edit?usp=sharing
+
+Google I/O Extended Fortaleza 2024: 
+
+In this talk I showed how to set up Gemini with Firebase using JavaScript SDK
+
+  - Slides (PT-BR): https://docs.google.com/presentation/d/1lzwdDXjuSrtYCoaFPhYRVqXkS-nq0s2heCXZih1oYso/edit?usp=drive_link
+
+GURU-CE: How to avoid memory crashes
+
+In this talk I brought a performance where we reduced RAM comsuption in 90%.
+
+
+  - Slides (PT-BR): https://docs.google.com/presentation/d/1OlLCa5sX08x8TZNdlX-fqNDrH9wWxaZHlSwNIhgxGGM/edit?usp=sharing
+
+More on https://codesilva.github.io/talks/
+
 ## Workshop Description
 
 This workshop is for anyone who wants to start contributing to Node.js. This workshop is for anyone who wants to start contributing to Node.js. If I, an average person, could do it, anyone can.
