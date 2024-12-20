@@ -41,7 +41,12 @@ both JavaScript and C++ sides; dealing with V8 and libuv.
 
 ## Short Summary
 
-Contributing to Node.js is rewarding and a great way to give back to the community. While it might be challenging, which is great for personal growth, it's easier than you think; you probably have the skills to make a relevant contribution already.
+You should contribute to NodeJS. Here's why:
+
+- it's challenging: developers love challenges;
+- it's rewarding: you give back to the community and get notoriety;
+- it's easier than you think, you probably have the skills to make a relevant contribution already: most of the codebase is JavaScript;
+- the core team people are always there to help you with patience and respect.
 
 In this workshop, you will learn a ground-up approach to contributing to Node.js. We will compile, add features, and write tests for Node.js. We will also learn how to write documentation and interact with the core team in various ways.
 
@@ -79,7 +84,7 @@ We will work on a fictional feature to be added to Node.js. We will learn how to
 
 We will work on a fictional feature involving async operations so we can cover both the JavaScript and C++ sides. This feature is a simple copy file operation (but using different system calls, as BunJS did).
 
-NOTE: The feature here is less important than the process of adding it.
+NOTE: The feature here is less important than the process of adding it. So if the organization thinks we can simplify it, I'm okay with that.
 
 - Adding a feature
     - JavaScript side
@@ -96,6 +101,6 @@ NOTE: The feature here is less important than the process of adding it.
 
 ## Short Bio
 
-I'm a Software Developer who loves challenges. In 2024, I started contributing to NodeJS, and it has been an amazing experience! I fell in love with the community, with libuv, and even more, with JavaScript.
+In 2024, I started contributing to NodeJS (https://github.com/nodejs/node/commits/main/?author=geeksilva97), and it has been an amazing experience! I fell in love with the community and, even more, with JavaScript.
 
-I could do that and so you.
+I'm just a regular person who loves challenges and learning new things. If I could do it, you can do it too!
