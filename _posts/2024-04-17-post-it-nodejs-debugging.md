@@ -3,7 +3,7 @@ layout: post
 title: '[POST-IT] Depuração e NodeJS'
 date: 2024-04-17
 lang: pt-BR
-tags: ["debugging", "nodejs"]
+tags: ["postit", "nodejs", "debugging"]
 category: ["post-it", "programacao", "debugging", "nodejs"]
 ---
 
@@ -60,5 +60,5 @@ O resultado vai ser algo mais ou menos como o que é mostrado abaixo
 
 <img width="1394" alt="image" src="https://github.com/codesilva/codesilva.github.io/assets/15680379/c4ff4a02-3be7-4cae-8936-9686c34372c7">
 
-Assim você pode examinar a requeste, seu payload, o retorno etc. Mesmo que o seu código não seja o originador da
+Assim você pode examinar a request, seu payload, o retorno etc. Mesmo que o seu código não seja o originador da
 requisição.
