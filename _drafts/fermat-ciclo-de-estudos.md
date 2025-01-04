@@ -116,6 +116,18 @@ Onde `T` é o máximo de horas do ciclo de estudos.
 PS. Ajustes podem ser necessários caso passe ou falte do tempo limite - isso deve ser feito na disciplina com menor
 factor.
 
+## Estudaqui
+
+- 2h por cada disciplina. Máximo ??; Minimo ??
+
+Cada bloco no mínimo 1h e no máximo 2h30min.
+
+https://www.estudaqui.com/blog/ciclo-de-estudos/ciclo-de-estudos-para-concursos-pratica/
+
+## Método do 'Matemática em Evidência'
+
+
+
 https://en.wikipedia.org/wiki/Anki_(software)
 https://en.wikipedia.org/wiki/Spaced_repetition
 [https://en.wikipedia.org/wiki/Equitable_coloring](https://en.wikipedia.org/wiki/Equitable_coloring)
