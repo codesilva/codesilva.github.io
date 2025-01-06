@@ -39,6 +39,18 @@ db.backup((argFromCpp) => {
 
 Crypto is a good example. I'm looking into `RandomBytesJob` that's is async being able to dispatch executiont o the libuv thread pool.
 
+must look into crypto_util.cc
+
+```cpp
+class CryptoJob : public AsyncWrap, public ThreadPoolWork {
+ public:
+  using AdditionalParams = typename CryptoJobTraits::AdditionalParameters;
+```
+
+ref: https://github.com/nodejs/node/blob/b736028c7f627a172682093d1c78ed102921be5b/src/crypto/crypto_util.h#L327
+
+Definition o ThreadpoolWork : https://github.com/nodejs/node/blob/b0c65bbe8aef0c1b17bdbbb45f6a03210309134d/src/node_internals.h#L288
+
 ```cpp
 #include "threadpoolwork-inl.h"
 #include <uv.h>
