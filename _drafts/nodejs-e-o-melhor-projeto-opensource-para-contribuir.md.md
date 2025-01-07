@@ -102,7 +102,8 @@ A recepção foi incrível.
 Nessa issue os mantenedores [Ben Noordhuis][] e [Saúl Ibarra][] me ajudaram com uma paciência de jó. São pessoas que
 realmente dispostas a te ajudar.
 
-![image](https://github.com/user-attachments/assets/28151c0a-9557-4cd6-ba2a-97827c7fbe9b)
+![image](https://github.com/user-attachments/assets/ddf45b86-6744-429a-b93a-d51e0ae9d79d)
+
 
 No caso dessa issue eu consegui fazer os testes da libuv rodarem no Android. Precisei ajustar algumas coisas no código
 e nos testes mas no final deu (quase) tudo certo.
