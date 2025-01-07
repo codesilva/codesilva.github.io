@@ -100,19 +100,14 @@ A recepção foi incrível.
 
 ![image](https://github.com/user-attachments/assets/3c1e0486-769f-426e-a051-32a469126f7f)
 
-Nessa issue os mantenedores [Ben Noordhuis][] e [Saúl Ibarra][] me ajudaram com uma paciência de jó. São pessoas que
-realmente dispostas a te ajudar.
+Nessa issue os mantenedores [Ben Noordhuis][] e [Saúl Ibarra][] me ajudaram com uma paciência de jó. São pessoas genuinamente dispostas a te ajudar.
 
 ![image](https://github.com/user-attachments/assets/ddf45b86-6744-429a-b93a-d51e0ae9d79d)
-
 
 No caso dessa issue eu consegui fazer os testes da libuv rodarem no Android. Precisei ajustar algumas coisas no código
 e nos testes mas no final deu (quase) tudo certo.
 
 Os testes ainda estavam intermitentes e eu não pude entender o porquê. Até que uma outra pessoa veio e deu sequência no meu trabalho.
-
-<!-- Quero poder contribuir mais com a libuv. Ainda tenho muito a evoluir em C e I/O, e tem o fato de já ser um projeto bem -->
-<!-- estabelecido, entregando tudo que se propõe a fazer muito bem - algumas issues não consigo nem entender do que falam. -->
 
 A libuv é uma das dependências do NodeJS. É por meio dela que o tal `event loop` é implementado. Um outro detalhe é que
 alguns dos mantenedores da libuv são também mantenedores do NodeJS.
