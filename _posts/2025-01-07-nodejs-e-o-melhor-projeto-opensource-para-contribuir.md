@@ -7,6 +7,14 @@ category: ["nodejs", "opensource"]
 excerpt: Você já percebeu que faz algumas atividades, como andar de bicicleta, sem saber? Claro, não é sem saber, é que você criou uma memória muscular, você ficou tão expert nessas atividades que faz sem nem perceber...
 ---
 
+## Tópicos
+
+- [Uma pessoa ordinária que estuda](#uma-pessoa-ordinária-que-estuda)
+- [libuv](#libuv)
+- [NodeJS](#nodejs)
+- [O Futuro](#o-futuro)
+
+
 Desde 2021 tenho tentado a manter a frequência em contribuções com projetos opensource. Comecei com um muito bom chamado Buefy. Até cheguei
 a escrever sobre essas experiência. Destacando [os comos e porquês de contribuir com projetos opensource][medium-post].
 
@@ -39,13 +47,6 @@ solicitar revisão novamente.
 Depois desse dia ele não voltou mais.
 
 Sem ressentimentos. É um projeto de um mantenedor só e que parece gostar de fazer as coisas sozinho mesmo.
-
-## Tópicos
-
-- [Uma pessoa ordinária que estuda](#uma-pessoa-ordinária-que-estuda)
-- [libuv](#libuv)
-- [NodeJS](#nodejs)
-- [O Futuro](#o-futuro)
 
 ## Uma pessoa ordinária que estuda
 
@@ -151,9 +152,7 @@ Eu quero continuar fazendo isso. Eu quero, na verdade, poder fazer mais ainda e 
 [jose-valim]: https://github.com/user-attachments/assets/c2f9c3c0-0581-4014-b7f9-a3a516ca0edf
 [medium-post]: https://edigleyssonsilva.medium.com/why-and-how-to-contribute-to-open-source-projects-3d985d8d8619
 [cowboy]: https://github.com/ninenines/cowboy/pulls/geeksilva97
-[jose-valim]: https://cdn.discordapp.com/attachments/1320081464179687484/1320081472173899967/image.png?ex=67684d2c&is=6766fbac&hm=bbdbe643e9f47393fa0744c9b83fc5d90df83e3472149c828b6f4940d5447e7c&
 [phoenix]: https://www.phoenixframework.org
-[review-pr]: https://cdn.discordapp.com/attachments/1320081464179687484/1320083245085491230/image.png?ex=67684ed3&is=6766fd53&hm=b3c9d29e3f1f3b3ba3dbeeb89f8f5ac252e33657fc8f3ce510c77b8396d4ae00&
 [Build Your Own LISP]: https://buildyourownlisp.com/
 [Code]: https://www.amazon.com.br/C%C3%B3digo-2ed-Vida-Secreta-Computadores/dp/8582606311/ref=sr_1_2?crid=IFTSNCSCQNC1&dib=eyJ2IjoiMSJ9.OF_EBB08x9KyZP9sPgHdUY7urjyWvQd1j99xgm7-ye6oB_SdS6MUGoepnaBcuswfaFYGj50BjDJhWJirGPgAFwRz9dpIHpxaC7siEzdcyQPmxlIE2uPPCn9beEcwGFHd5BZJHGXEiPEFHcDw6CHmQcQJJOdEYXIsNdQwsp9GLt5OcFrSIP5CfXt671Xja8VR8IRk9zF7qjRMQMqzMcQs3YiuZYBj7jS9aER4fCMvtXs.qWglBg0VQwXRIjmFWvbBj4VPVj6ychxbLyvMsfeQGgM&dib_tag=se&keywords=code+the+hidden+language+of+computer+hardware+and+software&qid=1734804385&sprefix=code+the%2Caps%2C384&sr=8-2&ufe=app_do%3Aamzn1.fos.6d798eae-cadf-45de-946a-f477d47705b9
 [nodejs-calendar]: https://nodejs.org/calendar
