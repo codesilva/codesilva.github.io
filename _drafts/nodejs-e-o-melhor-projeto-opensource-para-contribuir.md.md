@@ -27,12 +27,12 @@ _código Erlang em produção_.
 Me empolguei e abri vários outros. Mas que nunca entraram. Nem mesmo revisados foram. Talvez eu estivesse empolgado
 demais.
 
-![][review-pr]
+![image](https://github.com/user-attachments/assets/2f7e30e7-5d60-46d0-bf25-aedfde2ccc4b)
 
 Entre os dias 5 e 6 de Fevereiro eu fiz as mudanças e solicitadas e não tive retorno. Passados quatorze dias, eu tentei
 solicitar revisão novamente.
 
-![](https://cdn.discordapp.com/attachments/1320081464179687484/1320083913703424033/image.png?ex=67684f73&is=6766fdf3&hm=1f6d7604956773d4bd67068a5cdbe941978c7138c39f472f90c3bb83fabbb9d0&)
+![image](https://github.com/user-attachments/assets/4e64e17b-23eb-4a5d-9623-c792d55ca655)
 
 > "Eu eventualmente sempre volto"
 
@@ -97,12 +97,12 @@ a `libuv`. A lógica era a mesma. O projeto é em C, logo a concorrência é men
 
 A recepção foi incrível.
 
-![](https://cdn.discordapp.com/attachments/1320081464179687484/1320192452719808512/image.png?ex=6768b488&is=67676308&hm=2b94a1f6ef1afc6954a0f5e2895f1a753a7445876b6ba90307c506b3dac3cda1&)
+![image](https://github.com/user-attachments/assets/3c1e0486-769f-426e-a051-32a469126f7f)
 
 Nessa issue os mantenedores [Ben Noordhuis][] e [Saúl Ibarra][] me ajudaram com uma paciência de jó. São pessoas que
 realmente dispostas a te ajudar.
 
-![](https://cdn.discordapp.com/attachments/1320081464179687484/1320193758863556618/image.png?ex=6768b5c0&is=67676440&hm=458d31ded829f127c1b095f5edac4da0fc2dd56d1dff58f6a166b689e356565d&)
+![image](https://github.com/user-attachments/assets/28151c0a-9557-4cd6-ba2a-97827c7fbe9b)
 
 No caso dessa issue eu consegui fazer os testes da libuv rodarem no Android. Precisei ajustar algumas coisas no código
 e nos testes mas no final deu (quase) tudo certo.
@@ -147,6 +147,7 @@ e como ele é utilizado no projeto. Aprendi também sobre a dinâmica, a organiz
 
 Eu quero continuar fazendo isso. Eu quero, na verdade, poder fazer mais ainda e aprender durante o processo. Mas por hora só quero terminar esse [PR do `node:sqlite`](https://github.com/nodejs/node/pull/56253).
 
+[jose-valim]: https://github.com/user-attachments/assets/c2f9c3c0-0581-4014-b7f9-a3a516ca0edf
 [medium-post]: https://edigleyssonsilva.medium.com/why-and-how-to-contribute-to-open-source-projects-3d985d8d8619
 [cowboy]: https://github.com/ninenines/cowboy/pulls/geeksilva97
 [jose-valim]: https://cdn.discordapp.com/attachments/1320081464179687484/1320081472173899967/image.png?ex=67684d2c&is=6766fbac&hm=bbdbe643e9f47393fa0744c9b83fc5d90df83e3472149c828b6f4940d5447e7c&
