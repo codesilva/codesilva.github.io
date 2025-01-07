@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'Node.js é o melhor projeto opensource para contribuir'
-date: 2024-01-01
+date: 2025-01-07
 lang: pt-BR
 category: ["nodejs", "opensource"]
-excerpt: Você já percebeu que faz algumas atividades, como andar de bicicleta, sem saber? Claro, não é sem saber, é que você criou uma memória muscular, você ficou tão expert nessas atividades que faz sem nem perceber...
+excerpt: 'Já passou pela sua cabeça contribuir com o NodeJS? Sei que as vezes parece muito distante, mas eu sou a prova de que isso não é verdade. Nesse post compartilho minha jornada até aqui e provo que você também pode.'
 ---
 
 ## Tópicos
