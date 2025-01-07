@@ -65,7 +65,7 @@ caso, *Assembly do MIPS*.
 
 E redescobri muito sobre o funcionamento da máquina, endereços de memóra, IO e interrupcção de Hardware. Esse interesse
 veio depois que li o livro [Code][] de Charles Petzold que te ensina tudo o que você precisa saber sobre
-o funcionamento do computador. Inclusive te ensina a criar circuitor como RAM e CPU.
+o funcionamento do computador. Inclusive te ensina a criar circuitos como RAM e CPU.
 
 > Nem todo mundo vai consumir esses conteúdos, eu sei. Por isso decidi eu mesmo escrever um livro sobre isso. Ainda não
 > tem um título definido, mas penso em algo como `Ciência da Computação para pessoas apressadas` com seu primeiro volume
@@ -73,7 +73,7 @@ o funcionamento do computador. Inclusive te ensina a criar circuitor como RAM e 
 > minhas metas de 2025.
 
 Nesse período dedicado a aprender C e Assembly, me perguntaram: **pra quê você está estudando isso?** Uma perguta normal
-dado que meu dia a dia é trablahar com ReactJS, NodeJS e as vezes um pouco de Ruby on Rails.
+dado que meu dia a dia é trabalhar com ReactJS, NodeJS e as vezes um pouco de Ruby on Rails.
 
 Em essência minha resposta era e é: **porque sim!**
 
