@@ -55,7 +55,6 @@ https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Caching
 https://guides.rubyonrails.org/generators.html
 https://alicia-paz.medium.com/make-your-rails-app-work-offline-part-3-crud-actions-with-indexeddb-and-stimulus-ad669fe0141c
 
-
 ---
 
 # PWA on Rails: How to handle Service Worker upgrades

@@ -146,3 +146,78 @@ I've been a software developer for 10 years now. I worked with a variety of web 
 My background in mobile and JavaScript development makes me a good fit because I have the perspective of someone who worked with native and hybrid implementations and I can speak confidently that most of the apps can be easily achieved with PWAs. HTML APIs (The Platform) are powerful today allowing us to access file systems, bluetooth devices, geocoding, and much more!
 
 Talk attendees just need to know Rails and a bit o JavaScript. That's good enough to absorb all the outcomes.
+
+----
+
+## Active delivery & noticed
+
+    - ideia de centralizar as notificações (https://evilmartians.com/chronicles/crafting-user-notifications-in-rails-with-active-delivery)
+    - https://github.com/palkan/active_delivery
+        - usa active support pra definir callback
+    https://github.com/excid3/noticed
+    https://izooto.com/blog/enable-safari-push-notifications-on-ios-step-by-step-guide
+    https://www.braze.com/resources/articles/mobile-web-push-is-now-supported-on-safari
+
+### Takeaways
+
+#### Active Delivery
+
+- Centralize notifications: there's a new layer between your app and the notification service
+- Use Active Support to define callbacks
+- Easy to use and configure
+
+```ruby
+class ApplicationDelivery < ActiveDelivery::Base
+  self.abstract_class = true
+
+  # For example, you can use a notifier line (see below) with a custom resolver
+  # (the argument is the delivery class)
+  register_line :sms, ActiveDelivery::Lines::Notifier,
+    resolver: -> { _1.name.gsub(/Delivery$/, "SMSNotifier").safe_constantize } #=> PostDelivery -> PostSMSNotifier
+
+  # Or you can use a name pattern to resolve notifier classes for delivery classes
+  # Available placeholders are:
+  #  - delivery_class — full delivery class name
+  #  - delivery_name — full delivery class name without the "Delivery" suffix
+  register_line :webhook, ActiveDelivery::Lines::Notifier,
+    resolver_pattern: "%{delivery_name}WebhookNotifier" #=> PostDelivery -> PostWebhookNotifier
+
+  register_line :cable, ActionCableDeliveryLine
+  # and more
+end
+
+class PostsDelivery < ApplicationDelivery
+end
+
+PostsDelivery.notify(:published, user, post)
+
+# Under the hood it calls
+PostsMailer.published(user, post).deliver_later
+PostsSMSNotifier.published(user, post).notify_later
+# ...
+```
+
+#### Noticed
+
+- Helpers 
+- More configuration
+- Generator e notificacoes no banco de dados
+- É interessante porque dá pra mostras as notificacoes na página
+
+A possivle comp
+
+#### Possible combination of both
+
+Gem Features
+Notification Management (Noticed):
+
+Allow defining notifications with flexible delivery options.
+Support for database, email, Slack, SMS, and custom delivery methods.
+Context-Aware Delivery (ActiveDelivery):
+
+Dynamically determine which delivery methods to use based on the context.
+Provide service isolation to abstract and encapsulate delivery logic.
+Integration:
+
+Provide seamless integration between notifications and delivery services.
+Enable developers to define notifications and automatically use the correct delivery methods.
