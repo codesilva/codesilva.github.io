@@ -1,3 +1,41 @@
+# The ABCs of PWAs
+
+## The heart of a PWA: Service Worker
+
+Service Worker is a web worker. It is a script that runs in the background of your browser. It can intercept requests
+and responses, cache them, and much more.
+
+Service Worker is a proxy. It exists between your application and the outside world. It can intercept your requests,
+cache them, and much more.
+
+### Proxy and Cache API
+
+### Service Worker Lifecycle
+
+- how do you upgrade a service worker?
+- clients.claim()
+
+https://developer.chrome.com/docs/workbox/handling-service-worker-updates
+
+### Background Operations
+
+- Sync Event
+- Background Fetch
+- Background Sync
+
+### Push Notifications
+
+## PWA Cool features
+
+- Trigger installation (in Chrome)
+- URL Shortcuts (https://web.dev/articles/app-shortcuts)
+- Protocol Handling
+- File System
+- Web Share API
+- Document Picture-in-Picture API
+
+---
+
 # Everything you must know about PWAs and Service Workers
 
 > Service worker is a web worker
