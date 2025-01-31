@@ -1,6 +1,24 @@
 # The ABCs of PWAs
 
-## The heart of a PWA: Service Worker
+Have you ever tried to push a native app to the App Store or Google Play? It is a pain. You have to follow their rules,
+pay their fees, wait for their approval, and sometimes you are forced to user their products like payment systems.
+
+The thing is: not always our applications need to be native though. HTML APIs evolved a lot in the past years and
+provide many features that were exclusive to native apps. Examples are geolocation, push notifications, file system, and
+more. PWAs are a way to use these features to provide a user experience similar to that of a native app. All of that
+without the need of an app store.
+
+In this brownbag, I will show you the ABCs of PWAs. What they are, how they work, and how to build one.
+
+## What is a PWA?
+
+PWA stands for Progressive Web App. It is a web application that uses modern web capabilities to provide a user
+experience similar to that of a native app.
+
+Having your application as a PWAs can be beneficial in many ways. It can be installed on the user's device without the
+need of an app store.
+
+## Two main components: Manifest and Service Worker
 
 Service Worker is a web worker. It is a script that runs in the background of your browser. It can intercept requests
 and responses, cache them, and much more.
@@ -8,9 +26,26 @@ and responses, cache them, and much more.
 Service Worker is a proxy. It exists between your application and the outside world. It can intercept your requests,
 cache them, and much more.
 
+the manifest.json file is a simple JSON file that tells the browser how to treat your app. It tells the browser how to
+add your app to the home screen, what icon to use, and more;
+
 ### Proxy and Cache API
 
+in general a service worker acts as a proxy. it can intercept requests and responses. with the use of the cache api it
+can cache responses and serve them from the cache. Then, allowing your app to work offline.
+
+worth mentioning that a service worker is a web worker. it runs in a separate thread from the main thread.
+that means it cannot access main thread stuff like DOM, window, etc.
+
+### How to communicate with the main thread?
+
+you can use the postMessage API to communicate with the main thread.
+
+- I changed my service worker, how do I update it?
+
 ### Service Worker Lifecycle
+
+you will change your app, and eventually you will need to update your service worker.
 
 - how do you upgrade a service worker?
 - clients.claim()
@@ -19,8 +54,8 @@ https://developer.chrome.com/docs/workbox/handling-service-worker-updates
 
 ### Background Operations
 
-- Sync Event
-- Background Fetch
+- Periodic Sync
+- Background Fetch (https://bgfetch-http203.glitch.me/) -https://developer.chrome.com/blog/background-fetch 
 - Background Sync
 
 ### Push Notifications
