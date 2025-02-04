@@ -6,15 +6,26 @@ Hi there! Welcome to second part of the series "How To Aces PWAS in Rails". So f
 - [Part II: Service Worker Upgrade](pwa-service-worker-upgrade.md) &lt;-- You are here
 - [Part III: Handling Push Notifications](pwa-service-worker-upgrade.md) coming soon
 
+Our application is good enough dealing with offline mode. It is caching assets and whenever a new service worker gets activated. The problem is that to activate a new service worker, a manual intervention is needed.
+We need either to close all the clients (tabs or windows) or to go to the browser dev tools and force the service worker
+to update.
 
-Either in the phone or computer, I don't remeber closing the browser application unless requested by the application. As
-Google Chrome usually does:
+That's not good, even for a demo application like ours. Updating the service worker is something that you will be doing
+from time to time and you want to make it as smooth as possible.
+
+In many real-world applications, it would be a nightmare to ask users to close all tabs or windows to get the latest version of the application. Even when needed, it would be better to have a way to notify the user that a new version is available and let them decide when to update. Like 
+Google Chrome does:
 
 ![chrome](https://static.wixstatic.com/media/0235b9_30889c7f61414b59bb22666fcf9e3ce1~mv2.png/v1/fill/w_560,h_280,al_c,lg_1,q_95/0235b9_30889c7f61414b59bb22666fcf9e3ce1~mv2.webp)
 
-Our application has a problem: it only changes cache when a new pwa comes in. which we need to do in the browser, dev
-tools. we will fix this by adding a new event listener to the service worker. This event listener will listen to the
-event `install` and will be responsible for updating the cache.
+In this part of the series, we will managed to update the service worker in a way that the user will be notified when
+a new version is available and will be able to update it whenever they want.
+
+## Service Worker Lifecycle
+
+## The Client and the Service Worker communication
+
+----
 
 ## Upgrade on multiple clients
 
