@@ -122,7 +122,6 @@ NOTE: The feature here is less important than the process of adding it. So if th
 - Opening a PR
 - Interacting with the core team
 
-
 ## Short Bio
 
 In 2024, I started contributing to NodeJS (https://github.com/nodejs/node/commits/main/?author=geeksilva97), and it has been an amazing experience! I fell in love with the community and, even more, with JavaScript.

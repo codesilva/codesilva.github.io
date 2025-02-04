@@ -95,6 +95,18 @@ api.
 The coach might have multiple files to upload and they might want to dispatch them all either the app has internet or
 not.
 
+## Enganging users with push notifications
+
+TBD
+
+## Cool stuff you can do with PWAs
+
+TBD
+
+## Demo and Expectations
+
+TBD
+
 # References
 
 - https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB#adding_retrieving_and_removing_data
