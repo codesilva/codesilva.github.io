@@ -49,7 +49,7 @@ Sem ressentimentos. É um projeto de um mantenedor só e que parece gostar de fa
 
 > **EDIT (5 de Fevereiro)**: Ele realmente voltou
 >
-> ![mantenedor cowboy retorna depois de oito meses](assets/cowboy-pr-retorno.png)
+> ![mantenedor cowboy retorna depois de oito meses](/assets/cowboy-pr-retorno.png)
 
 ## Uma pessoa ordinária que estuda
 
