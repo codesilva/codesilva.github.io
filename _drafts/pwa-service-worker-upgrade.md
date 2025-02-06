@@ -23,6 +23,15 @@ a new version is available and will be able to update it whenever they want.
 
 ## Service Worker Lifecycle
 
+A service worker might be in one of the following states (https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/state):
+
+- **Installing**: The service worker is installing. This is the perfect time to cache assets.
+- **Installed**: The service worker has been installed. This is the time to cache assets.
+- **Activating**: The service worker is activating. This is the time to clean up old caches.
+- **Activated**: The service worker has been activated. This is the time to notify the user that a new version is
+    available.
+- **Redundant**: The service worker is redundant.
+
 ## The Client and the Service Worker communication
 
 ----
