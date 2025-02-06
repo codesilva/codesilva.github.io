@@ -14,7 +14,6 @@ excerpt: 'Já passou pela sua cabeça contribuir com o NodeJS? Sei que as vezes 
 - [NodeJS](#nodejs)
 - [O Futuro](#o-futuro)
 
-
 Desde 2021 tenho tentado a manter a frequência em contribuções com projetos opensource. Comecei com um muito bom chamado Buefy. Até cheguei
 a escrever sobre essas experiência. Destacando [os comos e porquês de contribuir com projetos opensource][medium-post].
 
@@ -47,6 +46,10 @@ solicitar revisão novamente.
 Depois desse dia ele não voltou mais.
 
 Sem ressentimentos. É um projeto de um mantenedor só e que parece gostar de fazer as coisas sozinho mesmo.
+
+> **EDIT (5 de Fevereiro)**: Ele realmente voltou
+>
+> ![mantenedor cowboy retorna depois de oito meses](assets/cowboy-pr-retorno.png)
 
 ## Uma pessoa ordinária que estuda
 
@@ -143,6 +146,8 @@ Trabalhando no NodeJS aprendi muito sobre coisas _low level_ e como debugar prob
 e como ele é utilizado no projeto. Aprendi também sobre a dinâmica, a organização, de um projeto dessa proporção.
 
 Eu quero continuar fazendo isso. Eu quero, na verdade, poder fazer mais ainda e aprender durante o processo. Mas por hora só quero terminar esse [PR do `node:sqlite`](https://github.com/nodejs/node/pull/56253).
+
+> **EDIT (5 de Fevereiro)**: O PR foi aceito 🙌. Espero seguir contribuindo
 
 [jose-valim]: https://github.com/user-attachments/assets/c2f9c3c0-0581-4014-b7f9-a3a516ca0edf
 [medium-post]: https://edigleyssonsilva.medium.com/why-and-how-to-contribute-to-open-source-projects-3d985d8d8619
