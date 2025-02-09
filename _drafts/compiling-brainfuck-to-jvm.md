@@ -8,7 +8,6 @@ Because it's fun! And because it teaches so many things like:
 - What is a Virtual Machine
 - A little bit of Alan Turing's work
 
-
 ## Anatomy of Brainfuck
 
 It has only eight commands:
