@@ -24,12 +24,14 @@ SQLite is the perfect solution for you.
 Node.js already has an experimental module for SQLite. You can use it today. It brings a lot of features that go beyond
 the basics like user defined functions, backup, and more.
 
+
+https://www.bmpi.dev/en/dev/renaissance-sqlite/
+https://turso.tech/
+
+
 ---
 
 ## Short Summary
-
-SQLite is a great solution for many kind of applications. Be it large or small, it can deliver a great performance with
-a simple setup, zero dependencies and a lot of features.
 
 SQLite is having its Renaissance. It's being used in many projects and companies. Bun runtime has its implementation of
 sqlite, Turso is a product on top of SQLite, and the Ruby on Rails framework dropped all its dependency on Redis in
@@ -40,9 +42,6 @@ a very Node.js way, without any external dependency.
 
 In this talk, you will learn how to use SQLite in Node.js. We will explore the current `node:sqlite` features and how to
 use them. We will also explore the future of SQLite in Node.js.
-
-https://www.bmpi.dev/en/dev/renaissance-sqlite/
-https://turso.tech/
 
 ## Previous Talks
 
