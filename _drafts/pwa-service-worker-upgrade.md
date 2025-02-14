@@ -92,7 +92,93 @@ Let's simulate slow install and activate events to see the states of the service
 
 ## Skip Waiting Programmatically
 
+So far, we've been skiping the waiting service worker manually through the DevTools. But as stated in the beginning of
+this article, we can control the service worker lifecycle programmatically. We can know when there's a new service
+worker waiting and we can skip it programatically.
+
+### The skipWaiting method
+
+This method is stratightforward. It forces the waiting service worker to become the active service worker. Just call
+`self.skipWaiting()` in the service worker file.
+
+It's easy to see that this method must be called before the activation to be effective. For a straightforward implementation, you can call `self.skipWaiting()` in the `install` event.
+
+```javascript
+self.addEventListener('install', event => {
+  console.log('Service worker install event', { event })
+  self.skipWaiting();
+});
+```
+
+Do this and evey new service worker will be activated right away.
+
+NOTE: The method returns a promise that resolver after the attempt to activate the new service worker. This promise always
+resolves to `undefined`. You don't need to wait for it to resolve.
+
 ## The Client and the Service Worker communication
+
+Great! No need to go to DevTools to skip the waiting service worker anymore. I didn't fulfill my promise yet though. We need to
+notify the user that a new version is available and let them decide when to update. To do this, I need to show you some
+more tools.
+
+### The updatefound event
+
+Our first move to achieve this is to listen to the `updatefound` event. This is an event attached to the `registration`
+object that is fired whenever the registration object acquires a new service worker tha will be at the `installing`
+property.
+
+In the `application.js` file, we can listen to this event and log a message to the console.
+
+```javascript
+navigator.serviceWorker.register('/service-worker.js').then(registration => {
+  registration.addEventListener('updatefound', () => {
+    console.log('a new service worker is being installed')
+  });
+});
+```
+
+With this listener, we can know when a new service worker is being installed and trigger the skipWaiting. But how?
+skipWaiting is supposed to be called in the service worker file, not in the client file. 
+
+The answer is: send a message!
+
+### Message Passing
+
+The client and the service worker can communicate through messages using `postMessage` method and a listener to the `message` event.
+
+In the `service-worker.js` file, we can listen to the `message` event and call `skipWaiting` when a message with
+a specific content is received.
+
+```javascript
+self.addEventListener('message', event => {
+  if (event.data === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+```
+
+In the `application.js` file, we can send a message to the service worker when the `updatefound` event is triggered.
+
+```javascript
+navigator.serviceWorker.register('/service-worker.js').then(registration => {
+  registration.addEventListener('updatefound', () => {
+    // Ask the user if they want to update
+    if (confirm('A new version is available. Do you want to update?')) {
+     // Recall: this event is triggered when a new service worker is being installed i.e. there is an "installing"
+     // property in the registration object.
+      registration.installing.postMessage('SKIP_WAITING');
+    }
+  });
+});
+```
+
+With this code, when a new service worker is being installed, the user will be asked if they want to update. If they do,
+a message with the content `SKIP_WAITING` will be sent to the service worker and the service worker will skip the
+waiting state and become the active service worker.
+
+NOTE: The message "SKIP_WAITING" is arbitrary. You can use any message you want.
+
+### skipWaiting when service worker is waiting
 
 ----
 
@@ -104,3 +190,5 @@ https://developer.mozilla.org/en-US/docs/Web/API/Client/postMessage
 https://developer.mozilla.org/en-US/docs/Web/API/Clients
 https://developer.chrome.com/docs/workbox/caching-strategies-overview#stale-while-revalidate
 https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/state
+https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting
+https://developer.mozilla.org/en-US/docs/Web/API/Clients/claim
