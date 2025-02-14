@@ -1,5 +1,14 @@
 # Compiling Brainfuck to JVM
 
+## How to execute code from JVM bytecode?
+
+[5.2.JavaVirtualMachineStartup](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-5.html)
+
+The Java Virtual Machine starts up by creating an initial class, which is specified in an implementation-dependent manner, using the bootstrap class loader (§5.3.1). The Java Virtual Machine then links the initial class, initializes it, and invokes the public class method void main(String[]). The invocation of this method drives all further execution. Execution of the Java Virtual Machine instructions constituting the main method may cause linking (and consequently creation) of additional classes and interfaces, as well as invocation of additional methods.
+
+- `&lt;clinit&gt;` is the class initialization method
+- `main`
+
 ## Why this?
 
 Because it's fun! And because it teaches so many things like:
