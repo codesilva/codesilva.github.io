@@ -20,6 +20,19 @@ Google Chrome does:
 
 In this part of the series, we will manage to update the service worker in a way that the user will be notified when a new version is available and will be able to update it whenever they want.
 
+## Before you start
+
+In this article, you will need to change code both in client as well as in the service worker. The client JavaScript
+code is being cached though. To make it simpler to follow the article, I suggest you to disable the cache so it will be
+easier to see the changes.
+
+In the service worker, replace the `cacheFirst` with a simple `fetch` call.
+
+```diff
+- event.respondWith(cacheFirst(event.request))
++ return fetch(event.request);
+```
+
 ## Service Worker Lifecycle
 
 The service worker lifecycle might seem a bit complex at first, but if we break it down into steps, it becomes easier to understand. The first distinction we need to make is wether it's the first time the service worker is being installed or if it's an upgrade.
@@ -151,7 +164,7 @@ a specific content is received.
 
 ```javascript
 self.addEventListener('message', event => {
-  if (event.data === 'SKIP_WAITING') {
+  if (event.data?.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
 });
@@ -166,23 +179,226 @@ navigator.serviceWorker.register('/service-worker.js').then(registration => {
     if (confirm('A new version is available. Do you want to update?')) {
      // Recall: this event is triggered when a new service worker is being installed i.e. there is an "installing"
      // property in the registration object.
-      registration.installing.postMessage('SKIP_WAITING');
+      registration.installing.postMessage({ type: 'SKIP_WAITING' });
     }
   });
 });
 ```
 
 With this code, when a new service worker is being installed, the user will be asked if they want to update. If they do,
-a message with the content `SKIP_WAITING` will be sent to the service worker and the service worker will skip the
+a message with the content `{ type: 'SKIP_WAITING' }` will be sent to the service worker and the service worker will skip the
 waiting state and become the active service worker.
 
-NOTE: The message "SKIP_WAITING" is arbitrary. You can use any message you want.
+NOTE: The message `{ type: 'SKIP_WAITING' }` is arbitrary. You can use any message you want.
 
 ### skipWaiting when service worker is waiting
 
-----
+If everything was properly set up in the last section, you should be able to see a prompt asking if you want to update
+whenever a new service worker is being installed. If you click "yes", the service worker will be activated right away.
 
-## [BONUS] Upgrade on multiple clients
+Otherwise, the service worker does not activate and no matter how many times you reload the page, the prompt will not
+show up again.
+
+This is because the service worker is `waiting` to be activated and the `updatefound` event is not triggered again. This
+need to be handled.
+
+Since the `service worker` is waiting, you can easily get it by calling `registration.waiting`. With this object, you
+can send the message to skip the waiting state. As shown below.
+
+```javascript
+// file: application.js
+function showConfirmationPrompt(sw) {
+  const userChoice = Boolean(confirm('A new version is available. Do you want to update?'));
+
+  if (userChoice && sw) {
+    sw.postMessage({ type: 'SKIP_WAITING' });
+  }
+
+  return userChoice;
+}
+
+function handleUpgrade(registration) {
+  if (!registration) return;
+  let promptShown = false;
+  let shouldSkipWaiting = false;
+  const sw = registration.waiting;
+
+  if (sw && sw?.state !== 'redundant') {
+    shouldSkipWaiting = showConfirmationPrompt(sw);
+    promptShown = true;
+  }
+
+  registration.addEventListener('updatefound', () => {
+    const newWorker = registration.installing;
+
+    if (!promptShown) {
+      return showConfirmationPrompt(newWorker);
+    }
+
+    if (shouldSkipWaiting) {
+      // at this point, the prompt was shown and if the user chose to update, the message was sent to the service worker
+      newWorker.postMessage({ type: 'SKIP_WAITING' });
+    }
+  });
+}
+
+navigator.serviceWorker.register('/service-worker.js')
+    .then(handleUpgrade)
+    .catch((error) => {
+        console.error('Service worker registration failed:', error);
+    });
+```
+
+Let's break down the code above:
+
+1. The `handleUpgrade` function is called when the service worker is registered. It checks if the registration object is
+   valid and if the waiting service worker is not redundant.
+
+   It also adds an event listener to the `updatefound` event as in the last section
+2. The `showConfirmationPrompt` function is called when the user is asked if they want to update. If the user chooses to
+   update, the message is sent to the service worker.
+
+3. The flags `promptShown` and `shouldSkipWaiting` are used to control the flow of the upgrade process. 
+
+   They are important to avoid showing the prompt more than once and to avoid sending the message more than once.
+   A situation like that can happen when a waiting service worker is already present and a new update is found.
+
+
+I tried to keep the code as simple as possible. There are better ways to handle this.
+
+## Multiple Clients and the Claim method
+
+Everythin you learned in this article works for all clients. Activating a new service worker will affect all clients
+that are using the service worker. But there's a catch.
+
+When a new service worker is activated, the clients that are open at the moment will not be affected. They will still be
+using the old service worker. The new service worker will only affect new clients.
+
+To make the new service worker affect all clients, you need to call the `claim` method in the service worker. This
+method will make the new service worker take control of all clients.
+
+```javascript
+self.addEventListener('activate', event => {
+  // ...
+
+  // this will make the new service worker take control of all clients
+  // the event "controllerchange" will be triggered in all clients
+  event.waitUntil(self.clients.claim());
+});
+```
+
+## [BONUS] A banner to update the service worker
+
+In the last articles's bonus section, I showed you how to add a banner to inform the user whether the application is online or not.
+Since this whole article is about updating the service worker, I'll show you how to add a banner to inform the user that a new version is available using Stimulus.
+
+At this point, you know everything about the service worker lifecycle. To have a banner that informs the user that a new version is available you can use the same code implemented in the function `handleUpgrade` with a few changes.
+
+Rename the `offline_controller.js` to `banner_controller.js` and add the following code:
+
+```javascript
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = ['offline', 'upgrade'];
+
+  connect() {
+    navigator.serviceWorker.getRegistration().then(this.handleUpgrade.bind(this));
+    navigator.serviceWorker.addEventListener('controllerchange', this.onControllerChange.bind(this));
+
+    this.updateStatus();
+    window.addEventListener('online', this.updateStatus.bind(this))
+    window.addEventListener('offline', this.updateStatus.bind(this))
+  }
+
+  disconnect() {
+    navigator.serviceWorker.removeEventListener('controllerchange', this.onControllerChange.bind(this));
+
+    window.removeEventListener('online', this.updateStatus.bind(this))
+    window.removeEventListener('offline', this.updateStatus.bind(this))
+  }
+
+  serviceWorkerUpgrade() {
+    navigator.serviceWorker.getRegistration().then(registration => {
+      const newWorker = registration.installing || registration.waiting;
+      newWorker?.postMessage({ type: 'SKIP_WAITING' });
+    });
+  }
+
+  updateStatus() {
+    this.offlineTarget.classList.toggle('hidden', navigator.onLine)
+  }
+
+  onControllerChange() {
+    this.upgradeTarget.classList.add('hidden');
+  }
+
+  handleUpgrade(registration) {
+    if (!registration) return;
+    let promptShown = false;
+    let shouldSkipWaiting = false;
+    const sw = registration.waiting;
+
+    if (sw && sw?.state !== 'redundant') {
+      this.upgradeTarget.classList.remove('hidden');
+      promptShown = true;
+    }
+
+    registration.addEventListener('updatefound', () => {
+      const newWorker = registration.installing;
+
+      if (!promptShown) {
+        this.upgradeTarget.classList.remove('hidden');
+      }
+
+      if (shouldSkipWaiting) {
+        newWorker.postMessage({ type: 'SKIP_WAITING' });
+      }
+    });
+  }
+}
+```
+
+A few changes were made to the code:
+
+1. Two targets were added. It means that the `application.html.erb` file needs to be updated to include the new targets.
+2. The for `handleUpgrade` changed only in the part it was show a `confirm` dialog. Now it only shows the banner.
+3. The `SKIP_WAITING` message is sent when the user clicks the button in the banner.
+4. A new listener was added to the `controllerchange` event to hide the banner when the new service worker is activated
+   so the banner can be hidden.
+5. The code for offline status was kept. The only change was that it now toggles class on `offlineTarget` instead of
+   `this.element`.
+
+NOTE: you can remove the code for service worker upgrade from the `application.js` file. The `banner_controller.js` file
+is taking care of it.
+
+That's how the banner element looks like on `application.html.erb` file:
+
+```html
+<header data-controller="banner">
+    <div data-banner-target="offline" class="container bg-zinc-500 mx-auto px-5 py-2 flex justify-between items-center hidden">
+        <p class="text-white text-center py-2">You are offline - Content may be outdated</p>
+    </div>
+
+    <div data-banner-target="upgrade" class="container bg-indigo-500 mx-auto px-5 py-2 flex justify-between items-center hidden">
+        <p class="text-white text-center py-2">New version available!</p>
+        <button data-action="click->banner#serviceWorkerUpgrade" class="bg-indigo-600 text-white px-4 py-2 rounded">Upgrade</button>
+    </div>
+</header>
+```
+
+## Conclusion
+
+Phew! That was a lot of information. But now you know how to upgrade the service worker in a way that the user will be
+notified when a new version is available and will be able to update it whenever they want.
+
+This article should be read and re-read as many times as needed. The service worker lifecycle is not that complex but it
+has many tiny details that can be easily missed. Take this, do your own experiments and you will be able to master the
+service worker lifecycle.
+
+In the next article, we will learn how to handle push notifications. Stay tuned!
+
+----
 
 https://web.dev/articles/service-worker-lifecycle
 https://developer.mozilla.org/en-US/docs/Web/API/InstallEvent
