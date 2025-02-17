@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Eu sou Edy e tenho um computador
+title: Eu tenho um computador (e também sorte)
 date: 2023-06-27
 lang: pt-BR
 tags: ["roadmap", "programação"]
@@ -11,6 +11,10 @@ Um ponto interessante sobre a história de outras pessoas é que você sempre co
 exemplo a ser seguido ou mesmo um mau exemplo a ser evitado. Nesse post compartilho minha jornada quem sabe isso pelo
 menos te inspire.
 
+Eu sou Edy, tenho um computador e sorte!
 
+## Ensino Médio Integrado
 
-Eu sou Edy e tenho um computador!
+## As infrações que movem a vida
+
+## ENEM e o Positivo Master N130i
