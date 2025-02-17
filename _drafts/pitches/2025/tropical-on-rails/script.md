@@ -105,13 +105,24 @@ TBD
 
 ## Demo and Expectations
 
-TBD
+That looks like a lot of ~~work~~ JavaScript, right? I know this feeling. But I don't think this will be like that for
+you. Rails provides a lot of tools to generate the code for you, and if you look closer you will see that most of what
+we did are patterns. The great thing about patterns is that you can extract them and reuse them.
+
+The ActionNotifier gem, for example, will have some inspiration from `gem1` and `gem2`. Both of them are gems that help
+you to send push notifications to your users.
+
+I expect to see more gems like that for `caching`, `background fetch`, `background sync`, etc.
 
 # References
 
 - https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB#adding_retrieving_and_removing_data
 - https://business.adobe.com/blog/basics/progressive-web-app-examples
 
+- On background sync:
+    - https://bugs.webkit.org/show_bug.cgi?id=182565
+    - https://x.com/jeffposnick/status/969049287408701441
+    - https://developer.mozilla.org/en-US/docs/Web/API/Web_Periodic_Background_Synchronization_API#browser_compatibility
 
 ---
 
