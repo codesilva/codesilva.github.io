@@ -97,7 +97,18 @@ not.
 
 ## Enganging users with push notifications
 
-TBD
+One of the great advantages of PWAs is to get closer to your users. You are with them even when they don't have
+connection to the internet. You can also be with them when they are not using your app.
+
+Push notifications are a great way to engage your users. 60% of users say that push nottifications make them to use the
+app more often and almost 50% say that push notifications are less intrusive than email and SMS.
+
+In our app, we will add notifications to inform the students when a new material is available.
+
+Do you remember the fresh new Rails app? It came with code for push notifications in the service worker. We just need to 
+add the code to send the notifications.
+
+https://www.mobiloud.com/blog/push-notification-statistics
 
 ## Cool stuff you can do with PWAs
 
