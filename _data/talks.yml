@@ -1,11 +1,50 @@
+- title: 'Hotwire meets The Platform™ [EN]'
+  event: 'Tropical on Rails 2025'
+  length_in_minutes: 30
+  date: '(soon)'
+  talk_url: ''
+  talk_url_iframe: false
+  slides_url: '(soon)'
+  description: |
+    Most apps you work on, while delivering much value, are simple in their mechanisms. That's why you use Rails. It makes things very simple.
+    As Rails, PWAs are simple yet powerful. You write once and run anywhere as regular web pages or as a native-like app. It gets better when you find out how powerful HTML APIs are today. <br /><br />
+    I will show you how to leverage all those benefits while building an engaging and efficient app using Rails and Hotwire.
+
 - title: 'Architecting the Unconventional: A Case Study in Software Design [EN]'
   length_in_minutes: 30
+  date: '11 de Abril de 2024'
   talk_url: 'https://www.youtube.com/embed/TMsPC6oskCg?si=2tGeU0ynF2H7XD0J'
   talk_url_iframe: true
-  slides_url: ''
+  slides_url: 'https://docs.google.com/presentation/d/1sMEhBqycXWgFTut750sU9QXz7crkH6NLPsmQE6OfJD0/edit?usp=sharing'
   description: |
     If you search for 'clean architecture' on GitHub you will find a bunch of nice implementations applying such an architecture. The same goes for onion, hexagonal, and such. Besides the similarities between the architectural patterns, these applications are all implemented for common web applications. By common, I mean a web application that receives a request that a controller handles. It also has a database and so on.<br /><br />
     Not all applications are like that, though. In this talk, I will walk through a use case where I implemented an unconventional application - an application that handles background jobs - and I will show how we can apply an architectural pattern to any kind of application
+
+- title: 'GURU-CE 2024 - Como evitar o estouro de memória em aplicações Ruby'
+  event: 'GURU-CE'
+  length_in_minutes: 30
+  date: '9 de Novembro de 2024'
+  talk_url: ''
+  talk_url_iframe: false
+  slides_url: 'https://docs.google.com/presentation/d/1OlLCa5sX08x8TZNdlX-fqNDrH9wWxaZHlSwNIhgxGGM/edit?usp=sharing'
+  description: |
+    Nessa talk, apresento um case em que meu time esbarrou em um estouro de memória por conta de mal uso de uma gem. Vamos falar sobre como identificar o problema, como corrigir e como evitar que isso aconteça novamente.
+
+- title: 'Google I/O Extended 2024 - Introdução ao Gemini no Firebase'
+  length_in_minutes: 30
+  date: '13 de Julho de 2024'
+  talk_url_iframe: false
+  slides_url: 'https://docs.google.com/presentation/d/1lzwdDXjuSrtYCoaFPhYRVqXkS-nq0s2heCXZih1oYso/edit?usp=drive_link'
+  description: |
+    Nessa talk, apresento conceitos base sobre Modelos de IA generativos e mostro como podem ser utilizados usando o Firebase e o Gemini. Como demonstração, construímos um chat inteligente usando RAG.
+
+- title: "Google I/O Extended 2023 - What's new in the web"
+  length_in_minutes: 30
+  date: '13 de Junho de 2023'
+  talk_url_iframe: false
+  slides_url: 'https://docs.google.com/presentation/d/1D4IpIjpkVqXxMwYAl7BdzBx1ogIfS3YdGCs-tmLEI38/edit?usp=sharing'
+  description: |
+    Nessa apresentação, mostro as novidades do mundo web, como CSS nesting, novos seletores, elemento `<dialog>`, e muito mais. Além disso, mostro como os devs podem se manter atualizados com as novidades do mundo web.
 
 - title: 'Do zero ao app com Firebase'
   length_in_minutes: 60
