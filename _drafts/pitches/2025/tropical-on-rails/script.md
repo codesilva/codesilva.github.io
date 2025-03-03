@@ -18,14 +18,14 @@ course, you can use hotwire to do that and have a nice developer experience.
 
 ## Agenda
 
-- Why you need PWAs?
-    - DHH's tweet mentioning the importance of PWAs
-- How to quickly turn your Rails app into a PWA
-- The sample app
-- Offline experience
-- Enganging users with push notifications
-- Cool stuff you can do with PWAs
-- Demo and Expectations
+<!-- - Why you need PWAs? -->
+<!--     - DHH's tweet mentioning the importance of PWAs -->
+<!-- - How to quickly turn your Rails app into a PWA -->
+<!-- - The sample app -->
+<!-- - Offline experience -->
+<!-- - Enganging users with push notifications -->
+<!-- - Cool stuff you can do with PWAs -->
+<!-- - Demo and Expectations -->
 
 ## Why do you need pwas?
 
@@ -44,56 +44,126 @@ They won't block a feature or a bug fix you want to push due to a weird and inco
 
 Great players in the market are already using PWAs. Twitter, Pinterest, and Starbucks are some examples.
 
-## How to quickly turn your Rails app into a PWA
+## A case scenario
 
-There are two main components around a PWA: the manifest and the service worker. Since Rails 7.2 both files are present
-in a new Rails app.
+For this talk, I'm going to use a sample app. This app starts as a regular Rails app. Through the talk, we will turn it 
+into a PWA and get to know important concepts around PWAs and important APIs you have to know to deliver a native-like
+experience. All of this using standard Rails tools.
 
-The manifest is a JSON file that contains metadata about the app, like the name, the icon, the theme color, etc.
-
-That's enough to make your app installable on the user's device. Once you enable it in your Rails app, the user will see
-the install button in the browser's address bar.
-
-User will be able to install the app but it won't deliver a good experience if the user is offline. When you are using
-a native app either in mobile or desktop, you expect it to work offline. At least, for features the really need internet
-connection, you want to receive a message saying that you need to be online to use that feature, not this ugly Chrome
-dinassour.
-
-[slide com imagem do Chrome dinassour]
-
-To address that issue, we need a way to cache the assets and the data the app needs to work offline. To cache things, we
-need some component in the middle that will intercept the requests and decide if it should go to the network or to the
-cache.
-
-That component is the service worker. This is a JavaScript file but it is a simple one. It runs off the main thread and
-just has a bunch of event listeners.
-
-In this default file provided by Rails, we have a few listeners related to push notifications. But to act as a proxy, we
-need the fetch event listener. This with the Cache API will allow us to cache the assets and the data.
-
-## The sample app
-
-That's how we start our sample app for this talk. This app is named `fermat`. It's a very simple app for students and
-coachs to manage their studies and classes.
+Our app is named fermat. It's a very simple app for students and coachs to manage their studies and classes.
 
 Students can download the materials (and report issues with the content) and coaches can upload them.
 
 [video showing the app features in action]
 
-The app is a Rails app with Hotwire and Tailwind CSS.
-That's a regular Rails app. But with what we've seen so far we can turn it into a PWA.
+<!-- The app is a Rails app with Hotwire and Tailwind CSS. That's a regular Rails app. But with what we've seen so far we can turn it into a PWA. -->
+<!-- [show a demo where the app says it does not have internet connection] -->
+<!-- It doesn't deliver a whole package of offline features but showing a message is a good start. -->
 
-[show a demo where the app says it does not have internet connection]
 
-It doesn't deliver a whole package of offline features but showing a message is a good start.
+## With Rails you are almost there already
+
+There are two main components around a PWA: the manifest and the service worker. Since Rails 7.2 both files are present in a new Rails app.
+
+The manifest is a JSON file that contains metadata about the app, like the name, the icon, main page, and so on.
+
+That's enough to make your app installable on the user's device. Once you enable it in your Rails app, the user will see the install button in the browser's address bar.
+
+Once you install it you will see the app in the app drawer and you can open it from there. Awesome!
+
+The service worker is a JavaScript file that runs off the main thread and is intended to enable the creation of effective offline experiences.
+
+That's important, because only adding a manifest.json file won't make you app to work offline. Accesing the installed PWA while offline will show you the Chrome dinassour.
+
+[Slide Chrome dinassour]
+
+This can be addressed with the service worker, which can act as a proxy between the app and the network, and the Cache API, which allows you to cache the assets and the data the app needs to work offline.
+
+https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
+
+<!-- User will be able to install the app but it won't deliver a good experience if the user is offline. When you are using -->
+<!-- a native app either in mobile or desktop, you expect it to work offline. At least, for features the really need internet -->
+<!-- connection, you want to receive a message saying that you need to be online to use that feature, not this ugly Chrome -->
+<!-- dinassour. -->
+<!-- We will address this issue in a sec. -->
+
+<!-- The other component is the service worker. It is a JavaScript file that runs off the main thread and acts as a proxy -->
+<!-- between the app and the network. It allows us to cache the assets and the data the app needs to work offline. -->
+
+<!-- To address that issue, we need a way to cache the assets and the data the app needs to work offline. To cache things, we -->
+<!-- need some component in the middle that will intercept the requests and decide if it should go to the network or to the -->
+<!-- cache. -->
+
+<!-- That component is the service worker. This is a JavaScript file but it is a simple one. It runs off the main thread and -->
+<!-- just has a bunch of event listeners. -->
+
+<!-- In this default file provided by Rails, we have a few listeners related to push notifications. But to act as a proxy, we -->
+<!-- need the fetch event listener. This with the Cache API will allow us to cache the assets and the data. -->
 
 ## Offline experience
 
-Materials can large file. To make it efficient we can use another api for downloading files: the background fetch
-api.
+### Service Worker Registration
 
-The coach might have multiple files to upload and they might want to dispatch them all either the app has internet or
-not.
+To be able to use the service worker, we need to register it. We can do that in the `application.js` file.
+
+```js
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .catch((error) => {
+        console.error('Service Worker registration failed:', error);
+      });
+  });
+}
+```
+
+### Fetch & Cache
+
+In the SW file, we have a few listeners related to push notifications. But to act as a proxy, we need the fetch event listener.
+
+```js
+self.addEventListener('fetch', (event) => {
+  return fetch(event.request)
+    .catch((error) => {
+      return new Response('You are offline', {
+        headers: { 'Content-Type': 'text/html' }
+      });
+    });
+});
+```
+
+https://developer.chrome.com/docs/workbox/caching-strategies-overview#stale-while-revalidate
+
+Cache API allows you to store request/response pairs. It's a good way to cache the assets and the data the app needs to work offline.
+
+You have all the control. You decide which strategy to use, you decide when to update the cache and you decide when to delete the cache.
+
+For this app, I decide to use the strategy Stale while revalidate (without workbox).
+
+```js
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.open('fermat').then((cache) => {
+      return cache.match(event.request).then((response) => {
+        const fetchPromise = fetch(event.request).then((networkResponse) => {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+
+        return response || fetchPromise;
+      });
+    })
+  );
+});
+```
+
+### IndexedDB & Background Sync API
+
+### Background Fetch API
+
+Materials can be large files. To make it efficient we can use another api for downloading files: the background fetch api.
+
+The coach might have multiple files to upload and they might want to dispatch them all either the app has internet or not.
 
 ## Enganging users with push notifications
 
@@ -110,11 +180,13 @@ add the code to send the notifications.
 
 https://www.mobiloud.com/blog/push-notification-statistics
 
-## Cool stuff you can do with PWAs
+## The secret super powers
 
 TBD
 
-## Demo and Expectations
+## Where do we go from here?
+
+Workbox - https://developer.chrome.com/docs/workbox/modules/workbox-strategies
 
 That looks like a lot of ~~work~~ JavaScript, right? I know this feeling. But I don't think this will be like that for
 you. Rails provides a lot of tools to generate the code for you, and if you look closer you will see that most of what
