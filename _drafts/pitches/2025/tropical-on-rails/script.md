@@ -52,7 +52,7 @@ experience. All of this using standard Rails tools.
 
 Our app is named fermat. It's a very simple app for students and coachs to manage their studies and classes.
 
-Students can download the materials (and report issues with the content) and coaches can upload them.
+Students can view the materials and coaches can upload them.
 
 [video showing the app features in action]
 
@@ -157,13 +157,36 @@ self.addEventListener('fetch', (event) => {
 });
 ```
 
+### Offline support is different than offline first
+
 ### IndexedDB & Background Sync API
+
+With this, the app "kinda" works offline. I mean, it displays the pages and the user can navigate through them but
+neither the coach nor the student can upload or view materials.
+
+To address the coach side's issue, we can leverage two more apis: IndexedDB API and the Background Sync API.
+
+IndexedBD is a low-level API for client-side storage of significant amounts of structured data, including files/blobs.
+
+We will change our stimulus controller to use the IndexedDB to store the materials. It will store and:
+
+- when online, and when the upload is successful, it will remove the material from the IndexedDB
+- when offline, it will store the material in the IndexedDB and schedule a background sync to upload the material
+
+Background Sync is an API that allows you to defer actions until the user has stable connectivity.
+
+Think of this like Background jobs you are used to in Solid Queue.
+
+https://developer.chrome.com/blog/background-sync#what_could_i_use_background_sync_for
 
 ### Background Fetch API
 
-Materials can be large files. To make it efficient we can use another api for downloading files: the background fetch api.
+In order to see the materials when offline, we need to download them. Implement a feature like Google Drive, where you can download the files to view them offline.
 
-The coach might have multiple files to upload and they might want to dispatch them all either the app has internet or not.
+To efficiently download the files, we can use one more API: the Background Fetch API. It allows you to download files in
+the background and monitor the progress.
+
+To store offline files, we can use the IndexedDB again.
 
 ## Enganging users with push notifications
 
@@ -173,7 +196,8 @@ connection to the internet. You can also be with them when they are not using yo
 Push notifications are a great way to engage your users. 60% of users say that push nottifications make them to use the
 app more often and almost 50% say that push notifications are less intrusive than email and SMS.
 
-In our app, we will add notifications to inform the students when a new material is available.
+In our app, we will add notifications to inform the students when a new material is available or when a material is
+available offline
 
 Do you remember the fresh new Rails app? It came with code for push notifications in the service worker. We just need to 
 add the code to send the notifications.
@@ -182,7 +206,16 @@ https://www.mobiloud.com/blog/push-notification-statistics
 
 ## The secret super powers
 
-TBD
+- share_target
+- shortcuts
+
+- Wake Lock API
+- Geolocation API
+- Device Orientation API
+- Bluetooth API
+- Web Share API
+- Web Speech API
+- URL Protocol Handlers
 
 ## Where do we go from here?
 
