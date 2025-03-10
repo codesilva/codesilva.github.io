@@ -1,69 +1,62 @@
-Hello, eveyone! I'm very glad to be here at the Tropical on Rails stage.
-My name is Edy, I'm 'a father of to a cute daughter, a husband of a wonderful
-wife and a software developer at codeminer42.
+Good morning everyone. It's a great honor for me to be here. My name is edy, i am a father to a lovely daughter and
+a husband to a wonderful wife.
 
-I'm here to talk about Hotwire and the Platform. You'll probably know what Hotwire is, but you might be wondering what
-the Platform is.
+i am also a software developer at codeminer42, a software boutique. you can find out more about us in our website.
 
-What I'm calling The Platform here is: the Web. The web and all its APIs, that can do amazing things
+this talk is about progressive web apps, aka PWAs. Straightforward, PWAs are a way to deliver native-like
+experiences using the same codebase you have for you regular web app - just a few things more.
 
-[show a slide with some of cool APIs e.g. offline support, notifications, geolocation, bluetooth, etc]
+By native-like experience i mean:
 
-The thing is... all these APIs are just JavaScript. So, the platform, that is the web, is just JavaScript.
+- app is installable
+- offline experience
+- user engagement
+- access to (some) native apis
 
-(hmmm, you had a nice reaction, though! I was expecting some tomatoes being thrown at me)
+this talk exists because mobile development can be painful sometimes.
 
-Just kidding, folks. My intention here is to show you can leverage the web platform, using the APIs, to build amazing things. And of
-course, you can use hotwire to do that and have a nice developer experience.
+[screenshot dhh being denied by apple]
+
+if you haven't faced this on your own you might know someone who had, some friend in mobile development. Apple and
+Google are the gatekeepers for native mobile applications and only them let you pass or not. Sometimes due to weird
+reasons like the wrong alpha filter on an image.
+
+This talk also exists because PWAs are a great fit to the Rails one-person framework philosophy. With pretty much the
+same codebase you run it as web, mobile or desktop application. That highlights productivity and simplicity.
+
+DHH himself said: "not native apps just the best pws you can build". And this movement is happening since Rails 7.2
+where a fresh new rails application already comes with the two main components of a pwa:
+
+- manifest.json
+- service worker
+
+with these files, Web APIs, and some stimulus (no joke meant) you can make a really engaging application. like this:
+
+[demo fermat application]
+
+this is very simple application, it's a student coaching app. the coach can publish materials to groups and the
+students, as group members, can download them.
+
+it has offline support. both student and coach will still be able to use the app. the coach can enqueue resource
+publishing and the student can save files offline to read them later.
+
+> **note**: this application is meant to be clear, not necessarily right. it means it might lack some levels of abstraction.
+> the payout is that it will be easier for you to understand what's going on
+
+There's path from regular rails app to an installed pwa with offline support and native capabilities. That's what we will see. What's in beteween `rails new` and an application like `fermat`.
+
+Then we will walk through The Platform: the web apis.
 
 ## Agenda
 
-<!-- - Why you need PWAs? -->
-<!--     - DHH's tweet mentioning the importance of PWAs -->
-<!-- - How to quickly turn your Rails app into a PWA -->
-<!-- - The sample app -->
-<!-- - Offline experience -->
-<!-- - Enganging users with push notifications -->
-<!-- - Cool stuff you can do with PWAs -->
-<!-- - Demo and Expectations -->
-
-## Why do you need pwas?
-
-PWAs ara a good alternative to native apps. They are simple in a sense that you don't need two codebases to maintain or
-learn a new tool (including programming language) to build them. You can use the same tools you already know and love to 
-build them.
-
-Also, they bring freedom to developers. You can build your app the way you want, without the restrictions of the app
-stores.
-
-[slide com tweet do DHH]
-
-They won't block a feature or a bug fix you want to push due to a weird and inconsistent review process.
-
-[tweet dhh com motivo de bloqueio de app]
-
-Great players in the market are already using PWAs. Twitter, Pinterest, and Starbucks are some examples.
-
-## A case scenario
-
-For this talk, I'm going to use a sample app. This app starts as a regular Rails app. Through the talk, we will turn it 
-into a PWA and get to know important concepts around PWAs and important APIs you have to know to deliver a native-like
-experience. All of this using standard Rails tools.
-
-Our app is named fermat. It's a very simple app for students and coachs to manage their studies and classes.
-
-Students can view the materials and coaches can upload them.
-
-[video showing the app features in action]
-
-<!-- The app is a Rails app with Hotwire and Tailwind CSS. That's a regular Rails app. But with what we've seen so far we can turn it into a PWA. -->
-<!-- [show a demo where the app says it does not have internet connection] -->
-<!-- It doesn't deliver a whole package of offline features but showing a message is a good start. -->
-
-
 ## With Rails you are almost there already
 
-There are two main components around a PWA: the manifest and the service worker. Since Rails 7.2 both files are present in a new Rails app.
+[slide "rails new fermat"]
+
+this will create a new rails application and under app/views/pwa there will be two files
+
+- manifest.json.erb
+- service-worker.js
 
 The manifest is a JSON file that contains metadata about the app, like the name, the icon, main page, and so on.
 
@@ -81,24 +74,7 @@ This can be addressed with the service worker, which can act as a proxy between 
 
 https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
 
-<!-- User will be able to install the app but it won't deliver a good experience if the user is offline. When you are using -->
-<!-- a native app either in mobile or desktop, you expect it to work offline. At least, for features the really need internet -->
-<!-- connection, you want to receive a message saying that you need to be online to use that feature, not this ugly Chrome -->
-<!-- dinassour. -->
-<!-- We will address this issue in a sec. -->
-
-<!-- The other component is the service worker. It is a JavaScript file that runs off the main thread and acts as a proxy -->
-<!-- between the app and the network. It allows us to cache the assets and the data the app needs to work offline. -->
-
-<!-- To address that issue, we need a way to cache the assets and the data the app needs to work offline. To cache things, we -->
-<!-- need some component in the middle that will intercept the requests and decide if it should go to the network or to the -->
-<!-- cache. -->
-
-<!-- That component is the service worker. This is a JavaScript file but it is a simple one. It runs off the main thread and -->
-<!-- just has a bunch of event listeners. -->
-
-<!-- In this default file provided by Rails, we have a few listeners related to push notifications. But to act as a proxy, we -->
-<!-- need the fetch event listener. This with the Cache API will allow us to cache the assets and the data. -->
+----
 
 ## Offline experience
 
@@ -157,6 +133,10 @@ self.addEventListener('fetch', (event) => {
 });
 ```
 
+#### Pre-cache
+
+`install` event listener
+
 ### Offline support is different than offline first
 
 ### IndexedDB & Background Sync API
@@ -199,23 +179,76 @@ app more often and almost 50% say that push notifications are less intrusive tha
 In our app, we will add notifications to inform the students when a new material is available or when a material is
 available offline
 
-Do you remember the fresh new Rails app? It came with code for push notifications in the service worker. We just need to 
-add the code to send the notifications.
+Do you remember the fresh new Rails app? It came with code for push notifications in the service worker. That code does
+two things:
+
+- listen to the push event and show a notification so the user can see it even when the app is closed
+- listen to the notificationclick event and open the app when the user clicks on the notification
+
+Whenever a push request comes in, the 'push' event will be triggered. To simplify push notifications work like thaT:
+
+your server sends a push -> fcm/firefox/safari receives -> sends to the browser
+
+there are two things to do in js side:
+
+- to request notification permissions to be able to display notifications so the `showNotification` method will work properly.
+
+    [js code asking for permission]
+
+- to create a subscription
+
+    [js for creating a subscription]
+
+your server sends a push based on a `subscription` and will use vapid keys to encrypt the message. For that we can use
+a gem that already solves it, because that's too much to do by hand.
+
+using a job we can schedule the notification sending right after creating the resource.
+
+[job with notification sending implementation]
+
+now we can use this same thing to displa notification when a file is available offline. or, to let the coach know when
+the sync-queue was processed.
+
+[slide with an image of those implementations]
 
 https://www.mobiloud.com/blog/push-notification-statistics
+https://joyofrails.com/articles/web-push-notifications-from-rails
 
-## The secret super powers
+`npx web-push generate-vapid-keys`
 
-- share_target
-- shortcuts
+## The secret super powers (juice it or lose it)
 
-- Wake Lock API
-- Geolocation API
-- Device Orientation API
-- Bluetooth API
-- Web Share API
-- Web Speech API
-- URL Protocol Handlers
+so, in your pocket you have a handful of apis that you can use to deliver offline capabilities - that's enough to handle
+offline-first too.
+
+there's some juice too with background fetch for saving the file.
+
+there are some more powers u can use to juice it even more. 
+
+For example, our app deals with file sharing. We can make it a share_target and it will appear as an option when the
+user tries to share a PDF, for example.
+
+we can have shortcuts that will point user right away to a direction.
+
+there is a lot of native apis that are adopted on major browsers too that can empower your pwa:
+
+- geolocation
+- wake lock
+- device orientation
+
+by far google chroms the browser that has more apis available.
+
+<!-- - share_target -->
+<!-- - shortcuts -->
+
+<!-- - Web USB API (use by moonlander keyboard) -->
+<!-- - Wake Lock API -->
+<!-- - Geolocation API -->
+<!-- - Device Orientation API -->
+<!-- - Bluetooth API -->
+<!-- - Web Share API -->
+<!-- - Web Speech API -->
+<!-- - URL Protocol Handlers -->
 
 ## Where do we go from here?
 
@@ -223,7 +256,7 @@ Workbox - https://developer.chrome.com/docs/workbox/modules/workbox-strategies
 
 That looks like a lot of ~~work~~ JavaScript, right? I know this feeling. But I don't think this will be like that for
 you. Rails provides a lot of tools to generate the code for you, and if you look closer you will see that most of what
-we did are patterns. The great thing about patterns is that you can extract them and reuse them.
+we did are patterns. The great thing about patterns is that you can extract and reuse them.
 
 The ActionNotifier gem, for example, will have some inspiration from `gem1` and `gem2`. Both of them are gems that help
 you to send push notifications to your users.
