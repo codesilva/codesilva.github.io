@@ -43,8 +43,6 @@ estar nos laboratorios de informatica fazendo cursos online, baixando apostilas 
 comecei a ler livros. Inclusive, aprendi muitas coisas lendo os livros: PHP & MySQL da série Use a Cabeça e PHP
 Orientado a Objetos da Novatec.
 
-> 
-
 ## Delegando a responsabilidade de pensar
 
 ## IAs vão te deixar burro
