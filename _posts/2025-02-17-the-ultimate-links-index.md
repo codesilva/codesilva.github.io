@@ -35,6 +35,10 @@ Os links estarão subdivididos por categorias. Você pode usar o atalho `Ctrl + 
 
 TBD
 
+### Contribuições Ruby
+
+- [Aspectos internos da implementação em Ruby (C, Interpretador Ruby)](https://github.com/ko1/rubyhackchallenge)
+
 ### Progressive Web Apps
 
 TBD
