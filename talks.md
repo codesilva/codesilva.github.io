@@ -8,10 +8,10 @@ permalink: /talks/
 <h2>
 {{ talk.title }}
 </h2>
-<h4> Duração: ~{{talk.length_in_minutes}} minutos
+<h4> Duration: ~{{talk.length_in_minutes}} min
     {% if talk.date && talk.date != '' %}
      / 
-    Data: {{talk.date}} 
+    Date: {{talk.date}} 
     {% endif %}
 </h4>
 <h4> Descrição:</h4>
