@@ -43,3 +43,6 @@ TBD
 
 TBD
 
+### SQLite
+
+- `find / \( -name "*.db" -o -name "*.sqlite" -o -name "*.sqlite3" \) -type f -exec file {} \; 2>/dev/null | grep SQLite` executando esse comando você descobre o quanto de SQLite tem na sua máquina.

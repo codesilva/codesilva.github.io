@@ -1,10 +1,10 @@
 - title: 'Hotwire meets The Platform™ [EN]'
   event: 'Tropical on Rails 2025'
   length_in_minutes: 30
-  date: '(soon)'
+  date: 'April 03, 2025'
   talk_url: ''
   talk_url_iframe: false
-  slides_url: '(soon)'
+  slides_url: 'https://docs.google.com/presentation/d/1Wk6f0VJ3G_GBXghl9AUskJQy2XAY9i63UyqOZxhHdgA/edit#slide=id.g3448565a5c0_0_0'
   description: |
     Most apps you work on, while delivering much value, are simple in their mechanisms. That's why you use Rails. It makes things very simple.
     As Rails, PWAs are simple yet powerful. You write once and run anywhere as regular web pages or as a native-like app. It gets better when you find out how powerful HTML APIs are today. <br /><br />
