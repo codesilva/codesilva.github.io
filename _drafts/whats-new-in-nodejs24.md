@@ -1,6 +1,5 @@
 # What's New in Node.JS 24.0.0
 
-
 Node.js has reached its 24th major version, and with it comes a host of new features and improvements. This release will
 be the `Current` release for the next six months becoming LTS in October 2024. Let's delve into the highlights of this
 release.

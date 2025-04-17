@@ -39,6 +39,10 @@ TBD
 
 - [Aspectos internos da implementação em Ruby (C, Interpretador Ruby)](https://github.com/ko1/rubyhackchallenge)
 
+### Git
+
+- [Git Immersion](https://gitimmersion.com/index.html)
+
 ### Progressive Web Apps
 
 TBD
