@@ -1,21 +1,17 @@
 # What's New in Node.JS 24.0.0
 
-Node.js has reached its 24th major version, and with it comes a host of new features and improvements. This release will
-be the `Current` release for the next six months becoming LTS in October 2024. Let's delve into the highlights of this
-release.
+Node.js has reached its 24th major version, and with it comes a host of new features and improvements. This release will be the `Current` release for the next six months becoming LTS in October 2025. Let's walk through into the highlights of this release.
 
-
-## Upgrade to V8 to 13.4
+# Upgrade to V8 to 13.4
 
 With this upgrade to the dependency that allows Node.js to run JavaScript, we now have access to a couple of new
 features for writing more secure and efficient code.
 
-### [Error.isError][]
+## [Error.isError][]
 
 `Error.isError` is a static method that checks if a given value is an instance of the `Error` regardless of its [realm][]. 
 
-You problably fell (or know someone who have) in the trap of using `instanceof` to check if an error is an instance of `Error` and got surprised
-when an object that you were sure was an `Error` instance was returned as `false`. An example like the following:
+You probably fell (or know someone who has) into the trap of using `instanceof` to check if an error is an instance of `Error` and got surprised when an object that you were sure was an `Error` instance was returned as `false`. An example like the following:
 
 ```javascript
 const vm = require('node:vm');
@@ -39,8 +35,7 @@ try {
 }
 ```
 
-This is the nature of JavaScript. It was complicated to have, for example, a centralized error handling system that
-could catch errors from different realms. Everything is simplified with this new method.
+This is the nature of JavaScript. It was complicated to have, for example, a centralized error-handling system that could catch errors from different realms. Everything is simplified with this new method.
 
 Change the `logError` function, replacing the `instanceof` check with `Error.isError` and it will work as expected.
 
@@ -54,12 +49,11 @@ function logError(err) {
 }
 ```
 
-### [Explicit Resource Management (using, using await)][]
+## [Explicit Resource Management (using, using await)][]
 
 Explicit Resource Management introduces new syntax and semantics to JavaScript, aiming to provide a standardized way to manage the lifecycle of resources like file handles, network connections, or database cursors. This is particularly useful for ensuring that such resources are properly released, even in the presence of errors or early exits.
 
-With this new feature, you can use the `using` statement to declare a resource that should be automatically released
-when it goes out of scope. This is similar to the `try-with-resources` statement in Java or the `using` statement in C#.
+With this new feature, you can use the `using` statement to declare a resource that should be automatically released when it goes out of scope. This is similar to the `try-with-resources` statement in Java or the `using` statement in C#.
 
 Instead of doing something like this:
 
@@ -92,10 +86,9 @@ If it is an async dispose you must use `using await` instead of `using`.
 This is a great improvement for writing cleaner and more maintainable code. It also helps to avoid resource leaks and
 other issues that can arise from not properly managing resources.
 
-### [Atomic.pause][]
+## [Atomic.pause][]
 
-`Atomic.pause` allows you to hint the CPU that the current thread is waiting for a resource to become available i.e. in
-a [spinlock][]. This can help the CPU to optimize its power usage and performance.
+`Atomic.pause` allows you to hint the CPU that the current thread is waiting for a resource to become available i.e. in a [spinlock][]. This can help the CPU to optimize its power usage and performance.
 
 ```javascript
 // Imagine another thread also has access to this shared memory
@@ -118,13 +111,11 @@ do {
 Atomics.wait(i32, 0, 1);
 ```
 
-### [WebAssembly support to 64-bit memory][]
+## [WebAssembly support to 64-bit memory][]
 
-This increases the WebAssembly memory size limit from 4GB to 16 exabytes. This is a huge increase in the amount of
-memory that can be allocated for WebAssembly modules. This is particularly useful for applications that require large 
-amounts of memory.
+This increases the WebAssembly memory size limit from 4GB to 16 exabytes. This is a huge increase in the amount of memory that can be allocated for WebAssembly modules. This is particularly useful for applications that require large amounts of memory.
 
-## [Permission][] is stable
+## [Permission is stable][]
 
 The Node.js Permission Model is a mechanism for restricting access to specific resources during execution. The API exists behind a flag `--permission` which when enabled, will restrict access to all available permissions.
 
@@ -143,10 +134,9 @@ process.permission.has('fs.read', '/home/codeminer42/readonly'); // true
 
 Executing the script above with `node --permission --allow-fs-read=/home/codeminer42/readonly --allow-fs-write=/home/codeminer42/writeonly index.js`.
 
-### [URLPattern][] as global
+## [URLPattern as global][]
 
-API is now exposed on the global object, making it easier to use without explicit imports. This API provides a powerful pattern matching system for URLs,
-similar to how regular expressions work for strings.
+API is now exposed on the global object, making it easier to use without explicit imports. This API provides a powerful pattern-matching system for URLs, similar to how regular expressions work for strings.
 
 ```javascript
 const pattern = new URLPattern({ pathname: "/books/:id" });
@@ -154,13 +144,31 @@ console.log(pattern.test("https://example.com/books/123")); // true
 console.log(pattern.exec("https://example.com/books/123").pathname.groups); // { id: "123" }
 ```
 
-Very useful for validating and parsing URLs in a more structured way. Now you can write your own router.
+This is very useful for validating and parsing URLs in a more structured way. Now you can write your router - go and make your express.js, why not another js lib?
 
-## Other dependency upgrades
+# What Else?
 
-### Upgrade Undici to 7.0.0
-### Upgrade npm to 11.0.0
+- Upgrade Undici to 7.0.0
 
+    Undici is what is behind `fetch` in Node.js. This major version brings a lot of performance improvements and bug fixes.
+
+- Upgrade npm to 11.0.0
+
+    From the list of changes, the most impactful ones are:
+
+    - `npm init` now has a type prompt, and sorts the entries the created packages differently
+    - `npm hook` command has been removed
+    - supports node ^20.17.0 || >=22.9.0
+
+# Wrap Up
+
+This release brings a lot of new features and improvements that will make your life easier as a developer. With there
+new tools, you can write cleaner, more efficient, and more secure code. 
+
+I'm excited to see how these new features will be used in the wild. Happy coding and [count on CodeMiner42][] to help
+you with your Node.js projects.
+
+[count on CodeMiner42]: https://www.codeminer42.com/#talk-to-us
 [Atomic.pause]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics/pause
 [Error.isError]: https://chromestatus.com/feature/5106098833719296
 [Explicit Resource Management (using, using await)]: https://github.com/tc39/proposal-explicit-resource-management
@@ -168,5 +176,5 @@ Very useful for validating and parsing URLs in a more structured way. Now you ca
 [URL Pattern]: https://chromestatus.com/feature/5106098833719296
 [spinlock]: https://en.wikipedia.org/wiki/Spinlock
 [realm]: https://tc39.es/ecma262/#realm
-[URLPattern]: https://developer.mozilla.org/en-US/docs/Web/API/URLPattern
-[Permission]: https://nodejs.org/api/permissions.html
+[URLPattern as global]: https://developer.mozilla.org/en-US/docs/Web/API/URLPattern
+[Permission is stable]: https://nodejs.org/api/permissions.html
