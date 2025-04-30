@@ -50,3 +50,8 @@ TBD
 ### SQLite
 
 - `find / \( -name "*.db" -o -name "*.sqlite" -o -name "*.sqlite3" \) -type f -exec file {} \; 2>/dev/null | grep SQLite` executando esse comando você descobre o quanto de SQLite tem na sua máquina.
+
+### V8
+
+- [Como iniciar no V8](https://medium.com/dailyjs/how-do-i-get-started-with-v8-development-17e976ebe4af)
+- [Entendendo aspectos internos de Arrays em JS (Node, V8, Chrome, Chromium)](https://itnext.io/v8-deep-dives-understanding-array-internals-5b17d7a28ecc)
