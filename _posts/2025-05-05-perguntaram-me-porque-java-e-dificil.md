@@ -23,7 +23,7 @@ Agora, uma das coisas que rebatem é acerca da dificuldade da linguagem. De fato
 
 > As pessoas sao preguiçosas, por isso preferem Python ou Node (JavaScript) ao invés de Java
 
-Eu já ouvi isso em alguns lugares. Bom, acho que as vezes falta para tech influencers, geralmente devs com anos de experiência, um pouco de empatia. Essa falta de empatia não é por maldade, no entanto. É que eles têm o _cérebro de expert_.
+Eu já ouvi isso em alguns lugares. Bom, acho que as vezes falta para tech influencers, geralmente devs com anos de experiência, um pouco de empatia. Essa falta de empatia não é por maldade, no entanto. É que eles têm o **_cérebro de expert_**.
 
 O cérebro de expert é algo que você atesta empiricamente, seja observando a si mesmo ou outras pessoas. É quando um assunto é tão familiar que, na perspectiva do expert, é algo trivial, simples.
 
