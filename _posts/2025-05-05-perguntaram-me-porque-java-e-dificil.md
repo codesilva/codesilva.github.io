@@ -27,7 +27,7 @@ Eu já ouvi isso em alguns lugares. Bom, acho que as vezes falta para tech influ
 
 O cérebro de expert é algo que você atesta empiricamente, seja observando a si mesmo ou outras pessoas. É quando um assunto é tão familiar que, na perspectiva do expert, é algo trivial, simples.
 
-Acho que como comunicador, queremos ser o mais próximo do espectador possível. Por mais que seja difícil, é importante tentar se colocar na perspectiva do outro. Lembrar de quando começamos do completo zero.
+Acho que como comunicadores, queremos ser o mais próximo do espectador possível. Por mais que seja difícil, é importante tentar se colocar na perspectiva do outro. Lembrar de quando começamos do completo zero.
 
 Falo isso pois calculo que a maioria das pessoas que se referem a Java como uma linguagem de progamação difícil, são pessoas iniciantes. Pois, pessoas mais experientes já entenderam que sintaxe é só sintaxe e não entram nesse tipo de discussão.
 
