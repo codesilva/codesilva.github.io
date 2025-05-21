@@ -44,6 +44,28 @@ minima:
   social_links:
     - { platform: youtube, username: 'Assista no YouTube', user_url: "https://youtube.com/edigleyssonsilva" }
 
+collections:
+  book_cc_for_ppl_in_a_hurry:
+    output: true
+    permalink: /cc-para-apressados/:path
+    label: Ciência da Computação para Pessoas Apressadas
+
+defaults:
+  - scope:
+      path: ""
+      type: "book_cc_for_ppl_in_a_hurry"
+    values:
+      layout: "book"
+  # - scope:
+  #     path: ""
+  #     type: "posts"
+  #   values:
+  #     layout: "post"
+  # - scope:
+  #     path: ""
+  #   values:
+  #     layout: "default"
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
