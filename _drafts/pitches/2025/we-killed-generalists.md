@@ -26,7 +26,12 @@ specialists.
 
 ---
 
+Lembro-me dos tempos de LAMP, XAMPP. Aprendíamos o todo para depois entender as partes. Hoje, com o advento dos
+frameworks, estamos aprendendo as partes sem entender o todo.
 
 # References
 
 - Kant Enlightmen
+- Por uma educação sensível, Rubem Alves
+    - O todo e as partes
+    - Escola Ponte

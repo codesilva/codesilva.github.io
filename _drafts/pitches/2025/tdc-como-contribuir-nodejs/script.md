@@ -2,9 +2,22 @@
 
 ## Introdução
 
+
 ### Open Source: os porquês
 
+Nessa talk entenderemos o os porquês e o como da contribuçao open source. dentre as várias razoes destaco algumas:
+
+- Você ajuda a construir o software que você usa e devolve para a comunidade
+- Você melhora suas habilidades de programação
+- Isso ajuda a construir seu portfólio
+
+https://edigleyssonsilva.medium.com/why-and-how-to-contribute-to-open-source-projects-3d985d8d8619
+
 ### Por que Node.js é o melhor projeto para contribuir?
+
+Gostaria de começar eliminando a principal barreira que impede as pessoas de contribuirem com projetos open source:
+o medo de não serem boas o suficiente.
+
 
 https://codesilva.github.io/nodejs/opensource/2025/01/07/nodejs-e-o-melhor-projeto-opensource-para-contribuir.html#nodejs
 
@@ -35,5 +48,23 @@ https://codesilva.github.io/nodejs/opensource/2025/01/07/nodejs-e-o-melhor-proje
 
 #### Vamos implementar uma feature no módulo sqlite
 
+A feature que vamos implementar é um buffer reader. Para tal iremos expandir o módulo node:buffer.
+
 ##### JS Side
+
+[implementacao do lado javascript]
+
 ##### C++ Side
+
+[implementacao do lado C++]
+
+### Interagindo com a comunidade
+
+Screenshot de https://nodejs.org/en/about/get-involved
+
+- Repositório - https://github.com/nodejs/node
+    - Issues
+    - PR
+- Ajuda - https://github.com/nodejs/help
+- OpenJs Foundation Slack - https://slack-invite.openjsf.org/
+- Reunioes - https://nodejs.org/calendar
