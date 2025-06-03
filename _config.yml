@@ -49,6 +49,9 @@ collections:
     output: true
     permalink: /cc-para-apressados/:path
     label: Ciência da Computação para Pessoas Apressadas
+  category:
+    output: true
+    permalink: /:path
 
 defaults:
   - scope:
@@ -56,6 +59,11 @@ defaults:
       type: "book_cc_for_ppl_in_a_hurry"
     values:
       layout: "book"
+  - scope:
+      path: ""
+      type: "category"
+    values:
+      layout: "category"
   # - scope:
   #     path: ""
   #     type: "posts"

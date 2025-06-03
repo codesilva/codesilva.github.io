@@ -3,7 +3,7 @@ layout: post
 title: '[POST-IT] O Índice de Links Definitivo'
 date: 2025-02-17
 lang: pt-BR
-category: ["general"]
+category: ["post-it", "general"]
 excerpt: 'Esse post é só um concentrador de links. Eu quero manter as coisas mais centralizadas e achei que poderia ser útil pra mais alguém.'
 ---
 
