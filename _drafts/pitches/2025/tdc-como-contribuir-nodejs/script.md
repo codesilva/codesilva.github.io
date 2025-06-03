@@ -68,3 +68,22 @@ Screenshot de https://nodejs.org/en/about/get-involved
 - Ajuda - https://github.com/nodejs/help
 - OpenJs Foundation Slack - https://slack-invite.openjsf.org/
 - Reunioes - https://nodejs.org/calendar
+
+
+## Nate berkopec talk - how puma works
+
+https://www.youtube.com/watch?v=SquGNt4FhY0
+https://github.com/zloirock/core-js/blob/master/docs/2023-02-14-so-whats-next.md
+
+> Solution to hero culture in open-source software is probably not to poorly pay the heroes with donations
+
+Distribute contributions across multiple people: lower bus factor (1), motivating, better software, less burnout
+
+(1): what if you are hit by a bus?
+
+OSS: fun, easy, good way to learn
+
+Reasons why people don't do it: experience for new contributors is not great.
+
+
+https://x.com/fxn/status/1840734401191137432
