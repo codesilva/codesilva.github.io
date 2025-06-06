@@ -62,7 +62,7 @@ Muitas das más práticas da área de programação são fruto da falta de pensa
 
 Para encerrar, deixo a definição de **pensar** segundo _Rubem Alves_:
 
-> O pensamento é como a água que só alça voo nos espaços vazios do desconhecido. Pensar é voar sobre o que não se sabe. Não existe nada mais fatal para o pensamento do que o ensino das respostas certas.
+> O pensamento é como a águia que só alça voo nos espaços vazios do desconhecido. Pensar é voar sobre o que não se sabe. Não existe nada mais fatal para o pensamento do que o ensino das respostas certas.
 >
 > As respostas nos permitem andar sobre a terra firme. Mas somente as perguntas nos permitem entrar pelo mar desconhecido.
 
