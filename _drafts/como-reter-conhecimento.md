@@ -8,9 +8,17 @@ category: ["aprendendo-a-aprender", "rubem-alves", "schopenhauer"]
 
 > Eu não consigo aprender frontend. Eu resolvo problemas de frontend no trabalho, mas não consigo reter o conhecimento. Como você faz?
 
-Essa é a pergunta de um mentorado meu. Você, certamente, já teve essa sensação. É normal, eu também já tive e tenho.
+Essa é a pergunta de um mentorado meu. Você, certamente, já teve essa sensação. É normal, eu também já tive e tenho. Isso pode ser frustrante, mas é possível ajustar isso.
 
-## Você precisa PENSAR, não buscar por respostas
+## Tópicos
+
+- [1. Você precisa PENSAR, não buscar por respostas](#1-você-precisa-pensar-não-buscar-por-respostas)
+    - [1.1 O que é pensar?](#o-que-é-pensar)
+- [2. Isso significa que nunca devo buscar por respostas?](#2-isso-significa-que-nunca-devo-buscar-respostas)
+- [3. Rubem Alves e Schopenhauer](#3-rubem-alves-e-schopenhauer)
+
+
+## 1. Você precisa PENSAR, não buscar por respostas
 
 O fluxo comum da resolução de problemas é:
 
@@ -38,10 +46,11 @@ as respostas. Então, com o objetivo de realmente aprender, você deve mudar o f
 6. você encontra uma resposta;
 7. você aplica a resposta e resolve o problema.
 
-Ao **pensar ativamente**, você deliberadamente busca entender os mecanismos por trás do problema, logo você aprende.
-Claro, é preciso repetir esse processo várias vezes para realmente aprender, mas [é assim que se aprende][].
+Ao **pensar ativamente**, você deliberadamente busca entender os mecanismos por trás do problema, logo você aprende. Claro, é preciso repetir esse processo várias vezes para realmente aprender, mas [é assim que se aprende][].
 
-## Isso significa que nunca devo buscar respostas?
+É importante ressaltar que atiçar o pensamento **requer atenção**.
+
+## 2. Isso significa que nunca devo buscar respostas?
 
 Não, não é isso. Não é preciso deduzir toda e qualquer solução por conta própria. As respostas prontas são o alicerce do conhecimento. Pessoas já pensaram por você e chegaram a conclusões. Isso é essencial para a evolução do conhecimento humano.
 
@@ -49,10 +58,7 @@ Além disso, há cenários em que você não tem interesse em aprender conceitos
 
 Muitas das más práticas da área de programação são fruto da falta de pensamento. [Programação por coincidência][] é um exemplo que ilustra bem isso.
 
-[é assim que se aprende]: https://codesilva.github.io/aprendizado/2024/06/18/o-que-voce-nao-consegue-explicar-nao-entende.html#seu-c%C3%A9rebro-aprende-assim
-[Programação por coincidência]: https://codesilva.github.io/carreira/2024/01/22/senile-software-developer.html#programa%C3%A7%C3%A3o-por-coincidencia
-
-## Rubem Alves e Schopenhauer
+## 3. Rubem Alves e Schopenhauer
 
 Para encerrar, deixo a definição de **pensar** segundo _Rubem Alves_:
 
@@ -67,3 +73,6 @@ _Schopenhauer_ também escreveu sobre isso:
 > Pois é apenas por meio da _combinação ampla_ do que se sabe, por meio da comparação de cada verdade com todas as outras, que uma pessoa se apropria do seu **próprio saber** e o **domina**.
 >
 > [...] **só se sabe aquilo sobre o que se pensou com profundidade.**
+
+[é assim que se aprende]: https://codesilva.github.io/aprendizado/2024/06/18/o-que-voce-nao-consegue-explicar-nao-entende.html#seu-c%C3%A9rebro-aprende-assim
+[Programação por coincidência]: https://codesilva.github.io/carreira/2024/01/22/senile-software-developer.html#programa%C3%A7%C3%A3o-por-coincidencia
