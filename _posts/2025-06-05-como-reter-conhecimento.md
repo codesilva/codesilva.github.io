@@ -3,7 +3,8 @@ layout: post
 title: Como reter conhecimento
 date: 2025-06-05
 lang: pt-BR
-category: ["aprendendo-a-aprender", "rubem-alves", "schopenhauer"]
+category: ["aprendendo-a-aprender"]
+tags: ["rubem-alves", "schopenhauer"]
 ---
 
 > Eu não consigo aprender frontend. Eu resolvo problemas de frontend no trabalho, mas não consigo reter o conhecimento. Como você faz?
