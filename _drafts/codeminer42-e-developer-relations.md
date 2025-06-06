@@ -44,7 +44,7 @@ Há poucos meses assumi a posicao de Developer Relations, meio que sem saber o q
 ---
 
 
-Depois de quatro anos na codeminer eu evoluí muito. O nível de qualidade dos devs é muito acima da média e há um incentivo interno para que todos evoluam constantemente. Gosto de acreditar que aproveitei as oportunidades que tive.
+Depois de quatro anos na codeminer eu evolui muito. O nível de qualidade dos devs é muito acima da média e há um incentivo interno para que todos evoluam constantemente. Gosto de acreditar que aproveitei as oportunidades que tive.
 
 Hoje, depois de quatro anos, estou assumindo um novo desafio: Developer Relations.
 
