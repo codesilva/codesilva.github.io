@@ -27,11 +27,11 @@ O fluxo comum da resolução de problemas é:
 3. você encontra uma resposta;
 4. você aplica a resposta e resolve o problema.
 
-Seja uma busca no Google, ChatGPT, Gemini ou qualquer outra LLM, quando fazemos isso estamos apenas buscando uma resposta.
+Seja uma busca no Google, ChatGPT, Gemini ou qualquer outra LLM, quando fazemos isso estamos apenas buscando uma resposta. Mas é isso que te levou até aqui. Vamos ver como resolver isso.
 
 ### O que é pensar?
 
-Eis a definição de pensar segundo o dicionário:
+Segundo o dicionário, **pensar** é:
 
 > submeter (algo) ao processo de raciocínio lógico; exercer a capacidade de julgamento, dedução ou concepção.
 
