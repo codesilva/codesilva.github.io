@@ -39,19 +39,19 @@ Segundo o dicionário, **pensar** é:
 > submeter (algo) ao processo de raciocínio lógico; exercer a capacidade de julgamento, dedução ou concepção.
 
 Nada é mais fatal ao pensamento do que as respostas. O que mais importa no processo de aprendizado são as perguntas, não
-as respostas. Então, com o objetivo de realmente aprender, você deve mudar o fluxo para:
+as respostas. Então, com o objetivo de realmente aprender, você deve mudar o fluxo para algo como:
 
 1. você tem um problema (seja uma dúvida, um bug ou uma tarefa qualquer);
 2. **você pensa sobre o que pode ser a causa do problema** (pergunte-se: mas o que está havendo de fato? Que caminho posso tomar?);
 3. **você desenvolve uma hipótese**;
-4. **você valida a hipótese**;
-5. se necessário, você busca uma solução;
-6. você encontra uma resposta;
-7. você aplica a resposta e resolve o problema.
+4. **você valida a hipótese** (com sorte, seu problema será resolvido aqui);
 
-Ao **pensar ativamente**, você deliberadamente busca entender os mecanismos por trás do problema, logo você aprende. Claro, é preciso repetir esse processo várias vezes para realmente aprender, mas [é assim que se aprende][].
+Procure seguir esse fluxo até resolver o problema, buscando mais referências e informações. Só aí, quado tiver esgotado
+as possibilidades, você pode buscar uma resposta pronta.
 
-É importante ressaltar que atiçar o pensamento **requer atenção**.
+Ao **pensar ativamente**, você busca entender os mecanismos por trás do problema, logo você aprende. Claro, é preciso repetir esse processo várias vezes para realmente aprender, mas [é assim que se aprende][].
+
+Importante: atiçar o pensamento, como um processo ativo, **requer atenção**. É aqui que a maioria de nós falha.
 
 ## 2. Isso significa que nunca devo buscar respostas?
 
