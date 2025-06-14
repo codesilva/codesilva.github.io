@@ -1,3 +1,15 @@
+- title: 'Melhore a DX do seu time com Node.js VM [PT-BR]'
+  event: 'TDC Floripa 2025'
+  length_in_minutes: 30
+  date: 'June 13, 2025'
+  talk_url: ''
+  talk_url_iframe: false
+  slides_url: 'https://docs.google.com/presentation/d/1om29QduQlUO18kKUyhPpmpnazHLqo3s1XNHWoF7z2P0/edit?usp=sharing'
+  description: |
+    Como desenvolvedor, você está sempre buscando melhores maneiras de fazer seu trabalho. Você escolhe o que acha que é o melhor editor, a melhor linguagem de programação, a melhor estrutura e assim por diante. Você escolhe as melhores ferramentas para uma melhor experiência do desenvolvedor.
+    Às vezes, você precisa criar suas próprias ferramentas. E é aí que o módulo Node.js VM entra. Este módulo, embora às vezes seja negligenciado, permite que você execute código JavaScript em uma sandbox controlada.
+    Nesta palestra, trago a você um caso de uso real do módulo Node.js VM que usamos para criar uma ferramenta de observabilidade para gerenciar alertas de nossas aplicações.
+
 - title: 'Hotwire meets The Platform™ [EN]'
   event: 'Tropical on Rails 2025'
   length_in_minutes: 30
