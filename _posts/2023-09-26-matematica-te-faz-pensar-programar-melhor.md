@@ -5,6 +5,7 @@ date: 2023-09-26
 lang: pt-BR
 tags: ["ciencia da computacao", "matematica"]
 category: ["ciencia da computacao"]
+private: false
 ---
 
 Quando se inicia numa faculdade de Ciência da Computação e afins é comum refletirmos sobre alguns porquês. Eu refletia sobre o porquê precisávamos de tanta matemática nos primeiros semestres de curso. Naturalmente, é um curso de ciência então discíplinas como Cálculo são necessárias.

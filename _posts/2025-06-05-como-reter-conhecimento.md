@@ -5,6 +5,7 @@ date: 2025-06-05
 lang: pt-BR
 category: ["aprendendo-a-aprender"]
 tags: ["rubem-alves", "schopenhauer"]
+private: false
 ---
 
 > Eu não consigo aprender frontend. Eu resolvo problemas de frontend no trabalho, mas não consigo reter o conhecimento. Como você faz?

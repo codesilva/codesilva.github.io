@@ -6,6 +6,10 @@ layout: default
 {% assign current_month = "" %}
 
 {% for post in site.posts %}
+  {% if post.private == true %}
+    {% continue %}
+  {% endif %}
+
   {% assign post_year = post.date | date: "%Y" %}
   {% assign post_month = post.date | date: "%B" %}
 
@@ -19,6 +23,7 @@ layout: default
       <h2>{{ post_year }}</h2>
       <ul>
     {% endif %}
+
     <li><a href="{{ post.url }}">{{ post.title }}</a></li>
 
     {% if forloop.last %}
