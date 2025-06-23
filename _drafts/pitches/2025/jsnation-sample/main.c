@@ -5,6 +5,11 @@
 #include <unistd.h>
 
 // THIS FILE CONTAINS THE MY EXPERIMENTS WITH LIBUV
+// gcc main.c -o main.o -luv
+
+/* gcc -I/Users/edysilva/projects/contributions/libuv/include \ */
+/*     /Users/edysilva/projects/contributions/libuv/.libs/libuv.a \ */
+/*     main.c -o main */
 
 int64_t counter = 0;
 int timer_count = 0;
