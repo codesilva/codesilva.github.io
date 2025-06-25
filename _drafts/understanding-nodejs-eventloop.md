@@ -130,3 +130,32 @@ It worked!!!!
 ```bash
 sudo ln -sfn /Users/edysilva/projects/contributions/libuv/.libs/libuv.1.dylib /usr/local/lib/libuv.1.dylib
 ```
+
+---
+
+For some reason seems like more than one loop is started. From my tests: the default and two more.
+Node starts at `src/node_main.cc` it then calls the method `int Start(int argc, char** argv) {` at `src/node.cc`.
+
+This calls a internal method which does:
+
+```cpp
+NodeMainInstance main_instance(snapshot_data,
+        uv_default_loop(),
+        per_process::v8_platform.Platform(),
+        result->args(),
+        result->exec_args());
+
+return main_instance.Run();
+```
+
+here is main instance definition: https://github.com/nodejs/node/blob/745f48d9f36b6f5765297e7d6058dc7f51a18ccc/src/node_main_instance.cc#L33
+
+
+
+# Boundaries crossing
+
+libuv starts here inside of node js https://github.com/nodejs/node/blob/main/src/env.cc#L1070
+
+Microtask enqueueing
+
+https://github.com/nodejs/node/blob/d08513dfc7d7fe2e1d89bf5f283a30a006b990ff/src/node_task_queue.cc#L140
