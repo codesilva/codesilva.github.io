@@ -150,8 +150,6 @@ return main_instance.Run();
 
 here is main instance definition: https://github.com/nodejs/node/blob/745f48d9f36b6f5765297e7d6058dc7f51a18ccc/src/node_main_instance.cc#L33
 
-
-
 # Boundaries crossing
 
 libuv starts here inside of node js https://github.com/nodejs/node/blob/main/src/env.cc#L1070

@@ -6,10 +6,18 @@
 
 // THIS FILE CONTAINS THE MY EXPERIMENTS WITH LIBUV
 // gcc main.c -o main.o -luv
+//
+// gcc -L/Users/edysilva/projects/contributions/libuv/.libs -luv main.c -o main
+// -L adds the path the search for libraries
+// -l adds the library to link against (if this is not passed, the linker will not 
+// link against the library even if it is found in the path specified by -L)
+// -v shows the commands that are executed by gcc
 
-/* gcc -I/Users/edysilva/projects/contributions/libuv/include \ */
-/*     /Users/edysilva/projects/contributions/libuv/.libs/libuv.a \ */
-/*     main.c -o main */
+/*
+ gcc -I/Users/edysilva/projects/contributions/libuv/include
+     /Users/edysilva/projects/contributions/libuv/.libs/libuv.a \
+    main.c -o main 
+*/
 
 int64_t counter = 0;
 int timer_count = 0;
