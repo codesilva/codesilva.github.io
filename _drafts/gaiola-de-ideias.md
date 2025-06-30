@@ -15,3 +15,39 @@ I want to experiment with functions like:
 See more at understanding-nodejs-eventloop.md
 
 ---
+
+# A Arte de trainer pessoas
+
+o modelo da codeminer42 funciona muiti bem tanto que virou um serviço. Apois o TDC vi que isso não é comum. Esperam de
+você, mas não te ajudam.
+
+# A crise do software
+
+Em 1972, Dijkstra disse que o software é uma crise. Um de seus argumentos era a ambição de criar softwares mais
+poderosos, visto que as máquinas estavam ficando mais poderosas.
+
+Esamos em 2025 e com o advento de novas tecnologias como IA, a crise do software continua. A ambição de criar softwares
+não necessariamente melhores, mas mais rapidamente, com menos esforço tem se tornado uma obsessão
+
+# ruby-node
+
+Inspired by php-node, why not create a ruby-node that allows you to run ruby code inside node.js?
+
+https://chatgpt.com/share/685f518f-11f8-800b-9bec-7b82e68a0ecf
+https://blog.platformatic.dev/seamlessly-blend-php-with-nodejs
+https://silverhammermba.github.io/emberb/c/
+
+# Linha do tempo de mindshifts
+
+De tempos em tempos acreidto que precisamosnter um mindshif sobre alguns temas. quero escrever sobre isso
+ listando alguns mindshifts que tive
+
+- leo haddad
+- codeminer42
+- rails
+- erlang
+- elixir
+- c
+- c++
+
+# Voce ama o que faz ou tenta amar o trabalho que faz?
