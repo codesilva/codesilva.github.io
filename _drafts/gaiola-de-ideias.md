@@ -1,3 +1,11 @@
+# Rails é o melhor framework
+
+- melhores ferramentas
+- convencao sobre configuracao
+- melhor comunidade
+- melhor ecossistema
+- melhor linguagem
+
 # Understanding Libuv and Node.js Event Loop
 
 I have this idea of showing how node js event loops works but with an experiment I never saw before.
@@ -51,3 +59,5 @@ De tempos em tempos acreidto que precisamosnter um mindshif sobre alguns temas. 
 - c++
 
 # Voce ama o que faz ou tenta amar o trabalho que faz?
+
+# Rails é o melhor framework web

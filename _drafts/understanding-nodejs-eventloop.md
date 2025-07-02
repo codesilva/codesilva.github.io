@@ -157,3 +157,73 @@ libuv starts here inside of node js https://github.com/nodejs/node/blob/main/src
 Microtask enqueueing
 
 https://github.com/nodejs/node/blob/d08513dfc7d7fe2e1d89bf5f283a30a006b990ff/src/node_task_queue.cc#L140
+
+---
+
+I opened an issue: https://github.com/nodejs/node/issues/58815 to discusso if it was a node problem. I don't know.
+I think the "issue" is that my libuv.1.dylib has this content
+
+```bash
+otool -D .libs/libuv.1.dylib
+.libs/libuv.1.dylib:
+/usr/local/lib/libuv.1.dylib
+```
+
+I'm pretty sure in node it gets from /usr/local/lib/libuv.1.dylib
+
+```
+The otool-classic command displays specified parts of object files or libraries. It is the preferred tool for inspecting Mach-O binaries, especially for
+       binaries that are bad, corrupted, or fuzzed. It is also useful in situations when inspecting files with new or "bleeding-edge" Mach-O file format changes.
+
+       For historical reasons, the LLVM-based llvm-objdump(1) tool does support displaying Mach-O information in an "otool-compatibility" mode. For more information
+       on using llvm-objdump(1) in this way, see the llvm-otool(1) command-line shim. Note that llvm-objdump(1) is incapable of displaying information in all Mach-O
+       files.
+
+       If the -m option is not used the file arguments may be of the form libx.a(foo.o), to request information about only that object file and not the entire
+       library.   (Typically this argument must be quoted, ``libx.a(foo.o)'', to get it past the shell.)  Otool-classic understands both Mach-O (Mach object) files
+       and universal file formats.  Otool-classic can display the specified information in either its raw (numeric) form (without the -v flag), or in a symbolic
+       form using macro names of constants, etc. (with the -v or -V flag).
+```
+
+>        -D     Display just the install name of a shared library.  See install_name_tool(1) for more info.
+
+
+
+```
+INSTALL_NAME_TOOL(1)                                                   General Commands Manual                                                  INSTALL_NAME_TOOL(1)
+
+NAME
+       install_name_tool - change dynamic shared library install names
+
+SYNOPSIS
+       install_name_tool [-change old new ] ... [-rpath old new ] ... [-add_rpath new ] ... [-delete_rpath new ] ... [-id name] file
+
+DESCRIPTION
+       Install_name_tool changes the dynamic shared library install names and or adds, changes or deletes the rpaths recorded in a Mach-O binary.  For this tool to
+       work when the install names or rpaths are larger the binary should be built with the ld(1) -headerpad_max_install_names option.
+
+       -change old new
+              Changes the dependent shared library install name old to new in the specified Mach-O binary.  More than one of these options can be specified.  If the
+              Mach-O binary does not contain the old install name in a specified -change option the option is ignored.
+
+       -id name
+              Changes the shared library identification name of a dynamic shared library to name.  If the Mach-O binary is not a dynamic shared library and the -id
+              option is specified it is ignored.
+
+       -rpath old new
+              Changes the rpath path name old to new in the specified Mach-O binary.  More than one of these options can be specified.  If the Mach-O binary does
+              not contain the old rpath path name in a specified -rpath it is an error.
+
+       -add_rpath new
+              Adds the rpath path name new in the specified Mach-O binary.  More than one of these options can be specified.  If the Mach-O binary already contains
+              the new rpath path name specified in -add_rpath it is an error.
+
+       -delete_rpath old
+              deletes the rpath path name old in the specified Mach-O binary.  More than one of these options can be specified.  If the Mach-O binary does not
+              contains the old rpath path name specified in -delete_rpath it is an error.
+
+SEE ALSO
+       ld(1)
+
+Apple, Inc.
+```

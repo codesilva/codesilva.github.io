@@ -14,7 +14,6 @@ ln -s ~/projects/personal/workbox/public/workbox public/workbox
 
 then i changed the service worker file
 
-
 ```javascript
 importScripts('/workbox/workbox-sw.js');
 
@@ -57,11 +56,11 @@ ERROR:  While executing gem ... (Gem::InvalidSpecificationException)
 
 Okay, names matter here. 
 
-```bash
 created my gem and added to a rails project.
 
 when i run rails generate --help i can see
 
+```bash
 PwaBuilder:
   pwa_builder:add_route
   pwa_builder:install
@@ -75,6 +74,4 @@ Did you mean?  pwa_builder:precache
 Run bin/rails generate --help for more options.
 ```
 
-even though module name were correct the folder was not, it was acually `service_worker`. Even after renaming it to
-`pwa_builder` I still got the same error. I had to create a `install` folder inside `pwa_builder` and move the
-`install_generator.rb`
+even though module name were correct the folder was not, it was acually `service_worker`. Even after renaming it to `pwa_builder` I still got the same error. I had to create a `install` folder inside `pwa_builder` and move the `install_generator.rb`

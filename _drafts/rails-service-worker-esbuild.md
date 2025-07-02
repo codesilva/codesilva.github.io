@@ -100,3 +100,22 @@ For now, my command looks like that
 >   "build": "esbuild app/javascript/*.* --external:@hotwired/turbo-rails --external:controllers --external:initializers --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
 >}
 >```
+
+I thought we could use import maps. 
+
+I tried adding entries from js jsdelivr but it didn't work.
+
+https://www.jsdelivr.com/package/npm/workbox-core
+https://guides.rubyonrails.org/asset_pipeline.html#how-importmap-rails-works
+
+
+Import maps do not work in the context of service workers though. But they work with
+ESM modules which we can import directly from jsdelivr.
+
+```javascript
+import { cacheNames } from 'https://cdn.jsdelivr.net/npm/workbox-core@7.3.0/+esm';
+```
+
+Importing from CDN is not a good idea for production, but it works for development. Even thoug the service-worker won't
+be always retrieving the modules, evey single time the service worker is updated, it will download the modules again. If
+CDN is down, the service worker will not be able to start.
