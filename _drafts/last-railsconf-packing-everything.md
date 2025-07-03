@@ -1,3 +1,60 @@
+As the Last RailsConf approaches the nostalgic feeling gets stronger. It's the end of an era, a celebration of the
+history of Ruby on Rails and its community. 
+
+Taken by this feeling, we hade a series of posts about Ruby, Rails and the history of RailsConf. We went from the
+history of Rails, the conventions that made it so special, to the state of Rails today in the AI era.
+
+Check out the list of posts we published in this series:
+
+    lista de posts aqui
+
+I'm blessed to be part of the last RailsConf ever. In this post I share my expectations for conference as an spectator and as a speaker.
+
+# The Last RailsConf
+
+I watched a lot of talks from past RailsConfs and I got a nice feeling about the community. A wide range of topics, some
+more specific to Rails, some more general, but all focusing on the empowerment of the developers and the community.
+
+As mentioned in the first article of the series, we kinda had something similar to this in Brazil with RubyConf, despite
+the name.
+
+This is a characteristic I really love. Ruby on Rails is the main tool but there's the surrounding stuff that empowers
+you as a professional. The community is open-minded and curious, always looking for the best tool for the job.
+
+I always had this feeling about RailsConf but then DHH put it in words in the RailsWorld 2023 keynote:
+
+> We should be the Renaissance Developers. [...] interested in all aspects of a problem, the design, the implementation, the deployment and the maintenance.
+
+Rails community is composed of so smart and kind people. Being there in person is, for me, a great privilege. I hope to meet a lot of them and learn from their experiences.
+
+I think this will be particularly easier due toe the structure of the conference. The second day is dedicated to Hacker
+Spaces, where one can collaborate with other developers and open source maintainers. This is a great opportunity to
+build something together with admirable people, those who created and still maintain many of the tools we use every day.
+
+This year's schedule, as always, is very diverse and promising with talks/workshops around `Community Building` (of
+course), `Career Reflections`, `Rails Internals`, and `Frontend, PWAs and Browser-Powered Rails`.
+
+All of this related to the theme of the conference: `The Future of Rails, Ruby and You`.
+
+## DHH Comes To a Fireside Chat
+
+Closing the first day of the conference, DHH will be on stage for a Fireside Chat. After what happened previously, this
+is a very special moment. DHH is the creator of Rails, the one who started it all. I thikn it's very important for
+a great finale in RailsConf history to have him there, sharing his thoughts and experiences.
+
+## The perfect closing keynote
+
+The closing keynote will be given by Aaron Patterson, aka Tenderlove, one of the most beloved figures in the Rails
+community.
+
+I watched a lot of his talks. He's smart, funny and has a great way of explaining things, even the complex ones. There couldn't be a better person to close the last RailsConf ever.
+
+Indeed, Tenderlove is right about everything. I'm looking forward to his talk, which promises to be a celebration of the Rails community and its history.
+
+# The Future of PWAs on Rails
+
+---
+
 # Packing everything to RailsConf 2025
 
 Next week will happen the RailsConf 2025! its is the last railsconf in the history.  i am amazed to be part of such
