@@ -43,9 +43,17 @@ TBD
 
 - [Git Immersion](https://gitimmersion.com/index.html)
 
+### Node.js
+
+- [Vídeo claro e objetivo sobre como o event loop funciona no Node](https://www.youtube.com/watch?v=PNa9OMajw9w)
+
 ### Progressive Web Apps
 
 TBD
+
+### React.js
+
+- [Desde 2014, o vídeo que explica como React realmente funciona (Flux pattern)](https://www.youtube.com/watch?v=nYkdrAPrdcw&list=PLb0IAmt7-GS188xDYE-u1ShQmFFGbrk0v)
 
 ### SQLite
 
