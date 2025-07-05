@@ -1,3 +1,17 @@
+# Seguir o 'learn' do Next.js
+
+- objetivo principal é entender o que o Next.js agrega ao React.js
+- quero poder comparar com outras soluções como Sveltekit
+- https://nextjs.org/learn/react-foundations/from-react-to-nextjs
+
+# Modelo opinativo venceu
+
+- Rails venceu
+- Laravel venceu
+- Por que AdonisJS e IntentJs não venceram?
+    https://hono.dev/
+
+
 # Rails é o melhor framework
 
 - melhores ferramentas
@@ -24,9 +38,9 @@ See more at understanding-nodejs-eventloop.md
 
 ---
 
-# A Arte de trainer pessoas
+# A Arte de treinar pessoas
 
-o modelo da codeminer42 funciona muiti bem tanto que virou um serviço. Apois o TDC vi que isso não é comum. Esperam de
+o modelo da codeminer42 funciona muito bem tanto que virou um serviço. Apois o TDC vi que isso não é comum. Esperam de
 você, mas não te ajudam.
 
 # A crise do software
@@ -59,5 +73,3 @@ De tempos em tempos acreidto que precisamosnter um mindshif sobre alguns temas. 
 - c++
 
 # Voce ama o que faz ou tenta amar o trabalho que faz?
-
-# Rails é o melhor framework web

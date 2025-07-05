@@ -6,7 +6,11 @@ history of Rails, the conventions that made it so special, to the state of Rails
 
 Check out the list of posts we published in this series:
 
-    lista de posts aqui
+- [What It Takes To Foster A Community Around Rails](https://blog.codeminer42.com/what-it-takes-to-foster-a-community-around-rails/)
+- [The History of Ruby on Rails: Code, Convention, and a Little Rebellion](https://blog.codeminer42.com/the-history-of-ruby-on-rails-code-convention-and-a-little-rebellion/)
+- [Ruby on Rails: The Open-Source Blueprint](https://blog.codeminer42.com/ruby-on-rails-the-open-source-blueprint/)
+- [A Journey Through the Greatest Ruby on Rails Milestones](https://blog.codeminer42.com/a-journey-through-the-greatest-ruby-on-rails-milestones/)
+- [The Overlooked Power of Rails in the Age of AI](https://blog.codeminer42.com/the-overlooked-power-of-rails-in-the-age-of-ai/)
 
 I'm blessed to be part of the last RailsConf ever. In this post I share my expectations for conference as an spectator and as a speaker.
 
@@ -32,7 +36,7 @@ Spaces, where one can collaborate with other developers and open source maintain
 build something together with admirable people, those who created and still maintain many of the tools we use every day.
 
 This year's schedule, as always, is very diverse and promising with talks/workshops around `Community Building` (of
-course), `Career Reflections`, `Rails Internals`, and `Frontend, PWAs and Browser-Powered Rails`.
+course), `Career Reflections`, `Rails Internals`, `Frontend, PWAs and Browser-Powered Rails` and `AIs in general` (it's 2025 after all).
 
 All of this related to the theme of the conference: `The Future of Rails, Ruby and You`.
 
@@ -44,14 +48,28 @@ a great finale in RailsConf history to have him there, sharing his thoughts and 
 
 ## The perfect closing keynote
 
-The closing keynote will be given by Aaron Patterson, aka Tenderlove, one of the most beloved figures in the Rails
-community.
+The closing keynote will be given by Aaron Patterson, aka Tenderlove, one of the most beloved figures in the Rails and
+Ruby community.
 
 I watched a lot of his talks. He's smart, funny and has a great way of explaining things, even the complex ones. There couldn't be a better person to close the last RailsConf ever.
 
 Indeed, Tenderlove is right about everything. I'm looking forward to his talk, which promises to be a celebration of the Rails community and its history.
 
 # The Future of PWAs on Rails
+
+As a speaker I have my own expectations for my talk, `The Future Of: PWAs on Rails`. The TL;DR is that I want to show
+the value of PWAs, their building blocks, how to integrate them with Rails and how this fits into the Rails philosophy
+and tools.
+
+I've been doing nice experiments with Workbox and Rails Generators - such a great tool. PWAs on Rails don't need to be tedious. With the power of these two tools we can make it simple and joyful to build PWAs with Rails.
+
+# Beyond
+
+Ruby Central will continue, focusing on the Ruby language and its community. The Rails Foundation will take care of the
+Rails framework and its ecosystem. This is a good thing: both organizations will be able to focus on their specific needs
+and goals.
+
+I'm looking forward to see you at RailsConf 2025! See you in Philadelphia!
 
 ---
 
@@ -75,6 +93,8 @@ It is so joyful to write Ruby code. Particularly, I love the convention of the b
 names.
 
 ```ruby
+require 'time'
+
 def sunday?
   DateTime.now.wday == 0
 end
