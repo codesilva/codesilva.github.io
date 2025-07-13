@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '1. Dealing With I/O Using The ThreadPool'
-date: 2025-06-10
+date: 2025-07-13
 lang: pt-BR
 tags: ["node-internals"]
 category: ["nodejs-apocrypha", "libuv"]
