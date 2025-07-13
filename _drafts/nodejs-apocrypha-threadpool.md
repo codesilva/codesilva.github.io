@@ -5,6 +5,7 @@ date: 2025-06-10
 lang: pt-BR
 tags: ["node-internals"]
 category: ["nodejs-apocrypha", "libuv"]
+private: true
 ---
 
 Hello dear contributor. We're about to touch an exicing part of the implementaion of Node.js and libuv. To leverage this
@@ -47,7 +48,7 @@ It executes all the four instructions In the following sequence:
 
 ### What's happens next?
 
-Within at least 100ms the function `a` will be executed and the boom! Our event loop is blocked!
+Within at least 100ms the function `a` will be executed and then boom! Our event loop is blocked!
 
 > Remember: The main thread executes JavaScript code and when doing so it can't do anything else
 
