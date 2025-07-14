@@ -67,7 +67,7 @@ Most of our applications are `I/O-bound`, it means that the CPU is underused. Th
 
 > Remember: Threads consume resources
 
-This is the same thing that empowers [`NGINX`](https://aosabook.org/en/v2/nginx.html), one of the most performative web servers out there.
+What libuv, and hence Node, does is [`I/O Multiplexing`][]. This is the same thing that empowers [`NGINX`](https://aosabook.org/en/v2/nginx.html), one of the most performative web servers out there.
 
 Some operations still need to be done in a separate thread. Libuv, by default, uses the thread pool for file system and DNS operations. It also allows you to use the thread pool for other operations by just calling the [`uv_queue_work`][] function.
 
@@ -159,6 +159,7 @@ job->ScheduleWork(); // Remember that ScheduleWork is a wrapper around uv_queue_
 
 That's it. Whenever you need to perform work in the thread pool, the `ThreadPoolWork` is an option to consider.
 
+[`I/O Multiplexing`]: https://wiki.c2.com/?IoMultiplexing
 [`node_internals.h`]: https://github.com/nodejs/node/blob/main/src/node_internals.h#L289
 [`uv_queue_work`]: https://docs.libuv.org/en/v1.x/threadpool.html#c.uv_queue_work
 [`uv_cancel`]: https://docs.libuv.org/en/v1.x/request.html#c.uv_cancel
