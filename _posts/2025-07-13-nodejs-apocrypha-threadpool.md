@@ -53,8 +53,7 @@ Within at least 100ms the function `a` will be executed and then boom! Our event
 
 > Remember: The main thread executes JavaScript code and when doing so it can't do anything else
 
-Our function `a` is JavaScript code. The main thread will take care of it and be blocked forever - since it has
-a `while(true)`. In this scenario, the function `b` will never be executed not matter how much time has passed.
+Our function `a` is JavaScript code. The main thread will take care of it and be blocked forever, since it has a `while(true)`. In this scenario, the function `b` will never be executed not matter how much time has passed.
 
 All this happens in `libuv`. The lib that backs Node.js concurrency model.
 
@@ -64,8 +63,7 @@ All this happens in `libuv`. The lib that backs Node.js concurrency model.
 
 > Not everybody writes infinite loops like that in Node.js and when doing so they take care of it, right?
 
-Most of our application are `I/O-bound`, it means that the CPU is underused. There's no need to have multiple threads if the
-most part of the job is waiting for a [`file descriptor/handle`](https://en.wikipedia.org/wiki/File_descriptor).
+Most of our applications are `I/O-bound`, it means that the CPU is underused. There's no need to have multiple threads if the most part of the job is waiting for a [`file descriptor/handle`](https://en.wikipedia.org/wiki/File_descriptor).
 
 > Remember: Threads consume resources
 
@@ -73,10 +71,9 @@ This is the same thing that empowers [`NGINX`](https://aosabook.org/en/v2/nginx.
 
 Some operations still need to be done in a separate thread. Libuv, by default, uses the thread pool for file system and DNS operations. It also allows you to use the thread pool for other operations by just calling the [`uv_queue_work`][] function.
 
-In Node, some modules also leverage the threadpool, such as `node:crypto` and `node:sqlite`. The first one due to the
-heavy cryptographic operations and the second one due to the I/O in database operations.
+In Node, some modules also leverage the threadpool, such as `node:crypto` and `node:sqlite`. The first one due to the heavy cryptographic operations and the second one due to the I/O in database operations.
 
-### ThreadPool class
+### The ThreadPoolWork class
 
 Node has its constructors to empower you when dealing with other threads. One of them is the ThreadPool class. Its
 definition can be found at [`node_internals.h`][].
