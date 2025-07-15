@@ -8,4 +8,8 @@ private: true
 chapter: 1
 ---
 
-_Coming soon_
+Base object is the glue between C++ and JS lands.
+
+
+https://github.com/nodejs/node/blob/main/src/base_object.h
+https://github.com/nodejs/node/blob/main/src/base_object-inl.h
