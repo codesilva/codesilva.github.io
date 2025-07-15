@@ -46,6 +46,9 @@ Os links estarão subdivididos por categorias. Você pode usar o atalho `Ctrl + 
 ### Node.js
 
 - [Vídeo claro e objetivo sobre como o event loop funciona no Node](https://www.youtube.com/watch?v=PNa9OMajw9w)
+- [Sim, Node é single-threaded, mesmo com worker threads, mas e daí?](https://stackoverflow.com/questions/63224356/is-node-js-considered-multithreading-with-worker-threads)
+
+    > Similarly, the fact that you can now actually create WorkerThreads does not really change the primary programming model either because the WorkerThreads run in a separate JavaScript VM with a separate event loop and do not share regular variables. So, whether you're using WorkerThreads or not, you still pretty much design your code for an event-driven, non-blocking system.
 
 ### Progressive Web Apps
 
