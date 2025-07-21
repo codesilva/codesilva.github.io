@@ -5,6 +5,7 @@ date: 2025-02-17
 lang: pt-BR
 category: ["post-it", "general"]
 excerpt: 'Esse post é só um concentrador de links. Eu quero manter as coisas mais centralizadas e achei que poderia ser útil pra mais alguém.'
+pinned: true
 ---
 
 Esse é um post que eu vou manter atualizado com links que eu acho interessantes. A ideia é que eu possa compartilhar com outras pessoas e também ter um lugar centralizado para acessar esses links.
