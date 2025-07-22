@@ -7,7 +7,7 @@ category: ['carreira']
 private: true
 ---
 
-Hoje só quero trazer esse gráfico sobre o qual estive pensando nesse último fim de semana enquanto lia o livro So Good They Can’t Ignore You do Cal Newport.
+Hoje só quero trazer esse gráfico sobre o qual estive pensando nesse último fim de semana enquanto lia o livro _So Good They Can’t Ignore You_ do Cal Newport.
 
 Nesse livro, o autor desmistifica a ideia de que você precisa seguir sua paixão para ser feliz no trabalho. Ele argumenta que o que realmente importa é o desenvolvimento de habilidades valiosas e a construção de uma carreira sólida.
 
@@ -27,7 +27,7 @@ Finalmente, chega um ponto de estagnação (ou platô), onde o crescimento dimin
 
 Para toda a categoria de esporte que você imaginar, há um programa de treinamento. Os atletas estão sempre praticando com o objetivo de melhorar suas habilidades e alcançar o próximo nível.
 
-Em Olimpíadas, por exemplo, é comum vermos atletas quebrando recordes uns dos outros — quando não quebram os seus próprios.
+Em Olimpíadas, por exemplo, é comum vermos atletas quebrando recordes uns dos outros (quando não quebram os seus próprios).
 
 Isso é o natural em esportes. O atleta treina, se dedica e, com o tempo, alcança resultados melhores. Não é o caso da maioria das profissões.
 
@@ -41,7 +41,6 @@ Como treinar não é algo que eu vou discutir aqui. Por hora, só pense em atlet
 - estão sempre se aperfeicóando em algum aspecto que pode ser melhorado;
 - recebem orintações e feedback constante de treinadores e especialistas.
 
-A esse esforço consciente você pode chamar de estudo sério ou prática deliberada. Essa é a chave para merecer uma grande carreira. Afinal, ninguém te deve uma.
-
+A esse esforço consciente você pode chamar de **estudo sério** ou **prática deliberada**. Essa é a chave para merecer uma grande carreira. Afinal, ninguém te deve uma.
 
 [habilidades]: https://web.mit.edu/6.969/www/readings/expertise.pdf
