@@ -4,6 +4,7 @@ title: 'Ninguém Te Deve Uma Carreira'
 date: 2025-07-22
 lang: pt-BR
 category: ['carreira']
+private: true
 ---
 
 Hoje só quero trazer esse gráfico sobre o qual estive pensando nesse último fim de semana enquanto lia o livro So Good They Can’t Ignore You do Cal Newport.
