@@ -30,7 +30,7 @@ Em Olimpíadas, por exemplo, é comum vermos atletas quebrando recordes uns dos 
 
 Isso é o natural em esportes. O atleta treina, se dedica e, com o tempo, alcança resultados melhores. Não é o caso da maioria das profissões.
 
-A maior parte de nós, programadores, não treina. Por isso, atingimos o platô.
+A maior parte de nós, programadores, não treina. Por isso, atingimos o platô e permanecemos nele.
 
 Ao mesmo tempo que isso pode parecer frustrante, é também uma oportunidade. Se a maioria não treina, significa que, se você decidir treinar, tem boas chances de se destacar.
 
