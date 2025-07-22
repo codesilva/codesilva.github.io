@@ -4,7 +4,6 @@ title: 'Ninguém Te Deve Uma Carreira'
 date: 2025-07-22
 lang: pt-BR
 category: ['carreira']
-private: true
 ---
 
 Hoje só quero trazer esse gráfico sobre o qual estive pensando nesse último fim de semana enquanto lia o livro _So Good They Can’t Ignore You_ do Cal Newport.
@@ -38,8 +37,8 @@ Ao mesmo tempo que isso pode parecer frustrante, é também uma oportunidade. Se
 Como treinar não é algo que eu vou discutir aqui. Por hora, só pense em atletas e como eles treinam. Eles:
 
 - repetem movimentos específicos até se tornarem automáticos;
-- estão sempre se aperfeicóando em algum aspecto que pode ser melhorado;
-- recebem orintações e feedback constante de treinadores e especialistas.
+- estão sempre se aperfeiçoando em algum aspecto que pode ser melhorado;
+- recebem orientação e feedback constante de treinadores e especialistas.
 
 A esse esforço consciente você pode chamar de **estudo sério** ou **prática deliberada**. Essa é a chave para merecer uma grande carreira. Afinal, ninguém te deve uma.
 
