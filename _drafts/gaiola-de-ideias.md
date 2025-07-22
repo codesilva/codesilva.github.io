@@ -1,3 +1,11 @@
+# Por que deveria aprender C?
+
+- discorrer sobre o porquê é importante
+- pegar esses exemplos de input e output, que feitos em linguagens de alto nível são bem mais simples, implementar em
+    C e mostrar como se aprende bastante sobre o funcionamento do computador.
+
+    ex: receba nome e notas de `n` alunos e imprima a média de cada um deles.
+
 # Seguir o 'learn' do Next.js
 
 - objetivo principal é entender o que o Next.js agrega ao React.js
