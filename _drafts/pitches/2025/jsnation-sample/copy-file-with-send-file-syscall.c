@@ -8,7 +8,6 @@
 #include <sys/uio.h>
 
 int main() {
-
   off_t len;
   int source_fd = open("./source.txt", O_RDONLY);
   int dest_fd = open("./dest.txt", O_WRONLY | O_CREAT, 0644);
