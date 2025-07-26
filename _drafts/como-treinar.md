@@ -6,14 +6,61 @@ lang: pt-BR
 category: ['carreira']
 ---
 
-> .. se vocês estao estudando, estão estudando errado
+> .. se vocês estão estudando, estão estudando errado
 
-Era o que dizia o professor Enio nas áulas de Calculo do curso de Ciencia da Computacao. Grande professor. Ele estava
-certo.
+Era o que dizia o professor Enio nas aulas de Cálculo do curso de Ciência da Computacao. Grande professor. Ele estava certo.
 
-Em meu ultimo [ensaio](https://codesilva.github.io/carreira/2025/07/22/ninguem-te-deve-uma-carreira.html) para esse
-blog, discorri sobre característcas comuns de carreiras em profissoes de conhecimento e dei enfoque na necessidade do
-treino.
+Em meu [ensaio anterior](https://codesilva.github.io/carreira/2025/07/22/ninguem-te-deve-uma-carreira.html), discorri sobre característcas comuns de carreiras em profissoes de conhecimento. Há dois pontos principais ali:
+treinar é importante para um [_breackthrough_](https://dictionary.cambridge.org/dictionary/english/breakthrough) e que
+em profissões de conhecimento, como a de programação, não já uma rotina formal de treino.
+
+Nesse post quero compartilhar algumas heurísticas de prática que podem ser úteis pra você.
+
+## Estudando Errado
+
+Durante a vida acadêmica temos uma rotina definida. Você inicia num determinado horário e tem uma grade a seguir. Tudo
+isso com o objetivo de _passar na prova_ (talvez?).
+
+Do meu ensino fundamental ao médio eu não tinha ideia que havia um jeito certo de estudar. Sempre achei que se
+empenhasse um quantidade de tempo conseguiria atingir os objetivos. Isso funcionou até o ensino superior.
+
+Pelo começo do text, você sabe que não funcionou. Foi penoso, sobretudo a disciplina de Cálculo I. Após uma prova em que
+parte da turma foi mal ele sugeriu que talvez estivéssemos estudando errado.
+
+A verdade é que sempre estudei do mesmo jeito, mas antes era o suficiente. Aquilo foi um choque pra mim. Eu não sabia
+como, mas tinha compreendido que só o tempo dedicado, por si só, não era o determinante no aprendizado.
+
+Parece óbvio, que só tempo empenhado em algo não te faz bom naquilo. Mas é difícil observar isso quando você
+é o envolvido no processo. Nas aulas sobre [_limites de função_](https://pt.wikipedia.org/wiki/Limite_de_uma_fun%C3%A7%C3%A3o) eu estudava aquilo que eu achava confortável: sempre os
+mesmos exercícios e conceitos. Isso não melhorava muito minha habilidade com limites.
+
+Pense num pianista que só ensaia a mesma partitura. Repetindo sempre as mesmas notas, as mesmas técnicas, a mesma
+forma de posicionar as mãos no piano. Contiuar fazendo isso não melhorará em nada sua capacidade geral como músico. No máximo, será especialista de uma música só.
+
+## Como Estudar Certo?
+
+Em essência o que você precisa é de **prática de liberada**:
+
+> A prática deliberada é uma abordagem sistemática e intencional para o aprendizado e desenvolvimento de habilidades.
+> Ela se diferencia da prática regular por envolver um esforço consciente para aprimorar áreas específicas, com feedback e correção de erros ao longo do processo.
+> É um tipo de prática que visa levar o indivíduo além de sua zona de conforto, buscando constantemente aprimorar o desempenho em atividades desafiadoras. 
+
+Peguei essa definição no Google. Acredito que ela traz tudo o que precisamos saber sobre prática deliberada. Em suma
+você pratica, mas o faz em cenários desafiadores.
+
+Isso com certeza vai trazer alguns sentimentos. Frustração é um deles. Aprender é sofrer um pouco, sobretudo no começo. Mas não é um sofrimento
+que traz mais dor; ao contrátio, te faz crescer.
+
+Na verdade, as vezes, até depois de adquirie um certo domínio você pode sentir que esqueceu algo ou que "perdeu" aquilo
+que tinha aprendido. Lembre-se que leva tempo para o cérebro criar as conexões neurais novas e se reorganizar.
+
+Tenha paciência, siga firme e atravesse a barreira da frustração. Você já estará em uma zona que boa parte das pessoas não acessam e vai ter dominado uma habilidade nova.
+
+<br />
+---
+---
+---
+<br />
 
 Pesquise por `pratica deliberada` no Google e você provavelmente vai encontrar uma definicao similar a esra:
 
