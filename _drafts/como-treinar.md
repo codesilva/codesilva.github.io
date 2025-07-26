@@ -56,6 +56,39 @@ que tinha aprendido. Lembre-se que leva tempo para o cérebro criar as conexões
 
 Tenha paciência, siga firme e atravesse a barreira da frustração. Você já estará em uma zona que boa parte das pessoas não acessam e vai ter dominado uma habilidade nova.
 
+### O Guia de Treino
+
+Vi esse temo a primeira vez enquanto lia o livro _Learning How To Learn_ da Barbara Oakley e Terrence Sejnowski. Ali
+etendi o que significava e consegui conscientemente aplicar os conceitos, mas meio que no freestyle.
+
+Eu repetia coisas, variava os desafios e pegava feedback. Foi assim que consegui virar contribuidor oficial do Node, por exemplo. Comecei ajustando documentação, me desafiei a fazer contribuções em JavaScript e por último C++, conseguindo minha nomeação em alguns meses.
+
+Saber os princípios já me ajudou e com certeza vai te ajudar. Mas entendo que ter uma lista ajuda e com a ajuda de mais
+um livro da Barbara Oakley chamado _A Mind For Numbers_ consegui chegar nessa lista:
+
+1. **Trabalhe no problema**
+    sem roubar, sem olhar a resposta. apenas tente resolver o desafio proposto
+
+2. **Faça mais uma repetição**
+    uma vez que resolveu o problema e pegou feedback de que está correto; repita o processo (sei que parece estranho, mas ninguém aprende a toca uma musica em apenas uma repeticao, certo?) 
+
+3. **Faça uma pausa**
+    Essa é uma parte importante. Sobretudo se estiver tendo dificuldades em avançar. Dê um tempo para o seu cérebro
+    entrar em um modo difuso. Com certeza vcê conhece aquele meme de tomando banho o dev pensou na solucao de um bug.
+    é estranho, mas o c;erebro trabalha em background.
+
+4. **Durma**
+    Antes de dormir, trabalhe no problema um pouco mais. Assim você vai aproveitar esse trabalho em segundo plano.
+
+5. **Faça mais uma repetição**
+    Nesse ponto você já deve conseguir avançar mais facilmente no problema. Foque em partes que você considera mais
+    difíceis
+
+6. **Adicione um novo porblema**
+    Pegue outro problema e faça o mesmo que fez de 1-5. Ao ficar confortável com esse novo, vá para o próximo.
+
+No meio tempo, revisite ativamente os conceitos envolvidos
+
 <br />
 ---
 ---
