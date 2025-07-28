@@ -53,6 +53,12 @@ Lets's see that in practice.
     - multiple requests with the same payload must be treated as a single reservation attempt
 - Introduce notation: data, calculation, actions
 
+### Let's Introduce a Notation
+
+- Data
+- Calculation
+- Action
+
 ### Devising a Plan
 
 - Have you ever solver a similar problem? Yes, i know how to add endpoints to fastify, i know how to check if data are
@@ -61,7 +67,7 @@ Lets's see that in practice.
 - In a case you don't know how to solve the main problem, try to solve the first related problem.
 - Relax/drop some conditions, what do you see? Is it far from what you want?
 
-the plan: 
+the plan:
 
 1. get the calculation implemented:
     1. price_token validation; (almost ok)

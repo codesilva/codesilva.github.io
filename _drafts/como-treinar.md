@@ -63,8 +63,7 @@ etendi o que significava e consegui conscientemente aplicar os conceitos, mas me
 
 Eu repetia coisas, variava os desafios e pegava feedback. Foi assim que consegui virar contribuidor oficial do Node, por exemplo. Comecei ajustando documentação, me desafiei a fazer contribuções em JavaScript e por último C++, conseguindo minha nomeação em alguns meses.
 
-Saber os princípios já me ajudou e com certeza vai te ajudar. Mas entendo que ter uma lista ajuda e com a ajuda de mais
-um livro da Barbara Oakley chamado _A Mind For Numbers_ consegui chegar nessa lista:
+Saber os princípios já me ajudou e com certeza vai te ajudar. Mas entendo que ter uma lista ajuda e com a ajuda de mais um livro da Barbara Oakley chamado, _A Mind For Numbers_, temos a lista:
 
 1. **Trabalhe no problema**
     sem roubar, sem olhar a resposta. apenas tente resolver o desafio proposto
