@@ -1,8 +1,8 @@
 # Post relacionados a resolucao da avaliacao
 
-- background jobs como handlers (controllers) e use cases (services)
-- lidando com a checagem de disponibilidade usando `FOR UPDATE` no postgres
+- ~~background jobs como handlers (controllers) e use cases (services)~~
 - error handling efetivo
+- lidando com a checagem de disponibilidade usando `FOR UPDATE` no postgres
 
 # Por que deveria aprender C?
 
