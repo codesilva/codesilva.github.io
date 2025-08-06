@@ -4,6 +4,13 @@
 - error handling efetivo
 - lidando com a checagem de disponibilidade usando `FOR UPDATE` no postgres
 
+# Jogo Ludo multiplayer em C
+
+- Server em C para praticar o que foi aprendido no livro Networking Programming
+- Ludo king para jogar com os parças
+
+Referência: https://www.youtube.com/watch?v=Ih9OkNeg7v8
+
 # Por que deveria aprender C?
 
 - discorrer sobre o porquê é importante
