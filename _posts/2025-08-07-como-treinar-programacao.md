@@ -122,8 +122,7 @@ Isso não tem a ver com amor ao trabalho ou amor prévio à sua profissão. Isso
 
 Quanto mais você domina o que faz, maior a tendência de pegar gosto popor fazer aquilo.
 
-A coisas melhora quando você percebe que não é um fardo tão grande. Você não precisa aprender **todos** os detalhes
-sobre o que estás estudando, mas os pontos principais. Deixe a [serendipidade](https://pt.wikipedia.org/wiki/Serendipidade) acontecer.
+As coisas melhoram quando você percebe que não é um fardo tão grande. Você não precisa aprender **todos** os detalhes sobre o que estás estudando, mas os pontos principais. Deixe a [serendipidade](https://pt.wikipedia.org/wiki/Serendipidade) acontecer.
 
 ## Mentoria
 
