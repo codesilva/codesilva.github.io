@@ -8,9 +8,9 @@ category: ['carreira']
 
 > .. se vocês estão estudando, estão estudando errado
 
-Era o que dizia o professor Enio nas aulas de Cálculo do curso de Ciência da Computacao. Grande professor. Ele estava certo.
+Era o que dizia o professor Enio nas aulas de Cálculo do curso de Ciência da Computação. Grande professor. Ele estava certo.
 
-Em meu [ensaio anterior](https://codesilva.github.io/carreira/2025/07/22/ninguem-te-deve-uma-carreira.html), falei sobre característcas comuns a carreiras em profissoes de conhecimento.
+Em meu [ensaio anterior](https://codesilva.github.io/carreira/2025/07/22/ninguem-te-deve-uma-carreira.html), falei sobre características comuns a carreiras em profissoes de conhecimento.
 
 Há dois pontos principais ali: 
 
