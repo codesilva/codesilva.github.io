@@ -13,7 +13,10 @@ Era o que dizia o professor Enio nas aulas de Cálculo do curso de Ciência da C
 
 Em meu [ensaio anterior](https://codesilva.github.io/carreira/2025/07/22/ninguem-te-deve-uma-carreira.html), falei sobre característcas comuns a carreiras em profissoes de conhecimento.
 
-Há dois pontos principais ali: treinar é importante para um [_breakthrough_](https://dictionary.cambridge.org/dictionary/english/breakthrough) e que em profissões de conhecimento, como a de programação, não há uma rotina formal de treino.
+Há dois pontos principais ali: 
+
+- treinar é importante para um [_breakthrough_](https://dictionary.cambridge.org/dictionary/english/breakthrough);
+- em profissões de conhecimento, como a de programação, não há uma rotina formal de treino.
 
 Nesse post, quero compartilhar algumas heurísticas de prática que podem ser úteis pra você.
 
@@ -43,11 +46,11 @@ O que você precisa é de **prática de liberada**:
 >
 > É um tipo de prática que visa levar o indivíduo além de sua zona de conforto, buscando constantemente aprimorar o desempenho em atividades desafiadoras. 
 
-Peguei essa definição no Google. Acredito que ela traz tudo o que precisamos saber sobre prática deliberada. 
+Peguei essa definição no Google. Ela traz tudo o que você precisa saber sobre prática deliberada. 
 
 Em essência, você pratica, mas o faz em cenários desafiadores. Isso com certeza vai trazer alguns sentimentos. A frustração é um deles.
 
-Aprender é sofrer um pouco, sobretudo no começo. Mas não é um sofrimento que traz mais dor; ao contrátio, te faz crescer.
+Aprender é sofrer um pouco, sobretudo no começo. Mas [não é um sofrimento que traz mais dor](https://respireagora.com/2021/08/23/existem-dois-tipos-de-sofrimento/); ao contrátio, te faz crescer.
 
 Na verdade, as vezes, até depois de adquirie um certo domínio você pode sentir que esqueceu algo ou que "perdeu" aquilo que tinha aprendido. Isso é normal. A [reoganização do cérebro](https://solportal.ibe-unesco.org/articles/neuroplasticity-how-the-brain-changes-with-learning/) requer tempo.
 
@@ -69,15 +72,13 @@ Você sabe as características mínimas dos arrays como indexação, adição e 
 
 1. **TRABALHE NO PROBLEMA**
 
-    Pratique o que aprendeu resolvendo problemas por sua conta. Pegue desafios para os quais você pode checar
-    a resolução.
+    (Pegue desafios para os quais você pode checar a resolução) Pratique o que aprendeu resolvendo problemas por sua conta.
 
-    **Resolva do começo ao fim. Sem olhar a resposta e nem pular etapas**. Não olhe a solução a menos que você realmente
-    precise.
+    **Resolva do começo ao fim. Sem olhar a resposta e nem pular etapas**. Não olhe a solução a menos que você realmente precise.
 
 2. **FAÇA MAIS UMA REPETIÇÃO**
 
-    Resolva o problema mais uma vez. Dessa vez prestando muita atenção em detalhes vitais da solução.
+    Resolva o problema mais uma vez. Dessa vez prestando bem atenção em detalhes vitais da solução.
 
     Sei que parece esquisito resolver um mesmo problema mais de uma vez. Mas pense, um jogador de xadrez não aprende
     a fazer uma saída de jogo específica depois de fazê-la uma única vez.
@@ -88,30 +89,27 @@ Você sabe as características mínimas dos arrays como indexação, adição e 
 
 3. **FAÇA UMA PAUSA**
 
-    Essa é uma parte importante. Sobretudo se estiver tendo dificuldades em avançar. Dê um tempo para o seu cérebro
-    entrar em um [modo difuso](https://barbaraoakley.com/wp-content/uploads/2018/02/Learning-How-to-Learn-Excerpt.pdf). 
+    Essa é uma parte importante. Sobretudo se estiver tendo dificuldades em avançar. Dê um tempo para o seu cérebro entrar em um [modo difuso](https://barbaraoakley.com/wp-content/uploads/2018/02/Learning-How-to-Learn-Excerpt.pdf). 
 
     Com certeza você conhece aquele meme de que solução de um bug vem quando estamos tomando banho ou dormindo. Sim, o cérebro trabalha em segundo plano.
 
-    Durante essa pausa, faça outra coisa. Trabalhe em outro problema, estude algo diferente ou simplesmente dê uma
-    caminhada. O importante é o modo difuso ser ativado.
+    Durante essa pausa, faça outra coisa. Trabalhe em outro problema, estude algo diferente ou simplesmente dê uma caminhada.
 
 4. **DURMA**
 
-    Antes de dormir, trabalhe no problema um pouco mais. Assim você vai aproveitar esse trabalho em segundo plano.
+    Antes de dormir, trabalhe no problema. Ao dormir você entrará no modo difuso e aprenderá enquanto dorme.
 
 5. **FAÇA MAIS UMA REPETIÇÃO**
 
-    Já no outro dia, resolva o problema novamente. Você deve conseguir avançar com mais fluidez. Foque nas partes que
-    você considera mais difíceis.
+    Já em outro dia, resolva o problema novamente. Você deve conseguir avançar com mais fluidez. Dê atenção às partes que achar mais difícil.
 
-    É na parte difícil que temos que focar.
+    Isso é estudo sério: é na parte difícil, que você tem pouco domínio, que você que focar.
 
 6. **ADICIONE UM NOVO PORBLEMA**
 
-    Ao chegar no ponto em que dominou os conceitos, pegue outro problema, mais difícil.
+    Ao chegar no ponto em que dominou os conceitos, pegue outro problema. Claro, um problema que exija de você um esforço.
 
-    Faça o mesmo que fez de 1-5. Ao ficar confortável com esse novo, vá para o próximo.
+    Repita oa ciclo até ficar confortável e vá para o próximo.
 
 No meio tempo, revisite ativamente (mesmo que só na sua mente) os conceitos envolvidos. Reflita sobre o que aprendeu.
 
@@ -142,4 +140,4 @@ No livro eu tinha tudo: roadmap definido e feedback, afinal tinham as respostas 
 
 > Isso se dá por conta que o livro é preparado por co-autores que adicionam esse toque que vem da [teoria do aprendizado](https://en.wikipedia.org/wiki/Learning_theory_(education)), presente em todos os livros da série.
 
-O que quero dizer é: autores de livro podem ser seus mentores, assim como professores de curso e algum outro meio de estudo que você tenha. O ponto chave é o feedback.
+O que quero dizer é: autores de livro podem ser seus mentores, assim como professores de curso (ou algum outro meio de estudo que você tenha). O ponto chave é o feedback.
