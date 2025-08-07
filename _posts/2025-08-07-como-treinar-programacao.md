@@ -114,11 +114,9 @@ No meio tempo, revisite ativamente (mesmo que só na sua mente) os conceitos env
 
 ## A Dona Sorte
 
-Como qualquer treino, isso é feito fora do horário de trabalho. Um músico apresenta em seu show o que praticou em
-seus ensaios.
+Como qualquer treino, isso é feito fora do horário de trabalho. Um músico apresenta em seu show o que praticou em seus ensaios.
 
-Isso não tem a ver com amor ao trabalho ou amor prévio à sua profissão. Isso tem a ver com aproveitar as oportunidades e fazer
-o que a muita gente não faz.
+Isso não tem a ver com amor ao trabalho ou amor prévio à sua profissão. Isso tem a ver com aproveitar as oportunidades e fazer o que muita gente não faz.
 
 > A Lei da Serendipidade: A Sorte favorece quem tenta
 
