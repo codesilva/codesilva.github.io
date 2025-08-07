@@ -6,6 +6,13 @@ lang: pt-BR
 category: ['carreira']
 ---
 
+### TLDR
+
+Esse post é sobre estudo sério. O resto é consequência. Os dois pontos principais são:
+
+- é fácil de observar que no aprendizado de qualquer coisa você atinge um nível satisfatório de conhecimento, ficando ali na média. O _esforço consciente_ é o que vai te fazer ir além da média;
+- na profissão de programador não há uma rotina formal de treino. Isso significa que só o fato de você treinar já estará fazendo algo que a maioria não faz.
+
 Hoje só quero trazer esse gráfico sobre o qual estive pensando nesse último fim de semana enquanto lia o livro _So Good They Can’t Ignore You_ do Cal Newport.
 
 Nesse livro, o autor desmistifica a ideia de que você precisa seguir sua paixão para ser feliz no trabalho. Ele argumenta que o que realmente importa é o desenvolvimento de habilidades valiosas e a construção de uma carreira sólida.
@@ -41,5 +48,15 @@ Como treinar não é algo que eu vou discutir aqui. Por hora, só pense em atlet
 - recebem orientação e feedback constante de treinadores e especialistas.
 
 A esse esforço consciente você pode chamar de **estudo sério** ou **prática deliberada**. Essa é a chave para merecer uma grande carreira. Afinal, ninguém te deve uma.
+
+## Como sei se estou em um platô?
+
+Primeiro, entenda que o platô é um fenômeno. Não é necessariamente ruim. Você vai chegar num teto de conhecimento em algum momento, é normal.
+
+Depois de publicar esse artigo, algumas pessoas me perguntaram: mas como que eu sei que estou no platô? Sobre isso, eu formei uma teoria na minha cabeça, mesmo antes de começara escrever esse artigo.
+
+> De tempos em tempos, quem sabe anualmente, é preciso algum **shift mental**. Algo tem que mudar em nós para que vejamos o mundo com uma **perspectiva diferente**.
+
+Pelo menos, é como eu sei que cheguei a um teto. Quando fui aprender C, fui porque entendia ali o básico de programar, mas muito pouco sobre como um _programa_ é executado.
 
 [habilidades]: https://web.mit.edu/6.969/www/readings/expertise.pdf
