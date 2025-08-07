@@ -4,7 +4,6 @@ title: 'Como Treinar Programação'
 date: 2025-08-07
 lang: pt-BR
 category: ['carreira']
-private: true
 ---
 
 > .. se vocês estão estudando, estão estudando errado
