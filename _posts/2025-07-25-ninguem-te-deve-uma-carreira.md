@@ -57,6 +57,6 @@ Depois de publicar esse artigo, algumas pessoas me perguntaram: mas como que eu 
 
 > De tempos em tempos, quem sabe anualmente, é preciso algum **shift mental**. Algo tem que mudar em nós para que vejamos o mundo com uma **perspectiva diferente**.
 
-Pelo menos, é como eu sei que cheguei a um teto. Quando fui aprender C, fui porque entendia ali o básico de programar, mas muito pouco sobre como um _programa_ é executado.
+Pelo menos, é como eu sei que cheguei a um teto. Quando fui aprender C, fui porque já entendia o básico de programar, mas muito pouco sobre como um _programa_ é executado.
 
 [habilidades]: https://web.mit.edu/6.969/www/readings/expertise.pdf
