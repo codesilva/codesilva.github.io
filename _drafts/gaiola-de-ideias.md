@@ -1,6 +1,14 @@
+# Zero Knowledge Encryption
+
+https://bitwarden.com/help/bitwarden-security-white-paper/#how-vault-items-are-secured
+
+# Node.js Test runner
+
+- como executar com Typescript?
+- seria muito difícil ter um describe.each ou it.each?
+
 # Post relacionados a resolucao da avaliacao
 
-- ~~background jobs como handlers (controllers) e use cases (services)~~
 - error handling efetivo
 - lidando com a checagem de disponibilidade usando `FOR UPDATE` no postgres
 
@@ -31,7 +39,6 @@ Referência: https://www.youtube.com/watch?v=Ih9OkNeg7v8
 - Laravel venceu
 - Por que AdonisJS e IntentJs não venceram?
     https://hono.dev/
-
 
 # Rails é o melhor framework
 
