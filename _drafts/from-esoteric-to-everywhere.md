@@ -18,8 +18,12 @@ After some experimentation, I thought about a good toy project: what if I compil
 
 # Executing Brainfuck Code
 
-The first thing needed it to be able to execute Brainfuck code. Writing an interpreter for Brainfuck will consume you
-a few hours, but it is a good exercise to understand how the language works.
+Executing the Brainfuck code is the first step. To compile a programming language, you need to have a reference
+implementation to compare the output of the compiled code.
+
+Writing a Brainfuck interpreter takes a couple of hours but gives a good understanding of the language.
+
+## The Specification
 
 Brainfuck operates on an array of memory cells, each initially set to zero. There is a data pointer that starts at the
 first cell. The language consists of eight commands, each represented by a single character. Any other characters are
@@ -40,14 +44,13 @@ The commands are as follows:
    jump it back to the command after the matching [ command.
 ```
 
-## Parsing Brainfuck Code
+It's so simple that one can think it's worth executing it directly from the source code. But doing that for loops would
+be tricky. I decided to parse the code into a list of instructions first and then execute them.
 
-Parsing Brainfuck code is straightforward. Since each command is a single character, we can simply iterate through the
-input string and build a list of commands, ignoring any non-command characters.
+## Parsing
 
-The not so-trivial part is handling loops. We need to keep track of the positions of the `[` and `]` commands to create
-jump instructions. That's why we need to resist the temptation to execute the code while parsing it. It's much simpler
-to have a list of instructions to execute later.
+Since each command is a single character, a simple function can handle it. It takes the string source code as input and
+returns an array of instruction objects.
 
 ```javascript
 function parseBrainfuck(code) {
@@ -102,14 +105,13 @@ function parseBrainfuck(code) {
 }
 ```
 
-This parser reads the Brainfuck code character by character, creating an array of instruction objects. Each object has a
-type property indicating the command type. For loops, it uses a stack to keep track of the positions of the `[` commands, allowing it to
-set the correct jump targets for both the `[` and `]` commands.
+A few notes about the implementation above:
 
-An stack is used to ensure that the brackets are balanced. If a closing bracket `]` is encountered without a matching
-opening bracket `[`, an error is thrown.
-
-It also appends a `halt` instruction at the end to signify the end of the program.
+- it ignores any character that is not a valid Brainfuck command;
+- it throws an error if the brackets are unbalanced:
+    - for that, it uses a stack to keep track of the opening brackets;
+    - the same stack is used to set the jump targets for the `[` and `]` commands.
+- it appends a `halt` instruction at the end to signify the end of the program
 
 ```bash
 parseBrainfuck('+++[-]');
@@ -119,23 +121,23 @@ This results in the following array of instructions:
 
 ```bash
 [
-    { type: "increment" },            # 0
-    { type: "increment" },            # 1
-    { type: "increment" },            # 2
-    { type: "begin_loop", "jmp": 6 }, # 3
-    { type: "decrement" },            # 4
-    { type: "end_loop", "jmp": 3 },   # 5
-    { type: "halt" }                  # 6
+    { type: "increment" },            # instruction 0
+    { type: "increment" },            # instruction 1
+    { type: "increment" },            # instruction 2
+    { type: "begin_loop", "jmp": 6 }, # instruction 3
+    { type: "decrement" },            # instruction 4
+    { type: "end_loop", "jmp": 3 },   # instruction 5
+    { type: "halt" }                  # instruction 6
 ]
 ```
 
 ## Executing
 
-Our life is now much simpler. With the list of instructions ready, we can execute them sequentially. We will maintain
-a data array (the memory cells) and a data pointer to keep track of the current cell.
+Executing the parsed instructions is now a straightforward task. It's just a matter of implementing a simple
+fetch-decode-execute cycle, hence a tiny virtual machine.
 
 ```javascript
-function brainfuckCPU(instructions) {
+function brainfuckCPU(instructions, { trace = false } = {}) {
   const memory = new Uint8Array(30000);
   let pointer = 0;
   let pc = 0;
@@ -143,7 +145,6 @@ function brainfuckCPU(instructions) {
   while (true) {
     // fetch
     const instruction = instructions[pc];
-    console.log(instruction, pointer, memory[pointer]);
 
     // decode and execute
     switch (instruction.type) {
@@ -179,6 +180,10 @@ function brainfuckCPU(instructions) {
         }
         break;
       case 'halt':
+        if (trace) {
+          console.log('\nFinal memory state:');
+          console.table(memory);
+        }
         return;
     }
 
@@ -187,20 +192,19 @@ function brainfuckCPU(instructions) {
 }
 ```
 
-This is a tiny Virtual Machine that can execute our designed instruction set. Just like in a real CPU, we have a program counter
-(`pc`) that points to the current instruction to execute. We fetch the instruction, decode it, and execute it in a loop
-until we reach the `halt` instruction, like in the Von Neumann architecture.
+In the code above:
 
-This is great because to handle loops, we just need to jump the program counter to the appropriate instruction based on
-the value at the current memory cell.
+- `memory` is an array of 30,000 bytes, initialized to zero, representing the memory cells;
+- `pointer` is the data pointer, initialized to point to the first cell;
+- `pc` is the program counter, initialized to point to the first instruction;
+- if `trace` is true, it prints the final state of the memory when the program halts.
 
-The auxiliary function `readByte` is used to read a single byte from standard input. It uses Node.js's `fs` module to
-read synchronously from the standard input.
+The auxiliary function `readByte` is used to read a single byte from standard input.
 
 ```javascript
 function readByte() {
-  let buffer = Buffer.alloc(3);
-  fs.readSync(0, buffer, 0, 3);
+  let buffer = Buffer.alloc(2);
+  fs.readSync(0, buffer, 0, 2);
   buffer = buffer.filter(byte => byte !== 0 && byte !== 10 && byte !== 13);
 
   let data = buffer.toString('utf8');
@@ -216,7 +220,37 @@ function readByte() {
 }
 ```
 
+## Putting It All Together
+
+Now we can put everything together to create a Brainfuck interpreter.
+
+```javascript
+function runBrainfuck(code, options) {
+  const instructions = parseBrainfuck(code);
+  brainfuckCPU(instructions, options);
+}
+```
+
 # Optmizations
+
+Our Brainfuck VM instruction set works, but it is not very efficient. It does a one-to-one mapping from Brainfuck
+commands. This will generate a lot of instructions for even simple programs. If we can do the same work with fewer
+instructions, we can improve the performance of our VM.
+
+For example, the sequence `+++` can be replaced with a single instruction that increments the current cell by 3. The
+same goes for `---`, `>>>`, and `<<<`.
+
+An instruction set with these optimizations would look like this:
+
+- `increment n`: increments n to the current cell
+- `move_head h`: moves head to cell `h`
+- `jump_eqz i`: jumps to instruction `i` if current cell value is zero
+- `jump_neqz i`: jumps to instruction `i` if current cell value is not zero
+- `input`: reads one byte to the current cell
+- `output`: outputs the current cell's byte to stdout
+
+In the next article, I will show how to implement these optimizations. For now, you can take it as an exercise and
+implement it yourself.
 
 ---
 
