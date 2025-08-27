@@ -6,28 +6,21 @@ lang: pt-BR
 category: ['compiladores']
 ---
 
-While studying about low-level programming and the fundamentals of computation, I stumbled upon Brainfuck, an esoteric
-programming language. It has only eight commands and is very similar to the Turing machine model. Intrigued by its
-simplicity and power, I decided to explore it further.
+While studying low-level programming and the fundamentals of computation, I stumbled upon Brainfuck, an esoteric programming language. It has only eight commands and is very similar to the Turing machine model. Intrigued by its simplicity and power, I decided to explore it further.
 
-Even simple things can be challenging. My hello world program in Brainfuck was to print "7" to the console. I got that
-sample from [wikipedia](https://en.wikipedia.org/wiki/Brainfuck). A simple program, but it was rewarding to see it
-working and to understand how it operates.
+Even simple things can be challenging. My "hello world" program in Brainfuck was to print "7" to the console. I got that sample from [Wikipedia](https://en.wikipedia.org/wiki/Brainfuck). It was simple but rewarding to see it working and to understand how it operates.
 
-After some experimentation, I thought about a good toy project: what if I compiled Brainfuck to JVM?
+After some experimentation, I considered a good toy project: what if I compiled Brainfuck to run on the JVM?
 
 # Executing Brainfuck Code
 
-Executing the Brainfuck code is the first step. To compile a programming language, you need to have a reference
-implementation to compare the output of the compiled code.
+Executing the Brainfuck code is the first step. To compile a programming language, you need to have a reference implementation to compare the output of the compiled code.
 
-Writing a Brainfuck interpreter takes a couple of hours but gives a good understanding of the language.
+Fortunately, Brainfuck is simple enough that writing an interpreter just takes a couple of hours.
 
 ## The Specification
 
-Brainfuck operates on an array of memory cells, each initially set to zero. There is a data pointer that starts at the
-first cell. The language consists of eight commands, each represented by a single character. Any other characters are
-ignored.
+Brainfuck operates on an array of memory cells, each initially set to zero. There is a data pointer that starts at the first cell. The language consists of eight commands, each represented by a single character. Any other characters are ignored.
 
 The commands are as follows:
 
@@ -44,13 +37,11 @@ The commands are as follows:
    jump it back to the command after the matching [ command.
 ```
 
-It's so simple that one can think it's worth executing it directly from the source code. But doing that for loops would
-be tricky. I decided to parse the code into a list of instructions first and then execute them.
+It's so simple that one can think it's worth executing it directly from the source code. But doing that for loops would be tricky. I decided to parse the code into a list of instructions first and then execute them.
 
 ## Parsing
 
-Since each command is a single character, a simple function can handle it. It takes the string source code as input and
-returns an array of instruction objects.
+Since each command is a single character, a simple function can handle it. It takes the string source code as input and returns an array of instruction objects.
 
 ```javascript
 function parseBrainfuck(code) {
@@ -113,28 +104,43 @@ A few notes about the implementation above:
     - the same stack is used to set the jump targets for the `[` and `]` commands.
 - it appends a `halt` instruction at the end to signify the end of the program
 
-```bash
-parseBrainfuck('+++[-]');
+```javascript
+parseBrainfuck(`
+++       Cell c0 = 2
+> +++++  Cell c1 = 5
+
+[        Start your loops with your cell pointer on the loop counter (c1 in our case)
+< +      Add 1 to c0
+> -      Subtract 1 from c1
+]        End your loops with the cell pointer on the loop counter
+`);
 ```
 
 This results in the following array of instructions:
 
 ```bash
 [
-    { type: "increment" },            # instruction 0
-    { type: "increment" },            # instruction 1
-    { type: "increment" },            # instruction 2
-    { type: "begin_loop", "jmp": 6 }, # instruction 3
-    { type: "decrement" },            # instruction 4
-    { type: "end_loop", "jmp": 3 },   # instruction 5
-    { type: "halt" }                  # instruction 6
+  { type: 'increment' },            # instruction 0
+  { type: 'increment' },            # instruction 1
+  { type: 'forward' },              # instruction 2
+  { type: 'increment' },            # instruction 3
+  { type: 'increment' },            # instruction 4
+  { type: 'increment' },            # instruction 5
+  { type: 'increment' },            # instruction 6
+  { type: 'increment' },            # instruction 7
+  { type: 'begin_loop', jmp: 14 },  # instruction 8
+  { type: 'backward' },             # instruction 9
+  { type: 'increment' },            # instruction 10
+  { type: 'forward' },              # instruction 11
+  { type: 'decrement' },            # instruction 12
+  { type: 'end_loop', jmp: 9 },     # instruction 13
+  { type: 'halt' }                  # instruction 14
 ]
 ```
 
 ## Executing
 
-Executing the parsed instructions is now a straightforward task. It's just a matter of implementing a simple
-fetch-decode-execute cycle, hence a tiny virtual machine.
+Executing the parsed instructions is now a straightforward task. It's just a matter of implementing a simple fetch-decode-execute cycle, hence a tiny virtual machine.
 
 ```javascript
 function brainfuckCPU(instructions, { trace = false } = {}) {
@@ -185,6 +191,8 @@ function brainfuckCPU(instructions, { trace = false } = {}) {
           console.table(memory);
         }
         return;
+      default:
+        throw Error(`Unknown instruction ${instruction.type}`);
     }
 
     pc++;
@@ -231,29 +239,165 @@ function runBrainfuck(code, options) {
 }
 ```
 
-# Optmizations
+# Optimizations
 
-Our Brainfuck VM instruction set works, but it is not very efficient. It does a one-to-one mapping from Brainfuck
-commands. This will generate a lot of instructions for even simple programs. If we can do the same work with fewer
-instructions, we can improve the performance of our VM.
+Our Brainfuck VM instruction set works, but it is not very efficient. It does a one-to-one mapping from Brainfuck commands. This will generate a lot of instructions for even simple programs. If we can do the same work with fewer instructions, we can improve the performance of our VM.
 
-For example, the sequence `+++` can be replaced with a single instruction that increments the current cell by 3. The
-same goes for `---`, `>>>`, and `<<<`.
+For example, the sequence `+++` can be replaced with a single instruction that increments the current cell by 3. The same goes for `---`, `>>>`, and `<<<`.
 
 An instruction set with these optimizations would look like this:
 
-- `increment n`: increments n to the current cell
+- `increment n`: increments n to the current cell (decrementing is just incrementing with a negative number)
 - `move_head h`: moves head to cell `h`
 - `jump_eqz i`: jumps to instruction `i` if current cell value is zero
 - `jump_neqz i`: jumps to instruction `i` if current cell value is not zero
 - `input`: reads one byte to the current cell
 - `output`: outputs the current cell's byte to stdout
 
-In the next article, I will show how to implement these optimizations. For now, you can take it as an exercise and
-implement it yourself.
+```javascript
+function parseBrainfuck(code) {
+  for (let i = 0; i < code.length; ++i) {
+    const c = code[i];
+
+    switch (c) {
+      // other command are omitted
+      case '+':
+      case '-':
+        {
+          let inc = c === '+' ? 1 : -1;
+
+          // combine consecutive + and - into a single increment instruction
+          while (['+', '-'].includes(code[i + 1])) {
+            const peek = code[i + 1];
+            i++;
+            inc += peek === '+' ? 1 : -1;
+          }
+
+          if (inc === 0) {
+            continue; // no-op
+          }
+
+          const lastInstruction = instructions[instructions.length - 1];
+          if (lastInstruction && lastInstruction.type === 'increment') {
+            lastInstruction.inc += inc;
+            if (lastInstruction.inc === 0) {
+              // if it becomes zero, remove the instruction
+              instructions.pop();
+            }
+            continue;
+          }
+
+          instructions.push({ type: 'increment', inc });
+        }
+        break;
+      case '>':
+      case '<':
+        let pointerChange = c === '>' ? 1 : -1;
+
+        while (['>', '<'].includes(code[i + 1])) {
+          const peek = code[i + 1];
+          i++;
+          pointerChange += peek === '>' ? 1 : -1;
+        }
+
+        if (pointerChange === 0) {
+          continue; // no-op
+        }
+
+        const lastInstruction = instructions[instructions.length - 1];
+        if (lastInstruction && lastInstruction.type === 'move_head' && lastInstruction.head + pointerChange === 0) {
+          instructions.pop();
+          continue;
+        }
+
+        instructions.push({ type: 'move_head', head: pointer + pointerChange });
+        break;
+    }
+  }
+
+  return instructions;
+}
+```
+
+Running the same example as before, it will produce the following instructions
+
+```bash
+[
+  { type: 'increment', inc: 2 },    # instruction 0
+  { type: 'move_head', head: 1 },   # instruction 1
+  { type: 'increment', inc: 5 },    # instruction 2
+  { type: 'jump_eqz', jmp: 9 },     # instruction 3
+  { type: 'move_head', head: 0 },   # instruction 4
+  { type: 'increment', inc: 1 },    # instruction 5
+  { type: 'move_head', head: 1 },   # instruction 6
+  { type: 'increment', inc: -1 },   # instruction 7
+  { type: 'jump_neqz', jmp: 4 },    # instruction 8
+  { type: 'halt' }                  # instruction 9
+]
+```
+
+It has five instructions fewer!
+
+The **brainfuckCPU** function has to be updated accordingly:
+
+
+```javascript
+function brainfuckCPU(instructions, { trace = false } = {}) {
+  const memory = new Uint8Array(30000);
+  let pointer = 0;
+  let pc = 0;
+
+  while (true) {
+    // fetch
+    const instruction = instructions[pc];
+
+    // decode and execute
+    switch (instruction.type) {
+      case 'output':
+        process.stdout.write(String.fromCharCode(memory[pointer]));
+        process.stdout.write('\n');
+        break;
+      case 'input':
+        memory[pointer] = readByte();
+        break;
+      case 'increment':
+        memory[pointer] += instruction.inc;
+        break;
+      case 'move_head':
+        pointer = instruction.head;
+        break;
+      case 'jump_eqz':
+        if (memory[pointer] === 0) {
+          pc = instruction.jmp;
+          continue;
+        }
+        break;
+      case 'jump_neqz':
+        if (memory[pointer] !== 0) {
+          pc = instruction.jmp;
+          continue;
+        }
+        break;
+      case 'halt':
+        if (trace) {
+          console.log('\nFinal memory state:');
+          console.table(memory);
+        }
+        return;
+      default:
+        throw Error(`Unknown instruction ${instruction.type}`);
+    }
+
+    pc++;
+  }
+}
+```
+
+# Conclusion
+
+Great! The brainfuck code is working! Try it on your end and stay tuned for the next post, where we will dive into the JVM specification and prepare to compile Brainfuck to Java Virtual Machine bytecode.
 
 ---
-
 
 I was always curious about how the text I write on an editor turns into something a computer can execute. In my first
 classes of programming, learning Java, I asked my teacher how programming languages are created. He told me that to
