@@ -37,21 +37,52 @@ The commands are as follows:
    jump it back to the command after the matching [ command.
 ```
 
-It's so simple that one can think it's worth executing it directly from the source code. But doing that for loops would be tricky. I decided to parse the code into a list of instructions first and then execute them.
+It's so simple that one can think it's worth executing it directly from the source code. But doing that for loops would be tricky. 
+
+In my pramatic approach, I start with a tokenizer/lexer to produce a list of valid tokens. Tokens will be fed into a parser that will produce a list of instructions. Finally, the instructions will be executed by a tiny virtual machine.
+
+## Tokenizing
+
+You probably heard about tokens in these LLM days. A token is a sequence of characters that represents a unit of meaning. In Brainfuck, each command is a single character, so the tokenizer is trivial. It just filters out any character that is not a valid command.
+
+```javascript
+function tokenize(code) {
+  const tokens = [];
+  const validTokens = new Set(['+', '-', '>', '<', '[', ']', '.', ',']);
+  for (let i = 0; i < code.length; ++i) {
+    const c = code[i];
+    if (validTokens.has(c)) {
+      tokens.push(c);
+    }
+  }
+  return tokens;
+}
+```
+
+The tokens are the same as the commands, this is due to the simplicity of the language. The tokenizer is not strictly necessary, but it will simplify the generation of instructions.
+
+```bash
+tokenize(`
+++ writing a text that will be ignored
+> +++++  everything else is just documentation
+`);
+
+# returns ['+', '+', '>', '+', '+', '+', '+', '+']
+```
 
 ## Parsing
 
-Since each command is a single character, a simple function can handle it. It takes the string source code as input and returns an array of instruction objects.
+The parser takes the list of tokens and produces a list of instructions. Each instruction is an object with a type and any necessary parameters.
 
 ```javascript
-function parseBrainfuck(code) {
+function parse(tokens) {
   const instructions = [];
   const loopStack = [];
 
-  for (let i = 0; i < code.length; ++i) {
-    const c = code[i];
+  for (let i = 0; i < tokens.length; ++i) {
+    const tk = tokens[i];
 
-    switch (c) {
+    switch (tk) {
       case ',':
         instructions.push({ type: 'input' });
         break;
@@ -71,11 +102,11 @@ function parseBrainfuck(code) {
         instructions.push({ type: 'backward' });
         break;
       case '[':
-        loopStack.push([c, instructions.length]);
+        loopStack.push([tk, instructions.length]);
         instructions.push({ type: 'begin_loop', jmp: -1 });
         break;
       case ']':
-        const [char, pos] = loopStack.pop();
+        const [tk, pos] = loopStack.pop();
         if (char !== '[') {
           throw new Error('Unbalanced brackets');
         }
@@ -105,7 +136,7 @@ A few notes about the implementation above:
 - it appends a `halt` instruction at the end to signify the end of the program
 
 ```javascript
-parseBrainfuck(`
+cosnt tokens = tokenize(`
 ++       Cell c0 = 2
 > +++++  Cell c1 = 5
 
@@ -114,6 +145,8 @@ parseBrainfuck(`
 > -      Subtract 1 from c1
 ]        End your loops with the cell pointer on the loop counter
 `);
+
+parse(tokens);
 ```
 
 This results in the following array of instructions:
@@ -221,7 +254,7 @@ function readByte() {
   data = Number(data);
 
   if (data < 0 || data > 255) {
-    throw new Error('Invalid byte');
+    throw new Error('Invalid input, must be a byte (0-255)');
   }
 
   return data;
@@ -234,14 +267,15 @@ Now we can put everything together to create a Brainfuck interpreter.
 
 ```javascript
 function runBrainfuck(code, options) {
-  const instructions = parseBrainfuck(code);
+  const tokens = tokenize(code); 
+  const instructions = parse(tokens);
   brainfuckCPU(instructions, options);
 }
 ```
 
 # Optimizations
 
-Our Brainfuck VM instruction set works, but it is not very efficient. It does a one-to-one mapping from Brainfuck commands. This will generate a lot of instructions for even simple programs. If we can do the same work with fewer instructions, we can improve the performance of our VM.
+Our Brainfuck VM instruction set gets the job done, but it is not very efficient. It does a one-to-one mapping from Brainfuck commands. This will generate a lot of instructions for even simple programs. If we can do the same work with fewer instructions, we can improve the performance of our VM.
 
 For example, the sequence `+++` can be replaced with a single instruction that increments the current cell by 3. The same goes for `---`, `>>>`, and `<<<`.
 
@@ -255,16 +289,16 @@ An instruction set with these optimizations would look like this:
 - `output`: outputs the current cell's byte to stdout
 
 ```javascript
-function parseBrainfuck(code) {
-  for (let i = 0; i < code.length; ++i) {
-    const c = code[i];
+function parse(tokens) {
+  for (let i = 0; i < tokens.length; ++i) {
+    const tk = code[i];
 
-    switch (c) {
+    switch (tk) {
       // other command are omitted
       case '+':
       case '-':
         {
-          let inc = c === '+' ? 1 : -1;
+          let inc = tk === '+' ? 1 : -1;
 
           // combine consecutive + and - into a single increment instruction
           while (['+', '-'].includes(code[i + 1])) {
@@ -277,22 +311,12 @@ function parseBrainfuck(code) {
             continue; // no-op
           }
 
-          const lastInstruction = instructions[instructions.length - 1];
-          if (lastInstruction && lastInstruction.type === 'increment') {
-            lastInstruction.inc += inc;
-            if (lastInstruction.inc === 0) {
-              // if it becomes zero, remove the instruction
-              instructions.pop();
-            }
-            continue;
-          }
-
           instructions.push({ type: 'increment', inc });
         }
         break;
       case '>':
       case '<':
-        let pointerChange = c === '>' ? 1 : -1;
+        let pointerChange = tk === '>' ? 1 : -1;
 
         while (['>', '<'].includes(code[i + 1])) {
           const peek = code[i + 1];
@@ -304,12 +328,6 @@ function parseBrainfuck(code) {
           continue; // no-op
         }
 
-        const lastInstruction = instructions[instructions.length - 1];
-        if (lastInstruction && lastInstruction.type === 'move_head' && lastInstruction.head + pointerChange === 0) {
-          instructions.pop();
-          continue;
-        }
-
         instructions.push({ type: 'move_head', head: pointer + pointerChange });
         break;
     }
@@ -318,6 +336,8 @@ function parseBrainfuck(code) {
   return instructions;
 }
 ```
+
+> Thanks to the tokenizer, the parser can work on a clean list of commands, so sequences of `+` and `-` or `>` and `<` are easy to spot.
 
 Running the same example as before, it will produce the following instructions
 
