@@ -17,3 +17,15 @@
 
 - Decision Trees
 - Neural Networks
+
+-- markov
+
+Lei dos grandes números: com um número suficientemente grande de amostras, a média das amostras se aproxima da média da
+população.
+
+Bernoulli: a lei dos grandes números só se aplica a eventos independentes.
+
+Markov: mostrou que eventos dependentes podem obedecer a lei dos grandes números se a dependência for limitada a um
+número fixo de eventos anteriores.
+
+markov usou texto para provar dependencia entre as letras.

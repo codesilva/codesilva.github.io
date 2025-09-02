@@ -419,50 +419,7 @@ Great! The brainfuck code is working! Try it on your end and stay tuned for the 
 
 ---
 
-I was always curious about how the text I write on an editor turns into something a computer can execute. In my first
-classes of programming, learning Java, I asked my teacher how programming languages are created. He told me that to
-create a programming language, you need to create a compiler. I'm pretty sure I asked how to write a compiler, but
-I don't remember his answer and where that conversation went.
+# The Road to JVM: The JVM Specification
 
-Growing as a programmer, I kept thinking about how programs are interpreted and executed by the computer. For that I had
-to go into the rabbit hole of low-level programming and how processors work.
-
-One cannot study this topic without learning about Alan Turing and his work on computability and the today so-called
-Turing machine.
-
-The Turing machine is a theoretical model of computation that consists of an infinite tape divided into cells, a tape
-head that can read and write symbols on the tape, and a set of rules that determine how the machine behaves based on the
-current state and the symbol being read.
-
-
-----
-
-
-Java was my very first programming language. While learning how to code i got into a question: how does this thing work?
-How can I write some text and the computer understands it?
-
-I asked my teacher, how is a programming language created? He answered: "To create a programming language, you need to
-create a compiler."
-
-This didn't make any sense to me. A compiler is also a program, so it has to be written in a programming language.
-I don't remember why this conversation didn't go further, but I always have been fascinated by the process of
-transformation from a programming language to machine code, the actual execution.
-
-time has passed and I started to learn more about low-level programming and how processors work. The lower you go, the
-simpler the things get, but also the more overwhelming it is.
-
-i played with some assembly mips and went deeper, looking into the Alan Turing's work on computability. The idea of the
-tape and the machine that can read and write on it, the idea of a universal machine that can simulate any other machine
-fascinated me. I started to read about the Turing machine and how it can be used to simulate any other machine, including
-the one that runs Java.
-
-After searching for some language that were similar to the Turing machine, I found Brainfuck. It is a minimalistic
-programming language that uses a very small set of commands to manipulate an array of memory cells.
-
-Brainfuck is what is called an esoteric programming language, which means it is not intended for practical use, but
-rather for fun or as a challenge. It has only eight commands, but it is Turing complete, which means it can
-simulate any Turing machine.
-
-I wrote some simple programs in it and yes, it was challenging, but also fun.
 
 https://www.youtube.com/watch?v=LCslqgM48D4&t=1022s
