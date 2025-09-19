@@ -7,6 +7,10 @@ tags: ["roadmap", "programação"]
 category: ["carreira"]
 ---
 
+# Computadores
+
+---
+
 titulo: O ChatGPT está ficando mais inteligente que você
         Nao penso, logo o chatGPT faz por mim
 
