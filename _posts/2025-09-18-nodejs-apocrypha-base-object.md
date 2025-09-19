@@ -10,6 +10,25 @@ chapter: 1
 
 Base object is the glue between C++ and JS lands.
 
+# BaseObject
+
+`kInternalFieldCount` is the number of internal fields in the object template. This is used to store the pointer to the
+C++ object.
+
+it has two internal fields as we can see in the enum below:
+
+```cpp
+enum InternalFields { kEmbedderType, kSlot, kInternalFieldCount };
+```
+
+https://github.com/nodejs/node/blob/c7b0dfbd7c564d5aa30f5521f07e2762487d41d1/src/base_object.h#L47
+
+BaseObjectPtr is an alias:
+
+https://github.com/nodejs/node/blob/c7b0dfbd7c564d5aa30f5521f07e2762487d41d1/src/base_object.h#L315
+
+it works like a shared_ptr:
+
 ```cpp
 class BufferReader : public BaseObject {
  public:
@@ -140,3 +159,10 @@ https://github.com/nodejs/node/blob/main/src/base_object.h
 https://github.com/nodejs/node/blob/main/src/base_object-inl.h
 https://github.com/nodejs/node/blob/main/src/base_object.cc
 https://github.com/nodejs/node/blob/main/src/README.md#baseobject
+https://v8docs.nodesource.com/node-24.1/d8/d83/classv8_1_1_function_template.html
+https://v8docs.nodesource.com/node-24.1/db/d5f/classv8_1_1_object_template.html#a0f3ad8f58cd74a05d35eb3292fe9bd7f
+https://github.com/nodejs/node/blob/c7b0dfbd7c564d5aa30f5521f07e2762487d41d1/src/base_object.cc#L27
+1https://v8docs.nodesource.com/node-24.1/db/d85/classv8_1_1_object.html#ab3c57184263cf29963ef0017bec82281
+
+
+persistent_object -> https://github.com/nodejs/node/blob/c7b0dfbd7c564d5aa30f5521f07e2762487d41d1/src/base_object.h#L200
