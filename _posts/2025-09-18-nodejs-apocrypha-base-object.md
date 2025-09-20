@@ -10,9 +10,11 @@ chapter: 1
 
 A frequently recurring situation is that a JavaScript object and a C++ object need to be tied together. BaseObject is the main abstraction for that in Node.js, and most classes that are associated with JavaScript objects are subclasses of it.
 
-This is what you can see in the Node.js source code [documentation](https://github.com/nodejs/node/blob/main/src/README.md#baseobject). In simple terms, BaseObject is the glue between C++ and JS lands.
+This is what you can see in the [Node.js C++ documentation](https://github.com/nodejs/node/blob/main/src/README.md#baseobject). In simple terms, BaseObject is the glue between C++ and JS lands.
 
 ![BaseObject illustrated as a glue between C++ and JS](/assets/images/nodejs-apocrypha/baseobject-illustration.png)
+
+---
 
 `kInternalFieldCount` is the number of internal fields in the object template. This is used to store the pointer to the
 C++ object.
