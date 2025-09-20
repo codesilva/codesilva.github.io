@@ -104,6 +104,8 @@ std::cout << "Value in internal field 1: "
 
 ### BaseObject's Internal Fields
 
+_In Progress - More details to be added soon_
+
 ---
 
 <!-- `kInternalFieldCount` is the number of internal fields in the object template. This is used to store the pointer to the -->
