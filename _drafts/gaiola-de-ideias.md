@@ -1,3 +1,11 @@
+# React.js internals
+
+serie de posts explicando conceitos basicos do react.js (ex: useEffect, useState, reconciliation, etc) e como eles sao
+implementados.
+
+React.js under a microscope
+
+
 # Zero Knowledge Encryption
 
 https://bitwarden.com/help/bitwarden-security-white-paper/#how-vault-items-are-secured
