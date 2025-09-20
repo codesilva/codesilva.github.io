@@ -37,7 +37,7 @@ The default constructor is deleted, it enforces the use of one of the two constr
 
 ### Internal Fields
 
-Each `v8::Object` can have a number of internal fields. They can be used to store C++ pointers or other data and are not directly accessible from JavaScript.
+Each [`Object`][] can have a number of internal fields. They can be used to store C++ pointers or other data and are not directly accessible from JavaScript.
 
 It's important to note that the number of internal fields must be set when creating the object template using [`SetInternalFieldCount`][]. If it's not set, the internal fields won't be available.
 
@@ -61,7 +61,7 @@ std::cout << "Template object's internal field count: "
 // Output: Template object's internal field count: 1
 ```
 
-Once you have an object with internal fields, you can set and get them using [`SetInternalField`][] and [`SetAlignedPointerInInternalField`][]. The former is used to set a [`Data`][], while the latter is used to set a raw pointer.
+Once you have an object with internal fields, you can set them using [`SetInternalField`][] and [`SetAlignedPointerInInternalField`][]. The former is used to set a [`Data`][], while the latter is used to set a raw pointer.
 
 ```cpp
 Local<v8::ObjectTemplate> obj_tmpl = v8::ObjectTemplate::New(isolate);
@@ -97,6 +97,7 @@ std::cout << "Value in internal field 1: "
 [`Data`]: https://v8docs.nodesource.com/node-24.1/d1/d83/classv8_1_1_data.html
 [`GetAlignedPointerFromInternalField`]: https://v8docs.nodesource.com/node-24.1/db/d85/classv8_1_1_object.html#a580ea84afb26c005d6762eeb9e3c308f
 [`GetInternalField`]: https://v8docs.nodesource.com/node-24.1/db/d85/classv8_1_1_object.html#a5ec04fa53508e451139ac89ef45c1431
+[`Object`]: https://v8docs.nodesource.com/node-24.1/db/d85/classv8_1_1_object.html
 [`ObjectTemplate`]: https://v8docs.nodesource.com/node-24.1/db/d5f/classv8_1_1_object_template.html
 [`SetInternalField`]: https://v8docs.nodesource.com/node-24.1/db/d85/classv8_1_1_object.html#a9007e0dc23c63cb810530c3b38fedf99
 [`SetAlignedPointerInInternalField`]: https://v8docs.nodesource.com/node-24.1/db/d85/classv8_1_1_object.html#ab3c57184263cf29963ef0017bec82281
