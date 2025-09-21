@@ -6,7 +6,7 @@ lang: pt-BR
 tags: ["node-internals"]
 category: ["nodejs-apocrypha", "libuv"]
 private: true
-chapter: 2
+chapter: 3
 ---
 
 Hello dear contributor. We're about to touch an exicing part of the implementaion of Node.js and libuv. To leverage this

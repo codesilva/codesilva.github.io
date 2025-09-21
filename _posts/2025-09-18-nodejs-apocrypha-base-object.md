@@ -5,7 +5,7 @@ date: 2025-07-13
 lang: pt-BR
 category: ["nodejs-apocrypha", "node-internals", "boundary-crossing"]
 private: true
-chapter: 1
+chapter: 2
 ---
 
 A frequently recurring situation is that a JavaScript object and a C++ object need to be tied together. BaseObject is the main abstraction for that in Node.js, and most classes that are associated with JavaScript objects are subclasses of it.
