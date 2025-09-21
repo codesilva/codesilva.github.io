@@ -93,6 +93,91 @@ std::cout << "Value in internal field 1: "
 // Value in internal field 0: InternalField0
 // Value in internal field 1: InternalField1
 ```
+**NOTE:** While I used `ToLocalChecked()` this is not recommended for Node.js codebase. You should use `ToLocal()` and check the return value.
+
+### BaseObject's Internal Fields
+
+From `InternalFields` enum we can see that `BaseObject` has at least two internal fields: `kEmbedderType` and `kSlot`.
+
+```cpp
+enum InternalFields { kEmbedderType, kSlot, kInternalFieldCount };
+// kEmbeddertype = 0
+// kSlot = 1
+// kInternalFieldCount = 2
+```
+
+In the [constructor](https://github.com/nodejs/node/blob/main/src/base_object.cc#L23C1-L29C2), we can see how it uses `kSlot` to store the pointer to the `BaseObject` instance.
+
+```cpp
+BaseObject::BaseObject(Realm* realm, Local<Object> object)
+    : persistent_handle_(realm->isolate(), object), realm_(realm) {
+  CHECK_EQ(false, object.IsEmpty());
+
+  // Ensure the object has enough internal fields.
+  CHECK_GE(object->InternalFieldCount(), BaseObject::kInternalFieldCount);
+
+  // Store the pointer to this BaseObject instance in the object's internal field.
+  SetInternalFields(realm->isolate_data(), object, static_cast<void*>(this));
+  realm->TrackBaseObject(this);
+}
+```
+
+The `SetInternalFields` is defined at [src/base_object-inl.h](https://github.com/nodejs/node/blob/c7b0dfbd7c564d5aa30f5521f07e2762487d41d1/src/base_object-inl.h#L90) and sets the `kEmbedderType` and `kSlot` internal fields.
+
+```cpp
+void BaseObject::SetInternalFields(IsolateData* isolate_data,
+                                   v8::Local<v8::Object> object,
+                                   void* slot) {
+  TagBaseObject(isolate_data, object);
+  object->SetAlignedPointerInInternalField(BaseObject::kSlot, slot);
+}
+```
+
+The [constructor that receives an `Environment*`](https://github.com/nodejs/node/blob/main/src/base_object-inl.h#L35-L39) just calls the one above, passing the principal realm.
+
+```cpp
+BaseObject::BaseObject(Environment* env, v8::Local<v8::Object> object)
+    : BaseObject(env->principal_realm(), object) {
+}
+```
+
+### How To Create a BaseObject
+
+While you can create a `BaseObject` directly, there are helper functions to make it easier. The most used one is
+`MakeBaseObject`, defined at [src/base_object-inl.h](https://github.com/nodejs/node/blob/c7b0dfbd7c564d5aa30f5521f07e2762487d41d1/src/base_object-inl.h#L309-L311).
+
+You define your class like this:
+
+```cpp
+class MyClass : public BaseObject {
+    public:
+        MyClass(Environment* env, v8::Local<v8::Object> object)
+            : BaseObject(env, object) {
+        }
+
+        static BaseObjectPtr<MyClass> Create(Environment* env) {
+            auto obj_tmpl = v8::ObjectTemplate::New(isolate);
+            obj_tmpl->SetInternalFieldCount(2);
+            auto obj_from_template = obj_tmpl->NewInstance(context).ToLocalChecked();
+
+            return MakeBaseObject<MyClass>(env, obj_from_template);
+        }
+}
+```
+
+Then you can create an instance of `MyClass` like this:
+
+```cpp
+BaseObjectPtr<MyClass> my_class_instance = MyClass::Create(env);
+```
+
+Notice that `MakeBaseObject` will create the `MyClass` instance and associate it with the JS object by storing the pointer in the internal field `kSlot`. Also, it returns a `BaseObjectPtr<MyClass>`, which acts like a [smart pointer](https://en.cppreference.com/book/intro/smart_pointers).
+
+There is also a `MakeWeakBaseObject` function that creates a weak reference to the `BaseObject`. This is useful when you
+want the C++ object to be garbage collected when there are no more references to it from JavaScript.
+
+
+See more [here](https://github.com/nodejs/node/blob/c7b0dfbd7c564d5aa30f5521f07e2762487d41d1/src/base_object.h#L314-L317).
 
 [`Data`]: https://v8docs.nodesource.com/node-24.1/d1/d83/classv8_1_1_data.html
 [`GetAlignedPointerFromInternalField`]: https://v8docs.nodesource.com/node-24.1/db/d85/classv8_1_1_object.html#a580ea84afb26c005d6762eeb9e3c308f
@@ -102,10 +187,6 @@ std::cout << "Value in internal field 1: "
 [`SetInternalField`]: https://v8docs.nodesource.com/node-24.1/db/d85/classv8_1_1_object.html#a9007e0dc23c63cb810530c3b38fedf99
 [`SetAlignedPointerInInternalField`]: https://v8docs.nodesource.com/node-24.1/db/d85/classv8_1_1_object.html#ab3c57184263cf29963ef0017bec82281
 [`SetInternalFieldCount`]: https://v8docs.nodesource.com/node-24.1/db/d5f/classv8_1_1_object_template.html#a0f3ad8f58cd74a05d35eb3292fe9bd7f
-
-### BaseObject's Internal Fields
-
-_In Progress - More details to be added soon_
 
 ---
 
