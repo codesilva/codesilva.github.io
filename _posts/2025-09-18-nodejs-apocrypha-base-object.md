@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '1. Node.JS BaseObject'
+title: 'Node.JS BaseObject'
 date: 2025-07-13
 lang: pt-BR
 category: ["nodejs-apocrypha", "node-internals", "boundary-crossing"]

@@ -42,7 +42,10 @@
     {% for post in sorted_posts %}
       {% if post.categories contains page.category %}
         <li>
-          <a href="{{ post.url }}">{{ post.title }}</a>
+          <a href="{{ post.url }}">
+            {{ post.chapter }}.
+            {{ post.title }}
+          </a>
           <small>{{ post.date | date: "%Y-%m-%d" }}</small>
         </li>
       {% endif %}

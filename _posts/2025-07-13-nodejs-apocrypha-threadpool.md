@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '2. Dealing With I/O Using The ThreadPool'
+title: 'Dealing With I/O Using The ThreadPool'
 date: 2025-07-13
 lang: pt-BR
 tags: ["node-internals"]
