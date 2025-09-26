@@ -9,10 +9,13 @@
 
     .cell {
       flex: 1;
-      border: 1px solid white;
       height: 30px;
       width: 30px;
       overflow: hidden;
+
+      &:not(:last-child) {
+        border-right: 1px solid white;
+      }
     }
   }
 }
