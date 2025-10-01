@@ -52,7 +52,7 @@ collections:
     label: Ciência da Computação para Pessoas Apressadas
   category:
     output: true
-    permalink: /:path
+    permalink: :path
 
 defaults:
   - scope:
