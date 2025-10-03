@@ -1,10 +1,19 @@
-# LLMs for Matching Talent: A Case Study in Candidate–Project Pairing
+---
+layout: post
+title: '[Draft] From Overwhelmed to Automated: Building an AI Agent for Talent Matching'
+date: 2025-10-02
+lang: en-US
+category: ["ai", "llm"]
+private: true
+---
 
-As a sotware boutique, one of our core services is outsourcing engineering talent to clients. This is not an easy task, as it involves understanding both the technical requirements of the projects and the skills and experiences of the candidates.
+<!-- # LLMs for Matching Talent: A Case Study in Candidate–Project Pairing -->
 
-Luckyly, we have a great team that's always finding the best matches. However, as our pool of candidates and projects grows, it becomes more more overwhelming to manually sift through all the information.
+As a software boutique, one of our core services is outsourcing engineering talent to clients. This is not an easy task, as it involves understanding both the technical requirements of the projects and the skills and experiences of the candidates.
 
-To tackle this challenge, I experimented with different approaches and ended up building an AI agent that leverages Large Language Models (LLMs) to assist in matching candidates to projects.
+We're fortunate to have a great team that's always finding the best matches for our clients and enginneers. However, as our pool of candidates and projects grows, it becomes more overwhelming to manually sift through all the information.
+
+To tackle this challenge, I experimented with different approaches and ended up building an AI agent that leverages Large Language Models (LLMs) to help with resource allocation.
 
 In this article, I'll share the journey of how I built this AI agent, the challenges I faced, and the lessons I learned along the way.
 
@@ -22,52 +31,54 @@ A question that arises is: what does "best" mean in this context? Let's take a l
 
 ### Example
 
-**Project Description:** We are looking for a backend developer to join our team building tools for sellers on marketplaces. Experience with Node.js is highly preferred, but we are open to candidates with strong backend experience in other technologies (e.g., Java, Python, Go). Familiarity with CI/CD pipelines, especially GitHub Actions, will be considered a strong plus. The project involves designing and maintaining microservices, integrating with third-party APIs, and deploying on cloud infrastructure.
+**Project Description:** `We are looking for a backend developer to join our team building tools for sellers on marketplaces. Experience with Node.js is highly preferred, but we are open to candidates with strong backend experience in other technologies (e.g., Java, Python, Go). Familiarity with CI/CD pipelines, especially GitHub Actions, will be considered a strong plus. The project involves designing and maintaining microservices, integrating with third-party APIs, and deploying on cloud infrastructure.`
 
-**Candidate 1:** Backend developer with 4 years of experience in Node.js and Express. Built microservices architectures for e-commerce platforms. Automated deployments using GitHub Actions and Docker. Strong knowledge of REST APIs, MongoDB, and AWS.
+**Candidate 1:** `Backend developer with 4 years of experience in Node.js and Express. Built microservice architectures for e-commerce platforms. Automated deployments using GitHub Actions and Docker. Strong knowledge of REST APIs, MongoDB, and AWS.`
 
-**Candidate 2:** Software engineer with 5 years of experience in backend development using Java and Spring Boot. Designed microservices and deployed them on Kubernetes. Experience with CI/CD pipelines using Jenkins, currently learning GitHub Actions. Solid understanding of relational databases and cloud infrastructure.
+**Candidate 2:** `Software engineer with 5 years of experience in backend development using Java and Spring Boot. Designed microservices and deployed them on Kubernetes. Experience with CI/CD pipelines using Jenkins, currently learning GitHub Actions. Solid understanding of relational databases and cloud infrastructure.`
 
-**Candidate 3:** Full-stack developer with a focus on backend systems in Python (Django, FastAPI). Worked on marketplace integrations and data processing pipelines. Experience with CI/CD using GitLab CI, basic exposure to GitHub Actions. Comfortable with PostgreSQL and Redis.
+**Candidate 3:** `Full-stack developer with a focus on backend systems in Python (Django, FastAPI). Worked on marketplace integrations and data processing pipelines. Experience with CI/CD using GitLab CI, basic exposure to GitHub Actions. Comfortable with PostgreSQL and Redis.`
 
-**Candidate 4:** Backend + DevOps engineer with experience in Go and Node.js. Built cloud-native services and automated infrastructure deployments. Heavy use of GitHub Actions for testing, builds, and deployments. Skilled with Kubernetes, Terraform, and microservices orchestration.
+**Candidate 4:** `Backend + DevOps engineer with experience in Go and Node.js. Built cloud-native services and automated infrastructure deployments. Heavy use of GitHub Actions for testing, builds, and deployments. Skilled with Kubernetes, Terraform, and microservices orchestration.`
 
-**Candidate 5:** Junior developer with 1 year of experience in PHP and MySQL. Basic knowledge of backend concepts and REST APIs. No direct experience with Node.js, but eager to learn. Limited exposure to GitHub Actions.
+**Candidate 5:** `Junior developer with 1 year of experience in PHP and MySQL. Basic knowledge of backend concepts and REST APIs. No direct experience with Node.js, but eager to learn. Limited exposure to GitHub Actions.`
 
 Just by reading the descriptions, we can see that Candidate 4 and Candidate 1 have the relevant skills and experience. So, based on text similarity, we determine what is the "best" fit.
 
 > We can then restate the problem as: rank candidates based on the similarity of their resumes to the project description.
 
-Since we're not replacing humans analysis but rather assisting it, we can focus on finding a good enough solution for ranking candidates not necessarily selecting the absolute best one.
+Since we're not replacing human analysis but rather assisting it, we can focus on finding a good enough solution for ranking candidates, not necessarily selecting the absolute best one.
 
 # The Approach
 
 The problem of matching candidates, of course, can be approached in different ways. Each approach has its pros and cons, and the choice depends on various factors, such as the available data, the computational resources, and the desired accuracy.
 
-Since I haven't used AI other thant as consumer, I experimented with different techniques and tools. A good opportunity to get into this huge AI party.
+Since I haven't used AI other than as a consumer, I experimented with different techniques and tools. A good opportunity to get into this huge AI party.
 
 ## Vector Space Model
 
-Computer cannot read text as humans do. Instead, for a computer to work effectively with text data, we commonly vectorize it.
+A computer cannot read text as humans do. Instead, for a computer to work effectively with text data, we commonly vectorize it.
 
 Vector Space Model (VSM) is an algebraic model for representing text documents (and any objects, in general) as vectors. Every single document is represented as a vector in a multi-dimensional space, where each dimension corresponds to a term (word or phrase) in the document.
 
 With this representation, we can then compute the similarity between documents using various metrics, one of the most common being cosine similarity.
 
+![Vector Space Model](https://i0.wp.com/spotintelligence.com/wp-content/uploads/2023/09/vector-space-model.jpg?fit=960%2C540&ssl=1)
+
 ## Tf-idf
 
 Tf-idf, which stands for term frequency-inverse document frequency, is a statistical measure used to evaluate the importance of a word in a document relative to a collection of documents (corpus).
 
-The tf-idf value increases proportionally to the number of times a word appears in the document but is offset by the frequency of the word in the corpus, which helps to adjust for the fact that some words are generally more common than others.
+The tf-idf value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to adjust for the fact that some words are generally more common than others.
 
-Using sklearn, we can easily compute the tf-idf vectors and the cosine similarity between them.
+Using `sklearn`, we can easily compute the tf-idf vectors and the cosine similarity between them.
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 resumes = [
-    "Backend developer with 4 years of experience in Node.js and Express. Built microservices architectures for e-commerce platforms. Automated deployments using GitHub Actions and Docker. Strong knowledge of REST APIs, MongoDB, and AWS.",
+    "Backend developer with 4 years of experience in Node.js and Express. Built microservice architectures for e-commerce platforms. Automated deployments using GitHub Actions and Docker. Strong knowledge of REST APIs, MongoDB, and AWS.",
     "Software engineer with 5 years of experience in backend development using Java and Spring Boot. Designed microservices and deployed them on Kubernetes. Experience with CI/CD pipelines using Jenkins, currently learning GitHub Actions. Solid understanding of relational databases and cloud infrastructure.",
     "Full-stack developer with a focus on backend systems in Python (Django, FastAPI). Worked on marketplace integrations and data processing pipelines. Experience with CI/CD using GitLab CI, basic exposure to GitHub Actions. Comfortable with PostgreSQL and Redis.",
     "Backend + DevOps engineer with experience in Go and Node.js. Built cloud-native services and automated infrastructure deployments. Heavy use of GitHub Actions for testing, builds, and deployments. Skilled with Kubernetes, Terraform, and microservices orchestration.",
@@ -78,6 +89,7 @@ project_description = "We are looking for a backend developer to join our team b
 
 vectorizer = TfidfVectorizer()
 ```
+
 We need to vectorize both the resumes and the project description. To do that, we can fit the vectorizer on the resumes and then transform both the resumes and the project description.
 
 ```python
@@ -87,43 +99,40 @@ resumes_vector = X[:-1]
 project_description_vector = X[-1]
 ```
 
-Now, we can compute the cosine similarity between the project description and each resume.
+Now, we can compute the cosine similarity between the project description and each resume. Based on the scores we can rank the candidates.
 
 ```python
 similarities = cosine_similarity(resumes_vector, project_description_vector).flatten()
-print(similarities)
 
-# Similarities: [0.12567641 0.31466789 0.21045906]
-```
-
-With the similarity scores, we can rank the candidates.
-
-```python
 print("Ranking of candidates:")
 ranked_indices = similarities.argsort()[::-1]
 for idx in ranked_indices:
-    print(f"Score: {similarities[idx]:.3f} | Desc: {resumes[idx]}")
+    score = similarities[idx]
+    print(f"Candidate: {idx + 1} | Score: {score:.3f}")
 
-# Ranking of candidates: 
-#
-# Candidate 3 | Score: 0.260
-# Candidate 5 | Score: 0.232
-# Candidate 1 | Score: 0.225
-# Candidate 2 | Score: 0.221
-# Candidate 4 | Score: 0.217
+```
+
+The execution results in:
+
+```
+Candidate 3 | Score: 0.260
+Candidate 5 | Score: 0.232
+Candidate 1 | Score: 0.225
+Candidate 2 | Score: 0.221
+Candidate 4 | Score: 0.217
 ```
 
 It's done! Now we have a number, a score, that indicates how similar each resume is to the project description.
 
-Notice that the Junior developer scored higher than the full-stack developer. You may think that the "Full-stack developer" should be ranked second. Probably, I don't know. That's where the human feeling and experience comes to play.
+In the rank, Candidate 3 is indeed a good fit, as they have experience with backend systems and marketplace integrations. So it's okay to have them ranked first.
 
-Humans can capture nuances, you may guess that a Full-stack developer is more likely to have some experience with backend development than a Junior developer, but our algorithm cannot. That's the nature of tf-idf. It finds patterns in the text, but it cannot understand the meaning of the words.
+Candidate 5, however, is not good enough for the second position. They are a junior developer with limited experience, which makes them less suitable for the role compared to the other candidates.
 
-For example, changing the description of the Full-stack developer a little bit for matching the keywords "backend" and "microservices" would change the ranking:
+The thing it that `tf-idf` is not able to capture the nuances of the text. It only looks at the frequency of words, not their meaning or context. The candidate 5 mentions "Node.js" and "GitHub Actions" in their resume, even though they mention they have no experience with them, so they get a higher score.
 
-> "Full-stack developer with experience in React and Python, stronger in backend development. Worked on projects using AWS, including e-commerce platforms with microservices architecture and cloud deployment.",
+It would be better if the algorithm could understand that a non-experience mention is not the same as an experience mention.
 
-Luckyly, people way smarter than me adressed this problem developing more advanced techniques. Let's improve our application using them.
+Fortunatly, people way smarter than me have already thought about it. That's where embeddings come into play.
 
 ## Embeddings
 
@@ -131,7 +140,7 @@ The same thing we discussed about tf-idf applies to embeddings. The main differe
 
 Embeddings are more complex and come from neural networks, which are trained on large corpora of text to capture the context and relationships between words.
 
-So, in a projetct requirement asking for a "cloud computing" experience, an embedding model would understand that "AWS" and "Azure" are related to "cloud computing", even if the exact words are not present in the text. Of course, that's the general idea, the quality of the embeddings depends on the model used and the training data but that's '
+So, in a project requirement asking for a "cloud computing" experience, an embedding model would understand that "AWS" and "Azure" are related to "cloud computing", even if the exact words are not present in the text. Of course, that's the general idea; the quality of the embeddings depends on the model used and the training data, but that's '
 
 Using `sentence_transformers`, from Hugging Face, we can easily compute the embeddings and the cosine similarity between them.
 
@@ -163,26 +172,28 @@ Candidate 1 | Score: 0.830 (score delta: +0.605)
 Candidate 4 | Score: 0.742 (score delta: +0.525)
 Candidate 3 | Score: 0.700 (score delta: +0.440)
 Candidate 5 | Score: 0.678 (score delta: +0.446)
-Candidate 2 | Score: 0.644 (score delta: +0.412)
+Candidate 2 | Score: 0.644 (score delta: +0.423)
 ```
 
-If compared to the tf-idf results, we can notice a few improvements. Firts of all, the scores are higher, indicating a better match, even though the terms are not exactly the same. That's the power of embeddings.
+If compared to the tf-idf results, we can notice a few improvements. First of all, **the scores are higher**, even though we didn't change the data or the similarity calculation method. This indicates that the embeddings are capturing more information about the text.
 
-Candidate 1 and Candidate 4 are now ranked higher, which makes sense given their experience. The Junior developer is ranked lower, which also makes sense given the project requirements.
+**Candidate 1** and **Candidate 4** are now ranked higher, which makes sense given their experience. The Junior developer is ranked lower, which also makes sense given the project requirements.
 
-From my perspective, `Candidate 5` should be the last one because of the lack of experience with GitHub Actions or Node.js, but the model doesn't capture that nuance.
+From my perspective, **Candidate 5** should be the last one because of the lack of experience with GitHub Actions or Node.js, but the model doesn't capture that nuance.
 
-This is due to different reasons like the training data, the model architecture, and the specific use case. In this case, specifically, adding more details to the project description like the seniority level required or the specific tools and technologies would help the model to better understand the context.
+Embeddings may vary significantly between different models and providers. Another thing that might help is to normalize the data before computing the embeddings.
+
+Since **Candidate 5** doesn't have experience with Node.js or GitHub Actions, this shouldn't be mentioned in the resume text. Remove the mention, and see they drop to the last position.
 
 ## LLMs
 
-Finally, let's see how LLMs can help us in this task. LLMs  are trained on massive amounts of text data and can generate human-like text based on the input they receive. In fact, LLMs use embeddings as part of their architecture. Thanks to the Transformer architecture, LLMs can capture long-range dependencies and context in the text, which makes them very powerful for various NLP tasks.
+Finally, let's see how LLMs can help us in this task. LLMs are trained on massive amounts of text data and can generate human-like text based on the input they receive. In fact, LLMs use embeddings as part of their architecture. Thanks to the Transformer architecture, LLMs can capture long-range dependencies and context in the text, which makes them very powerful for various NLP tasks.
 
 The only application I had written, integrated with LLMs, was a chatbot using Firebase and Gemini. It's been almost a year.
 
 Writing a resource allocator using LLMs was a great opportunity to get back into the game. Since it's like starting from scratch, I looked into a few tools and frameworks to help me build the application.
 
-After reaching out to the Anthropic's article [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) I decided to take their suggestion and go with plain API calls to Claude using the SDK `anthropic`.
+After reaching out to Anthropic's article [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), I decided to take their suggestion and go with plain API calls to Claude using the SDK `anthropic`.
 
 ```python
 import os
@@ -199,8 +210,7 @@ client = anthropic.Anthropic(api_key='my-ultra-secret-key')
 
 LLM applications, or AI agents, are usually built using a prompt template that guides the model to perform the desired task. The prompt you provide to the model is crucial, as it can significantly impact the quality of the output.
 
-Despite there are some known techniques for writing effective prompts like few-shot, chain-of-thought, and such,
-I didn't bikeshed into that. I just wrote a simple prompt to get the job done.
+Despite the fact that there are some known techniques for writing effective prompts like few-shot, chain-of-thought, and such, I didn't bikeshed into that. I just wrote a simple prompt to get the job done.
 
 ```python
 candidate_indices = list(range(len(resumes)))
@@ -223,7 +233,7 @@ Your response must start with [ and end with ]. Nothing else. Don't add stuff li
 """
 ```
 
-There's a simple computation of `candidates_text` to format the candidates' resumes in a numbered list. Also, notice the `Return ONLY a valid JSON array...` instruction. This is neede to enfore the output format. Seems like LLMs were optimized for chatting, so they tend to add extra text like "Here's the JSON you asked for..." or markdown code blocks. We don't want that.
+There's a simple computation of `candidates_text` to format the candidates' resumes in a numbered list. Also, notice the `Return ONLY a valid JSON array...` instruction. This is needed to enfore the output format. Seems like LLMs were optimized for chatting, so they tend to add extra text like "Here's the JSON you asked for..." or markdown code blocks. We don't want that.
 
 ```python
 response = client.messages.create(
@@ -281,46 +291,24 @@ This is incredibly good. The fact that LLMs kind of have more context make a big
 
 ## Putting It All Together
 
-Keep in mind this data is small and synthetic. In a real-world scenario, you and me will have to deal with a lot more data, and the quality of the data will vary significantly.
+Keep in mind that this data is small and synthetic. In a real-world scenario, you and me will have to deal with a lot more data, and the quality of the data will vary significantly.
 
 Of course, LLMs overcome many of the limitations of tf-idf and embeddings, but they also come with their own challenges, such as cost, latency, and the need for careful prompt engineering.
 
 The Embeddings approach is a good middle ground, as it captures semantic meaning and is relatively efficient. It still misses the context and nuance that LLMs can provide, but with a good normalization of the data and a well-tuned similarity metric, it can yield satisfactory results.
 
-Tf-idf is the simplest and most efficient approach, but it does not capture the full complexity of the matching problem. It can be a good starting point for small datasets or when computational resources are limited or when keyword matching is sufficient.
+TF-IDF is the simplest and most efficient approach, but it does not capture the full complexity of the matching problem. It can be a good starting point for small datasets or when computational resources are limited, or when keyword matching is sufficient.
+
+Normalizing text data helps improve the quality of the embeddings and the similarity scores. This can involve removing stop words, stemming or lemmatizing words, standardizing terminology and, for this case, not including skill terms if a candidate doesn't have them.
 
 # Conclusion
 
-This was just a PoC, but it was a great learning experience. By trying different approaches, I gained a deeper understanding of the strengths and limitations of each technique.
+This is just a PoC, but it was a great learning experience. By trying different approaches, I gained a deeper understanding of the strengths and limitations of each technique.
 
-Next step now is to validate it with real data and see how it performs in a real-world scenario. Also, I want to explore other techniques and tools that can further enhance the matching process.
+The next step is to validate it with real data and see how it performs in a real-world scenario. Also, I want to explore other techniques and tools that can further enhance the matching process.
 
 One of the most interesting tools I found is [ActiveGenie](https://activegenie.ai/), which provides a suite of AI modules that can be easily integrated into applications. They have a module called [Ranker](https://activegenie.ai/modules/ranker.html) that seems to be designed for this exact purpose.
 
 I will bring more updates as I progress with this project.
 
 Thanks for reading!
-
----
-
-https://activegenie.ai/modules/ranker.html
-
-In the article [How To Solve Every Programming Problem](https://blog.codeminer42.com/how-to-solve-every-programming-problem/), I, inspired by George Polya's work, outlined a systematic approach to solving programming problems.
-
-Our problem here is to find the best candidates for a given project. We have the candidates' resumes and the project descriptions.
-
-Both resumes and project descriptions are unstructured text, which makes it challenging to extract relevant information and compare them effectively. A simple keyword search is not sufficient, as it cannot, effectively, capture relevance or context.
-
-## Why Document Similarity?
-
-When it comes to matching candidates to projects, the key is to understand the requirements of the project and the
-skills of the candidates. This is where document similarity comes into play.
-
-## Approaches
-
-### TF-IDF
-
-### Embeddings
-
-### LLMs
-
