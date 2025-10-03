@@ -1,50 +1,40 @@
 # LLMs for Matching Talent: A Case Study in Candidate–Project Pairing
 
-As a sotware boutique, one of our core services is outsourcing engineering talent to clients. This is not an easy task,
-as it involves understanding both the technical requirements of the projects and the skills and experiences of the
-candidates.
+As a sotware boutique, one of our core services is outsourcing engineering talent to clients. This is not an easy task, as it involves understanding both the technical requirements of the projects and the skills and experiences of the candidates.
 
-Luckyly, we have a great team that's always finding the best matches. However, as our pool of candidates and projects
-grows, it becomes more more overwhelming to manually sift through all the information.
+Luckyly, we have a great team that's always finding the best matches. However, as our pool of candidates and projects grows, it becomes more more overwhelming to manually sift through all the information.
 
-To tackle this challenge, I experimented with different approaches and ended up building an AI agent that leverages
-Large Language Models (LLMs) to assist in matching candidates to projects.
+To tackle this challenge, I experimented with different approaches and ended up building an AI agent that leverages Large Language Models (LLMs) to assist in matching candidates to projects.
 
-In this article, I'll share the journey of how I built this AI agent, the challenges I faced, and the lessons I learned
-along the way.
+In this article, I'll share the journey of how I built this AI agent, the challenges I faced, and the lessons I learned along the way.
 
 ## The Problem
 
-Matching candidates to projects is a complex problem that involves multiple factors, such as skills, experience,
-cultural fit, and availability. It cannot be entirely automated, as human judgment is crucial in making the final
-decision.
+Matching candidates to projects is a complex problem that involves multiple factors, such as skills, experience, cultural fit, and availability. It cannot be entirely automated, as human judgment is crucial in making the final decision.
 
-Yet, there are aspects of the matching process that can be enhanced with software. One of these aspects is the initial
-screening of candidates based on their resumes and the project requirements.
+Yet, there are aspects of the matching process that can be enhanced with software. One of these aspects is the initial screening of candidates based on their resumes and the project requirements.
 
 As I described in the article [How To Solve Every Programming Problem](https://blog.codeminer42.com/how-to-solve-every-programming-problem/), the first thing you need to do is to **really** understand the problem. For that, you must know what you have and what you want to achieve.
 
 We have candidates' resumes and project descriptions, both in unstructured text format. We want to find the best candidates for a given project.
 
-A question that arises is: what does "best" mean in this context? Let's take a look at an example to illustrate the
-problem.
+A question that arises is: what does "best" mean in this context? Let's take a look at an example to illustrate the problem.
 
 ### Example
 
-Project Description: I lead a team that is building tools for sellers on marketplaces. We need a backend developer with
-experience in Node.js and AWS to help us build a microservices architecture.
+**Project Description:** We are looking for a backend developer to join our team building tools for sellers on marketplaces. Experience with Node.js is highly preferred, but we are open to candidates with strong backend experience in other technologies (e.g., Java, Python, Go). Familiarity with CI/CD pipelines, especially GitHub Actions, will be considered a strong plus. The project involves designing and maintaining microservices, integrating with third-party APIs, and deploying on cloud infrastructure.
 
-Candidate 1: Full-stack developer with experience in React and Python. Worked on e-commerce platforms and has a good
-understanding of web development.
+**Candidate 1:** Backend developer with 4 years of experience in Node.js and Express. Built microservices architectures for e-commerce platforms. Automated deployments using GitHub Actions and Docker. Strong knowledge of REST APIs, MongoDB, and AWS.
 
-Candidate 2: Experienced backend developer with a strong background in Node.js and AWS. Worked on several projects
-involving microservices architecture and cloud computing.
+**Candidate 2:** Software engineer with 5 years of experience in backend development using Java and Spring Boot. Designed microservices and deployed them on Kubernetes. Experience with CI/CD pipelines using Jenkins, currently learning GitHub Actions. Solid understanding of relational databases and cloud infrastructure.
 
-Candidate 3: Junior developer with experience in Java and SQL. Looking to gain more experience in backend development
-and cloud technologies.
+**Candidate 3:** Full-stack developer with a focus on backend systems in Python (Django, FastAPI). Worked on marketplace integrations and data processing pipelines. Experience with CI/CD using GitLab CI, basic exposure to GitHub Actions. Comfortable with PostgreSQL and Redis.
 
-Just by reading the descriptions, we can see that Candidate 2 has the relevant skills and experience. So, based on text
-similarity, we determine what is the "best" fit.
+**Candidate 4:** Backend + DevOps engineer with experience in Go and Node.js. Built cloud-native services and automated infrastructure deployments. Heavy use of GitHub Actions for testing, builds, and deployments. Skilled with Kubernetes, Terraform, and microservices orchestration.
+
+**Candidate 5:** Junior developer with 1 year of experience in PHP and MySQL. Basic knowledge of backend concepts and REST APIs. No direct experience with Node.js, but eager to learn. Limited exposure to GitHub Actions.
+
+Just by reading the descriptions, we can see that Candidate 4 and Candidate 1 have the relevant skills and experience. So, based on text similarity, we determine what is the "best" fit.
 
 > We can then restate the problem as: rank candidates based on the similarity of their resumes to the project description.
 
