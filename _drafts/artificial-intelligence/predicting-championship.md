@@ -1,5 +1,11 @@
 Dataset: https://github.com/adaoduque/Brasileirao_Dataset
 
+Partidas 2025: https://api.cartola.globo.com/partidas/{rodada}
+https://www.kaggle.com/code/rodrigoazs/probabilidade-vencedor-brasileirao-2023-rodada-35/notebook
+API cbf: https://www.cbf.com.br/api/proxy?path=/jogos/campeonato/12518/rodada/36/fase (campeonarto 2022)
+campeonato 2023 -> https://www.cbf.com.br/api/proxy?path=/jogos/campeonato/12555/rodada/38/fase
+https://www.cbf.com.br/api/proxy?path=/jogos/campeonato/12584/rodada/37/fase (2024)
+
 # Choosing Features for Real Brasileirão Prediction
 
 Great question! Using only goals scored would be too simplistic and miss crucial patterns. Let's think strategically about features for predicting the **ongoing championship**.
@@ -85,11 +91,11 @@ features_episode1 = [
     'goal_difference',
     'goals_scored',
     'goals_conceded',
-    
+
     # Efficiency
     'points_per_game',
     'shot_accuracy',
-    
+
     # Form (KEY for ongoing championship!)
     'last_5_games_points',
     'home_win_rate',
@@ -109,7 +115,7 @@ You need to simulate "mid-season predictions" from past years:
     'team': 'Palmeiras',
     'season': 2022,
     'round': 20,  # halfway point
-    
+
     # Performance so far (first 20 games)
     'goals_scored': 32,
     'goals_conceded': 15,
@@ -117,16 +123,16 @@ You need to simulate "mid-season predictions" from past years:
     'points_so_far': 43,
     'games_played': 20,
     'points_per_game': 2.15,
-    
+
     # Form
     'last_5_games_points': 13,
     'home_win_rate': 0.80,
     'away_win_rate': 0.60,
-    
+
     # Shot metrics (if available)
     'shots_on_target': 95,
     'shot_accuracy': 0.52,
-    
+
     # TARGET: Final points at end of season
     'final_points': 81
 }
@@ -171,10 +177,10 @@ def create_features(df, round_number=None):
     df: DataFrame with match-by-match results
     round_number: If specified, only use data up to this round
     """
-    
+
     if round_number:
         df = df[df['round'] <= round_number].copy()
-    
+
     # Group by team and season
     features = df.groupby(['team', 'season']).agg({
         'goals_scored': 'sum',
@@ -329,7 +335,7 @@ print(results)
    - Need API key (free tier available)
    ```python
    import requests
-   
+
    response = requests.get(
        'https://v3.football.api-sports.io/standings',
        params={'league': 71, 'season': 2024},
