@@ -3,6 +3,8 @@ Dataset: https://github.com/adaoduque/Brasileirao_Dataset
 Partidas 2025: https://api.cartola.globo.com/partidas/{rodada}
 https://www.kaggle.com/code/rodrigoazs/probabilidade-vencedor-brasileirao-2023-rodada-35/notebook
 
+https://api.globoesporte.globo.com/tabela/73935bac-bbc6-4254-9cf9-8e87a0c3e66d/fase/fase-unica-seriea-2020/rodada/33/jogos/ (https://ge.globo.com/futebol/brasileirao-serie-a/2020/)
+
 
 - para prever o campeonato em andamento usaremos dados dos anos anteriores (2019-2023) para treinar o modelo, 2024 para
     testar e usaremos o modelo para prever o campeonato de 2025 (atual)
@@ -46,6 +48,20 @@ https://www.kaggle.com/code/rodrigoazs/probabilidade-vencedor-brasileirao-2023-r
 - Temporada 2023: https://www.cbf.com.br/api/proxy?path=/jogos/campeonato/12555/rodada/38/fase
 - Temporada 2024: https://www.cbf.com.br/api/proxy?path=/jogos/campeonato/12584/rodada/37/fase
 - Temporada 2025: https://www.cbf.com.br/api/proxy?path=/jogos/campeonato/12606/rodada/27/fase
+
+## Features
+
+```python
+features = [
+    'goal_difference',        # Strongest predictor
+    'goals_scored',
+    'goals_conceded',
+    'points_per_game',        # Current season performance
+    'last_5_games_points',    # Recent form/momentum
+    'home_win_rate',          # Home advantage
+    'away_win_rate',          # Away performance
+]
+```
 
 ---
 
