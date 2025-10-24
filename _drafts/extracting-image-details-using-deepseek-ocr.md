@@ -9,8 +9,7 @@ category: ["ai"]
 
 Today I was surprised by the most recent paper made by DeepSeek. With the title ["DeepSeek-OCR: Contexts Optical Compression"](https://arxiv.org/pdf/2510.18234) they present the `DeepSeek-OCR` model, already available on [Hugging Face](https://huggingface.co/deepseek-ai/DeepSeek-OCR).
 
-In this post I want to explore this model and see how it performs in extracting details from images the prompts provided
-in the repository.
+In this post I want to explore this model and see how it performs in extracting details from images the prompts provided in the repository.
 
 # Playing with DeepSeek-OCR
 
@@ -18,8 +17,7 @@ The faster and easiest way to try the model capabilities is going directly on th
 
 [image]
 
-With this neat interface you can upload an image (even from clipboard), select the resolution size and the task type.
-The latter is the most interesting part, as it defines how the model will behave.
+With this neat interface you can upload an image (even from clipboard), select the resolution size and the task type. The latter is the most interesting part, as it defines how the model will behave.
 
 The task types come from the examples provided in the [DeepSeek-OCR repository](https://github.com/deepseek-ai/DeepSeek-OCR?tab=readme-ov-file#prompts-examples).
 
@@ -122,12 +120,8 @@ Result imahe: [lenna-detected]
 
 # Conclusion
 
-The DeepSeek-OCR model is quite versatile and can handle a variety of tasks related to extracting information from
-images. It's interesting how it joins the capabilities of OCR with contextual understanding to provide more than just
-raw text extraction.
+The DeepSeek-OCR model is quite versatile and can handle a variety of tasks related to extracting information from images. It's interesting how it joins the capabilities of OCR with contextual understanding to provide more than just raw text extraction.
 
-Why this is very useful the real thing behind `DeepSeek-OCR` is not just OCR. It's in fact a step towards compression of
-text information using visual modality, since a document image can represent rich information using way less tokens than
-the text itself.
+Why this is very useful the real thing behind `DeepSeek-OCR` is not just OCR. It's in fact a step towards compression of text information using visual modality, since a document image can represent rich information using way less tokens than the text itself.
 
 This opens up a possibility for bigger context windows. Let's see how this field evolves!
