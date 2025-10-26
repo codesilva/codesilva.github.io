@@ -1,6 +1,6 @@
 # Using ChatGPT Atlas' Agent Mode For Solving LeetCode Problems
 
-OpenAI dropped a new product called [Atlas Browser](https://openai.com/index/introducing-chatgpt-atlas/), which is fully integrated with ChatGPT. In essence, it's one more Chromium-based browser with a sidebar that allows you to interact with ChatGPT while browsing the web. Such a sidebar allows you to ask questions about the content of the web pages you are visiting and get answers in real time.
+OpenAI dropped a new product, the [ChatGPT Atlas](https://openai.com/index/introducing-chatgpt-atlas/) browser, which is fully integrated with ChatGPT. In essence, it's one more Chromium-based browser with a sidebar that allows you to interact with ChatGPT while browsing the web. Such a sidebar allows you to ask questions about the content of the web pages you are visiting and get answers in real time.
 
 The most interesting feature is the "Agent Mode", available for Plus, Pro, and Business users. With agent mode enabled, you can ask ChatGPT to perform more complex tasks such as navigating multiple web pages, extracting information, and synthesizing it to provide comprehensive answers.
 
