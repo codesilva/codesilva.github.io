@@ -1,18 +1,19 @@
 ---
 layout: post
-title: 'Configurando Ollama no Apple Sillicon Chip'
-date: 2025-10-02
-lang: en-US
+title: 'Quanto de RAM é suficiente? Rodando LLMs no MacBook M3 Pro com Ollama'
+date: 2025-11-03
+lang: pt-BR
 category: ["ai", "ollama"]
+private: false
 ---
 
 Recentemente, iniciei meus estudos sobre LLMs (e IAs no geral) de maneira séria. Fazer um estudo sério sobre isso exige ler papers e papers sobre os modelos, arquiteturas, técnicas de treinamento etc. e também praticar com os modelos. _Prompt Engineering_ e _Sampling_, por exemplo, são dois tópicos que exigem prática em modelos variados.
 
 Usar LLMs através de APIs na nuvem é uma ótima maneira de começar, mas tem suas desvantagens. A latência e o custo podem ser um problema, especialmente quando você está experimentando e iterando rapidamente. Além disso, a privacidade dos dados é uma preocupação crescente. Ter um modelo localmente permite que você mantenha seus dados privados e seguros.
 
-Até aqui tenho utilizado o Ollama, uma ferramenta que fornece interface simples para baixar e executar modelos, além de fornecer uma API para interagir com eles.
+Até aqui, tenho utilizado o Ollama, uma ferramenta que fornece interface simples para baixar e executar modelos, além de fornecer uma API para interagir com eles.
 
-Assim como muitos, antes de começar, sempre imaginei que pra usar Ollama e rodar modelos localmente precisaria de muito poder computacional. Eu não sou o cara do hardware, tive apenas três computadores próprios na vida, sendo o mais potente deles um MacBook Air de 2015 com 8GB de RAM, processador Intel i3 e um SSD de 256GB.
+Assim como muitos, antes de começar, sempre imaginei que para usar Ollama e rodar modelos localmente precisaria de muito poder computacional. Eu não sou o cara do hardware, tive apenas três computadores próprios na vida, sendo o mais potente deles um MacBook Air de 2015 com 8GB de RAM, processador Intel i3 e um SSD de 256GB.
 
 Minha máquina atual é um `MacBook Pro com chip M3, GPU de 18 cores, 18GB de RAM e SSD de 1TB`, fornecida pela empresa onde trabalho. Conversei com pessoas que entendem bem mais que eu sobre o assunto e me garantiram que é possível montar PCs com hardware até mais poderoso que o meu, por um preço bem mais acessível.
 
@@ -37,7 +38,7 @@ $ go run . run qwen3
 
 A partir daí, é só utilizar o modelo como quiser. Você pode passar prompts diretamente na linha de comando, ou interagir com o modelo via API HTTP.
 
-Pra simplificar o uso, eu resolvi gerar o binário do Ollama com o comando:
+Para simplificar o uso, eu resolvi gerar o binário do Ollama com o comando:
 
 ```bash
 $ go build .
@@ -85,12 +86,12 @@ $ ./ollama show qwen3
 
 Tenho utilizado modelos diferentes há algumas semanas através do Ollama e tem sido uma experiência muito positiva. O modelo Qwen3, em especial, tem se mostrado bastante competente para uma variedade de tarefas. 
 
-Como meu computador é limitado em termos de hardware, tenho limitado o uso a modelos que ocupem até 10GM de RAM, evitando erros que já tive como o mostrado abaixo:
+Como meu computador é limitado em termos de hardware, tenho limitado o uso a modelos que ocupem até 10GB de RAM, evitando erros que já tive como o mostrado abaixo:
 
 ![Erro de memória insuficiente ao rodar modelo no Ollama](/assets/images/ollama/model-error.png)
 
-Recentemente, comecei experimentos com o modelo multimodal Qwen3-VL de oito bilhões de parâmetros, que suporta entrada de imagens. Foi bem para algumas tarefas simples como pedir descrição de imagens, mas quando tentei, por exemplo, converter uma tabela presente na imagem para um markdown, o modelo ficou num [loop eterno gerando astericos](https://x.com/edysilva01/status/1984693181762474039).
+Recentemente, comecei experimentos com o modelo multimodal Qwen3-VL de oito bilhões de parâmetros, que suporta entrada de imagens. Foi bem para algumas tarefas simples como pedir descrição de imagens, mas quando tentei, por exemplo, converter uma tabela presente na imagem para um markdown, o modelo ficou num [loop eterno gerando asteriscos](https://x.com/edysilva01/status/1984693181762474039).
 
-Fiz o mesmo pedido ao mesmo modelo, em [chat.qwen.ai](https://chat.qwen.ai/), que é a versão hospedada na nuvem, o resultado foi 100% satisfatório, com a tabela corretamente convertida para markdown.
+Fiz o mesmo pedido ao mesmo modelo em [chat.qwen.ai](https://chat.qwen.ai/), que é a versão hospedada na nuvem, e o resultado foi 100% satisfatório, com a tabela corretamente convertida para markdown.
 
-A partir de hoje vou testar modelos maiores direto no Ollama Cloud, que é a versão paga do Ollama que roda na nuvem. Assim, consigo comparar os resultados entre o modelo local e o modelo na nuvem.
+A partir de hoje, vou testar modelos maiores direto no Ollama Cloud, que é a versão paga do Ollama que roda na nuvem. Assim, consigo comparar os resultados entre o modelo local e o modelo na nuvem.
