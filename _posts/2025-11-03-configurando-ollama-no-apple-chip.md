@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Quanto de RAM é suficiente? Rodando LLMs no MacBook M3 Pro com Ollama'
+title: 'Quanto de RAM é suficiente? Rodando LLMs no MacBook com Ollama'
 date: 2025-11-03
 lang: pt-BR
 category: ["ai", "ollama"]
