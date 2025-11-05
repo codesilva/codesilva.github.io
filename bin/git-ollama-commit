@@ -1,0 +1,117 @@
+#!/usr/bin/env node
+
+const { execSync } = require('child_process');
+const http = require('http');
+
+// Check if Ollama is running
+function isOllamaRunning() {
+  try {
+    execSync('curl -s http://localhost:11434/api/tags', { stdio: 'pipe' });
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+// Get git diff
+function getGitDiff() {
+  try {
+    return execSync('git diff --cached', { encoding: 'utf8' });
+  } catch (error) {
+    console.error('Error getting git diff:', error.message);
+    process.exit(1);
+  }
+}
+
+// Generate commit message with Ollama
+async function generateCommitMessage(diff) {
+  const prompt = `You are an expert at following conventional commit guidelines. Based on the following git diff, generate a concise, informative commit message that follows conventional commit format (type: subject). Focus on the key changes and their purpose. Keep it under 72 characters.\n\n${diff}`;
+  
+  const data = JSON.stringify({
+    model: "qwen3-coder:480b-cloud",
+    prompt: prompt,
+    stream: false
+  });
+
+  const options = {
+    hostname: 'localhost',
+    port: 11434,
+    path: '/api/generate',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': data.length
+    }
+  };
+
+  return new Promise((resolve, reject) => {
+    const req = http.request(options, (res) => {
+      let responseBody = '';
+
+      res.on('data', (chunk) => {
+        responseBody += chunk;
+      });
+
+      res.on('end', () => {
+        try {
+          const response = JSON.parse(responseBody);
+          // Check if there's an error in the response
+          if (response.error) {
+            reject(new Error(response.error));
+            return;
+          }
+          resolve(response.response.trim());
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+
+    req.on('error', (error) => {
+      reject(error);
+    });
+
+    req.write(data);
+    req.end();
+  });
+}
+
+// Main function
+async function main() {
+  // Check if there are staged changes
+  try {
+    execSync('git diff --cached --quiet', { stdio: 'pipe' });
+    console.error('No staged changes. Please stage your changes with git add first.');
+    process.exit(1);
+  } catch (error) {
+    // This means there ARE staged changes, which is what we want
+  }
+
+  if (!isOllamaRunning()) {
+    console.error('Ollama is not running. Please start Ollama first with: ollama serve');
+    process.exit(1);
+  }
+
+  const diff = getGitDiff();
+  
+  if (!diff.trim()) {
+    console.error('No changes to commit.');
+    process.exit(1);
+  }
+
+  console.log('Generating commit message with Ollama...');
+  
+  try {
+    const commitMessage = await generateCommitMessage(diff);
+    console.log(`Generated commit message: ${commitMessage}`);
+    
+    // Commit with the generated message
+    execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
+    console.log('Changes committed successfully!');
+  } catch (error) {
+    console.error('Error generating commit message:', error.message);
+    process.exit(1);
+  }
+}
+
+main();
