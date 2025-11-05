@@ -101,8 +101,18 @@ async function generateCommitMessage(diff) {
   });
 }
 
+// Parse command line arguments
+function parseArgs() {
+  const args = process.argv.slice(2);
+  return {
+    dryRun: args.includes('--dry-run') || args.includes('-d')
+  };
+}
+
 // Main function
 async function main() {
+  const { dryRun } = parseArgs();
+  
   // Check if there are staged changes
   try {
     execSync('git diff --cached --quiet', { stdio: 'pipe' });
@@ -131,6 +141,11 @@ async function main() {
     const commitMessage = await generateCommitMessage(diff);
     console.log(`Generated commit message: ${commitMessage}`);
     
+    if (dryRun) {
+      console.log('Dry run: commit not executed.');
+      return;
+    }
+    
     // Commit with the generated message
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
     console.log('Changes committed successfully!');
@@ -140,4 +155,4 @@ async function main() {
   }
 }
 
-main();// Test change
+main();// Test change for --dry-run feature
