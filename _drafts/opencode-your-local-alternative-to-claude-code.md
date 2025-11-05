@@ -7,7 +7,7 @@ category: ["ai", "ollama"]
 private: false
 ---
 
-I've been experimenting with Claude Code for a while, and there is no doubt that it's a powerful assistant, capable of performing a lot of tasks as a coding partner. While it's highly capable, it's also a paid service, and depending on your budget, it might not be a viable option, so you need to explore other alternatives.
+I've been experimenting with Claude Code for a while, and there is no doubt that it's a powerful assistant, capable of performing numerous tasks as a coding partner. While it's competent, it's also a paid service, and depending on your budget, it may not be a viable option; therefore, you should explore other alternatives.
 
 There are several options you can consider. One of them is [OpenCode](https://opencode.ai/), an open-source coding assistant that can be configured to work with various LLM providers and models, including local ones.
 
@@ -17,7 +17,7 @@ Installing **OpenCode** is straightforward. You can accomplish this by running t
 
 `curl -fsSL https://opencode.ai/install | bash`
 
-There are other installation methods available in the [official documentation](https://opencode.ai/docs/#install).
+Additional installation methods are available in the [official documentation](https://opencode.ai/docs/#install).
 
 Once installed, the command `opencode` should be available in your terminal. Executing it will start the TUI (Terminal User Interface) for OpenCode.
 
@@ -66,23 +66,23 @@ To incorporate the `mistral` model from Ollama, I would add the following entry 
 
 **NOTE:** The model to be used must support `tools`. You can check model capabilities by running `ollama show <model-name>`.
 
-After configuring, to select the model, type `/models` which will open the model selection interface.
+After configuring, select the model by typing `/models`, which will open the model selection interface.
 
 ![Listing available models on OpenCode](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/05154319/modellist.webp)
 
-That's it! Get your Ollama server running with your desired models, configure OpenCode, and start coding with your local AI assistant. No need to be dependent on paid services.
+That's it! Get your Ollama server up and running with your desired models, configure OpenCode, and start coding with your local AI assistant - no need to be dependent on paid services.
 
 ## Connecting To Ollama Cloud Using API Key
 
 When a model is hosted in Ollama Cloud, having a local Ollama server is not required; simply connect to the cloud endpoint.
 
-First, establish the API key by running the command
+First, establish the API key by running the command.
 
 ```
 opencode auth login
 ```
 
-This command opens a prompt asking for some details about the provider. Regarding the version of OpenCode I'm using (1.0.25), Ollama is not listed there. I selected "Other", set the provider id to `ollama`, and provided the API key.
+This command opens a prompt requesting details about the provider. Regarding the version of OpenCode I'm using (1.0.25), Ollama is not listed there. I selected "Other", set the provider ID to `ollama`, and provided the API key.
 
 ![](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/05154415/opencode-auth-login-1024x287.webp)
 
@@ -113,7 +113,7 @@ I needed to modify the configuration file to point to the cloud endpoint:
 }
 ```
 
-Pretty simple, right? After incorporating the API key, it's just a matter of configuring the baseURL to point to the cloud endpoint.
+Pretty simple. After incorporating the API key, it's just a matter of configuring the baseURL to point to the cloud endpoint.
 
 ## Connecting to Claude Models Using API Key
 
@@ -125,12 +125,12 @@ Using the same command:
 opencode auth login
 ```
 
-It is possible to connect to Anthropic models used by Claude Code. In this case, just select "Anthropic" as the provider, and provide the API key.
+It is possible to connect to Anthropic models used by Claude Code. In this case, select "Anthropic" as the provider, and provide the API key.
 
 You can try any other [Provider available](https://opencode.ai/docs/providers/). There are a couple of them.
 
 ## Final Thoughts
 
-I just started exploring OpenCode, but so far I'm impressed with its capabilities and flexibility. Here I demonstrated how to configure it to work with Ollama and local models, but there are many other possibilities like agents, MCP, ACP, formatting, and more.
+I've just started exploring OpenCode, and so far, I'm impressed with its capabilities and flexibility. Here, I demonstrated how to configure it to work with Ollama and local models, but there are many other possibilities, like agents, MCP, ACP, formatting, and more.
 
 If you're looking for a local alternative to Claude Code, give OpenCode a try. It's open-source, provider-agnostic, and has a growing community. Happy coding!
