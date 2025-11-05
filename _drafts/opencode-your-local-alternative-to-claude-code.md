@@ -25,7 +25,7 @@ There are other installation methods available in the [official documentation](h
 Once installed, the command `opencode` should be available in your terminal. Executing it will start the TUI
 (Terminal User Interface) for OpenCode.
 
-[image of opencode running]
+![OpenCode assistant running](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/05154038/opencode1-1024x621.webp)
 
 In my installation, the tool came with two free models by default: `big-pickle` and `grok-code`. These models are provided by
 the OpenCode team. They are part of a curated list that includes [other models](https://opencode.ai/docs/zen/#models) from different providers.
@@ -60,7 +60,7 @@ If you have a powerful machine, you can run the model locally by changing the mo
 
 I can, for instance, incorporate any other model I have running locally simply by adding it to the `models` section of the configuration file.
 
-[image of ollama list]
+![Listing available models with the command "ollama list"](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/05154110/ollamalist-1024x274.webp)
 
 To incorporate the `mistral` model from Ollama, I would add the following entry to the `models` section:
 
@@ -74,7 +74,7 @@ To incorporate the `mistral` model from Ollama, I would add the following entry 
 
 After configuring, to select the model, type `/models` which will open the model selection interface.
 
-[image of model selection]
+![Listing available models on OpenCode](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/05154319/modellist.webp)
 
 That's it! Get your Ollama server running with your desired models, configure OpenCode, and start coding with your local AI assistant. No need to be dependent on paid services.
 
@@ -90,7 +90,7 @@ opencode auth login
 
 This command opens a prompt asking for some details about the provider. Regarding the version of OpenCode I'm using (1.0.25), Ollama is not listed there. I selected "Other", set the provider id to `ollama`, and provided the API key.
 
-[image of opencode auth login]
+![](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/05154415/opencode-auth-login-1024x287.webp)
 
 It warns:
 
