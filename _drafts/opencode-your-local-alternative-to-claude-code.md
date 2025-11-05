@@ -7,22 +7,22 @@ category: ["ai", "ollama"]
 private: false
 ---
 
-I've been playing with Claude Code for a while, and there is no doubt that it's a powerful assistant, capable of doing
-a lot of things as a coding partner. While it's very capable, it's also a paid service, and depending on your budget, 
-it might not be a viable option and you need to explore other alternatives.
+I've been experimenting with Claude Code for a while, and there is no doubt that it's a powerful assistant, capable of performing
+a lot of tasks as a coding partner. While it's highly capable, it's also a paid service, and depending on your budget, 
+it might not be a viable option, so you need to explore other alternatives.
 
-There are a few options you can consider. One of them is [OpenCode](https://opencode.ai/), an
+There are several options you can consider. One of them is [OpenCode](https://opencode.ai/), an
 open-source coding assistant that can be configured to work with various LLM providers and models, including local ones.
 
 ## Your Local Alternative with Ollama
 
-Installing **OpenCode** is straightforward. You can do it by running the following command in your terminal:
+Installing **OpenCode** is straightforward. You can accomplish this by running the following command in your terminal:
 
 `curl -fsSL https://opencode.ai/install | bash`
 
 There are other installation methods available in the [official documentation](https://opencode.ai/docs/#install).
 
-Once it's installed, the command `opencode` should be available in your terminal. Running it will start the TUI
+Once installed, the command `opencode` should be available in your terminal. Executing it will start the TUI
 (Terminal User Interface) for OpenCode.
 
 [image of opencode running]
@@ -30,9 +30,9 @@ Once it's installed, the command `opencode` should be available in your terminal
 In my installation, the tool came with two free models by default: `big-pickle` and `grok-code`. These models are provided by
 the OpenCode team. They are part of a curated list that includes [other models](https://opencode.ai/docs/zen/#models) from different providers.
 
-I'm using [Ollama](https://ollama.com/) to run local models. I was looking to experiment with the `qwen3-coder` model, which I have great expectations for, given my experience with other models in Qwen series.
+I'm using [Ollama](https://ollama.com/) to run local models. I was eager to experiment with the `qwen3-coder` model, which I have high expectations for, given my experience with other models in the Qwen series.
 
-With a file named `opencode.json` in my home configuration directory (`~/.config/opencode/`), I configured OpenCode to use Ollama as the provider and `qwen3-coder` as the model.
+With a file named `opencode.json` in my home configuration directory (`~/.config/opencode/`), I configured OpenCode to use Ollama as the provider and `qwen3-coder` as the chosen model.
 
 ```jsonc
 {
@@ -55,14 +55,14 @@ With a file named `opencode.json` in my home configuration directory (`~/.config
 }
 ```
 
-The baseURL points to my local Ollama server, which is running on port `11434`. Observe that the model is specified as `ollama/qwen3-coder:480b-cloud`, which indicates that this model is hosted in [Ollama Cloud](https://ollama.com/cloud). That's due to my hardware limitations; I don't have enough resources to run the full model locally.
+The baseURL points to my local Ollama server, which is running on port `11434`. Note that the model is specified as `ollama/qwen3-coder:480b-cloud`, which indicates that this model is hosted in [Ollama Cloud](https://ollama.com/cloud). That's due to my hardware limitations; I don't have sufficient resources to run the complete model locally.
 If you have a powerful machine, you can run the model locally by changing the model name to `ollama/qwen3-coder:480b`, or the smaller one `ollama/qwen3-coder:30b`, [available for local use](https://ollama.com/library/qwen3-coder).
 
-I can, for example, add any other model I have running locally just by adding it to the `models` section of the configuration file.
+I can, for instance, incorporate any other model I have running locally simply by adding it to the `models` section of the configuration file.
 
 [image of ollama list]
 
-To add `mistral` model from Ollama, I would add the following entry to the `models` section:
+To incorporate the `mistral` model from Ollama, I would add the following entry to the `models` section:
 
 ```jsonc
 "mistral": {
@@ -72,7 +72,7 @@ To add `mistral` model from Ollama, I would add the following entry to the `mode
 
 **NOTE:** The model to be used must support `tools`. You can check model capabilities by running `ollama show <model-name>`.
 
-After configuring, to select the model, type `/models` which will open the model selection menu.
+After configuring, to select the model, type `/models` which will open the model selection interface.
 
 [image of model selection]
 
@@ -80,15 +80,15 @@ That's it! Get your Ollama server running with your desired models, configure Op
 
 ## Connecting To Ollama Cloud Using API Key
 
-When the model is hosted in Ollama Cloud, having a local Ollama server is not required, just connect to the cloud endpoint.
+When a model is hosted in Ollama Cloud, having a local Ollama server is not required; simply connect to the cloud endpoint.
 
-First, set the API key running the command
+First, establish the API key by running the command
 
 ```
 opencode auth login
 ```
 
-This command opens a prompt asking for some details about the provider. As for the version of OpenCode I'm using (1.0.25), Ollama is not listed there. I selected "Other", set the provider id to `ollama`, and provided the API key.
+This command opens a prompt asking for some details about the provider. Regarding the version of OpenCode I'm using (1.0.25), Ollama is not listed there. I selected "Other", set the provider id to `ollama`, and provided the API key.
 
 [image of opencode auth login]
 
@@ -96,7 +96,7 @@ It warns:
 
 > This only stores a credential for ollama - you will need configure it in opencode.json, check the docs for examples.
 
-I needed to change the configuration file to point to the cloud endpoint:
+I needed to modify the configuration file to point to the cloud endpoint:
 
 ```jsonc
 {
@@ -119,11 +119,11 @@ I needed to change the configuration file to point to the cloud endpoint:
 }
 ```
 
-Pretty simple, right? After adding the API key, it's just a matter of configuring the baseURL to point to the cloud endpoint.
+Pretty simple, right? After incorporating the API key, it's just a matter of configuring the baseURL to point to the cloud endpoint.
 
 ## Connecting to Claude Models Using API Key
 
-I wanted to test the capabilities of the OpenCode compared to Claude Code. The fairest way to do that is to connect OpenCode to the same models used by Claude Code. It turns out that it's possible, and even easier than configuring Ollama.
+I wanted to test the capabilities of OpenCode compared to Claude Code. The fairest way to do that is to connect OpenCode to the same models used by Claude Code. It turns out that it's possible, and even easier than configuring Ollama.
 
 Using the same command:
 
@@ -131,13 +131,13 @@ Using the same command:
 opencode auth login
 ```
 
-it is possible to connect to Anthropic models used by Claude Code. In this case, just select "Anthropic" as the provider, and provide the API key.
+It is possible to connect to Anthropic models used by Claude Code. In this case, just select "Anthropic" as the provider, and provide the API key.
 
 You can try any other [Provider available](https://opencode.ai/docs/providers/). There are a couple of them.
 
 ## Final Thoughts
 
-I just started exploring OpenCode, but so far I'm impressed with its capabilities and flexibility. Here I showed how to
+I just started exploring OpenCode, but so far I'm impressed with its capabilities and flexibility. Here I demonstrated how to
 configure it to work with Ollama and local models, but there are many other possibilities like agents, MCP, ACP,
 formatting, and more.
 
