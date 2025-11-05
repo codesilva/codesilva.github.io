@@ -74,4 +74,72 @@ To add `mistral` model from Ollama, I would add the following entry to the `mode
 
 After configuring, to select the model, type `/models` which will open the model selection menu.
 
-https://opencode.ai/docs/providers/
+[image of model selection]
+
+That's it! Get your Ollama server running with your desired models, configure OpenCode, and start coding with your local AI assistant. No need to be dependent on paid services.
+
+## Connecting To Ollama Cloud Using API Key
+
+When the model is hosted in Ollama Cloud, having a local Ollama server is not required, just connect to the cloud endpoint.
+
+First, set the API key running the command
+
+```
+opencode auth login
+```
+
+This command opens a prompt asking for some details about the provider. As for the version of OpenCode I'm using (1.0.25), Ollama is not listed there. I selected "Other", set the provider id to `ollama`, and provided the API key.
+
+[image of opencode auth login]
+
+It warns:
+
+> This only stores a credential for ollama - you will need configure it in opencode.json, check the docs for examples.
+
+I needed to change the configuration file to point to the cloud endpoint:
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ollama/qwen3-coder:480b-cloud",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "https://ollama.com/v1" // point to cloud endpoint
+      },
+      "models": {
+        "qwen3-coder:480b-cloud": {
+          "name": "Qwen3 Coder 480B Cloud"
+        }
+      }
+    }
+  }
+}
+```
+
+Pretty simple, right? After addin the API key, it's just a matter of configuring the baseURL to point to the cloud endpoint.
+
+## Connectiong to Claude Models Using API Key
+
+I wanted to test the capabilities of the OpenCode compared to Claude Code. The fairst way to do that is to connect OpenCode to the same models used by Claude Code. It turns out that it's possible, and even easier than configuring Ollama.
+
+Using the same command:
+
+```
+opencode auth login
+```
+
+it is possible to connect to Anthropic models used by Claude Code. In this case, just select "Anthropic" as the provider, and provide the API key.
+
+You can try any other [Provider available](https://opencode.ai/docs/providers/). There's couple of them.
+
+## Final Thoughts
+
+I just started exploring OpenCode, but so far I'm impressed with its capabilities and flexibility. Here I showed how to
+configure it to work with Ollama and local models, but there are many other possibilities like agents, MCP, ACP,
+formatting, and more.
+
+If you're looking for a local alternative to Claude Code, give OpenCode a try. It's open-source, provider-agnostic, and
+has a growing community. Happy coding!
