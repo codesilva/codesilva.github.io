@@ -52,7 +52,7 @@ Para o meu histórico, considero a máquina que uso muito boa. Mas claro, ela po
 
 ![Página do modelo Qwen3 na página do Ollama](/assets/images/ollama/qwen3-model.png)
 
-Cada linha informa sobre a quantidade de parâmetros, tamanho do contexto e RAM necessária para rodar o modelo.
+Cada linha informa sobre a quantidade de parâmetros, tamanho do contexto e (aproximadamente a) RAM necessária para rodar o modelo.
 
 #### Mais parâmetros não significa melhor desempenho
 
