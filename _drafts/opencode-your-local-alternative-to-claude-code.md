@@ -7,7 +7,7 @@ category: ["ai", "ollama"]
 private: false
 ---
 
-i've been playing with Claude Code for a while, and there is not doubt that it's a powerful assistant, capable of doing
+I've been playing with Claude Code for a while, and there is no doubt that it's a powerful assistant, capable of doing
 a lot of things as a coding partner. While it's very capable, it's also a paid service, and depending on your budget, 
 it might not be a viable option and you need to explore other alternatives.
 
@@ -119,11 +119,11 @@ I needed to change the configuration file to point to the cloud endpoint:
 }
 ```
 
-Pretty simple, right? After addin the API key, it's just a matter of configuring the baseURL to point to the cloud endpoint.
+Pretty simple, right? After adding the API key, it's just a matter of configuring the baseURL to point to the cloud endpoint.
 
-## Connectiong to Claude Models Using API Key
+## Connecting to Claude Models Using API Key
 
-I wanted to test the capabilities of the OpenCode compared to Claude Code. The fairst way to do that is to connect OpenCode to the same models used by Claude Code. It turns out that it's possible, and even easier than configuring Ollama.
+I wanted to test the capabilities of the OpenCode compared to Claude Code. The fairest way to do that is to connect OpenCode to the same models used by Claude Code. It turns out that it's possible, and even easier than configuring Ollama.
 
 Using the same command:
 
@@ -133,7 +133,7 @@ opencode auth login
 
 it is possible to connect to Anthropic models used by Claude Code. In this case, just select "Anthropic" as the provider, and provide the API key.
 
-You can try any other [Provider available](https://opencode.ai/docs/providers/). There's couple of them.
+You can try any other [Provider available](https://opencode.ai/docs/providers/). There are a couple of them.
 
 ## Final Thoughts
 
