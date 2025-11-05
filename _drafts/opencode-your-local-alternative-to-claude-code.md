@@ -7,12 +7,9 @@ category: ["ai", "ollama"]
 private: false
 ---
 
-I've been experimenting with Claude Code for a while, and there is no doubt that it's a powerful assistant, capable of performing
-a lot of tasks as a coding partner. While it's highly capable, it's also a paid service, and depending on your budget, 
-it might not be a viable option, so you need to explore other alternatives.
+I've been experimenting with Claude Code for a while, and there is no doubt that it's a powerful assistant, capable of performing a lot of tasks as a coding partner. While it's highly capable, it's also a paid service, and depending on your budget, it might not be a viable option, so you need to explore other alternatives.
 
-There are several options you can consider. One of them is [OpenCode](https://opencode.ai/), an
-open-source coding assistant that can be configured to work with various LLM providers and models, including local ones.
+There are several options you can consider. One of them is [OpenCode](https://opencode.ai/), an open-source coding assistant that can be configured to work with various LLM providers and models, including local ones.
 
 ## Your Local Alternative with Ollama
 
@@ -22,13 +19,11 @@ Installing **OpenCode** is straightforward. You can accomplish this by running t
 
 There are other installation methods available in the [official documentation](https://opencode.ai/docs/#install).
 
-Once installed, the command `opencode` should be available in your terminal. Executing it will start the TUI
-(Terminal User Interface) for OpenCode.
+Once installed, the command `opencode` should be available in your terminal. Executing it will start the TUI (Terminal User Interface) for OpenCode.
 
 ![OpenCode assistant running](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/05154038/opencode1-1024x621.webp)
 
-In my installation, the tool came with two free models by default: `big-pickle` and `grok-code`. These models are provided by
-the OpenCode team. They are part of a curated list that includes [other models](https://opencode.ai/docs/zen/#models) from different providers.
+In my installation, the tool came with two free models by default: `big-pickle` and `grok-code`. These models are provided by the OpenCode team. They are part of a curated list that includes [other models](https://opencode.ai/docs/zen/#models) from different providers.
 
 I'm using [Ollama](https://ollama.com/) to run local models. I was eager to experiment with the `qwen3-coder` model, which I have high expectations for, given my experience with other models in the Qwen series.
 
@@ -55,8 +50,7 @@ With a file named `opencode.json` in my home configuration directory (`~/.config
 }
 ```
 
-The baseURL points to my local Ollama server, which is running on port `11434`. Note that the model is specified as `ollama/qwen3-coder:480b-cloud`, which indicates that this model is hosted in [Ollama Cloud](https://ollama.com/cloud). That's due to my hardware limitations; I don't have sufficient resources to run the complete model locally.
-If you have a powerful machine, you can run the model locally by changing the model name to `ollama/qwen3-coder:480b`, or the smaller one `ollama/qwen3-coder:30b`, [available for local use](https://ollama.com/library/qwen3-coder).
+The baseURL points to my local Ollama server, which is running on port `11434`. Note that the model is specified as `ollama/qwen3-coder:480b-cloud`, which indicates that this model is hosted in [Ollama Cloud](https://ollama.com/cloud). That's due to my hardware limitations; I don't have sufficient resources to run the complete model locally. If you have a powerful machine, you can run the model locally by changing the model name to `ollama/qwen3-coder:480b`, or the smaller one `ollama/qwen3-coder:30b`, [available for local use](https://ollama.com/library/qwen3-coder).
 
 I can, for instance, incorporate any other model I have running locally simply by adding it to the `models` section of the configuration file.
 
@@ -137,9 +131,6 @@ You can try any other [Provider available](https://opencode.ai/docs/providers/).
 
 ## Final Thoughts
 
-I just started exploring OpenCode, but so far I'm impressed with its capabilities and flexibility. Here I demonstrated how to
-configure it to work with Ollama and local models, but there are many other possibilities like agents, MCP, ACP,
-formatting, and more.
+I just started exploring OpenCode, but so far I'm impressed with its capabilities and flexibility. Here I demonstrated how to configure it to work with Ollama and local models, but there are many other possibilities like agents, MCP, ACP, formatting, and more.
 
-If you're looking for a local alternative to Claude Code, give OpenCode a try. It's open-source, provider-agnostic, and
-has a growing community. Happy coding!
+If you're looking for a local alternative to Claude Code, give OpenCode a try. It's open-source, provider-agnostic, and has a growing community. Happy coding!
