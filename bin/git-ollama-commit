@@ -3,6 +3,10 @@
 const { execSync } = require('child_process');
 const http = require('http');
 
+// Constants
+const MAX_DIFF_LENGTH = 5000; // Limit diff size to prevent timeout issues
+const TIMEOUT_MS = 30000; // 30 second timeout
+
 // Check if Ollama is running
 function isOllamaRunning() {
   try {
@@ -23,9 +27,20 @@ function getGitDiff() {
   }
 }
 
+// Truncate diff if too large
+function truncateDiff(diff) {
+  if (diff.length <= MAX_DIFF_LENGTH) {
+    return diff;
+  }
+  
+  console.log(`Diff too large (${diff.length} chars), truncating to ${MAX_DIFF_LENGTH} chars...`);
+  return diff.substring(0, MAX_DIFF_LENGTH) + '\n\n[Diff truncated due to size]\n';
+}
+
 // Generate commit message with Ollama
 async function generateCommitMessage(diff) {
-  const prompt = `You are an expert at following conventional commit guidelines. Based on the following git diff, generate a concise, informative commit message that follows conventional commit format (type: subject). Focus on the key changes and their purpose. Keep it under 72 characters.\n\n${diff}`;
+  const truncatedDiff = truncateDiff(diff);
+  const prompt = `You are an expert at following conventional commit guidelines. Based on the following git diff, generate a concise, informative commit message that follows conventional commit format (type: subject). Focus on the key changes and their purpose. Keep it under 72 characters.\n\n${truncatedDiff}`;
   
   const data = JSON.stringify({
     model: "qwen3-coder:480b-cloud",
@@ -40,8 +55,9 @@ async function generateCommitMessage(diff) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Content-Length': data.length
-    }
+      'Content-Length': Buffer.byteLength(data)
+    },
+    timeout: TIMEOUT_MS
   };
 
   return new Promise((resolve, reject) => {
@@ -60,15 +76,24 @@ async function generateCommitMessage(diff) {
             reject(new Error(response.error));
             return;
           }
+          if (!response.response) {
+            reject(new Error('No response from Ollama'));
+            return;
+          }
           resolve(response.response.trim());
         } catch (error) {
-          reject(error);
+          reject(new Error(`Failed to parse Ollama response: ${error.message}\nResponse: ${responseBody}`));
         }
       });
     });
 
     req.on('error', (error) => {
-      reject(error);
+      reject(new Error(`HTTP request failed: ${error.message}`));
+    });
+
+    req.on('timeout', () => {
+      req.destroy();
+      reject(new Error('Request to Ollama timed out'));
     });
 
     req.write(data);
@@ -100,6 +125,7 @@ async function main() {
   }
 
   console.log('Generating commit message with Ollama...');
+  console.log(`Diff size: ${diff.length} characters`);
   
   try {
     const commitMessage = await generateCommitMessage(diff);
@@ -114,4 +140,4 @@ async function main() {
   }
 }
 
-main();
+main();// Test change
