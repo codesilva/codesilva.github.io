@@ -7,7 +7,15 @@ category: ["git", "node.js", "ollama", "automacao"]
 tags: ["git", "node.js", "ollama", "inteligencia artificial", "automacao"]
 ---
 
-Nate Berkopec, mantenedor do PUMA, tem compartilhado vários resultados e ideias interessantes sobre o uso de IAs generativas para melhorar fluxos de trabalho de desenvolvimento. 
+Nate Berkopec, mantenedor do PUMA, tem compartilhado vários resultados e ideias interessantes sobre o uso de IAs generativas para melhorar fluxos de trabalho de desenvolvimento no X/Twitter.
+
+Uma das coisas que ele fez foi uma ferramenta pra gerar mensagens de commit usando LLMs.
+
+https://x.com/nateberkopec/status/1980806496087887962
+
+[`gc-ai.fish`][] é essa ferramenta, escrita em Fish Shell, que interage com a API do OpenAI para gerar mensagens de commit baseadas nas mudanças staged no git. Se você já usa Fish Shell, e t
+
+[`gc-ai.fish`]: https://github.com/nateberkopec/dotfiles/blob/main/files/config/fish/functions/gc-ai.fish
 
 Recentemente, explorei uma forma interessante de combinar conhecimentos de diferentes áreas para criar uma solução prática: uma extensão git que utiliza inteligência artificial para gerar mensagens de commit automaticamente. Neste post, vou mostrar como criei essa extensão usando Node.js e Ollama, e como você pode fazer o mesmo.
 
