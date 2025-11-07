@@ -98,31 +98,28 @@ Options:
 
 // Check required dependencies
 function checkDependencies() {
-  const deps = ['gum', 'bat', 'ollama'];
-  const missing = [];
-  
-  for (const dep of deps) {
-    if (!commandExists(dep)) {
-      missing.push(dep);
-    }
-  }
-  
-  if (missing.length > 0) {
-    missing.forEach(dep => {
-      switch (dep) {
-        case 'gum':
-          console.error('Error: gum is not installed. Install it from https://github.com/charmbracelet/gum');
-          break;
-        case 'bat':
-          console.error('Error: bat is not installed. Install it from https://github.com/sharkdp/bat');
-          break;
-        case 'ollama':
-          console.error('Error: ollama is not installed. Install it from https://ollama.ai/');
-          break;
-      }
-    });
-    process.exit(1);
-  }
+   const deps = ['bat', 'ollama'];
+   const missing = [];
+   
+   for (const dep of deps) {
+     if (!commandExists(dep)) {
+       missing.push(dep);
+     }
+   }
+   
+   if (missing.length > 0) {
+     missing.forEach(dep => {
+       switch (dep) {
+         case 'bat':
+           console.error('Error: bat is not installed. Install it from https://github.com/sharkdp/bat');
+           break;
+         case 'ollama':
+           console.error('Error: ollama is not installed. Install it from https://ollama.ai/');
+           break;
+       }
+     });
+     process.exit(1);
+   }
 }
 
 // Create temporary file
@@ -132,25 +129,59 @@ function mktemp() {
   return tempFile;
 }
 
-// Prompt using gum write
-function gumWrite(placeholder) {
-  try {
-    const result = exec(`gum write --placeholder "${placeholder.replace(/"/g, '\\"')}"`, { ignoreError: true });
-    return result;
-  } catch {
-    return '';
-  }
+// Prompt for text input using Node.js
+function promptWrite(placeholder) {
+   return new Promise((resolve) => {
+     const rl = readline.createInterface({
+       input: process.stdin,
+       output: process.stdout
+     });
+     
+     console.log(`${placeholder}\n(Enter text, press Enter twice when done)\n`);
+     
+     let input = '';
+     let emptyLineCount = 0;
+     
+     rl.on('line', (line) => {
+       if (line === '' && input !== '') {
+         emptyLineCount++;
+         if (emptyLineCount >= 1) {
+           rl.close();
+           return;
+         }
+       } else {
+         emptyLineCount = 0;
+       }
+       
+       if (input) input += '\n';
+       input += line;
+     });
+     
+     rl.on('close', () => {
+       resolve(input.trim());
+     });
+   });
 }
 
-// Choose option using gum choose
-function gumChoose(options) {
-  try {
-    const optionsStr = options.map(o => `'${o.replace(/'/g, "'\\''")}'`).join('\n');
-    const result = exec(`printf '${optionsStr.replace(/'/g, "'\\''")}'  | gum choose`, { ignoreError: true });
-    return result;
-  } catch {
-    return 'Cancel';
-  }
+// Choose option using Node.js
+function promptChoose(options) {
+   return new Promise((resolve) => {
+     const rl = readline.createInterface({
+       input: process.stdin,
+       output: process.stdout
+     });
+     
+     console.log('\nSelect an option:');
+     options.forEach((option, index) => {
+       console.log(`${index + 1}. ${option}`);
+     });
+     
+     rl.question('\nEnter your choice (number): ', (answer) => {
+       rl.close();
+       const choice = parseInt(answer) - 1;
+       resolve(choice >= 0 && choice < options.length ? options[choice] : 'Cancel');
+     });
+   });
 }
 
 // Read file
@@ -355,193 +386,196 @@ function performCommit(filePath, gitOptions) {
 }
 
 // Main function
-function main() {
-  const flags = parseArgs();
+async function main() {
+   const flags = parseArgs();
+   
+   if (flags.help) {
+     showHelp();
+   }
+   
+   checkDependencies();
+   
+   // Add all changes if -a flag is provided
+   if (flags.addAll) {
+     console.log('Adding all changes...');
+     try {
+       execSync('git add -A', { stdio: 'inherit' });
+     } catch (error) {
+       console.error('Error adding changes:', error.message);
+       process.exit(1);
+     }
+   }
+   
+   // Get the git diff
+   const diff = exec('git diff --cached', { ignoreError: true });
+   if (!diff) {
+     console.error('No staged changes to commit');
+     process.exit(1);
+   }
+   
+   // Get the last 5 commits for style reference
+   const commitHistory = exec('git log --pretty=format:"%s%n%n%b" -5', { ignoreError: true });
+   
+   // Collect context
+   let context = '';
+   if (flags.context) {
+     context = await promptWrite('What motivated this change? Is there context a future reader will need to know? What problem did you solve?');
+   }
+   
+   // Build git commit options
+   const gitCommitOptions = [];
+   if (flags.noGpgSign) {
+     gitCommitOptions.push('--no-gpg-sign');
+   }
+   if (flags.noVerify) {
+     gitCommitOptions.push('--no-verify');
+   }
+   
+   // Build the prompt
+   const prompt = buildPrompt(flags, commitHistory, context);
+   
+   let rerollCount = 0;
+   
+   // Main loop
+   await mainLoop();
   
-  if (flags.help) {
-    showHelp();
-  }
-  
-  checkDependencies();
-  
-  // Add all changes if -a flag is provided
-  if (flags.addAll) {
-    console.log('Adding all changes...');
-    try {
-      execSync('git add -A', { stdio: 'inherit' });
-    } catch (error) {
-      console.error('Error adding changes:', error.message);
-      process.exit(1);
-    }
-  }
-  
-  // Get the git diff
-  const diff = exec('git diff --cached', { ignoreError: true });
-  if (!diff) {
-    console.error('No staged changes to commit');
-    process.exit(1);
-  }
-  
-  // Get the last 5 commits for style reference
-  const commitHistory = exec('git log --pretty=format:"%s%n%n%b" -5', { ignoreError: true });
-  
-  // Collect context
-  let context = '';
-  if (flags.context) {
-    context = gumWrite('What motivated this change? Is there context a future reader will need to know? What problem did you solve?');
-  }
-  
-  // Build git commit options
-  const gitCommitOptions = [];
-  if (flags.noGpgSign) {
-    gitCommitOptions.push('--no-gpg-sign');
-  }
-  if (flags.noVerify) {
-    gitCommitOptions.push('--no-verify');
-  }
-  
-  // Build the prompt
-  const prompt = buildPrompt(flags, commitHistory, context);
-  
-  let rerollCount = 0;
-  
-  // Main loop
-  mainLoop();
-  
-  function mainLoop() {
-    const messageFile = generateMessage(diff, prompt);
-    
-    // Validate message
-    if (!validateMessage(messageFile, flags)) {
-      removeFile(messageFile);
-      rerollCount++;
-      console.log(`Generating new message (temperature: ${0.5 + rerollCount * 0.3})...`);
-      mainLoop();
-      return;
-    }
-    
-    // Clean and prepare display file
-    const cleanedFile = cleanBlankLines(messageFile);
-    removeFile(messageFile);
-    const displayFile = addDisclaimer(cleanedFile, flags);
-    removeFile(cleanedFile);
-    
-    // Handle auto-push
-    if (flags.push) {
-      console.log('Generated commit message:');
-      displayMessage(displayFile);
-      console.log('Auto-committing and pushing...');
-      
-      if (performCommit(displayFile, gitCommitOptions)) {
-        try {
-          execSync('git push', { stdio: 'inherit' });
-        } catch (error) {
-          console.error('Error pushing:', error.message);
-        }
-        removeFile(displayFile);
-        process.exit(0);
-      } else {
-        removeFile(displayFile);
-        process.exit(1);
-      }
-    }
-    
-    // Show message and get user action
-    console.log('Generated commit message:');
-    displayMessage(displayFile);
-    
-    const action = gumChoose(['Commit', 'Commit and Push', 'Edit', 'Reroll', 'Condense', 'Cancel']);
-    
-    switch (action) {
-      case 'Commit':
-        if (performCommit(displayFile, gitCommitOptions)) {
-          removeFile(displayFile);
-          process.exit(0);
-        } else {
-          removeFile(displayFile);
-          process.exit(1);
-        }
-        break;
-      
-      case 'Commit and Push':
-        if (performCommit(displayFile, gitCommitOptions)) {
-          try {
-            execSync('git push', { stdio: 'inherit' });
-          } catch (error) {
-            console.error('Error pushing:', error.message);
-          }
-          removeFile(displayFile);
-          process.exit(0);
-        } else {
-          removeFile(displayFile);
-          process.exit(1);
-        }
-        break;
-      
-      case 'Edit':
-        const editor = process.env.EDITOR || 'vi';
-        try {
-          execSync(`${editor} "${displayFile}"`, { stdio: 'inherit' });
-          execSync(`git commit -F "${displayFile}" ${gitCommitOptions.join(' ')}`, { stdio: 'inherit' });
-        } catch (error) {
-          console.error('Error editing or committing:', error.message);
-        }
-        removeFile(displayFile);
-        process.exit(0);
-        break;
-      
-      case 'Reroll':
-        rerollCount++;
-        console.log(`Generating new message (temperature: ${0.5 + rerollCount * 0.3})...`);
-        removeFile(displayFile);
-        mainLoop();
-        break;
-      
-      case 'Condense':
-        console.log('Condensing message...');
-        const currentMessage = readFile(displayFile);
-        const condensePrompt = `Take this commit message and make it more concise while retaining the what and the why:\n\n${currentMessage}`;
-        try {
-          const condensedFile = generateMessage(diff, condensePrompt);
-          const cleanedCondensed = cleanBlankLines(condensedFile);
-          const disclaimedCondensed = addDisclaimer(cleanedCondensed, flags);
-          removeFile(condensedFile);
-          removeFile(cleanedCondensed);
-          removeFile(displayFile);
-          
-          console.log('Condensed commit message:');
-          displayMessage(disclaimedCondensed);
-          
-          const condenseAction = gumChoose(['Use This', 'Reroll', 'Cancel']);
-          if (condenseAction === 'Use This') {
-            if (performCommit(disclaimedCondensed, gitCommitOptions)) {
-              removeFile(disclaimedCondensed);
-              process.exit(0);
-            }
-          } else if (condenseAction === 'Reroll') {
-            removeFile(disclaimedCondensed);
-            rerollCount++;
-            console.log(`Generating new message (temperature: ${0.5 + rerollCount * 0.3})...`);
-            mainLoop();
-          } else {
-            removeFile(disclaimedCondensed);
-            process.exit(0);
-          }
-        } catch (error) {
-          console.error('Error condensing message:', error.message);
-          removeFile(displayFile);
-          process.exit(1);
-        }
-        break;
-      
-      case 'Cancel':
-      default:
-        console.log('Commit cancelled');
-        removeFile(displayFile);
-        process.exit(0);
-        break;
-    }
-  }
+   async function mainLoop() {
+     const messageFile = generateMessage(diff, prompt);
+     
+     // Validate message
+     if (!validateMessage(messageFile, flags)) {
+       removeFile(messageFile);
+       rerollCount++;
+       console.log(`Generating new message (temperature: ${0.5 + rerollCount * 0.3})...`);
+       await mainLoop();
+       return;
+     }
+     
+     // Clean and prepare display file
+     const cleanedFile = cleanBlankLines(messageFile);
+     removeFile(messageFile);
+     const displayFile = addDisclaimer(cleanedFile, flags);
+     removeFile(cleanedFile);
+     
+     // Handle auto-push
+     if (flags.push) {
+       console.log('Generated commit message:');
+       displayMessage(displayFile);
+       console.log('Auto-committing and pushing...');
+       
+       if (performCommit(displayFile, gitCommitOptions)) {
+         try {
+           execSync('git push', { stdio: 'inherit' });
+         } catch (error) {
+           console.error('Error pushing:', error.message);
+         }
+         removeFile(displayFile);
+         process.exit(0);
+       } else {
+         removeFile(displayFile);
+         process.exit(1);
+       }
+     }
+     
+     // Show message and get user action
+     console.log('Generated commit message:');
+     displayMessage(displayFile);
+     
+     const action = await promptChoose(['Commit', 'Commit and Push', 'Edit', 'Reroll', 'Condense', 'Cancel']);
+     
+     switch (action) {
+       case 'Commit':
+         if (performCommit(displayFile, gitCommitOptions)) {
+           removeFile(displayFile);
+           process.exit(0);
+         } else {
+           removeFile(displayFile);
+           process.exit(1);
+         }
+         break;
+       
+       case 'Commit and Push':
+         if (performCommit(displayFile, gitCommitOptions)) {
+           try {
+             execSync('git push', { stdio: 'inherit' });
+           } catch (error) {
+             console.error('Error pushing:', error.message);
+           }
+           removeFile(displayFile);
+           process.exit(0);
+         } else {
+           removeFile(displayFile);
+           process.exit(1);
+         }
+         break;
+       
+       case 'Edit':
+         const editor = process.env.EDITOR || 'vi';
+         try {
+           execSync(`${editor} "${displayFile}"`, { stdio: 'inherit' });
+           execSync(`git commit -F "${displayFile}" ${gitCommitOptions.join(' ')}`, { stdio: 'inherit' });
+         } catch (error) {
+           console.error('Error editing or committing:', error.message);
+         }
+         removeFile(displayFile);
+         process.exit(0);
+         break;
+       
+       case 'Reroll':
+         rerollCount++;
+         console.log(`Generating new message (temperature: ${0.5 + rerollCount * 0.3})...`);
+         removeFile(displayFile);
+         await mainLoop();
+         break;
+       
+       case 'Condense':
+         console.log('Condensing message...');
+         const currentMessage = readFile(displayFile);
+         const condensePrompt = `Take this commit message and make it more concise while retaining the what and the why:\n\n${currentMessage}`;
+         try {
+           const condensedFile = generateMessage(diff, condensePrompt);
+           const cleanedCondensed = cleanBlankLines(condensedFile);
+           const disclaimedCondensed = addDisclaimer(cleanedCondensed, flags);
+           removeFile(condensedFile);
+           removeFile(cleanedCondensed);
+           removeFile(displayFile);
+           
+           console.log('Condensed commit message:');
+           displayMessage(disclaimedCondensed);
+           
+           const condenseAction = await promptChoose(['Use This', 'Reroll', 'Cancel']);
+           if (condenseAction === 'Use This') {
+             if (performCommit(disclaimedCondensed, gitCommitOptions)) {
+               removeFile(disclaimedCondensed);
+               process.exit(0);
+             }
+           } else if (condenseAction === 'Reroll') {
+             removeFile(disclaimedCondensed);
+             rerollCount++;
+             console.log(`Generating new message (temperature: ${0.5 + rerollCount * 0.3})...`);
+             await mainLoop();
+           } else {
+             removeFile(disclaimedCondensed);
+             process.exit(0);
+           }
+         } catch (error) {
+           console.error('Error condensing message:', error.message);
+           removeFile(displayFile);
+           process.exit(1);
+         }
+         break;
+       
+       case 'Cancel':
+       default:
+         console.log('Commit cancelled');
+         removeFile(displayFile);
+         process.exit(0);
+         break;
+     }
+   }
 }
 
-main();
+main().catch(error => {
+   console.error('Unexpected error:', error.message);
+   process.exit(1);
+});
