@@ -7,6 +7,8 @@ category: ["git", "node.js", "ollama", "automacao"]
 tags: ["git", "node.js", "ollama", "inteligencia artificial", "automacao"]
 ---
 
+Nate Berkopec, mantenedor do PUMA, tem compartilhado vários resultados e ideias interessantes sobre o uso de IAs generativas para melhorar fluxos de trabalho de desenvolvimento. 
+
 Recentemente, explorei uma forma interessante de combinar conhecimentos de diferentes áreas para criar uma solução prática: uma extensão git que utiliza inteligência artificial para gerar mensagens de commit automaticamente. Neste post, vou mostrar como criei essa extensão usando Node.js e Ollama, e como você pode fazer o mesmo.
 
 ## Criando uma extensão git
