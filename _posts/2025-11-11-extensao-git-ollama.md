@@ -5,6 +5,7 @@ date: 2025-11-11
 lang: pt-BR
 category: ["git", "node.js", "ollama", "automacao"]
 tags: ["git", "node.js", "ollama", "inteligencia artificial", "automacao"]
+excerpt: "A jornada de criar uma extensão git inteligente: do experimento inicial ao código funcionando, passando por 3 tentativas de prompts, decisões de design e validação. Como IA generativa acelerou o desenvolvimento."
 ---
 
 [Nate Berkopec](https://x.com/nateberkopec), mantenedor do PUMA, tem compartilhado vários resultados e ideias interessantes sobre o uso de IAs generativas para melhorar fluxos de trabalho de desenvolvimento no X/Twitter.
