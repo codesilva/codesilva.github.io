@@ -102,7 +102,7 @@ O modelo removeu o limite de caracteres, mas tentou chamar o Ollama via CLI, o q
 
      Ollama is not a CLI; you should use its API
 
-Praticamente o mesmo prompt, mas agora informei que ele deveria usar a API do Ollama ao invés de tentar chamar o CLI. 
+Praticamente o mesmo prompt, mas agora informei que ele deveria usar a API do Ollama ao invés de tentar chamar o CLI.
 
 O código gerado funcionou, eu inclusive usei para commitar as mudanças na própria extensão, como clean up e remoção de dependências não utilizadas.
 
