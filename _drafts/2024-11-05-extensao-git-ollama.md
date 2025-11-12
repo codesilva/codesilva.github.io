@@ -119,6 +119,7 @@ Para fazer os testes também usei IA generativa. Ainda usando `OpenCode` e o mod
 
 Nesse caso só observei que funcionava como esperado.
 
+[`gc-ai.fish`]: https://github.com/nateberkopec/dotfiles/blob/main/files/config/fish/functions/gc-ai.fish
 [`llm`]: https://llm.datasette.io/en/stable/
 [`gum`]: https://github.com/charmbracelet/gum
 [`bat`]: https://github.com/sharkdp/bat
