@@ -4,6 +4,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const readline = require('readline');
 
 // Constants
 const OLLAMA_MODEL = 'qwen3-coder:480b-cloud';
@@ -557,6 +558,7 @@ async function main() {
 }
 
 main().catch(error => {
-   console.error('Unexpected error:', error.message);
-   process.exit(1);
+    console.error('Unexpected error:', error.message);
+    console.error('Stack:', error.stack);
+    process.exit(1);
 });
