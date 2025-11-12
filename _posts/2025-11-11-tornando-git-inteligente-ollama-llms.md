@@ -33,6 +33,8 @@ Para estender o `git` com um script personalizado precisamos de duas coisas:
 1. Criar um arquivo executável chamado `git-<comando>` (no nosso caso, `git-ollama-commit`)
 2. Adicionar esse arquivo ao PATH do sistema
 
+Feito isso, o `git` reconhecerá o comando personalizado, e ao rodar `git <comando>`, ele executará o script correspondente.
+
 Como um exemplo, observe o seguinte script simples em Node.js:
 
 ```javascript
