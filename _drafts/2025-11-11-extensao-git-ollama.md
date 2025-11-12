@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Tornando seu git mais inteligente com Ollama e LLMs locais
-date: 2024-11-05
+date: 2025-11-11
 lang: pt-BR
 category: ["git", "node.js", "ollama", "automacao"]
 tags: ["git", "node.js", "ollama", "inteligencia artificial", "automacao"]
