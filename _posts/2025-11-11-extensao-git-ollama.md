@@ -45,7 +45,7 @@ Esse arquivo se encontra no diretório `$HOME/projects/probe`, e para que o `git
 export PATH="$HOME/projects/probe:$PATH"
 ```
 
-Lembre-se de que o script precisa ser executável, então rode:
+Lembre-se de que o script precisa ser executável, então execute:
 
 ```bash
 chmod +x git-ollama-commit
