@@ -1,94 +1,120 @@
 ---
 layout: post
 title: Criando uma extensão git com Node.js e Ollama para commits automatizados
-date: 2024-11-05
+date: 2025-11-11
 lang: pt-BR
 category: ["git", "node.js", "ollama", "automacao"]
 tags: ["git", "node.js", "ollama", "inteligencia artificial", "automacao"]
 ---
 
-Nate Berkopec, mantenedor do PUMA, tem compartilhado vários resultados e ideias interessantes sobre o uso de IAs generativas para melhorar fluxos de trabalho de desenvolvimento no X/Twitter.
+[Nate Berkopec](https://x.com/nateberkopec), mantenedor do PUMA, tem compartilhado vários resultados e ideias interessantes sobre o uso de IAs generativas para melhorar fluxos de trabalho de desenvolvimento no X/Twitter.
 
-Uma das coisas que ele fez foi uma ferramenta pra gerar mensagens de commit usando LLMs.
+Uma das últimas coisas que ele compartilhou foi o script [`gc-ai.fish`][] que ele usa para gerar mensagens de commit usando LLM. É bem prático e fácil de usar; e pra quem gosta de escrever scripts, há uma série de ferramentas legais que ele recomenda para melhorar a experiência no terminal, como o [`gum`][], [`bat`][] e [`llm`][].
 
-https://x.com/nateberkopec/status/1980806496087887962
+Em Fish Shell, para executar o script, basta rodar:
 
-[`gc-ai.fish`][] é essa ferramenta, escrita em Fish Shell, que interage com a API do OpenAI para gerar mensagens de commit baseadas nas mudanças staged no git. Se você já usa Fish Shell, e t
+```fish
+gc-ai
+```
 
-[`gc-ai.fish`]: https://github.com/nateberkopec/dotfiles/blob/main/files/config/fish/functions/gc-ai.fish
+Pensando em um experimento, pensei que seria uma boa ideia fazer algo semelhante, mas escrito em Node.js, e usando
+o Ollama para gerar as mensagens de commit, assim sendo capaz de usar um modelo local.
 
-Recentemente, explorei uma forma interessante de combinar conhecimentos de diferentes áreas para criar uma solução prática: uma extensão git que utiliza inteligência artificial para gerar mensagens de commit automaticamente. Neste post, vou mostrar como criei essa extensão usando Node.js e Ollama, e como você pode fazer o mesmo.
+Mas ao invés de ter que chamar um script pra ser chamado de forma independente, pensei em fazer uma extensão git chamada `ollama-commit`, assim poderia chamar o comando diretamente como:
 
-## Criando uma extensão git
+```bash
+git ollama-commit
+```
 
-Você sabia que é possível estender o git criando seus próprios comandos? O git permite que você crie executáveis com o nome `git-<comando>` e os coloque no seu PATH. Quando fizer isso, poderá usar o comando como `git <comando>`.
+## Estendendo o git
 
-Por exemplo, se criarmos um arquivo chamado `git-ola` e colocarmos no PATH, poderemos executá-lo com `git ola`. É uma forma poderosa de estender a funcionalidade do git com suas próprias ferramentas.
+Para estender o `git` com um script personalizado precisamos de duas coisas:
 
-## Scripts executáveis em Node.js
+1. Criar um arquivo executável chamado `git-<comando>` (no nosso caso, `git-ollama-commit`)
+2. Adicionar esse arquivo ao PATH do sistema
 
-Um detalhe que muitos desenvolvedores não sabem é que você pode criar scripts executáveis em Node.js adicionando um shebang no início do arquivo. O shebang `#!/usr/bin/env node` diz ao sistema operacional para executar o arquivo usando o Node.js.
+Como um exemplo, observe o seguinte script simples em Node.js:
 
 ```javascript
 #!/usr/bin/env node
-
-// Seu código Node.js aqui
-console.log('Olá, mundo!');
+console.log('Olá do git-ollama-commit!');
 ```
 
-Com isso, seu arquivo JavaScript se torna um executável que pode ser chamado diretamente do terminal, sem precisar usar `node script.js`.
+Esse arquivo, se encontra no diretório `$HOME/projects/probe`, e para que o `git` consiga encontrá-lo, adicionei esse diretório ao meu PATH, modificando o arquivo `~/.zshrc`:
 
-## Integrando com Ollama
-
-Para a parte de inteligência artificial, utilizei o Ollama, que é uma plataforma excelente para rodar modelos de linguagem localmente. A integração foi feita através da API HTTP que o Ollama expõe na porta 11434.
-
-A parte mais importante foi criar um prompt eficaz para gerar mensagens de commit de qualidade:
-
-```
-Você é um especialista em seguir as diretrizes de commits convencionais. 
-Com base no seguinte diff do git, gere uma mensagem de commit concisa e informativa 
-que siga o formato de commit convencional (tipo: assunto). 
-Foque nas mudanças principais e seu propósito. Mantenha abaixo de 72 caracteres.
+```bash
+export PATH="$HOME/projects/probe:$PATH"
 ```
 
-Esse prompt orienta o modelo a gerar mensagens que seguem o padrão Conventional Commits, o que é ótimo para manter um histórico de commits consistente.
+Lembre-se de que o script precisa ser executável, então rode:
+
+```bash
+chmod +x git-ollama-commit
+```
 
 ## O código
 
-O script faz o seguinte:
+Essa é a parte mais simples. O código, em JavaScript, faz a mesma coisa que o `gc-ai.fish`. Ele verifica se há mudanças
+staged no git, obtém o diff dessas mudanças, envia o diff para o Ollama com um prompt apropriado, e usa a resposta para
+fazer o commit.
 
-1. Verifica se há mudanças staged no git
-2. Obtém o diff dessas mudanças
-3. Envia o diff para o Ollama com o prompt apropriado
-4. Usa a resposta para fazer o commit
+Pra gerar o código eu usei também LLM. No caso, usei o `OpenCode` com o modelo `Claude Haiku 4.5`. Precisei ir e voltar
+algumas vezes, mas o resultado foi satisfatório.
 
-A integração com a API do Ollama é feita com uma simples requisição HTTP:
 
-```javascript
-const data = JSON.stringify({
-  model: "qwen3-coder:480b-cloud",
-  prompt: prompt,
-  stream: false
-});
+#### Primeira tentativa de prompt
 
-const options = {
-  hostname: 'localhost',
-  port: 11434,
-  path: '/api/generate',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Content-Length': data.length
-  }
-};
-```
+    Modelo: Qwen3-coder:480b-cloud
 
-## Conclusão
+    I want you to come up with a git extension, that is able to diff the changes and commit all using llm through ollama.
+    you may already know, to extend git you can create a file like git-something, expose it in the PATH . once it's done, the command "git something" can be used.
+    you can get inspiration from: https://github.com/nateberkopec/dotfiles/blob/main/files/config/fish/functions/gc-ai.fish
+    ensure the file you create is written in js. to make it work as an executable you can add the nodejs shebang
+    for the model, use one I already have in the ollama (you can find which models i have using the command ollama list).
+    I suggest you to use the qwen3-coder
 
-Criar essa extensão foi uma experiência enriquecedora que mostrou como podemos combinar diferentes tecnologias para resolver problemas do dia a dia de forma criativa. Agora, sempre que faço alterações no código, posso simplesmente usar `git ollama-commit` e deixar a IA sugerir uma mensagem apropriada.
+Perceba que ofereço um exemplo, citou como que faz uma extensão `git`, e também sugeri um modelo que eu tinha instalado no Ollama.
 
-Claro que a mensagem gerada nem sempre será perfeita, e eu ainda reviso antes de confirmar o commit, mas é um ótimo ponto de partida que economiza tempo e ajuda a manter um padrão nas mensagens.
+Ele gerou um código que não funcionou com `diffs` mais longos por conta de um check de limite de caracteres. Então fiz uma segunda tentativa, dessa vez mais detalhada.
 
-Você pode adaptar essa abordagem para outras tarefas, como gerar descrições de pull requests, atualizar documentação ou até mesmo escrever testes automaticamente. As possibilidades são vastas quando combinamos ferramentas de desenvolvimento com inteligência artificial local.
+#### Segunda tentativa de prompt
 
-Experimente criar sua própria extensão git - é mais fácil do que parece!
+    Modelo: Claude Haiku 4.5
+
+    In this repository, there is a file at ./bin/git-ollama-commit. I want you to replace it.
+    To replace it, I want you to look into that reference https://github.com/nateberkopec/dotfiles/blob/main/files/config/fish/functions/gc-ai.fish
+    I just want you to get this gc-ai.fish and convert to JavaScript. The only difference is that it should be executed with Node, so add the proper shebang, and it will use Ollama, no Claude.
+    This result of the process should be saved at ./bin/git-ollama-commit
+
+    for the model, use one I already have in the ollama (you can find which models i have using the command ollama list).
+    I suggest you to use the qwen3-coder
+
+O prompt é em essência o mesmo, mas dessa vez informou que ele só deveria converter o script `gc-ai.fish` para JavaScript, sem tirar nem por nada. 
+
+O modelo removeu o limite de caracteres, mas tentou chamar o Ollama via CLI, o que não funciona. A integração com o Ollama precisa ser feita via API HTTP.
+
+#### Terceira tentativa de prompt
+
+    Modelo: Claude Haiku 4.5
+
+    In this repository, there is a file at ./bin/git-ollama-commit. I want you to replace it.
+    To replace it, I want you to look into that reference https://github.com/nateberkopec/dotfiles/blob/main/files/config/fish/functions/gc-ai.fish
+    I just want you to get this gc-ai.fish, convert to JavaScript. The only difference is that it should be executed with Node, so add the proper shebang, and it will Ollama, no Claude.
+    This result of the process should be saved at ./bin/git-ollama-commit
+
+    for the model, use one I already have in the ollama (you can find which models i have using the command ollama list).
+    I suggest you to use the qwen3-coder
+
+    Ollama is not a CLI you should use its api
+
+Praticamente o mesmo prompt, mas agora informei que ele deveria usar a API do Ollama ao invés de tentar chamar o CLI. 
+
+O código gerado funcionou, eu inclusive use pra commitar as mudanças na própria extensão, como clean up e remoção de dependências não utilizadas.
+
+![Extensão git ollama-commit em ação](/assets/images/ollama/git-ollama-commit.png)
+
+A implementação completa está disponível gist: [https://gist.github.com/geeksilva97/69c4b74fb5a065b733abb084d786c922](https://gist.github.com/geeksilva97/69c4b74fb5a065b733abb084d786c922)
+
+[`llm`]: https://llm.datasette.io/en/stable/
+[`gum`]: https://github.com/charmbracelet/gum
+[`bat`]: https://github.com/sharkdp/bat
