@@ -13,7 +13,9 @@ By March 2023, OpenAI expanded ChatGPT's ecosystem with an [API](https://techcru
 
 In July 2024, I demonstrated this integration pattern at Google I/O Extended Fortaleza, where I built a chatbot using Vertex AI, Firebase, and the Gemini 1.5 model. The implementation leveraged the `Function Calling` feature, similar to ChatGPT's API, to enable interaction with external data sources.
 
-[demo video suggesting posts]
+The demo below show it in action. A chat that based know when to ask for user's actions like post suggestions (texts are in PT-BR).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PvemTFaU53c" title="Keyboard demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## The Integration Challenge
 
@@ -21,7 +23,7 @@ While **Function Calling/Tools** proved powerful, they revealed a critical limit
 
 This challenge called for a standardized approach to connect AI applications with external services and data sources. Almost exactly one year ago, in November 2024, Anthropic introduced the Model Context Protocol (MCP), an open standard designed to address these challenges.
 
-[image of with mcp vs without mcp]
+![Image showing comparison between Agents with MCP or without MCP](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/21111256/without_mcp-vs_with_mcp-1024x289.webp)
 
 ## MCP Core Concepts
 
@@ -31,7 +33,7 @@ MCP architecture centers on three components: host, client, and server. Here's h
 
 The host is the AI application itself (what we typically call an AI Agent). It integrates one or more MCP clients to interact with various MCP servers, orchestrating the overall workflow with LLM models.
 
-[image of MCP architecture]
+![](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/21111458/mcp-arch-1024x377.webp)
 
 #### MCP Server
 
@@ -47,7 +49,7 @@ Asana's MCP server provides tools like:
 - `asana_create_project`: Create new projects
 - `asana_create_task`: Add comments to tasks
 
-Each tool includes a name, description, and parameters—enabling the LLM to determine when and how to invoke it.
+Each tool includes a name, description, and parameters, enabling the LLM to determine when and how to invoke it.
 
 #### MCP Client
 
@@ -59,11 +61,11 @@ claude mcp add --transport sse asana https://mcp.asana.com/sse
 
 After configuration, typing `/mcp` and selecting `asana` initiates the authentication flow. Once credentials are provided, Claude can interact directly with your Asana workspace.
 
-[oauth asana]
+![](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/21111604/asana-oauth-979x1024.webp)
 
 Projects and tasks can be created simply by asking Claude to do so:
 
-[image of interaction]
+![](https://d604h6pkko9r0.cloudfront.net/wp-content/uploads/2025/11/21121052/claude-session-1-1024x471.webp)
 
 ## Flow of Interactions
 
