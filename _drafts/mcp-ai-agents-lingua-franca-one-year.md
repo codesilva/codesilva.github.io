@@ -11,7 +11,7 @@ In November 2022, OpenAI released ChatGPT, a groundbreaking AI language model th
 
 By March 2023, OpenAI expanded ChatGPT's ecosystem with an [API](https://techcrunch.com/2023/03/01/openai-launches-an-api-for-chatgpt-plus-dedicated-capacity-for-enterprise-customers/) and [plugin system](https://openai.com/index/chatgpt-plugins/). These additions enabled developers to integrate ChatGPT's capabilities into their own applications, allowing seamless interaction with live data and third-party services. Competitors like Google quickly followed with their own APIs and integration methods for large language models.
 
-In July 2024, I demonstrated this integration pattern at Google I/O Extended Fortaleza, where I built a chatbot using Vertex AI, Firebase, and the Gemini 1.5 model. The implementation leveraged the `Function Calling` feature—similar to ChatGPT's API—to enable interaction with external data sources.
+In July 2024, I demonstrated this integration pattern at Google I/O Extended Fortaleza, where I built a chatbot using Vertex AI, Firebase, and the Gemini 1.5 model. The implementation leveraged the `Function Calling` feature, similar to ChatGPT's API, to enable interaction with external data sources.
 
 [demo video suggesting posts]
 
@@ -19,7 +19,7 @@ In July 2024, I demonstrated this integration pattern at Google I/O Extended For
 
 While **Function Calling/Tools** proved powerful, they revealed a critical limitation as applications scaled: they required writing custom wrappers for every API you want to integrate. With each service having its own unique API, developers faced the daunting task of creating and maintaining bespoke code for each integration.
 
-This challenge called for a standardized approach to connect AI applications with external services and data sources. In November 2024—exactly one year ago—Anthropic introduced the Model Context Protocol (MCP), an open standard designed to address these challenges.
+This challenge called for a standardized approach to connect AI applications with external services and data sources. Almost exactly one year ago, in November 2024, Anthropic introduced the Model Context Protocol (MCP), an open standard designed to address these challenges.
 
 [image of with mcp vs without mcp]
 
@@ -79,7 +79,7 @@ MCP-based architectures typically follow these steps:
 
 ## The Woes and Joys of MCP
 
-MCP's core strength lies in isolating AI agents from tool definitions, providing flexibility, and enabling interoperability. However, MCP is simply a protocol—it doesn't prescribe how to build robust agents. All concerns about building quality AI applications remain your responsibility, often requiring additional abstractions.
+MCP's core strength lies in isolating AI agents from tool definitions, providing flexibility, and enabling interoperability. However, MCP is simply a protocol, it doesn't prescribe how to build robust agents. All concerns about building quality AI applications remain your responsibility, often requiring additional abstractions.
 
 While major AI players support MCP, servers introduce security considerations, particularly from the client perspective.
 
