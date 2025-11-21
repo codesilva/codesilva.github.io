@@ -7,11 +7,11 @@ tags: model-context-protocol, ai-agents, open-standards
 language: en
 ---
 
-In November 2022, OpenAI released ChatGPT, a groundbreaking AI language model that quickly captured widespread attention for its ability to generate human-like text. This release marked a pivotal moment in artificial intelligence, demonstrating the potential of large language models to assist with diverse tasks.
+In November 2022, OpenAI released ChatGPT, a groundbreaking AI language model that quickly captured widespread attention for its ability to generate human-like text. This release marked a pivotal moment in artificial intelligence, demonstrating the potential of large language models to assist with a wide range of tasks.
 
 By March 2023, OpenAI expanded ChatGPT's ecosystem with an [API](https://techcrunch.com/2023/03/01/openai-launches-an-api-for-chatgpt-plus-dedicated-capacity-for-enterprise-customers/) and [plugin system](https://openai.com/index/chatgpt-plugins/). These additions enabled developers to integrate ChatGPT's capabilities into their own applications, allowing seamless interaction with live data and third-party services. Competitors like Google quickly followed with their own APIs and integration methods for large language models.
 
-In July 2024, I demonstrated this integration pattern at Google I/O Extended Fortaleza, building a chatbot using Vertex AI, Firebase, and the Gemini 1.5 model. The implementation leveraged the `Function Calling` feature—similar to ChatGPT's API—to enable interaction with external data sources.
+In July 2024, I demonstrated this integration pattern at Google I/O Extended Fortaleza, where I built a chatbot using Vertex AI, Firebase, and the Gemini 1.5 model. The implementation leveraged the `Function Calling` feature—similar to ChatGPT's API—to enable interaction with external data sources.
 
 [demo video suggesting posts]
 
@@ -29,11 +29,11 @@ MCP architecture centers on three components: host, client, and server. Here's h
 
 The host is the AI application itself (what we typically call an AI Agent). It integrates one or more MCP clients to interact with various MCP servers, orchestrating the overall workflow with LLM models.
 
-[image of mcp architecture]
+[image of MCP architecture]
 
 #### MCP Server
 
-An MCP server exposes capabilities through a standardized API. Consider Asana's project management tool: their MCP server (currently in beta) allows AI agents to interact with Asana resources like projects and tasks. This enables complete workflow automation—creating projects, adding tasks, assigning team members, and updating statuses.
+An MCP server exposes capabilities through a standardized API. Consider Asana's project management tool: their MCP server (currently in beta) enables AI agents to interact with Asana resources, such as projects and tasks. This enables complete workflow automation, including creating projects, adding tasks, assigning team members, and updating statuses.
 
 The server API consists of three elements:
 
@@ -49,7 +49,7 @@ Each tool includes a name, description, and parameters—enabling the LLM to det
 
 #### MCP Client
 
-The interaction between servers and LLM models is orchestrated by the agent. Claude, for example, contains an MCP client within it, making it both an AI Agent and an MCP host. Integrating with Asana's MCP server requires just one command:
+The agent orchestrates the interaction between servers and LLM models. Claude, for example, contains an MCP client within it, making it both an AI Agent and an MCP host. Integrating with Asana's MCP server requires just one command:
 
 ```bash
 claude mcp add --transport sse asana https://mcp.asana.com/sse
@@ -77,10 +77,10 @@ MCP-based architectures typically follow these steps:
 
 ## The Woes and Joys of MCP
 
-MCP's core strength lies in isolating AI agents from tool definitions, providing flexibility and enabling interoperability. However, MCP is simply a protocol—it doesn't prescribe how to build robust agents. All concerns about building quality AI applications remain your responsibility, often requiring additional abstractions.
+MCP's core strength lies in isolating AI agents from tool definitions, providing flexibility, and enabling interoperability. However, MCP is simply a protocol—it doesn't prescribe how to build robust agents. All concerns about building quality AI applications remain your responsibility, often requiring additional abstractions.
 
 While major AI players support MCP, servers introduce security considerations, particularly from the client perspective.
 
-**For MCP clients:** Only connect to trusted MCP servers. Currently, there's no official registry or certification authority validating MCP servers—similar to how you shouldn't install random packages, you shouldn't connect to untrusted servers.
+**For MCP clients:** Only connect to trusted MCP servers. Currently, no official registry or certification authority is validating MCP servers—similar to how you shouldn't install random packages, you shouldn't connect to untrusted servers.
 
 **For MCP server implementations:** Expect that clients may send malformed requests or attempt exploits. Proper input validation and sanitization are essential for maintaining security and integrity.
