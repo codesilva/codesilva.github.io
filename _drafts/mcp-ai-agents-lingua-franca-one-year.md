@@ -15,7 +15,7 @@ In July 2024, I demonstrated this integration pattern at Google I/O Extended For
 
 [demo video suggesting posts]
 
-While Function Calling and Tools proved powerful, they revealed a critical limitation as applications grew more complex: tight coupling to specific model providers. Switching between models required substantial code rewrites to accommodate different APIs and integration methods. Even within a single provider's ecosystem, integrating multiple services meant handling different APIs and formats for each, increasing complexity and maintenance overhead.
+While **Function Calling/Tools** proved powerful, they revealed a critical limitation as applications scaled: they required writing custom wrappers for every API you want to integrate. With each service having its own unique API, developers faced the daunting task of creating and maintaining bespoke code for each integration.
 
 This challenge called for a standardized approach to connect AI applications with external services and data sources. In November 2024—exactly one year ago—Anthropic introduced the Model Context Protocol (MCP), an open standard designed to address these challenges.
 
@@ -38,7 +38,7 @@ An MCP server exposes capabilities through a standardized API. Consider Asana's 
 The server API consists of three elements:
 
 - **[Prompts](https://modelcontextprotocol.io/specification/2025-06-18/server/prompts)**: Templates for generating messages to send to models
-- **[Resources](https://modelcontextprotocol.io/specification/2025-06-18/server/resources)**: Contextual information for LLMs such as files and database schemas
+- **[Resources](https://modelcontextprotocol.io/specification/2025-06-18/server/resources)**: Contextual information for LLMs, such as files and database schemas
 - **[Tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)**: Executable functionalities exposed to clients (similar to function calls in ChatGPT's API)
 
 Asana's MCP server provides tools like:
