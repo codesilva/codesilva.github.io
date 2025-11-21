@@ -15,6 +15,8 @@ In July 2024, I demonstrated this integration pattern at Google I/O Extended For
 
 [demo video suggesting posts]
 
+## The Integration Challenge
+
 While **Function Calling/Tools** proved powerful, they revealed a critical limitation as applications scaled: they required writing custom wrappers for every API you want to integrate. With each service having its own unique API, developers faced the daunting task of creating and maintaining bespoke code for each integration.
 
 This challenge called for a standardized approach to connect AI applications with external services and data sources. In November 2024—exactly one year ago—Anthropic introduced the Model Context Protocol (MCP), an open standard designed to address these challenges.
