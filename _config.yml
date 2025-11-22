@@ -41,6 +41,8 @@ header_pages:
 
 show_excerpts: true
 
+google_analytics: true
+
 minima:
   social_links:
     - { platform: youtube, username: 'Assista no YouTube', user_url: "https://youtube.com/edigleyssonsilva" }
