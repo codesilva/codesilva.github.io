@@ -13,7 +13,7 @@ By March 2023, OpenAI expanded ChatGPT's ecosystem with an [API](https://techcru
 
 In July 2024, I demonstrated this integration pattern at Google I/O Extended Fortaleza, where I built a chatbot using Vertex AI, Firebase, and the Gemini 1.5 model. The implementation leveraged the `Function Calling` feature, similar to ChatGPT's API, to enable interaction with external data sources.
 
-The demo below show it in action. A chat that based know when to ask for user's actions like post suggestions (texts are in PT-BR).
+The demo below shows it in action. A chat that is based on knowing when to ask for user's actions like post suggestions (texts are in PT-BR).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PvemTFaU53c" title="Keyboard demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -88,3 +88,7 @@ While major AI players support MCP, servers introduce security considerations, p
 **For MCP clients:** Only connect to trusted MCP servers. Currently, no official registry or certification authority is validating MCP servers—similar to how you shouldn't install random packages, you shouldn't connect to untrusted servers.
 
 **For MCP server implementations:** Expect that clients may send malformed requests or attempt exploits. Proper input validation and sanitization are essential for maintaining security and integrity.
+
+## Conclusion
+
+MCP has become the "lingua franca" for AI agents by providing a standardized protocol that eliminates the need for custom API wrappers, enabling seamless integration between AI applications and external services. While it offers flexibility and interoperability, its adoption requires careful security considerations, as connecting to untrusted servers poses risks similar to installing unverified software packages. The protocol effectively decouples AI agents from tool definitions, but developers remain responsible for building robust, secure implementations.
