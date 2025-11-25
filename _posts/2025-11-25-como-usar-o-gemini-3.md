@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Como usar o Gemini 3 agora mesmo"
-date: 2025-11-23
+date: 2025-11-25
 tags: [gemini, ollama, ia, tutorial]
-categories: [ia, gemini, tutorial]
+categories: [ia, gemini]
 ---
 
 O [Gemini 3 Pro](https://ai.google.dev/gemini-api/docs/gemini-3?thinking=high#javascript_1) é o modelo mais avançado da Google para tarefas complexas, capaz de compreender grandes conjuntos de dados e resolver problemas desafiadores a partir de diferentes fontes de informação, incluindo texto, áudio, imagens, vídeo e repositórios de código completos.
