@@ -7,6 +7,16 @@ tags: [gemini, ollama, ia, tutorial]
 
 O (Gemini 3 Pro)[https://ai.google.dev/gemini-api/docs/gemini-3?thinking=high#javascript_1] é o modelo mais avançado da Google para tarefas complexas, capaz de compreender vastos conjuntos de dados e resolver problemas desafiadores a partir de diferentes fontes de informação, incluindo texto, áudio, imagens, vídeo e repositórios de código completos.
 
+Como qualquer pessoa curiosa você pode querer experimentar o modelo já hoje. Há algumas formas de fazer isso. A primeira
+e mais simples é através do [gemini.google.com/app](https://gemini.google.com/app), que é a interface web oficial para
+interagir com os modelos Gemini.
+
+[imagem da selecao do modelo Gemini 3 Pro no gemini.google.com/app]
+
+Funciona, mas não sei se de forma consistente, já que no site da própria Google há a informação de que o acesso ao Gemini 3 Pro é limitado.
+
+## Usando na Gemini CLI
+
 O [modelo está disponível](https://github.com/google-gemini/gemini-cli/discussions/13280), mas não para todos ainda. O acesso eimediato está liberado para três categorias principais de usuários:
 
 - Assinantes não comerciais do Google AI Ultra.
@@ -20,6 +30,8 @@ Com o devido acesso, usando a Gemini CLI, basta habilitar o preview de features:
 [image of preview features being enabled]
 
 [imagem do modelo disponível no Gemini CLI]
+
+## Usando com a API Key do Vertex
 
 ## Usando o Gemini 3 com Ollama
 
