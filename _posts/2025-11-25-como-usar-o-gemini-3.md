@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Como usar o Gemini 3 agora mesmo"
+title: "Como usar o Gemini 3 hoje"
 date: 2025-11-25
 tags: [gemini, ollama, ia, tutorial]
 categories: [ia, gemini]
