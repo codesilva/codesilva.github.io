@@ -43,3 +43,40 @@ p *(node::PerProcessOptions*)0x00000001547045e0
 ```
 
 https://developer.apple.com/library/archive/documentation/General/Conceptual/lldb-guide/chapters/C3-Breakpoints.html
+
+* thread #1, name = 'MainThread', queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+  * frame #0: 0x0000000100579198 node`node::sqlite::DatabaseSync::AuthorizerCallback(user_data=0x00006000028740d0, action_code=21, param1=0x0000000000000000, param2=0x0000000000000000, param3=0x0000000000000000, param4=0x0000000000000000) at node_sqlite.cc:1954:49
+    frame #1: 0x0000000101b177d8 node`sqlite3AuthCheck(pParse=0x000000016fdfc5f0, code=21, zArg1=0x0000000000000000, zArg2=0x0000000000000000, zArg3=0x0000000000000000) at sqlite3.c:124289:8 [opt] [inlined]
+    frame #2: 0x0000000101b177bc node`sqlite3Select(pParse=0x000000016fdfc5f0, p=0x0000000158207db0, pDest=0x000000016fdfbb20) at sqlite3.c:154419:7 [opt]
+    frame #3: 0x0000000101b0e6a8 node`yy_reduce(yypParser=0x000000016fdfbbd0, yyruleno=84, yyLookahead=<unavailable>, yyLookaheadToken=<unavailable>, pParse=<unavailable>) at sqlite3.c:181449:5 [opt]
+    frame #4: 0x0000000101a9f3c0 node`sqlite3Parser(yyp=<unavailable>, yymajor=1, yyminor=(z = "", n = 0)) at sqlite3.c:182913:15 [opt]
+    frame #5: 0x0000000101a9f398 node`sqlite3RunParser(pParse=<unavailable>, zSql="") at sqlite3.c:184255:5 [opt]
+    frame #6: 0x0000000101afcc7c node`sqlite3Prepare(db=<unavailable>, zSql=<unavailable>, nBytes=<unavailable>, prepFlags=<unavailable>, pReprepare=<unavailable>, ppStmt=<unavailable>, pzTail=<unavailable>) at sqlite3.c:146429:5 [opt]
+    frame #7: 0x0000000101a9d508 node`sqlite3LockAndPrepare(db=0x000000013ce10230, zSql="SELECT 1", nBytes=-1, prepFlags=128, pOld=0x0000000000000000, ppStmt=0x000000016fdfc930, pzTail=0x0000000000000000) at sqlite3.c:146504:10 [opt]
+    frame #8: 0x0000000100574908 node`node::sqlite::DatabaseSync::Prepare(args=0x000000016fdfcde8) at node_sqlite.cc:1152:11
+
+
+* thread #1, name = 'MainThread', queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+  * frame #0: 0x0000000100579198 node`node::sqlite::DatabaseSync::AuthorizerCallback(user_data=0x00006000003f4000, action_code=21, param1=0x0000000000000000, param2=0x0000000000000000, param3=0x0000000000000000, param4=0x0000000000000000) at node_sqlite.cc:1954:49
+    frame #1: 0x0000000101b177d8 node`sqlite3AuthCheck(pParse=0x000000016fdfc6c0, code=21, zArg1=0x0000000000000000, zArg2=0x0000000000000000, zArg3=0x0000000000000000) at sqlite3.c:124289:8 [opt] [inlined]
+    frame #2: 0x0000000101b177bc node`sqlite3Select(pParse=0x000000016fdfc6c0, p=0x0000000140117e30, pDest=0x000000016fdfbbf0) at sqlite3.c:154419:7 [opt]
+    frame #3: 0x0000000101b0e6a8 node`yy_reduce(yypParser=0x000000016fdfbca0, yyruleno=84, yyLookahead=<unavailable>, yyLookaheadToken=<unavailable>, pParse=<unavailable>) at sqlite3.c:181449:5 [opt]
+    frame #4: 0x0000000101a9f3c0 node`sqlite3Parser(yyp=<unavailable>, yymajor=1, yyminor=(z = "", n = 0)) at sqlite3.c:182913:15 [opt]
+    frame #5: 0x0000000101a9f398 node`sqlite3RunParser(pParse=<unavailable>, zSql="") at sqlite3.c:184255:5 [opt]
+    frame #6: 0x0000000101afcc7c node`sqlite3Prepare(db=<unavailable>, zSql=<unavailable>, nBytes=<unavailable>, prepFlags=<unavailable>, pReprepare=<unavailable>, ppStmt=<unavailable>, pzTail=<unavailable>) at sqlite3.c:146429:5 [opt]
+    frame #7: 0x0000000101a9d508 node`sqlite3LockAndPrepare(db=0x000000015b805250, zSql="SELECT 1", nBytes=-1, prepFlags=128, pOld=0x0000000140113b80, ppStmt=0x000000016fdfc958, pzTail=0x0000000000000000) at sqlite3.c:146504:10 [opt]
+    frame #8: 0x0000000101a95578 node`sqlite3Reprepare(p=0x0000000140113b80) at sqlite3.c:146542:8 [opt]
+    frame #9: 0x0000000101a8f0d4 node`sqlite3_step(pStmt=0x0000000140113b80) at sqlite3.c:93307:10 [opt]
+    frame #10: 0x000000010057b324 node`node::sqlite::StatementExecutionHelper::Run(env=0x000000015a83fa00, db=0x00006000003f4000, stmt=0x0000000140113b80, use_big_ints=false) at node_sqlite.cc:2307:3
+    frame #11: 0x000000010057c5ac node`node::sqlite::StatementSync::Run(args=0x000000016fdfcde8) at node_sqlite.cc:2506:7
+    frame #12: 0x0000000101383238 node`Builtins_CallApiCallbackGeneric + 152
+    frame #13: 0x000000010138158c node`Builtins_InterpreterEntryTrampoline + 268
+    frame #14: 0x000000010138158c node`Builtins_InterpreterEntryTrampoline + 268
+    frame #15: 0x000000010138158c node`Builtins_InterpreterEntryTrampoline + 268
+    frame #16: 0x000000010138158c node`Builtins_InterpreterEntryTrampoline + 268
+    frame #17: 0x000000010138158c node`Builtins_InterpreterEntryTrampoline + 268
+    frame #18: 0x000000010138158c node`Builtins_InterpreterEntryTrampoline + 268
+    frame #19: 0x0000000101494f48 node`Builtins_PromiseConstructor + 1864
+    frame #20: 0x000000010137dbec node`Builtins_JSBuiltinsConstructStub + 332
+    frame #21: 0x0000000101511b40 node`Builtins_ConstructForwardAllArgsHandler + 800
+    frame #22: 0x000000010138158c node`Builtins_InterpreterEntryTrampoline + 268

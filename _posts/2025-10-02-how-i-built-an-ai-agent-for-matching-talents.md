@@ -140,7 +140,7 @@ The same thing we discussed about tf-idf applies to embeddings. The main differe
 
 Embeddings are more complex and come from neural networks, which are trained on large corpora of text to capture the context and relationships between words.
 
-So, in a project requirement asking for a "cloud computing" experience, an embedding model would understand that "AWS" and "Azure" are related to "cloud computing", even if the exact words are not present in the text. Of course, that's the general idea; the quality of the embeddings depends on the model used and the training data, but that's '
+So, in a project requirement asking for a "cloud computing" experience, an embedding model would understand that "AWS" and "Azure" are related to "cloud computing", even if the exact words are not present in the text. Of course, that's the general idea; the quality of the embeddings depends on the model used and the training data, but that's the gist of it.
 
 Using `sentence_transformers`, from Hugging Face, we can easily compute the embeddings and the cosine similarity between them.
 
