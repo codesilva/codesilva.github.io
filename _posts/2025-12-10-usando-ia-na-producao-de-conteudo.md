@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Usando IA na Produção de Conteúdo"
-date: 2025-11-25
+date: 2025-12-10
 tags: [gemini, ollama, ia, tutorial]
 categories: [ia, gemini]
 ---
