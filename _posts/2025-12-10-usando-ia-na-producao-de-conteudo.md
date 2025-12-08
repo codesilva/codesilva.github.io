@@ -22,9 +22,11 @@ Ele menciona que foi lendo e lendo várias propostas e tendo um desconforto, fic
 
 ## IAs Generativas São Medíocres
 
-O conteúdo produzido por IAs é que nem McDonald's. Certamente, muitas pessoas gostam de McDonald's, e dependendo do seu contexto ele pode ser uma boa opção. Num grupo de amigos, vocês estão indecisos sobre onde comer. Se alguém sugere McDonald's, todos concordam. Às vezes num aeroporto, entre um voo e outro, um McDonald's te salva.
+O conteúdo produzido por IAs [é que nem McDonald's](https://youtu.be/lxIvWG85Nlk?si=pSjijic_Ha3_m3bE&t=3576). Certamente, muitas pessoas gostam de McDonald's, e dependendo do seu contexto ele pode ser uma boa opção. Num grupo de amigos, vocês estão indecisos sobre onde comer. Se alguém sugere McDonald's, todos concordam. Às vezes num aeroporto, entre um voo e outro, um McDonald's te salva.
 
 No entanto, se decidem que querem comer algo especial, algo bem preparado, o McDonald's nem entra em discussão.
+
+
 
 Na produção de conteúdo, o mesmo vale. Para fazer um bom conteúdo é preciso **pensar**, coisa que IA nenhuma faz. [Pensar é difícil][] e por isso requer repetição e esforço.
 
