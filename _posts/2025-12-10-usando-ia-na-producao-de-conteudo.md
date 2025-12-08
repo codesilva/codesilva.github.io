@@ -16,7 +16,7 @@ Ele menciona que foi lendo e lendo várias propostas e tendo um desconforto, fic
 
 > "... eles estão escritos em Linkedines, uma espécie de dialeto usado em posts do LinkedIn ..."
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XhKcelV7DBo?si=pgTFs9QiZDmo75IP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe style="max-width: 100%;" width="560" height="315" src="https://www.youtube.com/embed/XhKcelV7DBo?si=pgTFs9QiZDmo75IP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <br />
 
