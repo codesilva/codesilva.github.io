@@ -1,22 +1,23 @@
 ---
 layout: post
 title: "Usando IA na Produção de Conteúdo"
-date: 2025-12-10
+date: 2025-12-08
 tags: [gemini, ollama, ia, tutorial]
 categories: [ia, gemini]
 ---
 
-Usar ia para produzir conteúdo sempre vai gerar polêmica. A verdade é que **ninguém gosta** de conteúdos gerados por ia. Chegamos ao ponto em que o uso de travessões, que eu gosto muito, é visto como um sinal de que o texto foi gerado por ia. Isso é triste, mas é a realidade.
+Usar ia para produzir conteúdo sempre vai gerar polêmica. A verdade é que **ninguém gosta** de conteúdos gerados por IA. Chegamos ao ponto em que o uso de travessões, que eu gosto muito, é visto como um sinal de que o texto foi gerado por ia. Isso é triste, mas é a realidade.
 
-Ninguém gosta de conteúdos gerados por ia porque eles não são bons.
+Ninguém gosta de conteúdos gerados por IA porque eles não são bons.
 
-Nessa palestra, o autor fala sobre o processo de revisar propostas de palestras para o evento `NDC Oslo`. Ele chega a mencionar que foi lendo e lendo várias propostas e tendo um desconforto, ficando com raiva.
+Na palestra _"Why your AI generated talk abstract was rejected for NDC Oslo"_, o autor fala sobre o processo de revisar propostas de palestras para o evento `NDC Oslo`.
+
+Ele menciona que foi lendo e lendo várias propostas e tendo um desconforto, ficando com raiva.
 
 > "... eles estão escritos em Linkedines, uma espécie de dialeto usado em posts do LinkedIn ..."
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XhKcelV7DBo?si=pgTFs9QiZDmo75IP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<br />
 <br />
 
 ## IAs Generativas São Medíocres
@@ -55,9 +56,9 @@ Tendo uma versão prévia do texto, faço uso de IAs generativas para me ajudar 
 
 Essa é a pergunta de um milhão de dólares. A verdade é que não existe um modelo perfeito. Minha recomendação é que você faça os seus próprios testes.
 
-Eu experimentei alguns modelos como Qwen3, ChatGPT-4 e Kimi K2 Thinking. O que melhor funcionou para mim foi o [`Kimi K2`][], sem o _Thinking_.
+Eu experimentei alguns modelos como Qwen3, ChatGPT-4, Kimi K2 e Kimi K2 Thinking. O que melhor funcionou para mim foi o [`Kimi K2`][], sem o _Thinking_.
 
-Eu o uso dentro do [OpenCode][] através do [Ollama Cloud][]. Eu uso pelo Cloud, mas você pode rodar localmente também caso tenha hardware suficiente.
+No [OpenCode][], criei um [agente](https://opencode.ai/docs/agents/) especializado em revisão de textos. Como não tenho hardware local suficiente para rodar o Kimi K2, faço uso da infrastrutura do [Ollama Cloud][].
 
 Kimi K2 tem uma performance boa a ponto de eu poder remover o Grammarly da minha pipeline de edição quando escrevo textos em inglês.
 
@@ -68,7 +69,7 @@ Título é das coisas mais importantes em um artigo. É o que o leitor vê prime
 Eu sempre tenho minhas próprias ideias para títulos, mas peço ajuda da IA para melhorá-los. Peço sugestões de títulos alternativos e também solicito melhorias nos títulos que já tenho.
 
 Se o blog requer imagem de capa, como é o caso do blog da Codeminer42, peço ao [`Kimi K2`][] um prompt para gerar uma imagem
-que combine com o título e o tema do artigo. Uso esse prompt no Nano Banana para criar a imagem.
+que combine com o título e o tema do artigo. Uso esse prompt no **Nano Banana** para criar a imagem.
 
 ## Conclusão
 
@@ -81,10 +82,6 @@ Quando você escreve sobre algo que viveu, algo que estudou profundamente, algo 
 A honestidade intelectual é rara hoje em dia. É fácil pedir pra IA gerar um texto completo e assinar seu nome embaixo. Mas qual é o valor disso? Você está traindo quem lê e, principalmente, está traindo a si mesmo.
 
 **Escreva seus textos. Seja honesto. Use IA como ferramenta, não como mágica.**
-
-O mundo já tem conteúdo demais. O que falta é conteúdo **verdadeiro**. Conteúdo que só você pode criar, com suas mãos, sua mente, sua alma.
-
-Porque no final das contas, o que resta quando a IA desliga? **A sua capacidade de pensar, de sentir, de criar. E isso ninguém pode roubar de você.**
 
 [Pensar é difícil]: https://codesilva.github.io/aprendendo-a-aprender/2025/06/05/como-reter-conhecimento.html#1-voc%C3%AA-precisa-pensar-n%C3%A3o-buscar-por-respostas
 [Ollama Cloud]: https://ollama.com/cloud
