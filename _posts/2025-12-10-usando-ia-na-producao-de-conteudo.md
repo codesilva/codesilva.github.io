@@ -38,7 +38,7 @@ O processo é o seguinte:
 
 ### EU ESCREVO O TEXTO
 
-Faço a minha pesquisa, coloco as minhas ideias no papel (ou no editor de texto). Separo a escrita do texto em duas partes: escrevo o texto, coloco as ideias sem me preocupar com gramática ou fluidez.
+Faço a minha pesquisa, coloco as minhas ideias no papel (ou no arquivo `markdown`). Separo a escrita do texto em duas partes: escrevo o texto, coloco as ideias sem me preocupar com gramática ou fluidez.
 
 Não me preocupo em fazer um texto perfeito logo de cara. Escrevo o texto, deixo ele "cru".
 
