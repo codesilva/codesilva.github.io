@@ -20,7 +20,7 @@ When searching for something, a common saying is:
 
 > It's always in the last place you look.
 
-That makes sense—no one would keep looking after finding what they were looking for. Except for developers, who often use inefficient search methods.
+That makes sense; no one would keep looking after finding what they were looking for. Except for developers, who often use inefficient search methods.
 
 Consider the following code:
 
@@ -78,7 +78,7 @@ In the `reduce` example, we have this line:
 return [...acc, { ...item, price: item.unitPrice * 1.1 }];
 ```
 
-It uses spread syntax—we all love it—but it's unnecessarily creating a new array and a new object on each iteration.
+It uses spread syntax; we all love it, but it's unnecessarily creating a new array and a new object on each iteration.
 
 Unfortunately, reduce with spread syntax is a very common pattern in React codebases. Developers want to avoid mutating state, but they don't realize this pattern can lead to significant memory overhead.
 
@@ -95,7 +95,7 @@ const productsWithNewPrice = products.reduce((acc, item) => {
 }, []);
 ```
 
-Look, `acc` is our intermediate array—it's safe to mutate directly since we're not touching the original products array. On the other hand, we still create a new object for each item, which is necessary to keep the original items unchanged.
+Look, `acc` is our intermediate array; it's safe to mutate directly since we're not touching the original products array. On the other hand, we still create a new object for each item, which is necessary to keep the original items unchanged.
 
 #### Defer computations as much as possible
 
@@ -151,10 +151,10 @@ Start by questioning your habits. Do you really need that `filter().map()` chain
 
 The key takeaways are:
 
-1. **Stop early** - use `find()` instead of `filter()` when you need a single item
-2. **Don't be afraid to mutate** - intermediate values in reduce callbacks are safe to modify
-3. **Defer work** - use iterators to process data lazily and avoid intermediate arrays
-4. **Profile your code** - use browser devtools to identify memory hotspots
+1. **Stop early**; use `find()` instead of `filter()` when you need a single item
+2. **Don't be afraid to mutate**; intermediate values in reduce callbacks are safe to modify
+3. **Defer work**; use iterators to process data lazily and avoid intermediate arrays
+4. **Profile your code**; use browser devtools to identify memory hotspots
 
 These optimizations aren't just about saving RAM. They often lead to faster code, better battery life on mobile devices, and a smoother user experience overall.
 
