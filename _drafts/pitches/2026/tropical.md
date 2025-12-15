@@ -6,19 +6,19 @@ Beyond CRUD: Building Conversational AI Agents in Rails
 
 This talk explores the trend of multimodal interactions with Large Language Models (LLMs), focusing on voice interfaces.
 
-It highlights how Rails developers can leverage tools like RubyLLM, Stimulus, and Action Cable to build AI voice agents that provide natural and engaging user experiences. 
+You will see how you can leverage tools like RubyLLM, Stimulus, and Action Cable to build AI voice agents that provide natural and engaging user experiences. 
 
-It covers the building blocks of AI Agents, in-browser vs server-side architectures, transport layers for audio streaming, token optimization strategies, Retrieval-Augmented Generation (RAG), function calling, and tool integration.
+It covers the building blocks of AI Agents, in-browser vs server-side architectures, transport layers for audio streaming, token optimization strategies, Retrieval-Augmented Generation (RAG), and tools integration.
 
 # Detailed Description
 
 ## Pitch
 
-It's 2026, AI agents are everywhere. Unserstading how to leverage LLMs for buildind this kind of application is a must-have skill for developers.
+It's 2026, AI agents are everywhere. Understanding how to leverage LLMs for building this kind of application is a must-have skill for developers.
 
 As many providers are developing multimodal models, we can see a trend towards more natural and intuitive ways for users to interact with applications. Voice interfaces are becoming increasingly prevalent, offering hands-free access to information and services.
 
-Working on a software boutique that delivers high-quality software solutions using Rails and AI, I've been involved in a couple of projects that required building AI voice agents.
+While working on a software boutique that delivers high-quality software solutions using Rails and AI, I've been involved in a couple of projects that required building AI voice agents.
 
 In this talk, I'll share insights and practical knowledge on how Rails developers can build AI voice agents using the Rails ecosystem.
 
@@ -35,7 +35,7 @@ After attending this talk, the audience should know:
 ### Introduction
 
 - Discuss how AI applications are not a Python-only domain anymore show the difference between AI/Context and ML Engineering
-- Review the state of LLMs and their capabilities (e.g., tool calling, intrusction-following, multimodal inputs)
+- Review the state of LLMs and their capabilities (e.g., tool calling, instruction-following, multimodal inputs)
 
 ### AI Agents Building Blocks
 
