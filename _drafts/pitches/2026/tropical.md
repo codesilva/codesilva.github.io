@@ -16,7 +16,9 @@ It’s April 2026. AI agents are everywhere, and the "chatbox in the corner" is 
 
 It doesn’t have to be that way.
 
-In the last couple months, I've helped our teams to build and launch a production-grade call center AI agent and a voice-driven product feedback collector. Leveraging Rails' robust WebSocket support (Action Cable) and modern frontend integration (Stimulus), we created seamless, real-time voice interactions without leaving the Ruby ecosystem.
+In the last couple months, I've helped our teams to build and launch a production-grade call center AI agent and a voice-driven product feedback collector. 
+
+For this talk, I apply the concepts learned from those projects to architect a voice-first AI agent entirely within the Ruby on Rails ecosystem.
 
 This talk is a practical deep dive into architecting voice-first agents without leaving the Ruby ecosystem.
 
