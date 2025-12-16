@@ -30,7 +30,7 @@ After attending this talk, the audience should know:
 2. Ruby and Rails tools available for building AI agents
 3. The trade-offs between in-browser and server-side architectures for voice agents
 
-Handling interruptions and turn-taking (barge-i
+4. Handling interruptions and turn-taking (barge-in)
 
 ## Outline
 
