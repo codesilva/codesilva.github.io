@@ -1,5 +1,5 @@
 # 1) Talk Title
-**Why Your Microservices Are Living in Different Decades (And How to Fix It)**
+**The Hidden Complexity of Time: Lessons from a Failed Migration**
 
 # 2) Abstract (2–4 sentences)
 Time seems like a simple primitive until you split it across distributed systems. This session dissects a real-world migration failure where implicit assumptions about time formats caused data corruption and 50-year drifts between a legacy monolith and a modern microservice. We will move beyond "use UTC" and explore architectural patterns for temporal integrity, including defensive contract testing and unambiguous data transfer protocols.
