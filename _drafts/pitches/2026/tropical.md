@@ -1,6 +1,6 @@
 ## Title
 
-Beyond CRUD: Building Conversational AI Agents in Rails
+Build Real-Time Voice AI Agents Without Leaving Rails
 
 ## Abstract
 
