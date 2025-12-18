@@ -25,7 +25,7 @@ class Greetings
 end
 ```
 
-Now, let's get this into it's own box:
+Now, let's put this into its own box:
 
 ```ruby
 # file: demo.rb
@@ -37,29 +37,29 @@ puts box::Greetings.say_hello "Edy" # Output: HELLO, EDY!
 "Hello".shout # This will raise NoMethodError since the String#shout method is not defined in the root box (main context)
 ```
 
-This feature is still experimental and needs to be enabled with `RUBY_BOX=1` environment variable. It has to be `1` to enable it.
+This feature is still experimental and must be enabled using the `RUBY_BOX=1` environment variable.
 
-A use case that comes to my mind is when you have multiple versions of implementations of the same lib. Like that Service implementation you are migrating from v1 to v2 but still need to keep both versions running for a while.
+A use case that comes to mind is running multiple versions of the same library simultaneously. For example, migrating a Service implementation from v1 to v2 while needing to keep both versions running for a while.
 
-Either as a gem or your own code. You can load each version in its own box and use them without conflicts. This blog post from [Xavier Noria](https://gist.github.com/fxn/86ad8584d7813caf03dac9222f8dcf41) has more details about Ruby::Box.
+Whether it is a gem or your own code, you can load each version in its own box and use them without conflicts. This blog post from [Xavier Noria](https://gist.github.com/fxn/86ad8584d7813caf03dac9222f8dcf41) has more details about Ruby::Box.
 
 ### Ractor
 
-As someone who worked a bit with Erlang I'm happy with what they did with Ractor in this release. It's getting more ergonomic and easier to use.
+As someone with experience in Erlang, I am happy with the Ractor improvements in this release. It is becoming more ergonomic and easier to use.
 
-Ractor, as the actor model implementation of Ruby, works like this.
+Ractor, Ruby's implementation of the Actor Model, works like this:
 
 [actor model image]
 
-This version of Ruby introduces `Ractor::Port` that's basically the `mailbox` of the actor model. Messages are now sent to and received from ports, a huge improvement on how to synchronize data between Ractors.
+This version introduces `Ractor::Port`, which essentially acts as the `mailbox` in the Actor Model. Messages are now sent to and received from ports, representing a significant improvement in data synchronization between Ractors.
 
-Any Ractor can send messages to any port but only the owner Ractor can receive messages from its port.
+Any Ractor can send messages to any port, but only the owner Ractor can receive messages from its own port.
 
 As a result of this change, methods like `Ractor.yield` and `Ractor#take` are no longer necessary and have been removed.
 
-Two other things added to Reactor are: `Ractor.shareable_proc` and `Ractor.shareable_lambda`. Sharing procs is necessary and, again, makes everything more ergonomic.
+Two other additions to Ractor are `Ractor.shareable_proc` and `Ractor.shareable_lambda`. Sharing procs is necessary and, once again, makes everything more ergonomic.
 
-One of the hello world examples of Actor Model is the parallel map. Here's how it looks in Ruby 4.0:
+One of the "Hello World" examples of the Actor Model is the parallel map. Here is how it looks in Ruby 4.0:
 
 ```ruby
 def pmap(enum, &block)
@@ -96,13 +96,13 @@ pmap(1..5, &b)
 
 We spawn a Ractor for each item in the enumerable, passing a port and a shareable proc as arguments. Each Ractor computes the result and sends it back through its port.
 
-Try to do this in Ruby 3.x and you'll see how much more cumbersome it is. You will have to deal with tagging messages and all that boilerplate code.
+Trying to do this in Ruby 3.x reveals how cumbersome it used to be, requiring message tagging and significant boilerplate code.
 
-Worth mentioning that Ractor is still experimental and may change in future versions of Ruby.
+It is worth mentioning that Ractor is still experimental and may change in future Ruby versions.
 
 ### Kernel
 
-`Kernel#inspect` now checks for the existence of a `#instance_variables_to_inspect` method, allowing control over which instance variables are displayed in the `#inspect` string:
+The `Kernel#inspect` method now checks for the existence of `#instance_variables_to_inspect`, allowing control over which instance variables appear in the `#inspect` output:
 
 ```ruby
 class DatabaseConfig
@@ -121,7 +121,7 @@ conf.inspect #=> #<DatabaseConfig:0x0000000104def350 @host="localhost", @user="r
 
 ### ArgumentError now displays code snippets for caller and callee
 
-This improvement makes debugging easier by providing more context about where the error occurred.
+This improvement eases debugging by providing more context about the error's location.
 
 ```ruby
 # file: greetings.rb
@@ -155,7 +155,7 @@ A much more informative error message that helps identify the problem quickly.
 
 ### New top-level module: Ruby
 
-`Ruby` is the new top-level module and contains Ruby-related constants.
+`Ruby` is a new top-level module containing Ruby-related constants.
 
 ```ruby
 %w[
@@ -206,9 +206,9 @@ Running the same code in Ruby 4.0 will not produce any output, as `nil.to_a` is 
 
 This subtle change makes the whole splat operation more efficient since it avoids unnecessary array allocations.
 
-### [Boolean operators are now allowed in the beginning of line](https://bugs.ruby-lang.org/issues/20925)
+### [Boolean operators are now allowed at the beginning of the line](https://bugs.ruby-lang.org/issues/20925)
 
-So far, to have a multi-line conditional expression, you had to place the boolean operator at the end of the previous line, otherwise, it would raise a syntax error.
+Previously, multi-line conditional expressions required placing the boolean operator at the end of the preceding line, otherwise, a syntax error would occur.
 
 ```ruby
   if request.secret_key_base.present? &&
@@ -233,18 +233,18 @@ In this new version of Ruby, you can place the boolean operator at the beginning
 
 # What else?
 
-- `Array` class now has its own `#find` method, an efficient override of `Enumerable#find`; a `#rfind` method was also added as an efficient alternative to `array.reverse_each.find`.
-- `ZJIT` is becoming production-ready in Ruby 4.1. It's faster than the interpreter but it didn't surpass YJIT yet.
-- The Ruby Jit Toolkit ([RJIT][]) was moved to a separate library.
+- The `Array` class now includes its own `#find` method, an efficient override of `Enumerable#find`. Additionally, an `#rfind` method has been added as an efficient alternative to `array.reverse_each.find`.
+- `ZJIT` is becoming production-ready in Ruby 4.1. While faster than the interpreter, it has not yet surpassed YJIT.
+- The Ruby Jit Toolkit ([RJIT][]) has been moved to a separate library.
 
 [RJIT]: https://github.com/ruby/rjit
 
 # Conclusion
 
-This version brings many improvements. Having standard libraries rewritten in Ruby is now a great advantage; not only for performance but also for maintainability. Moreover, it makes it easier for the community to contribute to Ruby.
+This version brings many improvements. Rewriting standard libraries in Ruby offers significant advantages in both performance and maintainability, while also facilitating community contributions.
 
-Changes in the language were also very welcome. The new `it` reference block parameter is a great addition to the language. It makes the code more readable and less prone to errors. With improved error messages and backtraces, debugging will be much easier.
+The language changes are also very welcome. The new `it` reference block parameter is a great addition, making code more readable and less error-prone. Coupled with improved error messages and backtraces, debugging becomes much easier.
 
-Programming in Ruby is enjoyable and these changes make it even better. I'm excited to see what the future holds for Ruby.
+Programming in Ruby is enjoyable, and these changes make it even better. I am excited to see what the future holds for Ruby.
 
-Happy coding and [count on Codeminer42](https://www.codeminer42.com/#talk-to-us) if you need help migrating or introducing your team to Ruby 3.4!
+Happy coding and [count on Codeminer42](https://www.codeminer42.com/#talk-to-us) if you need help migrating or introducing your team to Ruby 4.0!
