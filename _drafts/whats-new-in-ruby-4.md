@@ -1,4 +1,8 @@
-Christmas is approaching, along with a new version of Ruby! The first release is available as of 12/12/2024 and here is your gift: a sneak peek at what's new in Ruby 3.4.
+It is that time of the year again! As tradition dictates, Christmas is approaching, and with it comes the gift of a new Ruby release.
+
+I experimented with **Ruby 4.0.0-preview3** for a few days, and I am excited to share with you the highlights of this upcoming version.
+
+Let's dive into what's new and what makes this release special.
 
 # What's new in core classes
 
@@ -239,12 +243,14 @@ In this new version of Ruby, you can place the boolean operator at the beginning
 
 [RJIT]: https://github.com/ruby/rjit
 
+You can see the full list of changes at [Ruby 4.0.0-preview3](https://www.ruby-lang.org/en/news/2025/12/18/ruby-4-0-0-preview3-released/).
+
 # Conclusion
 
-This version brings many improvements. Rewriting standard libraries in Ruby offers significant advantages in both performance and maintainability, while also facilitating community contributions.
+Ruby core did a fantastic job with this release, bringing features that modern software development demands while maintaining the joy of programming that Ruby is known for.
 
-The language changes are also very welcome. The new `it` reference block parameter is a great addition, making code more readable and less error-prone. Coupled with improved error messages and backtraces, debugging becomes much easier.
+The introduction of `Ruby::Box` opens up new architectural possibilities, and the maturation of Ractor suggests a bright future for concurrent Ruby applications.
 
-Programming in Ruby is enjoyable, and these changes make it even better. I am excited to see what the future holds for Ruby.
+As we countdown to the final release, I encourage everyone to download this preview, test these new features, and check how they apply to your use cases. If you need assistance, Codeminer42 is here to help you navigate and leverage Ruby 4.0 to its fullest potential.
 
-Happy coding and [count on Codeminer42](https://www.codeminer42.com/#talk-to-us) if you need help migrating or introducing your team to Ruby 4.0!
+Happy coding and happy holidays!
