@@ -4,11 +4,10 @@ title: Como Evitar Burnout na Programação
 date: 2025-05-05
 lang: pt-BR
 category: ["carreira"]
-tags: ["java", "programação"]
 excerpt: "Burnout ou Síndrome de Esgotamento Profissional é um problema sério na nossa indústria. Muitos programadores relatam sentir-se desmotivados, cansados e sem energia para continuar trabalhando na área. Por que isso acontece? O que leva um programador a se sentir assim? É possível evitar o burnout?"
 ---
 
-na survey de 2024 o StackOverflow mostrou que apenas 20% dos desenvolvedores estão satisfeitos com seus empregos. Em
+Em 2024 a pesquisa do StackOverflow mostrou que **apenas 20% dos desenvolvedores estão satisfeitos** com seus empregos. Em
 2025, esse número melhorou um pouco, apontando que 24% dos desenvolvedores estão felizes com seus empregos.
 
 [imagem stack overflow 2025 satisfação no trabalho]
@@ -31,16 +30,13 @@ Você precisa entender que:
     a maioria dos projetos em que você vai trabalhar já existem. Você vai lidar com código dos outros, as vezes com
     código legado, dívidas técnicas, etc. Isso significa não poder aplicar aquela arquitetura ou tecnologia da moda.
 
-Esse segundo ponto é crítico. Segundo a survey de 2024, 63% dos desenvolvedores apontaram os **débitos técnicos**
-como **a maior fonte de frustração no trabalho**.
+Esse segundo ponto é crítico. Segundo a survey de 2024, 63% dos desenvolvedores apontaram os **débitos técnicos** como **a maior fonte de frustração no trabalho**.
 
-A criticidade se dá pelo fato de que os projetos já existem e o software envelhece, faz perte do seu ciclo. Se você só
-espera trabalhar em projetos novos, organizados e "limpinhos", sinto em te dizer, mas você vai se frustrar muito.
+A criticidade se dá pelo fato de que os projetos já existem e o software envelhece, faz perte do seu ciclo. Se você só espera trabalhar em projetos novos, organizados e "limpinhos", sinto em te dizer, mas você vai se frustrar muito.
 
-Assim sendo, é importante que você aceite a natureza do trabalho e se harmonize com ela. 
+Assim sendo, é importante que você aceite a natureza do trabalho e se harmonize com ela.
 
-Nas primeiras vezes que meu trabalho foi descartado por conta de mudanças de requisitos eu sentir um desconforto, você
-vai sentir também. Mas com o tempo você aprende a lidar com isso. Só siga em frente.
+Nas primeiras vezes que meu trabalho foi descartado por conta de mudanças de requisitos eu sentir um desconforto, você vai sentir também. Mas com o tempo você aprende a lidar com isso. Só siga em frente.
 
 Quando eu encontro um código legado, eu vejo como um desafio. Afinal, trabalhar em um legado é mais difícil, assim se eu
 consigo entregar valor em um legado e melhora-lo, eu me sinto mais realizado. Pra isso há duas literaturas que são
@@ -49,8 +45,7 @@ Code](https://www.amazon.com.br/Working-Effectively-Legacy-Michael-Feathers/dp/0
 *[Refactoring: Improving the Design of Existing Code](https://www.amazon.com.br/Refactoring-Improving-Design-Existing-Code/dp/0201485672)*
 do Martin Fowler.
 
-outra coisa que você tem que aceitar como um fato é que voce nao vai estar satisfeito 100% do tempo. Mesmo no projeto
-mais animador que você possa estar, uma hora ele atinge um ponto em que se torna o ordinário. E tudo bem, isso é normal.
+outra coisa que você tem que aceitar como um fato é que voce nao vai estar satisfeito 100% do tempo. Mesmo no projeto mais animador que você possa estar, uma hora ele atinge um ponto em que se torna o ordinário. E tudo bem, isso é normal.
 
 #### **2. NÃO DEPENDA DA ADMIRAÇÃO DOS OUTROS**
 
@@ -79,34 +74,55 @@ A pesquisa do stackoverflow de 2025 corrobora esses pontos. Dos três fatores qu
 
 [imagem stack overflow 2025 fatores de satisfação no trabalho]
 
-Dos três elementos apontados por Daniel Pink, a **maestria** é o que mais pode ser trabalhado individualmente. O sentimento de que você está se tornando cada vez melhor no que faz vem com tempo de dedicação e disciplina.
+Todos esses três elementos são afetados pelo ambiente de trabalho. Na verdade, a ideia do Daniel Pink é mostrar que há
+uma discrepância entre o que a ciência sabe e o que as empresas praticam.
 
-**Autonomia** é algo que é impactada diretamente pela maestria, à medida que você se torna melhor no que faz, você ganha
-mais autonomia. Isso porque as pessoas passam a confiar mais em você, te dando mais liberdade para tomar decisões.
-E é ótimo ter a sensação de controle sobre o seu dia.
+Assim, cada um dos elementos está apenas parcialmente sob seu controle, uns mais outros menos.
 
-Mas claro, a **autonomia** é algo que você só controla parcialmente. Em muitos ambientes de trabalho, a autonomia
-é limitada por políticas da empresa, decisões de gerentes, etc. Nesses casos, você precisa avaliar se o ambiente em que
-você está é saudável para você.
+**MAESTRIA**
 
-Por fim, o **propósito** é algo bem mais difícil de controlar. Pensando em tarefas do dia a dia, trabalhar em uma tarefa
-realmente importante para o sucesso do projeto é algo que depende de outras pessoas.
+A **maestria** é o que mais pode ser trabalhado individualmente. O sentimento de que você está se tornando cada vez
+melhor no que faz vem com tempo de dedicação e disciplina.
 
-Trabalhar o **propósito** internamente foi algo que me ajudou. Em meu último projeto, precisei trabalhar com React. Era
-algo novo para mim, eu tinha vindo de projetos com Angular e Vue. Eu fiz daquilo o meu propósito: aprender React a ponto
-de poder contribuir com discussões e decisões nos projetos.
+o ambiente pode afetar negativamente sua maestria nos seguintes casos:
 
-#### **3. NÃO DEIXE QUE TE IGNOREM**
+- **falta de feedback**: é impossível sentir que está ficando bom em algo se você não sabe se suas entregas foram boas ou
+    não. Lembre-se, você não deve depender da admiração dos outros, mas o feedback sobre o trabalho é essencial para
+    saber se você está no caminho certo.
 
-- fique bom: vai dar um pouco de trabalho, mas vale a pena
+- **falta de desafios**: se você está sempre fazendo a mesma coisa, não há como crescer. Ninguém fica entusiasmado só
+    mudando botão de cor. Uma hora você precisa de algo que te desafie a buscar o novo.
 
-##### **4. TOME POSIÇÕES**
+- **desafios excessivamente difíceis**: por outro lado, se você está sempre lidando com coisas que estão
+    muito além do seu nível atual, você pode se ver numa sequência de fracasos. Isso mina sua confiança e te faz sentir
+    que não está progredindo.
 
-- tendencia a ganhar autonomia
+Do seu lado, seja honesto consigo mesmo sobre o seu nível atual. Busque feedbacks constantes e procure desafios que
+estejam um pouco além do seu nível atual, mas que sejam alcançáveis com esforço.
 
-- procure ambientes melhores
+**AUTONOMIA**
 
-### CONCLUSAO
+À medida que você se torna melhor no que faz, você ganha mais autonomia. Isso porque as pessoas passam a confiar mais
+em você, te dando mais liberdade para tomar decisões.
+
+O ambiente pode minar sua autonomia quando há microgerenciamento ou falta de flexibilidade nos processos de trabalho.
+Acaba que você não tem controle de nada.
+
+**PROPÓSITO**
+
+Com mais maestria, mais autonomia, e mais você participa de decisões importantes no projeto, você começa a sentir
+que seu trabalho tem um propósito maior. Consegue ver o impacto do que faz.
+
+Mas claro, se você está começando seja na carreira ou com uma tecnologia nova, não há maestria, nem autonomia, o que torna difícil sentir propósito.
+
+Eu passei por esse processo algumas vezes na carreira. Em meu último projeto como desenvolvedor, precisei trabalhar com
+React. Era algo novo para mim, eu tinha vindo de projetos com Angular e Vue. 
+
+Eu defini um propósito claro pra mim: aprender React a ponto de poder contribuir com discussões e decisões nos projetos.
+
+Isso foi o que funcionou pra mim. Talvez funcione pra você também.
+
+#### **CONCLUSAO**
 
 esses principios sao baseados em experiencia pessoal e conceitos do livro 'a arte de viver' de epicteto. eles não vao
 resolver todos os seus pro
@@ -128,6 +144,7 @@ https://www.reddit.com/r/programming/comments/ix3u8u/i_no_longer_build_software/
 https://arxiv.org/pdf/2502.10249
 https://research-management.mq.edu.au/ws/portalfiles/portal/443998512/443638075.pdf
 https://pdf.sciencedirectassets.com/271539/1-s2.0-S0950584922X00128/1-s2.0-S0950584922002257/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjELH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCIHvL0aJqgyF5%2BSotk7F1QSEa1PL3bxfqiEdm75eWS1F%2BAiBLgk7yIRZcxB2HWrdnkJnzEBQoUiv0eQepD321T3CjlSqyBQh5EAUaDDA1OTAwMzU0Njg2NSIMyU2iB3cqOlkFU%2Bn2Ko8FGraKQYp8vcAbAjpHEnwGa7Jil1YNeX%2BoAmw1FVeklOsQMj6W%2FwqYkJM%2FO0x3PMDDdOufmAf1jYxrTTZOzhFYiTEajFJvNSZOb7eOI%2BrB2YUQlHFB7Av0GQrN3aasTCiPn6XcuTSWdmYT6w2ddxVHEIEubmX8VrDmUP3eE%2B8vG7dVLp5qLpJQPGYLciiY1QYEdhBcYLTwplencK0sIEJkKOb65bKKNA2yMBCiF5IHion%2F%2Br9kmDoLSQt5TKB1jrY3MnJ41dR%2Fcsx1NYIx0d4%2Bj2DKAJ%2BINnGRbX5ZzPzdzl1muOcyB%2F1eOKKmdJXUQTwUnSXFzYQ%2FH7L50%2B%2B07rL0cRnRGpwFxm8QFMj2X%2B4Lugb9nS8%2FzdzXYwIsDM%2BmRQlxCaN8rIH2MSEZ6YOEEoNPxidXetuAqjaaO51azJZ1d89DfVjRaYPthVn0wWfQ7FTmf3joQz2cttr6E3f%2BOwTojoje5c%2FpprzJUeLc0vOZvrrPY9si3iw99CSDx54y8DcoQyY7l1FKsqrsk0r14cs%2BgwtomkTtek1Fez9NTsTVBdXjjTMq5tJqHE6imT9YuI2Cm4u%2By0tLKXcvuIFJfA6gtFdqSrX7GxojCnmuCYNhk%2B2NmDPLNcdsrEkpHGhckqH1D8tWnaSqm9PfcHBUM%2F4QDXml4IS%2B4MuVlDOdGDGH3PN%2FyTj1PtLYefA9CdtM7Nqs8EPFWA1CP4CTed8WJj5bMguWVNe9e4rXIoXEAInXJnow1jnSWR3AT8702F415AEdl9zwU5TOgB6f%2F5o8T3dnC8kq4gVx2GhJveeLeTlYE2r0WsNZLQ2jYfwor6VRVOagjJ118AQ0wobxzMeotJxKdnjJ%2BNLKGeVDgMlVORvriDD07cHKBjqyAVU8Dbt50qljPwkiwv8cueHnpcaXVzzBqNB5GFGgSZLA9JtgY4nAvzvQWX%2FhAmaIPI346xBL5Uik6VA6nMwrs9SvgiDJGITjIhuNBDfQn8fgUaCveHCtMQdoAN9Qvf8Ho84LNwAs16LuRQj3TDBN0VMqEfwSV0QQWxIOQzObTExCM8kYbsL6AplY5ZNJwjpsWcY2y7uHCRdZ0806YmUG903%2B7Y11GpTYe6vgQHJA%2BGFf4pE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251228T014803Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYZSYOIHNN%2F20251228%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=543fa62eacb9ad0d51aafabd8e67d702619d7bcd4f53a6ae526f1887b4ba876e&hash=02e632eb950ed73fc0ce79ded005f8589118c1e3c975292f88e2b5e23bf83558&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0950584922002257&tid=spdf-0c93f546-aa1d-4ebe-a8a5-5ecbbc32cd1f&sid=15e598aa490915490168ca26607e07fc01d6gxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=04165700560152550307&rr=9b4d64aaeec3b7f1&cc=br
+https://www.bitesizelearning.co.uk/resources/autonomy-mastery-purpose-motivation-pink
 
 
 Tomando neutro como alguém que está muito mais se tornando alguém insatisfeito do que satisfeito, temos que 76% dos
