@@ -5,7 +5,7 @@ date: 2025-05-05
 lang: pt-BR
 category: ["carreira"]
 tags: ["java", "programação"]
-excerpt: "\"As pessoas sao preguiçosas, por isso preferem Python ou Node (JavaScript) ao invés de Java\". Eu já ouvi isso em alguns lugares. Acho que as vezes pouco de empatia..."
+excerpt: "Burnout ou Síndrome de Esgotamento Profissional é um problema sério na nossa indústria. Muitos programadores relatam sentir-se desmotivados, cansados e sem energia para continuar trabalhando na área. Por que isso acontece? O que leva um programador a se sentir assim? É possível evitar o burnout?"
 ---
 
 na survey de 2024 o StackOverflow mostrou que apenas 20% dos desenvolvedores estão satisfeitos com seus empregos. Em
@@ -66,6 +66,35 @@ De repente você se vê sobrecarregado, fazendo coisas que não gosta, só para 
 burnout.
 
 Eu sei o que você está pensando: _"mas eu preciso de algum reconhecimento, caso contrário não vou a lugar nenhum"_. Falaremos disso no próximo tópico.
+
+#### **3. TENHA AUTONOMIA**
+
+Em seu livro *Drive: The Surprising Truth About What Motivates Us*, Daniel Pink aponta três elementos que guiam a motivação intrínseca em profissões criativas, como a programação:
+
+- Autonomia - sensação de controle e liberdade sobre o próprio trabalho
+- Propósito - sentido de contribuição para algo maior
+- Maestria - percepção de competência e crescimento contínuo
+
+A pesquisa do stackoverflow de 2025 corrobora esses pontos. Dos três fatores que mais contribuem para a satisfação no trabalho, o mais importante é a autonomia. O terceiro é a oportunidade de resolver problemas de verdade, o que está ligado ao propósito.
+
+[imagem stack overflow 2025 fatores de satisfação no trabalho]
+
+Dos três elementos apontados por Daniel Pink, a **maestria** é o que mais pode ser trabalhado individualmente. O sentimento de que você está se tornando cada vez melhor no que faz vem com tempo de dedicação e disciplina.
+
+**Autonomia** é algo que é impactada diretamente pela maestria, à medida que você se torna melhor no que faz, você ganha
+mais autonomia. Isso porque as pessoas passam a confiar mais em você, te dando mais liberdade para tomar decisões.
+E é ótimo ter a sensação de controle sobre o seu dia.
+
+Mas claro, a **autonomia** é algo que você só controla parcialmente. Em muitos ambientes de trabalho, a autonomia
+é limitada por políticas da empresa, decisões de gerentes, etc. Nesses casos, você precisa avaliar se o ambiente em que
+você está é saudável para você.
+
+Por fim, o **propósito** é algo bem mais difícil de controlar. Pensando em tarefas do dia a dia, trabalhar em uma tarefa
+realmente importante para o sucesso do projeto é algo que depende de outras pessoas.
+
+Trabalhar o **propósito** internamente foi algo que me ajudou. Em meu último projeto, precisei trabalhar com React. Era
+algo novo para mim, eu tinha vindo de projetos com Angular e Vue. Eu fiz daquilo o meu propósito: aprender React a ponto
+de poder contribuir com discussões e decisões nos projetos.
 
 #### **3. NÃO DEIXE QUE TE IGNOREM**
 
