@@ -7,36 +7,46 @@ category: ["carreira"]
 excerpt: "Burnout ou Síndrome de Esgotamento Profissional é um problema sério na nossa indústria. Muitos programadores relatam sentir-se desmotivados, cansados e sem energia para continuar trabalhando na área. Por que isso acontece? O que leva um programador a se sentir assim? É possível evitar o burnout?"
 ---
 
-Em 2024 a pesquisa do StackOverflow mostrou que **apenas 20% dos desenvolvedores estão satisfeitos** com seus empregos. Em
-2025, esse número melhorou um pouco, apontando que 24% dos desenvolvedores estão felizes com seus empregos.
+Em 2024 a pesquisa do StackOverflow mostrou que **apenas 20% dos desenvolvedores estão satisfeitos** com seus empregos.
 
-[imagem stack overflow 2025 satisfação no trabalho]
+Em 2025, esse número melhorou um pouco, mas ainda assim **76% dos desenvolvedores estão neutros ou insatisfeitos** com seus empregos.
+
+![imagem stack overflow 2024 satisfação no trabalho](/assets/images/burnout/stackoverflow-dev-survey-2025-work-job-satisfaction-job-sat-social.png)
 
 Isso nos leva a refletir sobre a área de desenvolvimento de software como um todo.
 
 Seria a programação a profissão do burnout? É essa a natureza do nosso trabalho?
 
-Já adianto que eu não acredito que seja assim por definição. Acredito que há maneiras de evitar o burnout na programação.
+Já adianto que eu não acredito que seja assim por definição e acredito, ainda, que há maneiras de evitar o burnout na programação.
 
 #### **1. A NATUREZA DO TRABALHO EM PROJETOS DE SOFTWARE**
 
-Você precisa entender que:
+Você precisa aceitar que:
 
-1. **Software é algo que está em constante mudança** - isso significa que o que você constrói hoje pode não ser mais
-    relevante amanhã. Isso pode ser frustrante para muitos desenvolvedores que buscam estabilidade e permanência em
-    seus projetos, mas é a realidade da indústria.
+**A CONTANTE DO SOFTWARE É A MUDANÇA**
 
-2. **Você não vai sempre trabalhar em projetos [_green field_][]** - diferente do que você vê em tutoriais e cursos,
-    a maioria dos projetos em que você vai trabalhar já existem. Você vai lidar com código dos outros, as vezes com
-    código legado, dívidas técnicas, etc. Isso significa não poder aplicar aquela arquitetura ou tecnologia da moda.
+O que você constrói hoje pode não ser mais relevante amanhã. Isso é um fato da indústria de software. Mesmo os melhores
+[softwares envelhecem](https://www.cs.drexel.edu/~yc349/CS451/RequiredReadings/SoftwareAging.pdf).
 
-Esse segundo ponto é crítico. Segundo a survey de 2024, 63% dos desenvolvedores apontaram os **débitos técnicos** como **a maior fonte de frustração no trabalho**.
+<iframe style="width: 100%; height: auto; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/npcZxeqPBLc?si=uIdHB1bTn1aqRS5K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-A criticidade se dá pelo fato de que os projetos já existem e o software envelhece, faz perte do seu ciclo. Se você só espera trabalhar em projetos novos, organizados e "limpinhos", sinto em te dizer, mas você vai se frustrar muito.
+<br />
+A interface que funciona hoje pode não ser mais adequada amanhã. Uma tecnologia que você usa hoje pode precisar ser substituída por uma melhor amanhã.
 
-Assim sendo, é importante que você aceite a natureza do trabalho e se harmonize com ela.
+**VOCÊ NÃO VAI TRABALHAR EM PROJETOS [GREEN FIELD][]**
 
-Nas primeiras vezes que meu trabalho foi descartado por conta de mudanças de requisitos eu sentir um desconforto, você vai sentir também. Mas com o tempo você aprende a lidar com isso. Só siga em frente.
+Diferente do que você vê em tutoriais e cursos, a maioria dos projetos em que você vai trabalhar já existem. Você vai lidar com código dos outros, as vezes com código legado, dívidas técnicas, etc. Isso significa não poder aplicar aquela arquitetura ou tecnologia da moda.
+
+[GREEN FIELD]: https://en.wikipedia.org/wiki/Greenfield_project
+
+Na pesquisa do stackoverflow de 2024, 62% dos desenvolvedores apontaram os **débitos técnicos** como **a maior fonte de frustração no trabalho**.
+
+![Débitos técnicos como maior fonte de frustração no trabalho - Stack Overflow 2024](/assets/images/burnout/stackoverflow-dev-survey-2024-professional-developers-developer-experience-frustration-social.png)
+
+<br />
+A criticidade se dá pelo fato de que os projetos já existem e o software envelhece. Se você espera trabalhar só em projetos novos, organizados e "limpinhos", sinto em te dizer, mas você vai se frustrar muito.
+
+Aceite o código legado. É parte do trabalho. Ao invés de temer, encare como uma oportunidade de aprendizado.
 
 Quando eu encontro um código legado, eu vejo como um desafio. Afinal, trabalhar em um legado é mais difícil, assim se eu
 consigo entregar valor em um legado e melhora-lo, eu me sinto mais realizado. Pra isso há duas literaturas que são
@@ -45,7 +55,36 @@ Code](https://www.amazon.com.br/Working-Effectively-Legacy-Michael-Feathers/dp/0
 *[Refactoring: Improving the Design of Existing Code](https://www.amazon.com.br/Refactoring-Improving-Design-Existing-Code/dp/0201485672)*
 do Martin Fowler.
 
-outra coisa que você tem que aceitar como um fato é que voce nao vai estar satisfeito 100% do tempo. Mesmo no projeto mais animador que você possa estar, uma hora ele atinge um ponto em que se torna o ordinário. E tudo bem, isso é normal.
+**VOCÊ NÃO PRECISA (E NEM VAI) APRENDER TUDO**
+
+Novos frameworks, bibliotecas, linguagens de programação surgem o tempo todo. É impossível acompanhar tudo. Ninguém consegue.
+
+É clichê, mas o que você precisa fazer é focar em coisas que são comuns a todas as tecnologias, os fundamentos. Tomemos, por exemplo, linguagens de programação.
+
+Existem diversas formas de agrupar linguagens de programação: por paradigma (imperativa, funcional, orientada
+a objetos), por tipagem (estática, dinâmica), por nível (baixo nível, alto nível).
+
+Em cada grupo desses há características comuns. Se você entende o paradigma orientado a objetos, você consegue se sair
+bem em qualquer linguagem que tenha suporte à orientação a objetos, seja Java, C#, Ruby, etc.
+
+Em todas essas linguagens você vai encontrar os mesmos conceitos: classes, objetos, herança, polimorfismo, encapsulamento. Cada coisa implementada à sua maneira, mas o conceito é o mesmo.
+
+Há diferenças, claro. Java e C#, por exemplo, possuem `interfaces`, coisa que Ruby não tem. É nesse tipo de coisas que
+você deve focar, nas diferenças, pois você já domina os fundamentos.
+
+Em essência, ferramentas que resolvem o mesmo problema possuem mais semelhanças do que diferenças. Isso em qualquer grau.
+
+Frameworks partilham conceitos entre si. Bancos de dados relacionais também. Protocolos de comunicação idem.
+
+Foque nas semelhanças, aprenda os fundamentos, e você vai conseguir se adaptar a qualquer ferramenta nova.
+
+**VOCÊ NÃO VAI ESTAR SATISFEITO 100% DO TEMPO**
+
+Isso é impossível. Você não está satisfeito 100% do tempo na sua vida pessoal, por que seria diferente no trabalho?
+
+Em qualquer profissão, haverá momentos bons e ruins. Atividades que você gosta mais e outras que você gosta menos. Projetos que te empolgam e outros que são mais monótonos.
+
+Mas é importante que haja perspectiva futura e que o stress não seja uma constante.
 
 #### **2. NÃO DEPENDA DA ADMIRAÇÃO DOS OUTROS**
 
@@ -57,10 +96,10 @@ se preocupar com o reconhecimento externo.
 
 Depender da admiração dos outros é uma armadilha que pode te levar a dizer "sim" para tudo, só para agradar as pessoas.
 
-De repente você se vê sobrecarregado, fazendo coisas que não gosta, só para ser aceito. Isso é um caminho certo para o
+De repente você se vê sobrecarregado, assumindo compromissos que não pode cumprir, só para ser aceito. Isso é um caminho certo para o
 burnout.
 
-Eu sei o que você está pensando: _"mas eu preciso de algum reconhecimento, caso contrário não vou a lugar nenhum"_. Falaremos disso no próximo tópico.
+Isso não quer dizer fazer tudo sozinho. Isso quer dizer fazer o melhor trabalho que você pode fazer, sem se preocupar com o que os outros vão pensar.
 
 #### **3. TENHA AUTONOMIA**
 
@@ -72,7 +111,7 @@ Em seu livro *Drive: The Surprising Truth About What Motivates Us*, Daniel Pink 
 
 A pesquisa do stackoverflow de 2025 corrobora esses pontos. Dos três fatores que mais contribuem para a satisfação no trabalho, o mais importante é a autonomia. O terceiro é a oportunidade de resolver problemas de verdade, o que está ligado ao propósito.
 
-[imagem stack overflow 2025 fatores de satisfação no trabalho]
+![Fatores que mais contribuem para a satisfação no trabalho - Stack Overflow 2025](/assets/images/burnout/stackoverflow-2025-satisfaction-factors.png)
 
 Todos esses três elementos são afetados pelo ambiente de trabalho. Na verdade, a ideia do Daniel Pink é mostrar que há
 uma discrepância entre o que a ciência sabe e o que as empresas praticam.
@@ -110,28 +149,50 @@ Acaba que você não tem controle de nada.
 
 **PROPÓSITO**
 
-Com mais maestria, mais autonomia, e mais você participa de decisões importantes no projeto, você começa a sentir
-que seu trabalho tem um propósito maior. Consegue ver o impacto do que faz.
+Com mais maestria, mais autonomia, e mais você participa de decisões importantes no projeto, você começa a sentir que seu trabalho tem um propósito maior. Consegue ver o impacto do que faz.
 
 Mas claro, se você está começando seja na carreira ou com uma tecnologia nova, não há maestria, nem autonomia, o que torna difícil sentir propósito.
 
-Eu passei por esse processo algumas vezes na carreira. Em meu último projeto como desenvolvedor, precisei trabalhar com
-React. Era algo novo para mim, eu tinha vindo de projetos com Angular e Vue. 
+Eu passei por esse processo algumas vezes na carreira. Em meu último projeto como desenvolvedor, precisei trabalhar com React. Era algo novo para mim, eu tinha vindo de projetos com Angular e Vue. 
 
 Eu defini um propósito claro pra mim: aprender React a ponto de poder contribuir com discussões e decisões nos projetos.
 
 Isso foi o que funcionou pra mim. Talvez funcione pra você também.
 
+#### **4. GERENCIE AS EXPECTATIVAS**
+
+Muitos pensam que um bom trabalho é apenas sair digitando código e fechando tickets. Mas o **trabalho** vai além disso. E eu diria que uma das coisas mais importantes é o gerenciamento de expectativas.
+
+Pessoas são impactadas pelo seu trabalho, sejam colegas de equipe, gerentes, clientes. E é seu dever gerenciar as expectativas dessas pessoas.
+
+Por muito tempo eu falhei nisso. Eu pegava uma task, estimava um prazo, no meio do caminho surgiam imprevistos, e eu não comunicava isso. Sofria sozinho e no final frustrava todo mundo. Inclusive a mim mesmo.
+
+É curioso de ver que eu mesmo me colocava numa situação de pressão desnecessária. A pior parte não era errar a estimativa, mas sim não comunicar de forma antecipada que, por motivos X, Y e Z, aquele prazo não seria mais possível.
+
+Então, comunique sempre!
+
+O ticket está sem a informação necessaria? Sinalize, deixe os stakeholders cientes. Algum terceiro está te bloqueando? Informe seu gerente. Trouxeram algo urgente no meio do seu fluxo? Avise que isso vai impactar as outras coisas.
+
+Não há vergonha nenhuma nisso. Portanto não há motivo para ter culpa ou se sentir mal. Não é fracasso, é na verdade um sinal de profissionalismo.
+
 #### **CONCLUSAO**
 
-esses principios sao baseados em experiencia pessoal e conceitos do livro 'a arte de viver' de epicteto. eles não vao
-resolver todos os seus pro
+Sim a área de desenvolvimento de software tem seus desafios e peculiaridades. Mas eu não diria que se sentir triste ou ter burnout é algo inerente à profissão.
 
-[Software Aging]: https://www.youtube.com/watch?v=npcZxeqPBLc
-[_green field_]: https://en.wikipedia.org/wiki/Greenfield_project
+Eu trouxe aqui um compilado de princípios que podem te ajudar a lidar melhor com os desafios da profissão. Boa parte deles foi inspirada no livro 'A Arte de Viver' de Epicteto. 
+
+A filosofia não resolve tudo, mas te ajuda a pelo menos se conhecer melhor e entender o contexto em que você está inserido.
+
+O ambiente em que você se encontra hoje pode não ser o ideal, tente melhorá-lo. Se tiver abertura para sugerir mudanças, faça isso. 
+
+As vezes, isso não é possível. Sua empresa atual pode ser tradicional demais e focar em uma área que não casa com o que você quer para o futuro ou a startup que você tem se dedicado por um ano possui um dos sócios tóxico a ponto de você suspeitar que ele tem algum tipo de preconceito com você.
+
+Em uma situação dessas, arrisque um novo começo. Seja em um outro time ou empresa. Foi o que eu fiz.
+
+No fim de tudo, faça o **seu melhor**, se dedique e fique bom a ponto de não poder ser ignorado.
 
 ---
-
+<!--
 # Como Evitar Burnout na Programação em 2026
 
 Texto baseado no livro 'A Arte de Viver' de Epicteto
@@ -169,16 +230,6 @@ Na pesquisa do código fonte TV de 2025, pelo menos 23% alegaram terem tido burn
 alegaram estresse e ansiedade.
 
 Por que isso acontece? O que leva um programador a se sentir assim? É possível evitar o burnout?
-
-## Delibere e Tome Posições
-
-## Tornse-se bom
-
-### Seja Honesto com Você Mesmo
-
-### Não dependa da admiração dos outros
-
----
 
 https://levelup.gitconnected.com/why-most-programmers-burn-out-after-the-age-of-40-57eccc8d77cc
 
@@ -262,4 +313,4 @@ Ao invés de ter que aprender todos os bancos de dados existentes, foque em ente
 relacionais e não relacionais. Os mesmos conceitos se aplicam a qualquer banco de dados, assim você pode aprender
 qualquer um deles com mais facilidade.
 
----
+-->
