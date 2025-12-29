@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '76% dos devs estão insatisfeitos: Como fugir dessa estatística em 2026'
-date: 2025-05-05
+date: 2025-12-29
 lang: pt-BR
 category: ["carreira"]
 excerpt: "Com 76% dos desenvolvedores insatisfeitos, a programação parece ser a profissão do burnout. Mas não precisa ser assim. Descubra como alinhar expectativas, focar nos fundamentos e aplicar princípios de autonomia e propósito para construir uma carreira saudável e duradoura na tecnologia."
@@ -139,8 +139,6 @@ Não há vergonha nisso. Não é sinal de fracasso, mas de profissionalismo.
 
 A área de desenvolvimento tem seus desafios e peculiaridades, mas sentir-se esgotado ou ter burnout não deve ser inerente à profissão.
 
-Os princípios que trouxe aqui — inspirados tanto na realidade do mercado quanto no estoicismo e em livros como *A Arte de Viver* de Epicteto — servem para te dar ferramentas mentais. A filosofia não resolve bugs, mas ajuda a entender o contexto e a controlar sua reação a ele.
+Os princípios que trouxe aqui são uma mistura de experiência prática e filosofia. A filosofia não resolve os problemas, mas dá ferramentas para entendê-los e enfrentá-los.
 
-Se o ambiente é ruim, tente melhorá-lo. Se não houver abertura ou se a cultura for tóxica, planeje um novo começo em outro time ou empresa. Foi o que eu fiz e funcionou.
-
-No fim, faça o **seu melhor**, dedique-se aos fundamentos e gerencie sua própria carreira com a mesma atenção que gerencia seu código.
+Se o ambiente é ruim, tente melhorá-lo. Se não houver abertura ou se a cultura for tóxica, arrisque um novo começo em outro time ou empresa. Foi o que eu fiz e funcionou.
