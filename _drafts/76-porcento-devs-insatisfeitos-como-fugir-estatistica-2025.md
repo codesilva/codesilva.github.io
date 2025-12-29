@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Por que 76% dos devs estão exaustos (e a estratégia para escapar dessa estatística)
+title: 76% dos devs estão insatisfeitos: Como fugir dessa estatística em 2025
 date: 2025-05-05
 lang: pt-BR
 category: ["carreira"]
