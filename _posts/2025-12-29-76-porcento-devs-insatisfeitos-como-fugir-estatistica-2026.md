@@ -142,3 +142,7 @@ A área de desenvolvimento tem seus desafios e peculiaridades, mas sentir-se esg
 Os princípios que trouxe aqui são uma mistura de experiência prática e filosofia. A filosofia não resolve os problemas, mas dá ferramentas para entendê-los e enfrentá-los.
 
 Se o ambiente é ruim, tente melhorá-lo. Se não houver abertura ou se a cultura for tóxica, arrisque um novo começo em outro time ou empresa. Foi o que eu fiz e funcionou.
+
+Há coisas muito mais importantes na vida do que o trabalho. Mas o trabalho toma uma parte significativa do nosso tempo, então vale a pena investir em torná-lo algo sustentável e, com sorte, até gratificante.
+
+Assim você se mantém saudável para coisas maiores que a carreira, como família, amigos e paixões pessoais.
