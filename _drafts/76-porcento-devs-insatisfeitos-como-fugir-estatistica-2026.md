@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 76% dos devs estão insatisfeitos: Como fugir dessa estatística em 2025
+title: '76% dos devs estão insatisfeitos: Como fugir dessa estatística em 2026'
 date: 2025-05-05
 lang: pt-BR
 category: ["carreira"]
