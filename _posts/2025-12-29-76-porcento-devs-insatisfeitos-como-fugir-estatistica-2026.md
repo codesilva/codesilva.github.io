@@ -21,7 +21,7 @@ Já adianto: não acredito que seja uma sentença. Existem, sim, maneiras de evi
 
 #### **1. A NATUREZA DO TRABALHO EM PROJETOS DE SOFTWARE**
 
-O primeiro passo é alinhar suas expectativas com a realidade. Você precisa aceitar que:
+Alinhe suas expectativas com a realidade. Você precisa aceitar que:
 
 **A CONSTANTE DO SOFTWARE É A MUDANÇA**
 
@@ -81,7 +81,7 @@ Depender da admiração alheia é uma armadilha que leva a dizer "sim" para tudo
 
 Isso não significa trabalhar isolado, mas sim fazer o melhor trabalho possível mantendo sua integridade, sem a ansiedade da aprovação constante.
 
-#### **3. BUSQUE AUTONOMIA, MAESTRIA E PROPÓSITO**
+#### **3. TENHA AUTONOMIA**
 
 Em seu livro *Drive: The Surprising Truth About What Motivates Us*, Daniel Pink aponta três elementos essenciais para a motivação intrínseca:
 
@@ -89,11 +89,15 @@ Em seu livro *Drive: The Surprising Truth About What Motivates Us*, Daniel Pink 
 *   **Propósito:** sentido de contribuição para algo maior.
 *   **Maestria:** percepção de competência e crescimento contínuo.
 
-A pesquisa de 2025 corrobora esses pontos: a autonomia aparece como o fator mais importante para a satisfação, seguida pela oportunidade de resolver problemas reais (propósito).
+A pesquisa de 2025 corrobora esses pontos: a autonomia aparece como o fator mais importante para a satisfação, seguido por salário competitivo e oportunidade de resolver problemas reais.
 
 ![Fatores que mais contribuem para a satisfação no trabalho - Stack Overflow 2025](/assets/images/burnout/stackoverflow-2025-satisfaction-factors.png)
 
-Embora o ambiente de trabalho influencie esses elementos, você tem controle parcial sobre eles.
+A relação entre satisfação e salário é algo mais simples de entender: se você se sente subvalorizado financeiramente, é natural que isso afete sua satisfação.
+
+No entanto, é importante observar que só o dinheiro não é o suficiente. Então, para os propósitos deste artigo, assuma que você já tem um salário justo.
+
+Os três elementos de Pink são interdependentes e são afetados pelo ambiente de trabalho. Conhecê-los ajuda a identificar em que lugar você está e o que pode fazer para melhorar sua situação.
 
 **MAESTRIA**
 
