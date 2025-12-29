@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Como Evitar Burnout na Programação
+title: Por que 76% dos devs estão exaustos (e a estratégia para escapar dessa estatística)
 date: 2025-05-05
 lang: pt-BR
 category: ["carreira"]
-excerpt: "Burnout ou Síndrome de Esgotamento Profissional é um problema sério na nossa indústria. Muitos programadores relatam sentir-se desmotivados, cansados e sem energia para continuar trabalhando na área. Por que isso acontece? O que leva um programador a se sentir assim? É possível evitar o burnout?"
+excerpt: "Com 76% dos desenvolvedores insatisfeitos, a programação parece ser a profissão do burnout. Mas não precisa ser assim. Descubra como alinhar expectativas, focar nos fundamentos e aplicar princípios de autonomia e propósito para construir uma carreira saudável e duradoura na tecnologia."
 ---
 
 Em 2024, a pesquisa do Stack Overflow mostrou que **apenas 20% dos desenvolvedores estão satisfeitos** com seus empregos.
