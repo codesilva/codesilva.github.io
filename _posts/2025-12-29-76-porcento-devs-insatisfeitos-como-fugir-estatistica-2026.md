@@ -95,7 +95,9 @@ A pesquisa de 2025 corrobora esses pontos: a autonomia aparece como o fator mais
 
 A relação entre satisfação e salário é algo mais simples de entender: se você se sente subvalorizado financeiramente, é natural que isso afete sua satisfação.
 
-No entanto, é importante observar que só o dinheiro não é o suficiente. Então, para os propósitos deste artigo, assuma que você já tem um salário justo.
+No entanto, é importante observar que só o dinheiro não é o suficiente, há pessoas dispostas a [ganhar menos se isso significar menos estresse](https://www.reddit.com/r/brdev/comments/18c3vyi/voc%C3%AAs_j%C3%A1_trocaram_de_emprego_por_um_com_sal%C3%A1rio/).
+
+Por esse motivo, focarei em questões que vão além do salário, pra não ser muito óbvio.
 
 Os três elementos de Pink são interdependentes e são afetados pelo ambiente de trabalho. Conhecê-los ajuda a identificar em que lugar você está e o que pode fazer para melhorar sua situação.
 
