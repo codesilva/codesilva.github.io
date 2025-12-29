@@ -45,7 +45,7 @@ Na pesquisa do Stack Overflow de 2024, 62% dos desenvolvedores apontaram as **d�
 <br />
 A frustração surge quando esperamos trabalhar apenas em projetos novos, organizados e "limpos". Se essa é sua expectativa, sinto dizer, mas você vai se frustrar.
 
-Aceite o código legado; ele é parte do trabalho. Ao invés de temê-lo, encare-o como uma oportunidade. Quando encontro um código legado, vejo como um desafio: se consigo entregar valor e melhorá-lo, sinto-me realizado.
+Aceite o código legado, ele é parte do trabalho. Ao invés de temê-lo, encare-o como uma oportunidade. Quando encontro um código legado, vejo como um desafio: se consigo entregar valor e melhorá-lo, sinto-me realizado.
 
 Para lidar com isso, duas leituras são indispensáveis:
 *   *[Working Effectively with Legacy Code](https://www.amazon.com.br/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052)*, de Michael Feathers.
@@ -61,9 +61,9 @@ Tomemos as linguagens de programação como exemplo. Existem diversas formas de 
 
 Se você entende profundamente o paradigma orientado a objetos, conseguirá transitar bem entre Java, C#, Ruby ou qualquer outra linguagem com suporte a OO. Conceitos como classes, objetos, herança, polimorfismo e encapsulamento são universais.
 
-Claro, há diferenças — Java possui `interfaces` explícitas, um conceito inexistente no Ruby — e é nessas especificidades que você deve focar, pois a base você já domina.
+Claro, há diferenças, Java e C# possuem `interfaces` explícitas, um conceito inexistente no Ruby, e é nessas especificidades que você deve focar, pois a base você já domina.
 
-Ferramentas que resolvem o mesmo problema possuem mais semelhanças do que diferenças. Isso vale para frameworks, bancos de dados e protocolos. Foque nos fundamentos e você se adaptará a qualquer ferramenta nova sem sofrimento.
+Ferramentas que resolvem o mesmo problema possuem mais semelhanças do que diferenças. Isso vale para frameworks, bancos de dados, protocolos, etc. Foque nos fundamentos e você se adaptará a qualquer ferramenta nova sem sofrimento.
 
 **VOCÊ NÃO VAI ESTAR SATISFEITO 100% DO TEMPO**
 
@@ -109,7 +109,7 @@ Seja honesto sobre seu nível atual. Procure desafios que estejam na "zona de ap
 
 A autonomia é conquistada. À medida que sua maestria aumenta, a confiança da equipe em você cresce, resultando em mais liberdade para tomar decisões.
 
-O ambiente mina a autonomia quando há microgerenciamento. Se não for possível mudar isso conversando, avalie se é o lugar certo para você.
+Assim como a maestria, a autonomia pode ser dificultada pelo ambiente. Microgerenciamento e processos rígidos sufocam a autonomia.
 
 **PROPÓSITO**
 
@@ -121,7 +121,7 @@ Passei por isso recentemente. Em meu último projeto como desenvolvedor, precise
 
 #### **4. GERENCIE AS EXPECTATIVAS**
 
-Muitos acham que programar é apenas digitar código e fechar tickets. Mas o **trabalho** real envolve comunicação.
+Muitos acham que programar é apenas digitar código e fechar tickets. Mas o **trabalho** é mais que isso.
 
 Pessoas são impactadas pelo que você faz: colegas, gerentes, clientes. É seu dever gerenciar as expectativas delas.
 
