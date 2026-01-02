@@ -1,8 +1,9 @@
+# Video 4 - Edição de imagens com IA: Guia prático para desenvolvedores
+
 # Video 1 - 76% dos Devs Estão Insatisfeitos — Como Fugir Dessa Estatística em 2026
 ou Por Que a Maioria dos Desenvolvedores Está Insatisfeita (e o que fazer sobre isso)
 
 referencia: http://localhost:4000/carreira/2025/12/29/76-porcento-devs-insatisfeitos-como-fugir-estatistica-2026.html
-
 
 Shorts:
 
@@ -34,8 +35,6 @@ Shorts:
 # Video 2 - Como virar mantenedor do Node.js em quatro meses
 
 # Video 3 - 5 formas de aprender IA em 2026
-
-# Video 4 - Edição de imagens com IA: Guia prático para desenvolvedores
 
 # Video 5 - Agentes de voz, a nova fronteira da IA para devs
 
