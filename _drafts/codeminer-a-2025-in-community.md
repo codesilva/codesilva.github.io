@@ -1,9 +1,13 @@
+---
+layout: post
+title: "Codeminer42's 2025 Year in Review: Community & Open Source"
+---
+
 In 2025, Codeminer42 was proudly involved in several community initiatives, from sponsoring conferences to contributing to open source projects. Here's a quick recap of our community involvement last year:
 
 ## Conference Speaking and Sponsorships
 
-we belive that fostering the community is beneficial for everyone. In 2025 we sponsored and participated in conferences
-in Brazil and abroad:
+We believe that fostering the community is beneficial for everyone. In 2025 we sponsored and participated in conferences in Brazil and abroad:
 
 # Ruby and Rails Conferences
 
@@ -23,42 +27,33 @@ We proudly sponsored and spoke at Tropical on Rails, a conference that celebrate
 
 ### Rails World
 
-Attending and sponsoring Rails World was a fantastic experience. This is the largest Ruby on Rails conference in the
-world, and being part of it allowed us to stay tunned into the latest trends and developments in the Rails ecosystem.
+Attending and sponsoring Rails World was a fantastic experience. This is the largest Ruby on Rails conference in the world, and being part of it allowed us to stay tuned into the latest trends and developments in the Rails ecosystem.
 
 Talysson got on stage to talk about "XY Problem" in this AI era, discussing how to effectively leverage AI tools without falling into common pitfalls.
 
 # JavaScript and Node.js Conferences
 
-We're also present in the JavaScript community. In 2025, we participated in several key conferences where we learned and
-shared knowledge about JavaScript, Node.js, and a bit more.
+We're also present in the JavaScript community. In 2025, we participated in several key conferences where we learned and shared knowledge about JavaScript, Node.js, and a bit more.
 
 #### The Developer's Conference (TDC)
 
-In TDC Floripa 2025, I had the opportunity to speak about DX with Node.js, sharing best practices and tips to enhance
-developer experience when working with Node.js applications. Talysson with two talks: one about functional programming
-in JavaScript and Domain Modeling.
+In TDC Floripa 2025, I had the opportunity to speak about DX with Node.js, sharing best practices and tips to enhance developer experience when working with Node.js applications. Talysson presented two talks: one about functional programming in JavaScript and Domain Modeling.
 
-In São Paulo, Talysson came back with two more great participations: a panel discussion on assisted coding with AI and a talk on Domain-Driven Design (DDD). Joao Vogler brough an exiciting talk about frontend resiliency.
+In São Paulo, Talysson came back with two more great sessions: a panel discussion on assisted coding with AI and a talk on Domain-Driven Design (DDD). Joao Vogler brought an exciting talk about frontend resiliency.
 
 #### Node Congress and JS Nation
 
-We also participated with workshops. I put my Node.js collaborator hat on and led a workshop on SQLite and Node.js
-implementation at Node Congress.
+We also led workshops. I put my Node.js collaborator hat on and led a workshop on SQLite and Node.js implementation at Node Congress.
 
 In the end of the year, I came back to lead a workshop on interactive debugging with Node.js.
 
 #### React Conf
 
-I was thrilled to attend React Conf. I had a good expectation about the event, and it totally delivered. The talks were
-insightful, and I had the chance to connect with so amazing people, people that build tools that we use daily like
-Tanstack Query and Excalidraw.
+I was thrilled to attend React Conf. I had a good expectation about the event, and it totally delivered. The talks were insightful, and I had the chance to connect with amazing people who build tools that we use daily like Tanstack Query and Excalidraw.
 
 # Domain-Driven Design (DDD) Conferences
 
-There's room for more. In 2025, we also explored the Domain-Driven Design (DDD) community. Talysson spread the word of
-DDD around three different countries whie speaking at Nerdearla in Argentina, Explore DDD in USA, and DDD Brasil in
-Brazil.
+There's room for more. In 2025, we also explored the Domain-Driven Design (DDD) community. Talysson spread the word of DDD around three different countries while speaking at Nerdearla in Argentina, Explore DDD in USA, and DDD Brasil in Brazil.
 
 # Artificial Intelligence 
 
@@ -66,9 +61,9 @@ We're investing time and resources to understand how AI can help our development
 
 # Open Source Contributions & Team Growth
 
-Open source is at the heart of what we do. We kept incentivizing our team to contribute to open source projects. I produly became a Node.js core collaborator, contributing to the development and improvement of Node.js.
+Open source is at the heart of what we do. We kept incentivizing our team to contribute to open source projects. I proudly became a Node.js core collaborator, contributing to the development and improvement of Node.js.
 
-Me and my colleagues drove important contributions to Node.js and Rails ecosystems, including but not limited to:
+My colleagues and I drove important contributions to Node.js and Rails ecosystems, including but not limited to:
 
 - node
 - active record tenanted
