@@ -4,6 +4,8 @@ supported us throughout our journey.
 In 2025, Codeminer42 was proudly involved in several community initiatives, from sponsoring conferences to contributing
 to open source projects. Here's a quick recap of our community involvement last year:
 
+
+
 conferences
 
 - tdc floripa
@@ -11,9 +13,12 @@ conferences
 - node congress
 - jsnation
 - rails conf (the last one)
+- tropical on rails
 - nerdearla
 - QCon AI
 - rails world
+- meetup DDD Brasil
+- explore ddd
 
 open source
 
