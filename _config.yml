@@ -24,7 +24,7 @@ email: projetoscodesilva@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Bem-vindo ao meu blog pessoal, CodeSilva! Como um aspirante a Engenheiro de Software, estou aqui para compartilhar minhas experiências, percepções e ocasionais desventuras de programação.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://codesilva.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://codesilva.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: edysilva01
 github_username:  geeksilva97
 
