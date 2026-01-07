@@ -1,3 +1,53 @@
+# ~~Programação é realmente fácil?~~
+
+# Projetos que vão pra aprender a programar
+
+- mini google forms
+- encurtador de links
+- webarchive
+- mini excel
+- clone do github
+- agente de IA (competitor listener)
+    - https://www.reddit.com/r/AI_Agents/comments/1okt0av/looking_for_ideas_resources_to_build_fun_and/
+    - https://www.datacamp.com/blog/top-ai-agent-projects
+
+# Burnout na programação
+
+# Pare de instalar esses pacotes npm
+
+- nodemon
+- dotenv
+- moment
+- sqlite3
+- request / axios
+
+# Como node resolveu o problema de I/O bloqueante
+
+video do ryan dahl apresentando o node na jsconf eu 2009
+
+https://daniel.arneam.com/blog/distributedarchitecture/2020-10-25-Non-Blocking-IO-And_Tomcat/
+
+# Node cluster vs worker threads
+
+# É por isso que seu projeto é ruim
+
+- The twelve-factor app (https://12factor.net/)
+- Node principles https://www.platformatichq.com/node-principles
+
+# Error handling efetivo em JavaScript
+
+# Fiz um compilador para JVM em JavaScript (Node.js)
+
+# Um dia na vida de uma request HTTP
+
+- diferenca entre application server e web server
+- como frameworks web funcionam por baixo dos panos
+
+https://www.youtube.com/watch?v=6rVM7vHjJUI
+
+
+---
+
 # Video 6 - Pare de instalar esses pacotes npm (https://github.com/Codeminer42/cfp-submissions/blob/main/edy/2026/tdc-floripa-native-node.md)
 
 nesse vídeo, vou explorar dependencias que potencialmente nao sao mais necessarias no seu projeto node.js, node hoje tem
@@ -23,26 +73,7 @@ a qualidade do software.
 
 https://www.youtube.com/watch?v=eIoohUmYpGI
 
-# Um dia na vida de uma request HTTP
-
-- diferenca entre application server e web server
-- como frameworks web funcionam por baixo dos panos
-
-https://www.youtube.com/watch?v=6rVM7vHjJUI
-
 # O que faz um DevRel?
-
-# Projetos que vão pra aprender a programar
-
-- webarchive
-- mini google forms
-- exercism
-- encurtador de links
-- mini excel
-- clone do github
-- agente de IA
-
-# Programação é realmente fácil?
 
 ---
 
