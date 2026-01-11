@@ -14,6 +14,8 @@
   --card-bg: #fff;
   --card-hover-bg: #f0f0f0;
   --shadow-color: rgba(0, 0, 0, 0.05);
+  --selection-bg: #b3d4fc;
+  --selection-text: #000;
 }
 
 [data-theme="dark"] {
@@ -30,6 +32,8 @@
   --card-bg: #242438;
   --card-hover-bg: #2e2e45;
   --shadow-color: rgba(0, 0, 0, 0.3);
+  --selection-bg: #bd93f9;
+  --selection-text: #1a1a2e;
 }
 
 /* System preference detection (when no manual choice saved) */
@@ -48,7 +52,20 @@
     --card-bg: #242438;
     --card-hover-bg: #2e2e45;
     --shadow-color: rgba(0, 0, 0, 0.3);
+    --selection-bg: #bd93f9;
+    --selection-text: #1a1a2e;
   }
+}
+
+/* Text selection */
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+::-moz-selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 /* Apply variables to minima theme elements */
@@ -127,6 +144,122 @@ code {
 
 .highlighter-rouge .highlight {
   background-color: var(--code-bg) !important;
+}
+
+/* Dark mode syntax highlighting (Rouge tokens) */
+[data-theme="dark"] .highlight .c,
+[data-theme="dark"] .highlight .c1,
+[data-theme="dark"] .highlight .cm,
+[data-theme="dark"] .highlight .cs { color: #6a737d; } /* Comments */
+
+[data-theme="dark"] .highlight .k,
+[data-theme="dark"] .highlight .kc,
+[data-theme="dark"] .highlight .kd,
+[data-theme="dark"] .highlight .kn,
+[data-theme="dark"] .highlight .kp,
+[data-theme="dark"] .highlight .kr,
+[data-theme="dark"] .highlight .kt { color: #ff79c6; } /* Keywords */
+
+[data-theme="dark"] .highlight .s,
+[data-theme="dark"] .highlight .s1,
+[data-theme="dark"] .highlight .s2,
+[data-theme="dark"] .highlight .sb,
+[data-theme="dark"] .highlight .sc,
+[data-theme="dark"] .highlight .sd,
+[data-theme="dark"] .highlight .se,
+[data-theme="dark"] .highlight .sh,
+[data-theme="dark"] .highlight .si,
+[data-theme="dark"] .highlight .sx,
+[data-theme="dark"] .highlight .sr { color: #f1fa8c; } /* Strings */
+
+[data-theme="dark"] .highlight .m,
+[data-theme="dark"] .highlight .mi,
+[data-theme="dark"] .highlight .mf,
+[data-theme="dark"] .highlight .mh,
+[data-theme="dark"] .highlight .mo,
+[data-theme="dark"] .highlight .il { color: #bd93f9; } /* Numbers */
+
+[data-theme="dark"] .highlight .n { color: #e8e8e8; } /* Names */
+[data-theme="dark"] .highlight .na { color: #50fa7b; } /* Attribute names */
+[data-theme="dark"] .highlight .nb { color: #8be9fd; } /* Built-in names */
+[data-theme="dark"] .highlight .nc { color: #8be9fd; } /* Class names */
+[data-theme="dark"] .highlight .nd { color: #50fa7b; } /* Decorators */
+[data-theme="dark"] .highlight .nf { color: #50fa7b; } /* Function names */
+[data-theme="dark"] .highlight .ni { color: #ffb86c; } /* Entity names */
+[data-theme="dark"] .highlight .nn { color: #e8e8e8; } /* Namespace names */
+[data-theme="dark"] .highlight .nt { color: #ff79c6; } /* Tag names */
+[data-theme="dark"] .highlight .nv,
+[data-theme="dark"] .highlight .vi,
+[data-theme="dark"] .highlight .vg,
+[data-theme="dark"] .highlight .vc { color: #f8f8f2; } /* Variables */
+
+[data-theme="dark"] .highlight .o,
+[data-theme="dark"] .highlight .ow { color: #ff79c6; } /* Operators */
+
+[data-theme="dark"] .highlight .p { color: #f8f8f2; } /* Punctuation */
+
+[data-theme="dark"] .highlight .err { color: #ff5555; } /* Errors */
+
+[data-theme="dark"] .highlight .gd { color: #ff5555; } /* Deleted */
+[data-theme="dark"] .highlight .gi { color: #50fa7b; } /* Inserted */
+
+/* System preference dark mode syntax highlighting */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .highlight .c,
+  :root:not([data-theme="light"]) .highlight .c1,
+  :root:not([data-theme="light"]) .highlight .cm,
+  :root:not([data-theme="light"]) .highlight .cs { color: #6a737d; }
+
+  :root:not([data-theme="light"]) .highlight .k,
+  :root:not([data-theme="light"]) .highlight .kc,
+  :root:not([data-theme="light"]) .highlight .kd,
+  :root:not([data-theme="light"]) .highlight .kn,
+  :root:not([data-theme="light"]) .highlight .kp,
+  :root:not([data-theme="light"]) .highlight .kr,
+  :root:not([data-theme="light"]) .highlight .kt { color: #ff79c6; }
+
+  :root:not([data-theme="light"]) .highlight .s,
+  :root:not([data-theme="light"]) .highlight .s1,
+  :root:not([data-theme="light"]) .highlight .s2,
+  :root:not([data-theme="light"]) .highlight .sb,
+  :root:not([data-theme="light"]) .highlight .sc,
+  :root:not([data-theme="light"]) .highlight .sd,
+  :root:not([data-theme="light"]) .highlight .se,
+  :root:not([data-theme="light"]) .highlight .sh,
+  :root:not([data-theme="light"]) .highlight .si,
+  :root:not([data-theme="light"]) .highlight .sx,
+  :root:not([data-theme="light"]) .highlight .sr { color: #f1fa8c; }
+
+  :root:not([data-theme="light"]) .highlight .m,
+  :root:not([data-theme="light"]) .highlight .mi,
+  :root:not([data-theme="light"]) .highlight .mf,
+  :root:not([data-theme="light"]) .highlight .mh,
+  :root:not([data-theme="light"]) .highlight .mo,
+  :root:not([data-theme="light"]) .highlight .il { color: #bd93f9; }
+
+  :root:not([data-theme="light"]) .highlight .n { color: #e8e8e8; }
+  :root:not([data-theme="light"]) .highlight .na { color: #50fa7b; }
+  :root:not([data-theme="light"]) .highlight .nb { color: #8be9fd; }
+  :root:not([data-theme="light"]) .highlight .nc { color: #8be9fd; }
+  :root:not([data-theme="light"]) .highlight .nd { color: #50fa7b; }
+  :root:not([data-theme="light"]) .highlight .nf { color: #50fa7b; }
+  :root:not([data-theme="light"]) .highlight .ni { color: #ffb86c; }
+  :root:not([data-theme="light"]) .highlight .nn { color: #e8e8e8; }
+  :root:not([data-theme="light"]) .highlight .nt { color: #ff79c6; }
+  :root:not([data-theme="light"]) .highlight .nv,
+  :root:not([data-theme="light"]) .highlight .vi,
+  :root:not([data-theme="light"]) .highlight .vg,
+  :root:not([data-theme="light"]) .highlight .vc { color: #f8f8f2; }
+
+  :root:not([data-theme="light"]) .highlight .o,
+  :root:not([data-theme="light"]) .highlight .ow { color: #ff79c6; }
+
+  :root:not([data-theme="light"]) .highlight .p { color: #f8f8f2; }
+
+  :root:not([data-theme="light"]) .highlight .err { color: #ff5555; }
+
+  :root:not([data-theme="light"]) .highlight .gd { color: #ff5555; }
+  :root:not([data-theme="light"]) .highlight .gi { color: #50fa7b; }
 }
 
 /* Blockquotes */
