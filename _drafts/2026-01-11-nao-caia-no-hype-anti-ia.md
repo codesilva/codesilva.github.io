@@ -40,6 +40,24 @@ David Heinemeier Hansson (DHH), criador do Ruby on Rails e conhecido por suas op
 
 [Recentemente](https://x.com/dhh/status/2007512760733831575), DHH comentou sobre como o uso de IA muda o "flow" da programação. Alguém que historicamente critica a complexidade desnecessária e as "modinhas" de JavaScript, agora vê valor real em como essas ferramentas alteram a dinâmica de construção de software.
 
+## A profecia de Dijkstra
+
+Essa discussão me lembra o discurso [The Humble Programmer](https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html) de Edsger W. Dijkstra, ao receber o Turing Award em 1972. Ele falava sobre a "crise do software" de uma forma que ecoa perfeitamente hoje.
+
+Segundo Dijkstra, a crise não surgiu porque os computadores eram ruins, mas exatamente porque eles se tornaram poderosos demais:
+
+> "Enquanto não havia máquinas, programar não era problema nenhum; quando tivemos alguns computadores fracos, programar tornou-se um problema leve, e agora que temos computadores gigantescos, programar tornou-se um problema igualmente gigantesco."
+
+A complexidade do que *podemos* construir ultrapassou nossa capacidade intelectual de gerenciar essa complexidade. Resistir à IA é insistir em enfrentar esse "problema gigantesco" com as mesmas ferramentas mentais limitadas de décadas atrás. A IA atua justamente fechando essa lacuna entre a nossa ambição e a nossa capacidade cognitiva.
+
+## A barreira artificial
+
+Essa mudança de paradigma gera choques geracionais. Em uma [discussão recente no r/brdev](https://www.reddit.com/r/brdev/comments/1ixu14x/como_voc%C3%AAs_programavam_antes_da_ia/), um desenvolvedor júnior perguntou genuinamente: *"Como vocês programavam antes da IA?"*
+
+O relato é honesto e brutal: ele sente que não conseguiria aprender apenas lendo documentações áridas ou decifrando threads antigas do StackOverflow.
+
+Para os puristas, isso soa como "a nova geração é fraca". Mas, sob a ótica de Dijkstra, é apenas a constatação de que as ferramentas antigas exigiam um esforço cognitivo desproporcional apenas para *começar*. A IA não está necessariamente impedindo o aprendizado; ela está demolindo uma barreira de entrada que mantínhamos alta, muitas vezes confundindo "sofrimento" com "aprendizado".
+
 ## O fogo de construir
 
 O ponto central não é que a IA vai substituir os programadores amanhã, mas que ela permite que *construamos* mais.
