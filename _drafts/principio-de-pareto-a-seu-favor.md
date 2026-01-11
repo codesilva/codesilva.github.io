@@ -37,7 +37,7 @@ assuntos melhor.
 O ponto é que esses agente em geral não vão ter interesse nenhum em te explicar conceitos, mas sim ferramentas. Afinal,
 se te ensinam um conceito que você vai aplicar independentemente da ferramenta, como vão te vender o curso de amanhã?
 
-Apenas tenha em mente que <a target="_blank" href="https://codesilva.github.io/carreira/cursos/linguagens%20de%20programa%C3%A7%C3%A3o/2023/07/08/qualidades-que-os-cursos-deveriam-ter.html">há coisas que os cursos não te ensinam</a>.
+Apenas tenha em mente que <a target="_blank" href="https://codesilva.com/carreira/cursos/linguagens%20de%20programa%C3%A7%C3%A3o/2023/07/08/qualidades-que-os-cursos-deveriam-ter.html">há coisas que os cursos não te ensinam</a>.
 
 ## Princípio de Pareto aplicado a área de programação
 

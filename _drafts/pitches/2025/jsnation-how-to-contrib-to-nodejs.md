@@ -72,7 +72,7 @@ In this talk I brought a performance where we reduced RAM comsuption in 90%.
 
   - Slides (PT-BR): https://docs.google.com/presentation/d/1OlLCa5sX08x8TZNdlX-fqNDrH9wWxaZHlSwNIhgxGGM/edit?usp=sharing
 
-More on https://codesilva.github.io/talks/
+More on https://codesilva.com/talks/
 
 ## Workshop Description
 

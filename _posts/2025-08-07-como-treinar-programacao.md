@@ -10,7 +10,7 @@ category: ['carreira']
 
 Era o que dizia o professor Enio nas aulas de Cálculo do curso de Ciência da Computação. Grande professor. Ele estava certo.
 
-Em meu [ensaio anterior](https://codesilva.github.io/carreira/2025/07/22/ninguem-te-deve-uma-carreira.html), falei sobre características comuns a carreiras em profissoes de conhecimento.
+Em meu [ensaio anterior](https://codesilva.com/carreira/2025/07/22/ninguem-te-deve-uma-carreira.html), falei sobre características comuns a carreiras em profissoes de conhecimento.
 
 Há dois pontos principais ali: 
 
@@ -126,7 +126,7 @@ As coisas melhoram quando você percebe que não é um fardo tão grande. Você 
 
 ## Mentoria
 
-Ter um mentor é vital para construir uma rotina de treino. Especialmente em duas situações: no começo e quando você está no [platô](https://codesilva.github.io/carreira/2025/07/22/ninguem-te-deve-uma-carreira.html). Um mentor consegue te ajudar a fazer um roadmap e ser o seu ponto de feedback rápido. 
+Ter um mentor é vital para construir uma rotina de treino. Especialmente em duas situações: no começo e quando você está no [platô](https://codesilva.com/carreira/2025/07/22/ninguem-te-deve-uma-carreira.html). Um mentor consegue te ajudar a fazer um roadmap e ser o seu ponto de feedback rápido. 
 
 A mentoria que considero ideal é feita por uma pessoa, mais experiente de preferência. No entanto, você pode não ter esse privilégio.
 

@@ -19,7 +19,7 @@ Gostaria de começar eliminando a principal barreira que impede as pessoas de co
 o medo de não serem boas o suficiente.
 
 
-https://codesilva.github.io/nodejs/opensource/2025/01/07/nodejs-e-o-melhor-projeto-opensource-para-contribuir.html#nodejs
+https://codesilva.com/nodejs/opensource/2025/01/07/nodejs-e-o-melhor-projeto-opensource-para-contribuir.html#nodejs
 
 ## Conhecendo o Node.js
 

@@ -47,7 +47,7 @@ export const inputFromWebAPI = () => makeHttpRequest({
   name: 'somename', // if not define will the function name, like "hello" in this case
   request: {
     method: 'POST',
-    url: 'https://codesilva.github.io',
+    url: 'https://codesilva.com',
     query: '',
     body: {}
   }

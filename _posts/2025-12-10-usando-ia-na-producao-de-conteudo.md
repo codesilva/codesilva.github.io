@@ -85,7 +85,7 @@ A honestidade intelectual é rara hoje em dia. É fácil pedir pra IA gerar um t
 
 **Escreva seus textos. Seja honesto. Use IA como ferramenta, não como mágica.**
 
-[Pensar é difícil]: https://codesilva.github.io/aprendendo-a-aprender/2025/06/05/como-reter-conhecimento.html#1-voc%C3%AA-precisa-pensar-n%C3%A3o-buscar-por-respostas
+[Pensar é difícil]: https://codesilva.com/aprendendo-a-aprender/2025/06/05/como-reter-conhecimento.html#1-voc%C3%AA-precisa-pensar-n%C3%A3o-buscar-por-respostas
 [Ollama Cloud]: https://ollama.com/cloud
 [`Kimi K2`]: https://github.com/MoonshotAI/Kimi-K2
 [OpenCode]: https://opencode.ai/

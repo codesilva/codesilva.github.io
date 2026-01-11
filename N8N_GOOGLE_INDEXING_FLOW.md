@@ -10,14 +10,14 @@ This workflow automates the process of submitting new posts from your Jekyll blo
     *   Create a **Service Account**.
     *   Download the **JSON Key** for the service account.
 2.  **Google Search Console**:
-    *   Add the **Service Account Email** (e.g., `indexing-bot@your-project.iam.gserviceaccount.com`) as an **Owner** (or Delegate) of your property (`https://codesilva.github.io`).
+    *   Add the **Service Account Email** (e.g., `indexing-bot@your-project.iam.gserviceaccount.com`) as an **Owner** (or Delegate) of your property (`https://codesilva.com`).
 3.  **n8n Credentials**:
     *   Set up a **Google Service Account** credential in n8n using the JSON key.
 
 ## Workflow Overview
 
 1.  **Trigger**: Schedule (e.g., Every Hour).
-2.  **Fetch Data**: Download `https://codesilva.github.io/feed.xml`.
+2.  **Fetch Data**: Download `https://codesilva.com/feed.xml`.
 3.  **Parse**: Convert XML to JSON.
 4.  **Filter**: Keep only posts published recently (e.g., in the last 24 hours or since the last run).
 5.  **Submit**: Send `URL_UPDATED` request to Google Indexing API.
@@ -32,7 +32,7 @@ This workflow automates the process of submitting new posts from your Jekyll blo
 ### 2. HTTP Request (Fetch Feed)
 *   **Name**: `Fetch RSS Feed`
 *   **Method**: `GET`
-*   **URL**: `https://codesilva.github.io/feed.xml`
+*   **URL**: `https://codesilva.com/feed.xml`
     *   *Reason*: `feed.xml` (Atom) is often easier to parse and contains `published` dates reliably compared to `sitemap.xml`.
 
 ### 3. XML to JSON
@@ -78,4 +78,4 @@ This workflow automates the process of submitting new posts from your Jekyll blo
 ## Important Considerations
 *   **Quota**: The Indexing API has a quota (usually 200 per day). Filtering is important.
 *   **Content Type**: While the Indexing API is technically for "JobPosting" and "BroadcastEvent", it effectively triggers a crawl for most URLs. Use with awareness of Google's guidelines.
-*   **Alternative**: If you prefer the official "Sitemaps" API, you can change the final node to `GET https://www.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fcodesilva.github.io/sitemaps/https%3A%2F%2Fcodesilva.github.io%2Fsitemap.xml` (Sitemaps.submit), but the Indexing API is faster for individual URLs.
+*   **Alternative**: If you prefer the official "Sitemaps" API, you can change the final node to `GET https://www.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fcodesilva.com/sitemaps/https%3A%2F%2Fcodesilva.com%2Fsitemap.xml` (Sitemaps.submit), but the Indexing API is faster for individual URLs.

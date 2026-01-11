@@ -34,7 +34,7 @@ Os links estarão subdivididos por categorias. Você pode usar o atalho `Ctrl + 
 
 ### Contribuições Node.js
 
-- [Node.JS Apocrypha (Aspectos internos do Node, C++, libuv, v8)](https://codesilva.github.io/nodejs-apocrypha)
+- [Node.JS Apocrypha (Aspectos internos do Node, C++, libuv, v8)](https://codesilva.com/nodejs-apocrypha)
 
 ### Contribuições Ruby
 

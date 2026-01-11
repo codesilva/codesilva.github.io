@@ -78,5 +78,5 @@ _Schopenhauer_ também escreveu sobre isso:
 >
 > [...] **só se sabe aquilo sobre o que se pensou com profundidade.**
 
-[é assim que se aprende]: https://codesilva.github.io/aprendizado/2024/06/18/o-que-voce-nao-consegue-explicar-nao-entende.html#seu-c%C3%A9rebro-aprende-assim
-[Programação por coincidência]: https://codesilva.github.io/carreira/2024/01/22/senile-software-developer.html#programa%C3%A7%C3%A3o-por-coincidencia
+[é assim que se aprende]: https://codesilva.com/aprendizado/2024/06/18/o-que-voce-nao-consegue-explicar-nao-entende.html#seu-c%C3%A9rebro-aprende-assim
+[Programação por coincidência]: https://codesilva.com/carreira/2024/01/22/senile-software-developer.html#programa%C3%A7%C3%A3o-por-coincidencia
