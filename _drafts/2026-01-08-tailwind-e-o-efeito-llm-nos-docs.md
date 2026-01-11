@@ -1,17 +1,13 @@
 ---
 layout: post
+title: "How AI Wiped Out 80% of Tailwind's Revenue"
 date: 2026-01-08
 categories: [tech, ai, business]
 ---
 
-# How AI cut 80% of Tailwind's Revenue by Disrupting the Traditional Documentation Funnel
-# 75% laid off: How LLMs are Killing Tailwind
+Tailwind CSS, you probably know what it is. A utility-first CSS framework that has taken the web development world by storm. It's the default of many frameworks and tools, like Ruby on Rails, Phoenix, and Next.js.
 
-Tailwind CSS, you probably know what it is. A utility-first CSS framework that has taken the web development world by
-storm. It's the default of many frameworks and tools, like Ruby on Rails, Phoenix, and Next.js. 
-
-What you may not know is that Tailwind has a paid service called Tailwind PLUS (formerly Tailwind UI), which offers
-premium components and templates for developers.
+What you may not know is that Tailwind has a paid service called Tailwind PLUS (formerly Tailwind UI), which offers premium components and templates for developers.
 
 This service has been a significant revenue stream for the company behind Tailwind CSS and now, it's facing a massive disruption due to the rise of Large Language Models (LLMs).
 
@@ -23,19 +19,19 @@ Even before LLMs, people often turned to alternatives like Stack Overflow to avo
 
 It can even synthesize information from multiple sources, making it easier for developers to find what they need without sifting through pages of documentation.
 
-#### What is has to do with Tailwind PLUS?
+#### What does this have to do with Tailwind PLUS?
 
-The way tailwind works is by providing class names that you can use to style your HTML elements. Even though it's close to CSS, it has some differces that require some repetition on the documentation.
+The way tailwind works is by providing class names that you can use to style your HTML elements. Even though it's close to CSS, it has some differences that require some repetition on the documentation.
 
-In my first experience with Tailwind, I found myself googling a lot for things like "flex tailwind" or "grid tailwind" to find the right classes to use. 
+In my first experience with Tailwind, I found myself googling a lot for things like "flex tailwind" or "grid tailwind" to find the right classes to use.
 
-And you need to, because even though most classes are pretty intuitive, there are many edge cases. 
+And you need to, because even though most classes are pretty intuitive, there are many edge cases.
 
 [font style image]
 
 <small>not-italic === font-style: normal</small>
 
-They flow people go to reach Tailwind PLUS is from this traffic:
+The flow people go to reach Tailwind PLUS is from this traffic:
 
 User -> Google Search -> Tailwind Documentation -> Tailwind PLUS
 
@@ -54,15 +50,15 @@ Only two days ago it got an answer from Adam Wathan, the creator of Tailwind CSS
 
 [https://github.com/tailwindlabs/tailwindcss.com/pull/2388#issuecomment-3715074726]
 
-People got disappointed with such an anwer. Of course, making it easy to use your library with LLMs is supposed to be a good thing, right?
+People got disappointed with such an answer. Of course, making it easy to use your library with LLMs is supposed to be a good thing, right?
 
-Unfornunately, not for Tailwind. Getting LLMs in the middle reduces the traffic to their documentation, which in turn reduces the number of people that eventually reach Tailwind PLUS.
+Unfortunately, not for Tailwind. Getting LLMs in the middle reduces the traffic to their documentation, which in turn reduces the number of people that eventually reach Tailwind PLUS.
 
 Adam is very transparent about the situation:
 
 > 75% of the people on our engineering team lost their jobs here yesterday because of the brutal impact AI has had on our business...
 
-He also reports that traffic to the documentation has dropped by 40% since early 2023 (the beggining of ChatGPT).
+He also reports that traffic to the documentation has dropped by 40% since early 2023 (the beginning of ChatGPT).
 
 The impact on revenue is huge: 80% drop in revenue from Tailwind PLUS.
 
