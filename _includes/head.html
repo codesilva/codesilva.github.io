@@ -3,6 +3,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index, follow">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme-preference');
+      if (stored) {
+        document.documentElement.setAttribute('data-theme', stored);
+      }
+    })();
+  </script>
   {%- seo -%}
 
   <meta name="google-site-verification" content="s96XW-H2xKlgFZxLmrE3WRtgXcDlsLfBXzX4nivy7VI" />
@@ -23,6 +32,8 @@
   {%- endif -%}
 
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/dark-mode.css' | relative_url }}">
+  <script src="{{ '/assets/js/dark-mode.js' | relative_url }}" defer></script>
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}

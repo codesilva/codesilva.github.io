@@ -1,0 +1,206 @@
+/* Dark Mode CSS Variables */
+
+:root {
+  --bg-color: #fdfdfd;
+  --text-color: #111;
+  --heading-color: #111;
+  --link-color: #2a7ae2;
+  --link-hover-color: #1756a9;
+  --secondary-text: #828282;
+  --border-color: #e8e8e8;
+  --code-bg: #eef;
+  --code-text: #333;
+  --header-bg: #fdfdfd;
+  --card-bg: #fff;
+  --card-hover-bg: #f0f0f0;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e8e8e8;
+  --heading-color: #f0f0f0;
+  --link-color: #6db3f2;
+  --link-hover-color: #8fc5f7;
+  --secondary-text: #a0a0a0;
+  --border-color: #3a3a4a;
+  --code-bg: #2a2a3e;
+  --code-text: #e8e8e8;
+  --header-bg: #16213e;
+  --card-bg: #242438;
+  --card-hover-bg: #2e2e45;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* System preference detection (when no manual choice saved) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-color: #1a1a2e;
+    --text-color: #e8e8e8;
+    --heading-color: #f0f0f0;
+    --link-color: #6db3f2;
+    --link-hover-color: #8fc5f7;
+    --secondary-text: #a0a0a0;
+    --border-color: #3a3a4a;
+    --code-bg: #2a2a3e;
+    --code-text: #e8e8e8;
+    --header-bg: #16213e;
+    --card-bg: #242438;
+    --card-hover-bg: #2e2e45;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Apply variables to minima theme elements */
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color) !important;
+}
+
+/* Links */
+a {
+  color: var(--link-color) !important;
+}
+
+a:hover {
+  color: var(--link-hover-color) !important;
+}
+
+/* Site header */
+.site-header {
+  background-color: var(--header-bg);
+  border-top-color: var(--link-color);
+  border-bottom-color: var(--border-color);
+}
+
+.site-title,
+.site-title:visited {
+  color: var(--heading-color) !important;
+}
+
+/* Navigation */
+.site-nav {
+  background-color: var(--header-bg);
+  border-color: var(--border-color);
+}
+
+.site-nav .page-link {
+  color: var(--text-color) !important;
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--header-bg);
+  border-top-color: var(--border-color);
+}
+
+.footer-col-wrapper {
+  color: var(--secondary-text);
+}
+
+/* Post content */
+.post-title,
+.post-link {
+  color: var(--heading-color) !important;
+}
+
+.post-meta {
+  color: var(--secondary-text) !important;
+}
+
+.post-content {
+  color: var(--text-color);
+}
+
+/* Code blocks */
+pre,
+code {
+  background-color: var(--code-bg) !important;
+  color: var(--code-text) !important;
+  border-color: var(--border-color) !important;
+}
+
+.highlighter-rouge .highlight {
+  background-color: var(--code-bg) !important;
+}
+
+/* Blockquotes */
+blockquote {
+  color: var(--secondary-text) !important;
+  border-left-color: var(--border-color) !important;
+}
+
+/* Tables */
+table {
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+table th,
+table td {
+  border-color: var(--border-color);
+}
+
+table tr:nth-child(even) {
+  background-color: var(--card-bg);
+}
+
+/* Horizontal rule */
+hr {
+  border-color: var(--border-color);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 10px;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  line-height: 1;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--border-color);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+/* Icon visibility */
+.theme-toggle .sun-icon {
+  display: none;
+}
+
+.theme-toggle .moon-icon {
+  display: inline;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+  display: inline;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .sun-icon {
+    display: inline;
+  }
+
+  :root:not([data-theme="light"]) .theme-toggle .moon-icon {
+    display: none;
+  }
+}

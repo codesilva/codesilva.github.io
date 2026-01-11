@@ -2,8 +2,18 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme-preference');
+      if (stored) {
+        document.documentElement.setAttribute('data-theme', stored);
+      }
+    })();
+  </script>
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/category.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/dark-mode.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="{{ site.baseurl }}/favicon.ico">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS Feed" href="{{ site.baseurl }}/feed.xml">
