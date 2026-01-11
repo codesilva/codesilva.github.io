@@ -2,6 +2,33 @@
 layout: default
 ---
 
+<style>
+.home-posts h2 {
+  font-size: 1.9rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.home-posts ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.home-posts li {
+  margin-bottom: 0.75rem;
+}
+
+.home-posts li a {
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.home-posts li a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<div class="home-posts">
 {% assign current_year = "" %}
 {% assign current_month = "" %}
 
@@ -30,3 +57,4 @@ layout: default
       </ul>
     {% endif %}
 {% endfor %}
+</div>

@@ -1,18 +1,24 @@
-- title: 'Algoritmos com JavaScript: Dê seus primeiros passos em programação com uma linguagem poderosa'
-  img_url: ''
-  description: ''
+- title: 'Algoritmos com JavaScript'
+  subtitle: 'Dê seus primeiros passos em programação com uma linguagem poderosa'
+  img_url: 'https://m.media-amazon.com/images/I/41DcDx6XooL._SY445_SX342_.jpg'
+  description: 'Aprenda os fundamentos de algoritmos e lógica de programação usando JavaScript, uma das linguagens mais populares do mundo.'
+  lang: 'pt-BR'
   stores:
-    - { url: 'https://www.amazon.com.br/Algoritmos-com-JavaScript-primeiros-programa%C3%A7%C3%A3o-ebook/dp/B07PPPF4LN/ref=sr_1_2?refinements=p_27%3AEdigleysson+Silva&s=digital-text&sr=1-2&text=Edigleysson+Silva', name: 'Amazon' }
+    - { url: 'https://www.amazon.com.br/Algoritmos-com-JavaScript-primeiros-programa%C3%A7%C3%A3o-ebook/dp/B07PPPF4LN', name: 'Amazon' }
 
-- title: 'Fórmulas em Google Maps: Fórmulas práticas com a API JavaScript do Google Maps'
-  img_url: ''
-  description: ''
+- title: 'Fórmulas em Google Maps'
+  subtitle: 'Fórmulas práticas com a API JavaScript do Google Maps'
+  img_url: 'https://m.media-amazon.com/images/I/41P8p5eaBML._SY445_SX342_.jpg'
+  description: 'Um guia prático com receitas prontas para usar a API JavaScript do Google Maps em seus projetos.'
+  lang: 'pt-BR'
   stores:
-    - { url: 'https://www.amazon.com.br/F%C3%B3rmulas-Google-Maps-pr%C3%A1ticas-JavaScript-ebook/dp/B08ZY6Z11Q/ref=sr_1_1?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=edigleysson+silva&sr=8-1', name: 'Amazon' }
+    - { url: 'https://www.amazon.com.br/F%C3%B3rmulas-Google-Maps-pr%C3%A1ticas-JavaScript-ebook/dp/B08ZY6Z11Q', name: 'Amazon' }
     - { url: 'https://hotmart.com/pt-br/marketplace/produtos/formulas-em-google-maps-formulas-praticas-com-a-api-javascript-do-google-maps/T77049136G', name: 'Hotmart' }
 
 - title: 'Google Maps Recipes'
-  img_url: ''
-  description: ''
+  subtitle: 'Practical recipes with the Google Maps JavaScript API'
+  img_url: 'https://m.media-amazon.com/images/I/41HmzHwSU2L._SY445_SX342_.jpg'
+  description: 'A practical guide with ready-to-use recipes for the Google Maps JavaScript API in your projects.'
+  lang: 'en-US'
   stores:
-    - { url: 'https://www.amazon.com.br/Google-Recipes-English-Edigleysson-Silva-ebook/dp/B09RPY5QGC/ref=sr_1_3?refinements=p_27%3AEdigleysson+Silva&s=digital-text&sr=1-3&text=Edigleysson+Silva', name: 'Amazon' }
+    - { url: 'https://www.amazon.com.br/Google-Recipes-English-Edigleysson-Silva-ebook/dp/B09RPY5QGC', name: 'Amazon' }
