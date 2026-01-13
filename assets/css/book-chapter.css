@@ -1,0 +1,319 @@
+/* Book Chapter Layout Styles */
+
+/* Override wrapper width on desktop when chapter layout is present */
+@media (min-width: 1024px) {
+  .wrapper:has(.book-chapter-layout) {
+    max-width: 1200px;
+  }
+}
+
+.book-chapter-layout {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .book-chapter-layout {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+/* Left Sidebar: Chapter Navigation */
+.chapter-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .chapter-sidebar {
+    display: block;
+  }
+}
+
+.chapter-nav-container {
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.chapter-nav-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chapter-nav-container::-webkit-scrollbar-track {
+  background: var(--bg-color);
+  border-radius: 2px;
+}
+
+.chapter-nav-container::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+.chapter-nav-container::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-text);
+}
+
+.book-title-link {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--link-color) !important;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.book-title-link:hover {
+  text-decoration: underline;
+}
+
+.chapter-nav-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary-text) !important;
+  margin: 0 0 0.75rem 0;
+}
+
+.chapter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chapter-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.chapter-list a {
+  display: block;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-color) !important;
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+}
+
+.chapter-list a:hover {
+  color: var(--link-color) !important;
+  background-color: var(--card-hover-bg, rgba(0,0,0,0.03));
+}
+
+.chapter-list a.active {
+  color: var(--link-color) !important;
+  border-left-color: var(--link-color);
+  font-weight: 500;
+  background-color: var(--card-hover-bg, rgba(0,0,0,0.03));
+}
+
+/* Main Content */
+.chapter-main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.chapter-header {
+  margin-bottom: 2rem;
+}
+
+.chapter-number {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--link-color);
+  margin: 0 0 0.5rem 0;
+}
+
+.chapter-title {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.chapter-meta {
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+  margin: 0;
+}
+
+.chapter-content {
+  line-height: 1.7;
+}
+
+/* Prev/Next Navigation */
+.chapter-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.chapter-prev,
+.chapter-next {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  max-width: 45%;
+}
+
+.chapter-prev:hover,
+.chapter-next:hover {
+  border-color: var(--link-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.chapter-prev.disabled,
+.chapter-next.disabled {
+  visibility: hidden;
+}
+
+.chapter-next {
+  text-align: right;
+  margin-left: auto;
+}
+
+.chapter-nav-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary-text);
+  margin-bottom: 0.25rem;
+}
+
+.chapter-prev .chapter-nav-label::before {
+  content: "\2190 ";
+}
+
+.chapter-next .chapter-nav-label::after {
+  content: " \2192";
+}
+
+.chapter-nav-name {
+  font-size: 0.95rem;
+  color: var(--link-color);
+  font-weight: 500;
+}
+
+/* Mobile Chapter Nav */
+.chapter-mobile {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .chapter-mobile {
+    display: none;
+  }
+}
+
+.book-title-link-mobile {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--link-color) !important;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+}
+
+.book-title-link-mobile:hover {
+  text-decoration: underline;
+}
+
+.chapter-mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.chapter-mobile-toggle:hover {
+  background-color: var(--card-hover-bg, rgba(0,0,0,0.03));
+}
+
+.chapter-mobile-toggle-icon {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.chapter-mobile-toggle[aria-expanded="true"] .chapter-mobile-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.chapter-mobile-content {
+  display: none;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  margin-top: -1px;
+}
+
+.chapter-mobile-content.open {
+  display: block;
+}
+
+.chapter-mobile-content .chapter-list a {
+  padding: 0.5rem 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .chapter-title {
+    font-size: 1.5rem;
+  }
+
+  .chapter-pagination {
+    flex-direction: column;
+  }
+
+  .chapter-prev,
+  .chapter-next {
+    max-width: 100%;
+  }
+
+  .chapter-next {
+    text-align: left;
+  }
+
+  .chapter-next .chapter-nav-label::after {
+    content: "";
+  }
+
+  .chapter-next .chapter-nav-label::before {
+    content: "\2192 ";
+  }
+}

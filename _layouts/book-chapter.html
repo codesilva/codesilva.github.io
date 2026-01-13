@@ -1,0 +1,132 @@
+---
+layout: default
+---
+{% assign book_category = page.category | first %}
+{% assign book_chapters = site.posts | where_exp: "post", "post.category contains book_category" | sort: "chapter" %}
+
+{% assign current_index = -1 %}
+{% for ch in book_chapters %}
+  {% if ch.url == page.url %}
+    {% assign current_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+
+{% assign prev_chapter = nil %}
+{% assign next_chapter = nil %}
+{% if current_index > 0 %}
+  {% assign prev_index = current_index | minus: 1 %}
+  {% assign prev_chapter = book_chapters[prev_index] %}
+{% endif %}
+{% assign next_index = current_index | plus: 1 %}
+{% if next_index < book_chapters.size %}
+  {% assign next_chapter = book_chapters[next_index] %}
+{% endif %}
+
+{% assign book_info = nil %}
+{% for book in site.data.blog_books %}
+  {% if book.category == book_category %}
+    {% assign book_info = book %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<article class="book-chapter h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="book-chapter-layout">
+    <!-- Left Sidebar: Chapter Navigation -->
+    <aside class="chapter-sidebar" aria-label="Chapter navigation">
+      <nav class="chapter-nav-container">
+        <a href="{{ site.baseurl }}/{{ book_category }}" class="book-title-link">
+          {% if book_info %}{{ book_info.title }}{% else %}{{ book_category | replace: "-", " " | capitalize }}{% endif %}
+        </a>
+        <h2 class="chapter-nav-title">Chapters</h2>
+        <ul class="chapter-list">
+          {% for ch in book_chapters %}
+            <li>
+              <a href="{{ ch.url }}" {% if ch.url == page.url %}class="active" aria-current="page"{% endif %}>
+                {{ ch.chapter }}. {{ ch.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Mobile Chapter Nav -->
+    <nav class="chapter-mobile" aria-label="Chapter navigation">
+      <a href="{{ site.baseurl }}/{{ book_category }}" class="book-title-link-mobile">
+        {% if book_info %}{{ book_info.title }}{% else %}{{ book_category | replace: "-", " " | capitalize }}{% endif %}
+      </a>
+      <button class="chapter-mobile-toggle" aria-expanded="false" aria-controls="chapter-mobile-content">
+        <span>Chapter {{ page.chapter }}: {{ page.title }}</span>
+        <span class="chapter-mobile-toggle-icon" aria-hidden="true">&#9660;</span>
+      </button>
+      <div id="chapter-mobile-content" class="chapter-mobile-content">
+        <ul class="chapter-list">
+          {% for ch in book_chapters %}
+            <li>
+              <a href="{{ ch.url }}" {% if ch.url == page.url %}class="active"{% endif %}>
+                {{ ch.chapter }}. {{ ch.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="chapter-main-content">
+      <header class="chapter-header">
+        <p class="chapter-number">Chapter {{ page.chapter }}</p>
+        <h1 class="chapter-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+        <p class="chapter-meta">
+          <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            {{ page.date | date: date_format }}
+          </time>
+        </p>
+      </header>
+
+      <div class="chapter-content e-content" itemprop="articleBody">
+        {{ content }}
+      </div>
+
+      <!-- Prev/Next Navigation -->
+      <nav class="chapter-pagination" aria-label="Chapter pagination">
+        {% if prev_chapter %}
+          <a href="{{ prev_chapter.url }}" class="chapter-prev">
+            <span class="chapter-nav-label">Previous</span>
+            <span class="chapter-nav-name">{{ prev_chapter.chapter }}. {{ prev_chapter.title }}</span>
+          </a>
+        {% else %}
+          <span class="chapter-prev disabled"></span>
+        {% endif %}
+
+        {% if next_chapter %}
+          <a href="{{ next_chapter.url }}" class="chapter-next">
+            <span class="chapter-nav-label">Next</span>
+            <span class="chapter-nav-name">{{ next_chapter.chapter }}. {{ next_chapter.title }}</span>
+          </a>
+        {% else %}
+          <span class="chapter-next disabled"></span>
+        {% endif %}
+      </nav>
+    </div>
+  </div>
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.querySelector('.chapter-mobile-toggle');
+  const content = document.querySelector('.chapter-mobile-content');
+
+  if (toggle && content) {
+    toggle.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      content.classList.toggle('open');
+    });
+  }
+});
+</script>

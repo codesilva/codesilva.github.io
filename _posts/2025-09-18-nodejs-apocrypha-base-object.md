@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book-chapter
 title: 'Node.JS BaseObject'
 date: 2025-07-13
 lang: pt-BR

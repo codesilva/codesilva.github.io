@@ -144,6 +144,130 @@ permalink: /books/
   Alguns dos ebooks que escrevi ao longo dos anos. Confira abaixo e adquira o seu!
 </p>
 
+{% if site.data.blog_books.size > 0 %}
+<style>
+.blog-books-section {
+  margin-bottom: 3rem;
+}
+
+.blog-books-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color, #e8e8e8);
+}
+
+.blog-book-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-book-item {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #e8e8e8);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color, rgba(0,0,0,0.1));
+}
+
+.blog-book-item h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.blog-book-item h3 a {
+  text-decoration: none;
+  color: var(--link-color, #2a7ae2);
+}
+
+.blog-book-item h3 a:hover {
+  text-decoration: underline;
+}
+
+.blog-book-item .book-status {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: #fff3cd;
+  color: #856404;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+[data-theme="dark"] .blog-book-item .book-status {
+  background: #3d3d00;
+  color: #ffc107;
+}
+
+.blog-book-item .book-description {
+  color: var(--secondary-text, #666);
+  margin-bottom: 1rem;
+}
+
+.blog-book-item .chapter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+.blog-book-item .chapter-list li {
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.blog-book-item .chapter-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 4px;
+  height: 4px;
+  background: var(--link-color, #2a7ae2);
+  border-radius: 50%;
+}
+
+.blog-book-item .chapter-list a {
+  text-decoration: none;
+  color: var(--text-color, #111);
+}
+
+.blog-book-item .chapter-list a:hover {
+  color: var(--link-color, #2a7ae2);
+}
+</style>
+
+<section class="blog-books-section">
+  <h2>Blog Books</h2>
+  <ul class="blog-book-list">
+    {% for book in site.data.blog_books %}
+      <li class="blog-book-item">
+        <h3><a href="{{ site.baseurl }}/{{ book.category }}">{{ book.title }}</a></h3>
+        {% if book.status == "in-progress" %}
+          <span class="book-status">In Progress</span>
+        {% endif %}
+        <p class="book-description">{{ book.description }}</p>
+
+        {% assign book_posts = site.posts | where_exp: "post", "post.category contains book.category" | sort: "chapter" %}
+        {% if book_posts.size > 0 %}
+          <ul class="chapter-list">
+            {% for post in book_posts %}
+              <li>
+                <a href="{{ post.url }}">{{ post.chapter }}. {{ post.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<h2 style="font-size: 1.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color, #e8e8e8);">Published Books</h2>
+{% endif %}
+
 <ul class="books-grid">
 {% for book in site.data.books %}
   <li class="book-card">
