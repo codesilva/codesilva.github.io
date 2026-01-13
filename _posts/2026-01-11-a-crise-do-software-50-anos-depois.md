@@ -78,7 +78,7 @@ A essa altura, já não faz mais sentido estar no [hype anti-IA](https://antirez
 
 No contexto de geração de código, tem MUITA gente utilizando e há um bom motivo para isso. Os modelos realmente são bons. Sim, você TEM QUE USAR. Assim como Dijkstra teve que usar as máquinas exuberantes e mais complicadas.
 
-Esse blog mesmo, agora tem um dark mode, a página de livros está toda refatorada e você já pode até ler livros direto aqui. Tudo isso fiz em algumas horas com a ajuda do Claude.
+Esse blog mesmo, agora tem um dark mode, a página de [livros](https://codesilva.com/books/) está toda refatorada e você já pode até [ler livros direto aqui](https://codesilva.com/nodejs-apocrypha/node-internals/boundary-crossing/2025/07/13/nodejs-apocrypha-base-object). Tudo isso fiz em algumas horas com a ajuda do Claude.
 
 Sim, eu tinha que fazer usando IA. Eu não tenho saco pra ficar ajustando CSS do blog ou mexendo no template do Jekyll. A IA fez um trabalho muito melhor do que eu faria e o resultado foi muito satisfatório.
 
