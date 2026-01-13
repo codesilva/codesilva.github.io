@@ -4,7 +4,7 @@ title: "A crise do software, 50 anos depois"
 date: 2026-01-11
 lang: pt-BR
 categories: [carreira]
-excerpt: "Em 1972, Dijkstra alertou sobre a crise do software causada por máquinas poderosas e ambição crescente. Cinqüenta anos depois, a mesma dinâmica se repete com IA: ferramentas mais complexas criam o 'problema de usar seus produtos', enquanto a sociedade espera cada vez mais dos desenvolvedores."
+excerpt: "Em 1972, Dijkstra alertou sobre a crise do software causada por máquinas poderosas e ambição crescente. Cinquenta anos depois, a mesma dinâmica se repete com IA: ferramentas mais complexas criam o 'problema de usar seus produtos', enquanto a sociedade espera cada vez mais dos desenvolvedores."
 ---
 
 Em 1972, Edsger Dijkstra recebeu seu Turing Award e fez um discurso memorável chamado "[The Humble Programmer](https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html)" (O Programador Humilde).
