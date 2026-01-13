@@ -109,15 +109,23 @@
       var scrollPosition = window.pageYOffset;
       var currentId = null;
 
-      for (var i = headingPositions.length - 1; i >= 0; i--) {
-        if (scrollPosition >= headingPositions[i].top) {
-          currentId = headingPositions[i].id;
-          break;
-        }
-      }
+      // Check if we're at the bottom of the page
+      var isAtBottom = (window.innerHeight + window.pageYOffset) >= (document.body.scrollHeight - 50);
 
-      if (!currentId && headingPositions.length > 0) {
-        currentId = headingPositions[0].id;
+      if (isAtBottom && headingPositions.length > 0) {
+        // If at the bottom, highlight the last heading
+        currentId = headingPositions[headingPositions.length - 1].id;
+      } else {
+        for (var i = headingPositions.length - 1; i >= 0; i--) {
+          if (scrollPosition >= headingPositions[i].top) {
+            currentId = headingPositions[i].id;
+            break;
+          }
+        }
+
+        if (!currentId && headingPositions.length > 0) {
+          currentId = headingPositions[0].id;
+        }
       }
 
       tocLinks.forEach(function(link) {
