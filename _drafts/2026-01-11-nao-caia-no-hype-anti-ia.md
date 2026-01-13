@@ -1,12 +1,54 @@
 ---
 layout: post
-title: "Não caia no hype Anti-IA"
+title: "Como a IA cria um ambiente hostil para quem está começando"
 date: 2026-01-11
 lang: pt-BR
 tags: [ai, carreira, reflexão]
 categories: [carreira]
 excerpt: "De Antirez a Linus Torvalds, grandes nomes da tecnologia estão abraçando a IA. Resistir pode não ser a melhor estratégia para sua carreira."
 ---
+
+- estagiario em um ambiente em que todos usam IA para codificar
+- nada mais pode demorar? (ambição)
+- ia é um competidor forte
+- sentimento de incapacidade
+- barreira de entrada
+- quem fala de ia é so dev, aparentemente experiente, mas que fala de sua perspectiva
+
+Desde que o ChatGPT foi lançado, tudo o que a comunidade de desenvolvedores mais tem feito é discutir sobre o impacto da Inteligência Artificial no nosso trabalho.
+
+Nessa conversas, sempre houve a dicotomia com empresas que criam modelos, como a Anthropic, dizendo que desenvolvedores
+não serão mais necessários no futuro, enquanto tech influencers pregam que a IA é apenas mais uma ferramenta no nosso
+arsenal.
+
+Um desenvolvedor da Anthropic chegou a falar, em 2025, que em breve não haveria mais necessidade de escrever código. Não
+precisaremos nem nos preocupar em checar o resultado, de tão bom que ele será.
+
+[adam wolff]
+
+Outrora o CEO da mesma Anthropic, Dario Amodei, disse, em Setembro de 2025, que **nos próximos seis meses a IA estaria
+escrevendo 90% do código**.
+
+Bom, estamos em 2026. A AGI, prometida por Sam Altman, não chegou. Devs ainda são necessários, não à toa, a mesma Anthropic adiquiriu o [runtime Bun](https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone) ainda no final de 2025.
+
+Sim, a IA **tem que escrever a maior parte do código**. Você pode pensar de forma diferente, mas não há como negar
+a realidade. 
+
+É esse o novo normal. E esse normal está complicando muito a vida de quem está começando na carreira de desenvolvimento
+de software.
+
+## VOCÊ É RUIM
+
+Ninguém começa bom. Leva um tempo até aprender a fazer as coisas do jeito certo e de forma consistente. É por esse
+motivo que encontrar uma vaga é difícil, porque como você, há muitos outros candidatos que também estão começando, com
+níveis semelhantes de habilidade.
+
+Antigamente o "problema" eram os devs de curso. Todo mundo fazia o mesmo curso, aprendia a fazer as coisas de um mesmo
+jeito, tornando-se numa commodity.
+
+A coisa piora ainda mais com as capacidades atuais dos modelos de IA e agentes de código.
+
+--- 
 
 Existe um movimento crescente, quase uma contracultura, de desenvolvedores que se orgulham de **não** usar Inteligência Artificial. Seja por preocupações éticas, por ceticismo quanto à qualidade do código gerado ou por um puro purismo técnico, muitos estão ativamente rejeitando ferramentas como Copilot, ChatGPT e Claude.
 

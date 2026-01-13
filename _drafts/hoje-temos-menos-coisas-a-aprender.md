@@ -75,7 +75,6 @@ Notice that all of them started somewhere. They focused on their fields, they be
 
 If you are just starting your career, you have to become good enough in something. Just don't stop there. Keep learning, keep exploring, and keep expanding your knowledge.
 
-
 SIDE NOTE: when starting the career you have to focus to be good enough at something. Since I'm talking about professional sofware development, you have to be good enough at delivering value to people. You can do something impressive but still not be good enough to deliver value. This is a topic for another post.
 
 https://martinfowler.com/articles/expert-generalist.html
