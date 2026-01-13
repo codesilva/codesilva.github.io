@@ -7,7 +7,7 @@ categories: [carreira]
 excerpt: ""
 ---
 
-Em 1972, Edsger Dijkstra recebeu seu Turing Award e fez um discurso memorável chamado "The Humble Programmer" (O Programador Humilde).
+Em 1972, Edsger Dijkstra recebeu seu Turing Award e fez um discurso memorável chamado "[The Humble Programmer](https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html)" (O Programador Humilde).
 
 Esse é um texto que poucas pessoas conhecem, mas que todos deveriam ler. Nesse discurso, que já tem mais de 50 anos, Dijkstra traz muitos takeaways que são extremamente relevantes para os dias de hoje. Por exemplo:
 
@@ -29,7 +29,7 @@ No [slide final](https://docs.google.com/presentation/d/1lzwdDXjuSrtYCoaFPhYRVqX
 
 Em seu discurso, Dijkstra fala sobre a sua vida de programador, termo que ainda nem era considerado como profissão direito.
 
-Fala sobre as máquinas da época e como os rockstars da época eram, na verdade, todo mundo tinha mais interesse no hardware do que no software. Daí o nome "o programador humilde".
+Todo mundo tinha mais interesse no hardware do que no software. Daí o nome "o programador humilde".
 <br />
 <br />
 
