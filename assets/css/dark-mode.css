@@ -266,8 +266,29 @@ code {
 
 /* Blockquotes */
 blockquote {
-  color: var(--secondary-text) !important;
-  border-left-color: var(--border-color) !important;
+  color: #555 !important;
+  border-left-color: #2a7ae2 !important;
+  background-color: #f8f9fa;
+  padding: 1em 1.5em;
+  border-radius: 0 4px 4px 0;
+}
+
+[data-theme="dark"] blockquote {
+  color: #d0d0d0 !important;
+  border-left-color: #6db3f2 !important;
+  background-color: rgba(42, 42, 62, 0.5);
+  padding: 1em 1.5em;
+  border-radius: 0 4px 4px 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) blockquote {
+    color: #d0d0d0 !important;
+    border-left-color: #6db3f2 !important;
+    background-color: rgba(42, 42, 62, 0.5);
+    padding: 1em 1.5em;
+    border-radius: 0 4px 4px 0;
+  }
 }
 
 /* Tables */
