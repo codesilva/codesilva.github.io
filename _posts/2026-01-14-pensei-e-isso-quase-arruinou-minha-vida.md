@@ -54,7 +54,9 @@ O livro é inteiramente construído sobre a experiência de Brooks na IBM lidera
 
 Um dos primeiros artigos em que senti essa aversão coletiva ao pensamento foi [Ninguém te deve uma carreira](https://codesilva.com/carreira/2025/07/22/ninguem-te-deve-uma-carreira).
 
-Após ler _So Good They Can't Ignore You_, do Cal Newport, tirei conclusões sobre a jornada de um programador. Eram conclusões quase óbvias: qualquer ciclo de aprendizado segue uma curva em "S". Se você analisar sua própria trajetória, chegará a essa mesma dedução trivial.
+Após ler _So Good They Can't Ignore You_, do Cal Newport, tirei conclusões sobre a jornada de um programador. Eram conclusões quase óbvias: qualquer ciclo de aprendizado segue uma curva em "S".
+
+Se você analisar sua própria trajetória, chegará a essa mesma dedução trivial.
 
 O comentário que recebi foi:
 
@@ -62,7 +64,9 @@ O comentário que recebi foi:
 
 Mas é óbvio. O texto é, literalmente, um **ENSAIO**. A palavra em inglês é _essay_, a mesma usada por Fred Brooks.
 
-_Essay_ deriva do francês antigo _essayer_, que significa "tentar" ou "experimentar". Escrever um ensaio é justamente propor uma conclusão e apresentar a argumentação que a sustenta. Alguém pode discordar dos argumentos, mas invalidar o pensamento apenas porque "não é um dado estatístico" ou porque "é apenas sua opinião" é o auge da inépcia.
+_Essay_ deriva do francês antigo _essayer_, que significa "tentar" ou "experimentar". Escrever um ensaio é justamente propor uma conclusão e apresentar a argumentação que a sustenta.
+
+Alguém pode discordar dos argumentos, mas invalidar o pensamento apenas porque "não é um dado estatístico" ou porque "é apenas sua opinião" é o auge da inépcia.
 
 O caso que mais me chamou a atenção, porém, ocorreu após o artigo [A crise do software, 50 anos depois](https://codesilva.com/carreira/2026/01/11/a-crise-do-software-50-anos-depois).
 
@@ -77,16 +81,18 @@ O comentário que recebi foi:
 
 É inacreditável. 
 
-O sujeito desconsidera o contexto histórico de Dijkstra, onde a profissão de programador mal existia e as máquinas eram radicalmente diferentes, e descarta o segundo ponto como "apenas uma opinião".
+O sujeito desconsidera completamente o contexto histórico do discurso de Dijkstra, onde a profissão de programador mal existia e as máquinas eram radicalmente diferentes.
 
-Sim, Dijkstra... PENSOU. Ele refletiu sobre o que viveu e concluiu algo. Que absurdo, não?
+Sim, a transição das máquinas pra I/O e hierarquia de memória trouxe uma complexidade que antes não existia.
 
-Eu poderia argumentar que nós poderíamos viver DEZ VIDAS inteiras e não faríamos nem 10% do que Dijkstra fez pela Ciência da Computação. Então sim, a opinião dele vale mais que a minha e que a sua juntas. Mas não vou por esse lado.
+E sim, é a opinião de Dijkstra. Ele refletiu sobre algo que viveu e chegou a uma conclusão. Ora mas que absurdo. Como assim ele PENSOU?!
 
-Apenas observe que: O Esclarecimento de Kant é a opinião dele. Os ensaios de Brooks são a opinião dele. O discurso de Dijkstra é a opinião dele. São frutos de mentes pensantes que ousaram sair da menoridade.
+É a opinião dele e essa opinião **vale muito mais que a sua e a minha juntas**.
+
+Mas quero que observe que todos que citei aqui: Kant, Brooks e Dijkstra, são pensadores. Todos contribuíram com suas reflexões para o avanço do conhecimento humano em suas respectivas áreas.
 
 ## Conclusão
 
 Se o esforço de pensar é exaustivo demais para você, não há problema. Você não é obrigado a pensar. Você pode seguir sua vida apenas ruminando e reproduzindo o que os outros mastigaram primeiro, sem nunca tirar uma conclusão própria sequer.
 
-Mas, por favor, não tente policiar o pensamento alheio apenas porque você escolheu o conforto da menoridade.
+Mas, por favor, não tente policiar ou desqualificar o pensamento alheio apenas porque você escolheu o conforto da menoridade.
