@@ -188,8 +188,16 @@
       var scrollPosition = window.pageYOffset;
       var windowHeight = window.innerHeight;
 
-      var progress = (scrollPosition - contentTop + windowHeight * 0.3) / contentHeight;
-      progress = Math.max(0, Math.min(1, progress));
+      // Check if we're at the bottom of the page
+      var isAtBottom = (windowHeight + scrollPosition) >= (document.body.scrollHeight - 10);
+
+      var progress;
+      if (isAtBottom) {
+        progress = 1;
+      } else {
+        progress = (scrollPosition - contentTop + windowHeight * 0.3) / contentHeight;
+        progress = Math.max(0, Math.min(1, progress));
+      }
 
       progressBar.style.width = (progress * 100) + '%';
     }
