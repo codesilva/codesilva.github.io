@@ -1,7 +1,7 @@
 ---
 layout: post
-title: A Coragem de Ser Pensante em um Mundo de Ruminantes
-date: 2026-01-10
+title: Pensei, e isso quase arruinou minha vida
+date: 2026-01-14
 lang: pt-BR
 category: ["filosofia"]
 excerpt: "De Fred Brooks a Dijkstra, a engenharia de software sempre foi baseada em ensaios e experiência. Por que, então, nos tornamos tão avessos ao pensamento alheio? Uma crítica à tendência de apenas ruminar ideias e ao policiamento da opinião própria nas redes sociais."
