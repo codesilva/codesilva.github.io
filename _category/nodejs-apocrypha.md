@@ -8,4 +8,4 @@ This is `Node.JS Apocrypha`, a collection of code snippets, comments, and utilit
 
 All this comes from my personal experience as a new `Node.JS core collaborator`. If you are aiming to contribute to the Node.js core, you might find this useful.
 
-_`Why it starts with the chapter two you might ask. Well, contents are emerging as I work on Node.JS stuff. Order will change a lot yet. What I think is a good 'first chapter' isn't even written`_  ¯\\_(ツ)_/¯
+The book starts with understanding how Node.js bootstraps - from the moment you type `node your_script.js` until your code actually runs. From there, we explore the internals that make Node.js tick.
