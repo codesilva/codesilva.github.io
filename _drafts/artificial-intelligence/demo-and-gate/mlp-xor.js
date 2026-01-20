@@ -1,7 +1,7 @@
 const INPUTS = [
-  [0, 0],
-  [0, 1],
-  [1, 0],
+  [-1, -1],
+  [-1, 1],
+  [1, -1],
   [1, 1],
 ];
 
@@ -22,7 +22,7 @@ function computePerceptron(xi, [w1, w2, b]) {
 }
 
 function getRandom() {
-  return .1 * (Math.random() - .5);
+  return 4 * (Math.random() - .5);
 }
 
 function train(inputs, targets, epochs = 10, learningRate = 0.1) {
@@ -32,12 +32,16 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
   let p2 = [getRandom(), getRandom(), getRandom()];
   // v1, v2, b3
   let p3 = [getRandom(), getRandom(), getRandom()];
-
+  const indices = [0, 1, 2, 3];
   // the final decision is on top of the third perceptrion, the one which gives the output
   let c = 0;
   while (c++ < epochs) {
-    let L;
-    for (let i = 0; i < inputs.length; ++i) {
+    // shuffle indices 
+    for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[indices[i], indices[j]] = [indices[j], indices[i]]; }
+
+    let totalLoss = 0;
+    // for (let i = 0; i < inputs.length; ++i) {
+    for (const i of indices) {
       const xi = inputs[i];
       const t = targets[i];
 
@@ -51,7 +55,7 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
       const o = computePerceptron([h1, h2], p3);
       const y = Math.tanh(o);
 
-      L = Math.pow(y - t, 2) / 2;
+      totalLoss += Math.pow(y - t, 2) / 2;
 
       // backward pass
       // we are looking for: dL/dw1, dL/dw2, dL/db1, dL/dw3, dL/dw4, dL/db2, dL/dv1, dL/dv2, dL/db3
@@ -114,8 +118,11 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
       p3[2] -= learningRate * b3_grad;
     }
 
-    console.log('Loss: ', L)
+    if (c % 200 === 0) {
+      console.log(`Epoch ${c} - Loss: ${(totalLoss / inputs.length).toFixed(6)}`);
+    }
   }
 }
 
-train(INPUTS, XOR_targets, 100, .001)
+// train(INPUTS, XOR_targets, 200_000, .1)
+train(INPUTS, XOR_targets, 200000, 0.05)
