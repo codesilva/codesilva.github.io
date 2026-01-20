@@ -22,7 +22,15 @@ function computePerceptron(xi, [w1, w2, b]) {
 }
 
 function getRandom() {
-  return 4 * (Math.random() - .5);
+  return (Math.random() - 0.5) * 2;
+}
+
+function relu(x) {
+  return x > 0 ? x : 0.01 * x;
+}
+
+function reluDerivative(x) {
+  return x > 0 ? 1 : 0.01;
 }
 
 function train(inputs, targets, epochs = 10, learningRate = 0.1) {
@@ -32,7 +40,9 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
   let p2 = [getRandom(), getRandom(), getRandom()];
   // v1, v2, b3
   let p3 = [getRandom(), getRandom(), getRandom()];
+
   const indices = [0, 1, 2, 3];
+
   // the final decision is on top of the third perceptrion, the one which gives the output
   let c = 0;
   while (c++ < epochs) {
@@ -40,17 +50,16 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
     for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[indices[i], indices[j]] = [indices[j], indices[i]]; }
 
     let totalLoss = 0;
-    // for (let i = 0; i < inputs.length; ++i) {
     for (const i of indices) {
       const xi = inputs[i];
       const t = targets[i];
 
       // forward pass
       const z = computePerceptron(xi, p1);
-      const h1 = Math.tanh(z);
+      const h1 = relu(z);
 
       const k = computePerceptron(xi, p2);
-      const h2 = Math.tanh(k);
+      const h2 = relu(k);
 
       const o = computePerceptron([h1, h2], p3);
       const y = Math.tanh(o);
@@ -58,8 +67,6 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
       totalLoss += Math.pow(y - t, 2) / 2;
 
       // backward pass
-      // we are looking for: dL/dw1, dL/dw2, dL/db1, dL/dw3, dL/dw4, dL/db2, dL/dv1, dL/dv2, dL/db3
-      // using chain rule
       const dL_dy = y - t;
       const dy_do = tanhDerivative(y);
       const do_dh1 = p3[0]; // v1
@@ -67,42 +74,28 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
       const do_db3 = 1; // b3
       const do_dv1 = h1;
       const do_dv2 = h2;
-      const dh1_dz = tanhDerivative(h1);
+      
+      const dh1_dz = reluDerivative(z);
       const dz_w1 = xi[0];
       const dz_w2 = xi[1];
       const dz_b1 = 1;
-      const dh2_dk = tanhDerivative(h2);
+
+      const dh2_dk = reluDerivative(k);
       const dk_w3 = xi[0];
       const dk_w4 = xi[1];
       const dk_b2 = 1;
 
-      // dL/v1, dL/v2, dL/b3
       const v1_grad = dL_dy * dy_do * do_dv1;
       const v2_grad = dL_dy * dy_do * do_dv2;
       const b3_grad = dL_dy * dy_do * do_db3;
-      // console.log('v1 grad ', v1_grad)
-      // console.log('v2 grad ', v2_grad)
-      // console.log('b3 grad ', b3_grad)
 
-      // console.log()
-
-      // dL/w1, dL/w2, dL/b1
       const w1_grad = dL_dy * dy_do * do_dh1 * dh1_dz * dz_w1;
       const w2_grad = dL_dy * dy_do * do_dh1 * dh1_dz * dz_w2;
       const b1_grad = dL_dy * dy_do * do_dh1 * dh1_dz * dz_b1;
-      // console.log('w1 grad ', w1_grad)
-      // console.log('w2 grad ', w2_grad)
-      // console.log('b1 grad ', b1_grad)
 
-      // console.log()
-
-      // dL/w3, dL/w4, dL/b2
       const w3_grad = dL_dy * dy_do * do_dh2 * dh2_dk * dk_w3;
       const w4_grad = dL_dy * dy_do * do_dh2 * dh2_dk * dk_w4;
       const b2_grad = dL_dy * dy_do * do_dh2 * dh2_dk * dk_b2;
-      // console.log('w3 grad ', w3_grad)
-      // console.log('w4 grad ', w4_grad)
-      // console.log('b2 grad ', b2_grad)
 
       // update parameters
       p1[0] -= learningRate * w1_grad;
@@ -118,11 +111,31 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
       p3[2] -= learningRate * b3_grad;
     }
 
-    if (c % 200 === 0) {
+    if (c % 5000 === 0) {
       console.log(`Epoch ${c} - Loss: ${(totalLoss / inputs.length).toFixed(6)}`);
     }
   }
+
+  console.log('\nFinal Results:');
+  const predict = (x1, x2) => {
+    const h1 = relu(computePerceptron([x1, x2], p1));
+    const h2 = relu(computePerceptron([x1, x2], p2));
+    const y = Math.tanh(computePerceptron([h1, h2], p3));
+    return y;
+  };
+
+  for (let i = 0; i < inputs.length; i++) {
+    const xi = inputs[i];
+    const y = predict(xi[0], xi[1]);
+    console.log(`Input: [${xi}] -> Target: ${targets[i]} -> Output: ${y.toFixed(4)}`);
+  }
+
+  return predict;
 }
 
-// train(INPUTS, XOR_targets, 200_000, .1)
-train(INPUTS, XOR_targets, 200000, 0.05)
+const xor = train(INPUTS, XOR_targets, 20000, 0.01);
+
+console.log('\nIndividual Test:');
+console.log(`xor(-1, 1) => ${xor(-1, 1).toFixed(4)}`);
+
+
