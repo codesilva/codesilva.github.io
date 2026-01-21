@@ -1,19 +1,23 @@
 const INPUTS = [
-  [-1, -1],
-  [-1, 1],
-  [1, -1],
+  [0, 0],
+  [0, 1],
+  [1, 0],
   [1, 1],
 ];
 
 const XOR_targets = [
-  -1, //0
+  0,
   1,
   1,
-  -1, // 0
+  0,
 ];
 
-function tanhDerivative(x) {
-  return 1 - x * x;
+function sigmoid(x) {
+  return 1 / (1 + Math.exp(-x));
+}
+
+function sigmoidDerivative(y) {
+  return y * (1 - y);
 }
 
 function computePerceptron(xi, [w1, w2, b]) {
@@ -62,13 +66,13 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
       const h2 = relu(k);
 
       const o = computePerceptron([h1, h2], p3);
-      const y = Math.tanh(o);
+      const y = sigmoid(o);
 
       totalLoss += Math.pow(y - t, 2) / 2;
 
       // backward pass
       const dL_dy = y - t;
-      const dy_do = tanhDerivative(y);
+      const dy_do = sigmoidDerivative(y);
       const do_dh1 = p3[0]; // v1
       const do_dh2 = p3[1]; // v2
       const do_db3 = 1; // b3
@@ -120,7 +124,7 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
   const predict = (x1, x2) => {
     const h1 = relu(computePerceptron([x1, x2], p1));
     const h2 = relu(computePerceptron([x1, x2], p2));
-    const y = Math.tanh(computePerceptron([h1, h2], p3));
+    const y = sigmoid(computePerceptron([h1, h2], p3));
     return y;
   };
 
@@ -133,9 +137,12 @@ function train(inputs, targets, epochs = 10, learningRate = 0.1) {
   return predict;
 }
 
-const xor = train(INPUTS, XOR_targets, 20000, 0.01);
+const xor = train(INPUTS, XOR_targets, 100000, 0.5);
 
 console.log('\nIndividual Test:');
-console.log(`xor(-1, 1) => ${xor(-1, 1).toFixed(4)}`);
+console.log(`xor(0, 0) => ${xor(0, 0).toFixed(4)}`);
+console.log(`xor(0, 1) => ${xor(0, 1).toFixed(4)}`);
+console.log(`xor(1, 0) => ${xor(1, 0).toFixed(4)}`);
+console.log(`xor(1, 1) => ${xor(1, 1).toFixed(4)}`);
 
 
