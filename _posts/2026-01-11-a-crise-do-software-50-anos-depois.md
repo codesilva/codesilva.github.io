@@ -11,11 +11,11 @@ Em 1972, Edsger Dijkstra recebeu seu Turing Award e fez um discurso memorável c
 
 Esse é um texto que poucas pessoas conhecem, mas que todos deveriam ler. Nesse discurso, que já tem mais de 50 anos, Dijkstra traz muitos takeaways que são extremamente relevantes para os dias de hoje. Por exemplo:
 
-> A habilidade mais importante que um programador precisa ter é a capacidade de abstração
+> "A habilidade mais importante que um programador precisa ter é a capacidade de abstração"
 
 Ele também fala que
 
-> Aqueles que querem ter um software confiável têm que encontrar meios de evitar a maioria dos bugs, e como resultado, o processo de desenvolvimento ficará mais barato
+> "Aqueles que querem ter um software confiável têm que encontrar meios de evitar a maioria dos bugs, e como resultado, o processo de desenvolvimento ficará mais barato"
 
 Quem aqui nunca ouviu falar de débito técnico? Código sem testes custando muito tempo e até [satisfação dos desenvolvedores](https://codesilva.com/carreira/2025/12/29/76-porcento-devs-insatisfeitos-como-fugir-estatistica-2026)?
 
@@ -33,13 +33,13 @@ Todo mundo tinha mais interesse no hardware do que no software. Daí o nome "o p
 <br />
 <br />
 
-> E quanto ao pobre programador? Bem, para dizer a verdade: ele quase não foi notado.
+> "E quanto ao pobre programador? Bem, para dizer a verdade: ele quase não foi notado.
 >
 > [...] seu trabalho, de certa forma invisível, não tinha nenhum glamour: você podia mostrar a máquina aos visitantes, e isso era várias vezes mais espetacular do que algumas folhas de código.
 >
 > Mas, acima de tudo, o próprio programador tinha uma visão muito modesta de seu trabalho: toda a sua importância derivava da existência daquela máquina maravilhosa.
 >
-> Como aquela era uma máquina única, ele sabia muito bem que seus programas tinham apenas relevância local e, também, como era evidente que aquela máquina teria uma vida útil limitada, sabia que muito pouco do seu trabalho teria valor duradouro.
+> Como aquela era uma máquina única, ele sabia muito bem que seus programas tinham apenas relevância local e, também, como era evidente que aquela máquina teria uma vida útil limitada, sabia que muito pouco do seu trabalho teria valor duradouro."
 
 Então, nesse contexto, de máquinas exuberantes e cada vez mais poderosas, ele observou que a ambição da sociedade estava aumentando de forma proporcional.
 
@@ -56,9 +56,9 @@ Ele elenca duas causas para a crise, sendo a segunda a maior delas:
 
 Ele fala:
 
-> Enquanto não existiam máquinas, a programação não era problema algum; quando tínhamos alguns computadores fracos, a programação tornou-se um problema moderado, e agora que temos computadores gigantescos, a programação tornou-se um problema igualmente gigantesco.
+> "Enquanto não existiam máquinas, a programação não era problema algum; quando tínhamos alguns computadores fracos, a programação tornou-se um problema moderado, e agora que temos computadores gigantescos, a programação tornou-se um problema igualmente gigantesco.
 >
-> Nesse sentido, a indústria não resolveu nenhum problema, apenas criou problemas, **criou o problema de usar seus produtos**.
+> Nesse sentido, a indústria não resolveu nenhum problema, apenas criou problemas, **criou o problema de usar seus produtos**."
 
 Isso é muito similar ao que acontece com LLMs e agentes de código hoje. Enquanto essas ferramentas não existiam ou eram fracas, seguir sua vida de programador como antes era simples.
 
@@ -86,9 +86,9 @@ O [Linus Torvalds também usa IA](https://github.com/torvalds/AudioNoise/commit/
 <br />
 <br />
 
-> Na maior parte, tudo correu bem, embora eu tenha tido que descobrir qual era o problema [...] Depois de instruir o antigravity [...] as coisas melhoraram bastante.
+> "Na maior parte, tudo correu bem, embora eu tenha tido que descobrir qual era o problema [...] Depois de instruir o antigravity [...] as coisas melhoraram bastante.
 >
-> Isso é muito melhor do que eu conseguiria fazer manualmente? **COM CERTEZA**
+> Isso é muito melhor do que eu conseguiria fazer manualmente? **COM CERTEZA**"
 
 Fingir que ferramentas de IA são inúteis ou irrelevantes não trará nada de bom para a sua carreira. Pode trazer coisas ruins, mas de bom com certeza não.
 
