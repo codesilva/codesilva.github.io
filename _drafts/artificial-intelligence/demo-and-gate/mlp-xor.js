@@ -12,6 +12,16 @@ const XOR_targets = [
   0,
 ];
 
+// tanh activation function
+
+function tanh(x) {
+  return 2 / (1 + Math.exp(-2 * x)) - 1;
+}
+
+function tanhDerivative(y) {
+  return 4 * (1 - y * y);
+}
+
 function sigmoid(x) {
   return 1 / (1 + Math.exp(-x));
 }
